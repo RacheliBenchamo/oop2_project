@@ -9,6 +9,12 @@
 #include "StaticInclude\Teleport.h"
 #include "StaticInclude\Gate.h"
 #include "StaticInclude\Gift.h"
+#include "StaticInclude\LifeGift.h"
+#include "StaticInclude\PowerGift.h"
+#include "MovingInclude\Player.h"
+#include "MovingInclude\Monster.h"
+
+
 #include <array>
 
 
@@ -22,14 +28,10 @@ public:
     void setData(char, int, int);
     void draw(sf::RenderWindow& );
     void FindTeleportPartner() const;
-    void switchPlayer();
     void move(sf::Time);
-    bool takeCurrGift(giftType g) { return m_takeGifts[g]; }
+   // bool takeCurrGift(giftType g) { return m_takeGifts[g]; }
     bool winLevel();
     void eraseObj();
-    icons getCurrPlayer()const { return m_currPlayer; }
-    void setCurrPlayer(icons currPlayer) { m_currPlayer = currPlayer; }
-    void setGiftsWithTime(bool b) { m_GiftsWithTime = b; }
 
 private:
     bool createStaticObj(const char , const size_t ,
@@ -43,13 +45,13 @@ private:
     void handelTeleportCollisions();
     void itsAllowedToEnterTheTeleport(int, int);
     bool ThereIsNoObjectOnTheMemberTel(int);
-    void handelFairiesCollisions();
+   //void handelMonstersCollisions();
     void deleteRelevantObj();
-    void replaceOrkWithKey();
+    //void replaceMonsterWithPotion();
     std::unique_ptr<Gift>  grillGiftType(icons, int, int);
     void takeGift();
     void resetTakeGifts();
-    void eraseAllFairies();
+    //void eraseAllFairies();
 
     sf::Vector2f m_levelSize;
     sf::RenderWindow m_window;
@@ -59,8 +61,8 @@ private:
     int m_currTeleport;
     icons m_currPlayer;
     sf::RectangleShape m_movingRec;
-    std::array<std::unique_ptr< Player>, NUM_OF_PLAYERS>m_players;
+    std::unique_ptr< Player> m_player;
     std::vector<std::unique_ptr<StaticObj> > m_staticsObj;
-    std::vector<std::unique_ptr<Fairy>> m_fairies;
+   // std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
 };

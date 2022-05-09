@@ -40,19 +40,7 @@ public:
 	sf::Vector2f getScale() const;
 	
 	virtual void handleCollision(GameObjBase& )  = 0;
-	virtual void handleCollision(King& ) = 0;
-	virtual void handleCollision(Warrior& ) = 0;
-	virtual void handleCollision(Mage& ) = 0;
-	virtual void handleCollision(Thief& ) = 0;
-	virtual void handleCollision(Wall& )  = 0;
-	virtual void handleCollision(Ork& )  = 0;
-	virtual void handleCollision(Gate& ) = 0;
-	virtual void handleCollision(Throne& )  = 0;
-	virtual void handleCollision(Teleport& )  = 0;
-	virtual void handleCollision(Fire& )  = 0;
-	virtual void handleCollision(Key& )  = 0;
-	virtual void handleCollision(Gift& ) = 0;
-	virtual void handleCollision(Fairy& ) = 0;
+
 	
 
 private:

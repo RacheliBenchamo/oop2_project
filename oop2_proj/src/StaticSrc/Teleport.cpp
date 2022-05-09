@@ -30,24 +30,3 @@ void Teleport::handleCollision(GameObjBase& gameObject)
     // double dispatch
     gameObject.handleCollision(*this);
 }
-//--------------------------------------------------
-
-void Teleport::handleCollision(King& king)
-{
-    startSound();
-    king.setPos(m_Partner);
-}
-//--------------------------------------------------
-
-void Teleport::handleCollision(Warrior& warr)
-{
-    startSound();
-    warr.setPos(m_Partner);
-}
-//--------------------------------------------------
-
-void Teleport::handleCollision(Thief& thief)
-{
-    startSound();
-    thief.setPos(m_Partner);
-}

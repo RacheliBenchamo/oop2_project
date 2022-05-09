@@ -47,7 +47,7 @@ const sf::Vector2f MUSIC_ICON_SCALE = { 0.08f, 0.08f };
 const sf::Vector2f DVec[] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 
 const char
-EMPTY_C = ' ', KING_C = 'K', WARRIOR_C = 'W', THIEF_C = 'T',MAGE_C = 'M',
+PLAYER_C='P', EMPTY_C = ' ', KING_C = 'K', WARRIOR_C = 'W', THIEF_C = 'T', MAGE_C = 'M',
 FIRE_C = '*', GATE_C = '#', ORK_C = '!', KEY_C = 'F', TELEPORT_C = 'X',
 GIFT_C = '?', FAIRY_C = '^', WALL_C = '=',
 THRONE_C = '@';
@@ -74,7 +74,7 @@ enum backgroundsType
 
 enum giftType
 {
-	TAKE_TO_PREV_LEVEL, MOVE_FAIRIES,TAKE_TIME, ADD_TIME
+	LIFE, POWER
 };
 
 enum direction

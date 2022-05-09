@@ -11,13 +11,13 @@ public:
 	~StatusBar() {};
 
 	void updateTime();
-	void updateLevel(int, bool);
+	void updateLevel(bool);
 	int getLevel() const;
 	void setLevel(int);
 	float getTime() const;
 	void resetTimer();
 	void setTime(int);
-	void draw(sf::RenderWindow& ,int);
+	void draw(sf::RenderWindow&);
 	void resetNumOfLevel();
 	bool containsMusicIcon(const sf::Event&) const;
 	void setMusicIcon(bool);
@@ -27,23 +27,18 @@ public:
 
 
 private:
-	void currPlayerDetail();
-	void setCurrPlayerText();
 	void setLevelText();
 	void setTimeText();
 	void setMusicIcon();
 	void setStopIcon();
 	void setRestartIcon();
 	void updateTimePassText();
-	void updateTimeLeftText();
 
 	sf::Clock m_timer;
 	float m_minutes;
 	float m_seconds;
 	int m_level;
-	bool m_timelessLevel;
 
-	sf::Text m_currPlayerText;
 	sf::Text m_timeText;
 	sf::Text m_levelText;
 	sf::Font m_font;
@@ -52,6 +47,5 @@ private:
 	sf::Sprite m_stopAndPlayIcon;
 	sf::Sprite m_musicIcon;
 	sf::Sprite m_resetIcon;
-	sf::Sprite m_playersSprite[4];
 };
 

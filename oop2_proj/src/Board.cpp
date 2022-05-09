@@ -5,7 +5,7 @@
 //constructor
 
 Board::Board()
-	: m_startOfPrevLevel(0), m_startOfTheLevel(0), m_timeLimit(0)
+	: m_startOfPrevLevel(0), m_startOfTheLevel(0)
 {
 	this->m_input.open("Levels.txt", std::ios_base::in);
 }
@@ -27,15 +27,11 @@ bool Board::readLevelData(DataBase& dataBase)
 		m_startOfTheLevel = m_input.tellg();
 
 		char c;
-		m_input >> m_boardSize.x >> m_boardSize.y >> m_timeLimit;
+		m_input >> m_boardSize.x >> m_boardSize.y;
 		m_input.get();
 		
 		dataBase.setLevelSize(m_boardSize.x, m_boardSize.y);
 	}
-	if (m_timeLimit > 0)
-		dataBase.setGiftsWithTime(true);
-	else
-		dataBase.setGiftsWithTime(false);
 
 	return true;
 }

@@ -33,7 +33,7 @@ void Controller::run()
 		m_window.clear();
 		m_window.draw(m_background);
 		m_dataBase.draw(m_window);
-		m_statusBar.draw(m_window, m_dataBase.getCurrPlayer());
+		m_statusBar.draw(m_window);
 		m_window.display();
 
 		for (auto event = sf::Event(); m_window.pollEvent(event); )
@@ -68,7 +68,7 @@ void Controller::setNewGame()
 
 	m_board.readLevelData(m_dataBase);
 	m_board.readLevel(m_dataBase);
-	this->m_statusBar.updateLevel(m_board.getLevelTime(), true);
+	this->m_statusBar.updateLevel(true);
 }
 //----------------------------------------------
 //handle the event that occurred in the curent
@@ -144,7 +144,7 @@ void Controller::startNewLevel()
 	{
 		winLevelScreen();
 		m_board.readLevel(m_dataBase);
-		this->m_statusBar.updateLevel(m_board.getLevelTime(), true);
+		this->m_statusBar.updateLevel( true);
 	}
 }
 //------------------------------------------
@@ -168,7 +168,7 @@ void Controller::resetLevel()
 	m_board.readLevelData(m_dataBase);//board size and time
 	//read all the char from the text:
 	m_board.readLevel(m_dataBase);
-	this->m_statusBar.updateLevel(m_board.getLevelTime(), false);
+	this->m_statusBar.updateLevel( false);
 }
 
 //---------------------------------------------
