@@ -21,13 +21,12 @@ private:
     void handelMusicButtonReleased();
     void handelStopPlayButtonReleased();
     void resetLevel();
-    void takeBackToPrevLevel();
     void startNewLevel();
     void startnewGame();
     void winGameScreen();
     void winLevelScreen();
     void setWinScreen(backgroundsType, sounds);
-    void checkOutGiftTaken();
+    void setBackground();
 
 
     sf::RenderWindow m_window;
@@ -37,7 +36,9 @@ private:
     DataBase  m_dataBase;
     sf::Clock m_gameClock;
     sf::Sound m_backGroundMusic;
-    sf::RectangleShape m_background;
+    int m_levelNum = 1;
+    sf::RectangleShape m_currLevelBackground;
+
     bool m_playButton;
 
 

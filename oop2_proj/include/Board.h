@@ -26,5 +26,6 @@ private:
 	std::ifstream m_input;
 	int m_startOfTheLevel;
 	int m_startOfPrevLevel;
+	//sf::RectangleShape m_currLevelBackground;
 
 };

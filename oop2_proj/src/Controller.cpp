@@ -11,15 +11,15 @@ using std::cout;
 
 Controller::Controller()
 	:m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT),
-		"Save the king!", sf::Style::Titlebar | sf::Style::Close)
+		"The Diamonds Fighter!", sf::Style::Titlebar | sf::Style::Close)
 	, m_playButton(true)
 {
 	m_window.setFramerateLimit(60);
 
 	m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
 
-	m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	m_background.setTexture(FileManager::p2FileManager().getBackGround(GAME_BACKGROUND));
+	m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
+	m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
 }
 //--------------------------------------------------
 //start the game
@@ -31,7 +31,7 @@ void Controller::run()
 	while (m_window.isOpen())
 	{
 		m_window.clear();
-		m_window.draw(m_background);
+		m_window.draw(m_currLevelBackground);
 		m_dataBase.draw(m_window);
 		m_statusBar.draw(m_window);
 		m_window.display();
@@ -142,6 +142,8 @@ void Controller::startNewLevel()
 		startnewGame();
 	else
 	{
+		m_levelNum++;
+		setBackground();
 		winLevelScreen();
 		m_board.readLevel(m_dataBase);
 		this->m_statusBar.updateLevel( true);
@@ -156,6 +158,8 @@ void Controller::startnewGame()
 	m_board.resetInputStream();
 	m_statusBar.resetNumOfLevel();
 	winGameScreen();
+	m_levelNum=1;
+	setBackground();
 	run();
 }
 //----------------------------------------------
@@ -205,4 +209,22 @@ void Controller::setWinScreen(backgroundsType backgroundType, sounds soundType)
 		m_window.draw(background);
 		m_window.display();
 	}
+}
+void Controller::setBackground()
+{
+	switch (m_levelNum)
+	{
+	case STAGE_ONE:
+		m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
+		break;
+	case STAGE_TWO:
+		m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL2_BACKGROUND));
+		break;
+	case STAGE_THREE:
+		m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL3_BACKGROUND));
+		break;
+	default:
+		break;
+	}
+
 }

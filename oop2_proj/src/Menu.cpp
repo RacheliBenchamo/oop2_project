@@ -27,8 +27,8 @@ void Menu::setHeader()
 	m_header.setFont(m_font);
 	m_header.setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
 	m_header.setCharacterSize(HEADER_SIZE);
-	m_header.setPosition({ WINDOW_WIDTH / 2 - 250, 30 });
-	m_header.setString("Save The King");
+	m_header.setPosition({ WINDOW_WIDTH / 2 - 370, 30 });
+	m_header.setString("The Diamonds Fighter");
 	m_header.setColor(sf::Color(204, 204, 255, 255));
 	m_header.setOutlineColor(sf::Color::Black);
 	m_header.setOutlineThickness(OUTLINE_THICKNESS);

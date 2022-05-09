@@ -8,6 +8,7 @@ Board::Board()
 	: m_startOfPrevLevel(0), m_startOfTheLevel(0)
 {
 	this->m_input.open("Levels.txt", std::ios_base::in);
+
 }
 //-------------------------------------------------
 //read the data of the level as size of the level and time
@@ -21,6 +22,8 @@ bool Board::readLevelData(DataBase& dataBase)
 
 	if (m_input.is_open())
 	{
+	
+
 		if (m_startOfPrevLevel != 0)
 			m_startOfPrevLevel = m_startOfTheLevel;
 

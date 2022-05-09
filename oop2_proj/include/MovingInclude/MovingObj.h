@@ -35,4 +35,5 @@ private:
 	int m_animationCol;
 
 	Animation m_animation;
+	int m_life;
 };

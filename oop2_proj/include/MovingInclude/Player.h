@@ -20,7 +20,6 @@ public:
 	void addLife() {};
 	void addPower() {};
 
-
 private:
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;

@@ -5,7 +5,7 @@
 const unsigned int NUM_OF_ICONS = 14; 
 const unsigned int NUM_OF_PLAYERS = 4; 
 const unsigned int NUM_OF_SOUNDS = 14; 
-const unsigned int NUM_OF_BACKGROUNDS = 5;
+const unsigned int NUM_OF_BACKGROUNDS = 7;
 const unsigned int NUM_OF_DIRECTION = 4;
 const unsigned int NUM_OF_GIFT_TYPES = 4;
 const unsigned int P_SIZE = 64; // pixel size
@@ -68,7 +68,8 @@ enum sounds
 
 enum backgroundsType
 {
-	MENU_BACKGROUND, GAME_BACKGROUND,HELP_BACKGROUND,WIN_LEVEL_BACKGROUND,
+	MENU_BACKGROUND, LEVEL1_BACKGROUND, LEVEL2_BACKGROUND, LEVEL3_BACKGROUND,
+    HELP_BACKGROUND,WIN_LEVEL_BACKGROUND,
 	WIN_GAME_BACKGROUND
 };
 
@@ -81,6 +82,8 @@ enum direction
 {
 	LEFT, RIGHT, UP, DOWN,
 };
+
+const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 
 enum class Operation
 {

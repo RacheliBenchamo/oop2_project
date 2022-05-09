@@ -94,7 +94,9 @@ void FileManager::loadResetIcon()
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
-	m_backgrounds[GAME_BACKGROUND].loadFromFile("gameBackground.png");
+	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("gameBackground.png");
+	m_backgrounds[LEVEL2_BACKGROUND].loadFromFile("gameBackground.png");
+	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("gameBackground.png");
 	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
 	m_backgrounds[WIN_LEVEL_BACKGROUND].loadFromFile("winLevelBackground.png");
 	m_backgrounds[WIN_GAME_BACKGROUND].loadFromFile("winGameBackground.png");
