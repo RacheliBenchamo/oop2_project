@@ -5,6 +5,7 @@
                                               "FileManager.cpp"
                                               "StatusBar.cpp"
                                               "Board.cpp"
+                                              "Animation.cpp"
                                                "DataBase.cpp"
                                               "MovingSrc/MovingObj.cpp"
                                               "MovingSrc/Player.cpp"

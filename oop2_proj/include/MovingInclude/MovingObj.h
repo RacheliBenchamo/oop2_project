@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObjBase.h"
+#include "Animation.h"
+
 
 class Controller;
 
@@ -32,6 +34,5 @@ private:
 	int m_animationRow;
 	int m_animationCol;
 
-
-
+	Animation m_animation;
 };
