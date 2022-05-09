@@ -14,7 +14,7 @@ Controller::Controller()
 		"Save the king!", sf::Style::Titlebar | sf::Style::Close)
 	, m_playButton(true)
 {
-	m_window.setFramerateLimit(15);
+	m_window.setFramerateLimit(60);
 
 	m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
 
