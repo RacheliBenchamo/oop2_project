@@ -1,5 +1,19 @@
 #include "StaticInclude\Teleport.h"
 
+Teleport::Teleport(sf::Vector2f pos)
+	: StaticObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
+		m_animation(
+			*FileManager::p2FileManager().animationWorldData(Resources::HURRICANE_DATA),
+			Operation::Stay,
+			m_shape,
+			Resources::instance().getStaticObjectTexture(Resources::STATIC_ANIMATED))
+	{
+		m_shape.setPosition(m_shape.getPosition().x,
+			m_shape.getPosition().y + m_shape.getSize().y / 2);
+		m_shape.setOrigin(m_shape.getOrigin().x,
+			m_shape.getOrigin().y + m_shape.getSize().y / 2);
+		m_shape.scale(1, 2.2f);
+	}
 
 //--------------------------------------------------
 

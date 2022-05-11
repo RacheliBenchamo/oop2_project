@@ -1,6 +1,8 @@
 #pragma once
 #include "FileManager.h"
 #include <iostream>
+#include "AnimationData.h"
+
 
 //--------------------------------------------------
 //constructor
@@ -140,6 +142,7 @@ const sf::Font* FileManager::getFont()const
 {
 	return &this->m_font;
 }
+//------------------------------------------------------------------
 
 const sf::Texture* FileManager::getLev1Dec(icons place, levels currLevel) const
 {
@@ -159,4 +162,66 @@ const sf::Texture* FileManager::getLev1Dec(icons place, levels currLevel) const
 	}
 	
 }
+//------------------------------------------------------------------
 
+//---------------------- getStaticAnimationData ----------------------
+//			Set the Static objects animations data and time.
+//--------------------------------------------------------------------
+AnimationData getStaticAnimationData
+(const sf::Vector2i size,
+	const sf::Vector2i initSpace,
+	const sf::Vector2i middleSpace,
+	const int count)
+{
+
+	auto staticData = AnimationData{};
+	auto currentStart = initSpace;
+
+	auto nextStart = [&]()
+	{
+		currentStart += middleSpace;
+		currentStart.x += size.x;
+		return currentStart;
+	};
+
+	staticData.m_data[Operation::Stay].
+		emplace_back(currentStart, size);
+	for (int i = 0; i < count; i++) {
+		staticData.m_data[Operation::Stay].
+			emplace_back(nextStart(), size);
+	}
+	staticData.m_time[Operation::Stay] = 0.1f;
+	staticData.playOnce[Operation::Stay] = false;
+	return staticData;
+}
+
+//-------------------------- setAnimationsData ---------------------------
+// Set all animation data used in the game.
+//------------------------------------------------------------------------
+void FileManager::setAnimationsData()
+{
+	m_data[0] =
+		getStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
+
+	/*
+	m_data[KEY_DATA] =
+		getStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
+	m_data[KEY_DATA].m_time[Operation::Stay] = 0.2f;
+
+	m_data[STAGE2_BACKGROUND_DATA].m_time[Operation::Stay] = 0.1f;
+	m_data[STAGE2_BACKGROUND_DATA].playOnce[Operation::Stay] = false;
+
+	m_data[EXTRA_LIFE_DATA] = getLifeAnimationData();
+	m_data[EXTRA_LIFE_DATA].m_time[Operation::Stay] = 0.5f;
+
+	m_moveableObjectsData[PLAYER_DATA] = playerAnime();
+
+	m_moveableObjectsData[BEAR_DATA] = bearAnime();
+
+	m_moveableObjectsData[WOLF_DATA] = wolfAnime();
+
+	m_moveableObjectsData[CROW_DATA] = crowAnime();*/
+
+
+	
+}

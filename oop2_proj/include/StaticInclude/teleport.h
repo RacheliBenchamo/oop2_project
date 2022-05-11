@@ -13,8 +13,8 @@ using std::vector;
 class Teleport :public StaticObj
 {
 public:
-	using StaticObj::StaticObj;
-
+	//using StaticObj::StaticObj;
+	Teleport(sf::Vector2f pos);
 	virtual void startSound()override;
 	void setPartnerPos(sf::Vector2f);
 	void toClose() { m_isOpen = false; }
@@ -26,6 +26,8 @@ public:
 private:
 	sf::Vector2f m_Partner;
 	bool m_isOpen = true;
+	Animation m_animation;
+
 };
 
 

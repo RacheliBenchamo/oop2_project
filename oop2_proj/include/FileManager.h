@@ -19,6 +19,8 @@ public:
 	const sf::Texture* getBackGround(backgroundsType)const;
 	const sf::Font* getFont()const;
 	const sf::Texture* getLev1Dec(icons, levels) const;
+	void setAnimationsData();
+
 
 private:
 	FileManager();
@@ -46,6 +48,8 @@ private:
 	sf::Texture m_restartIcon;
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::Font m_font;
+	std::vector<AnimationData> m_data;
+
 };
 
 
