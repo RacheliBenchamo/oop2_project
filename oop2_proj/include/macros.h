@@ -10,6 +10,18 @@ const unsigned int NUM_OF_DIRECTION = 4;
 const unsigned int NUM_OF_GIFT_TYPES = 4;
 const unsigned int P_SIZE = 64; // pixel size
 
+
+// sizes data
+const int BLOCK_SIZE = 40;
+
+const sf::Vector2f
+SMALL_MONSTER_SIZE = sf::Vector2f(BLOCK_SIZE * 0.8, BLOCK_SIZE * 0.8),
+BIG_MONSTER_SIZE = sf::Vector2f(BLOCK_SIZE * 0.8, BLOCK_SIZE * 0.8),
+PLAYER_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE),
+HART_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE),
+DIAMOND_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE),
+TELEPORT_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE);
+
 //volume data
 const unsigned int VOLUME_BG = 5;
 const unsigned int VOLUME_COLLISION = 6;
@@ -59,6 +71,11 @@ enum icons
 	EMPTY
 };
 
+enum levels
+{
+    LEVEL1,LEVEL2,LEVEL3
+};
+
 enum sounds
 {
 	S_TOUCH_WALL, S_TURN_OFF_FIRE, S_GIFT, S_KILL_ORK, S_IN_TELEPORT,
@@ -75,7 +92,7 @@ enum backgroundsType
 
 enum giftType
 {
-	LIFE, POWER
+	LIFE, POWER , DIAMOND
 };
 
 enum direction

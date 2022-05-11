@@ -9,14 +9,14 @@ void Player::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 
 	updateAnimation();
 
-	sf::Sprite sprite = getSprite();
-	setPrevPos(sprite.getPosition());
+	sf::RectangleShape shape = getShape();
+	setPrevPos(shape.getPosition());
 
-	sprite.move(getCurrDir() * BASE_SPEED * deltaTime.asSeconds());
-	setSprite(sprite);
+	shape.move(getCurrDir() * BASE_SPEED * deltaTime.asSeconds());
+	setShape(shape);
 
 	//check bounds
-	if (outWindow(sprite.getPosition(),levelSize))
+	if (outWindow(shape.getPosition(),levelSize))
 		this->backToPrevPos(); 
 }
 

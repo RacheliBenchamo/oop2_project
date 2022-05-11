@@ -5,60 +5,86 @@
 //--------------------------------------------------
 //constructor
 
-GameObjBase::GameObjBase(icons icon, int i, int j)
+GameObjBase::GameObjBase(const sf::Vector2f& size, const sf::Vector2f& pos)
 {
-	auto m_pTexture = FileManager::p2FileManager().getIconTexture(icon);
-	m_sprite.setTexture(*m_pTexture);
-	m_sprite.setPosition(sf::Vector2f(i * (float)P_SIZE, j * (float)P_SIZE));
+	m_shape.setScale(1, 1);
+	m_shape.setPosition(pos);
+	m_shape.setSize(size);
+	m_shape.setOrigin(sf::Vector2f({ size.x / 2,size.y / 2 }));
 }
 //-----------------------------------------------
 //draw the sprite on the window
 
 void GameObjBase::draw(sf::RenderWindow& window)
 {
-	window.draw(m_sprite);
+	window.draw(m_shape);
 }
 //--------------------------------------------------
 //get the scale of the sprite
 
 sf::Vector2f GameObjBase::getScale() const
 {
-	return m_sprite.getScale();
+	return m_shape.getScale();
 }
 //--------------------------------------------------
 //get the position of the sprite
 
 sf::Vector2f GameObjBase::getPos() const
 {
-	return m_sprite.getPosition();
+	return m_shape.getPosition();
 }
 //--------------------------------------------------
 //set the position of the sprite
 
 void GameObjBase::setPos(const sf::Vector2f& position)
 {
-	m_sprite.setPosition(position);
+	m_shape.setPosition(position);
 }
+
+
+void GameObjBase::setDelete()
+{
+	m_delete = true;
+}
+//--------------------------------------------------
+
+bool GameObjBase::getToReplace()const
+{
+	return m_replace;
+}
+//--------------------------------------------------
+
+void GameObjBase::setReplace()
+{
+	m_replace = true;
+}
+//--------------------------------------------------
+
+bool GameObjBase::getToDelete()const
+{
+	return m_delete;
+}
+
 //--------------------------------------------------
 //get the width of the sprite
 
 float GameObjBase::getIconWidth() const
 {
-	return m_sprite.getGlobalBounds().width;
+	return m_shape.getGlobalBounds().width;
 }
 //--------------------------------------------------
 //get the height of the sprite
 
 float GameObjBase::getIconHeight() const
 {
-	return m_sprite.getGlobalBounds().height;
+	return m_shape.getGlobalBounds().height;
 }
 //--------------------------------------------------
 
 bool GameObjBase::checkCollision(const GameObjBase& obj)
 {
 	if(&obj)
-	return m_sprite.getGlobalBounds().intersects(obj.m_sprite.getGlobalBounds());
+	return m_shape.getGlobalBounds().intersects(obj.m_shape.getGlobalBounds());
 
 	return false;
 }

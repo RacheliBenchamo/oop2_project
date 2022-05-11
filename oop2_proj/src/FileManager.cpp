@@ -8,7 +8,7 @@
 FileManager::FileManager()
 {
 	//loads from all the files:
-	loadFromFileIcons();
+	loadDecoration();
 	loadAudio();
 	loadMusicIcon();
 	loadStopAndPlayIcon();
@@ -25,22 +25,13 @@ FileManager& FileManager::p2FileManager()
 //--------------------------------------------------
 // load all the object images
 
-void FileManager::loadFromFileIcons()
+void FileManager::loadDecoration()
 {
-	m_icons[KING].loadFromFile("king.png");
-	m_icons[MAGE].loadFromFile("mage.png");
-	m_icons[WARRIOR].loadFromFile("warrior.png");
-	m_icons[THIEF].loadFromFile("thief.png");
-	m_icons[THIEF_WITH_KEY].loadFromFile("thiefWithKey.png");
-	m_icons[FAIRY].loadFromFile("fairy.png");
-	m_icons[KEY].loadFromFile("Key.png");
-	m_icons[THRONE].loadFromFile("Throne.png");
-	m_icons[FIRE].loadFromFile("Fire.png");
-	m_icons[TELEPORT].loadFromFile("Teleport.png");
-	m_icons[ORK].loadFromFile("Ork.png");
-	m_icons[GATE].loadFromFile("Gate.png");
-	m_icons[WALL].loadFromFile("Wall.png");
-	m_icons[GIFT].loadFromFile("Gift.png");
+	SharedDec[LIFE].loadFromFile("life.png");
+	SharedDec[DIAMOND].loadFromFile("diamond.png");
+	SharedDec[POWER].loadFromFile("power.png");
+
+	//m_dec1
 
 	this->m_font.loadFromFile("Seagram tfb.ttf");
 }
@@ -148,5 +139,24 @@ const sf::Texture* FileManager::getIconTexture(icons place)const
 const sf::Font* FileManager::getFont()const
 {
 	return &this->m_font;
+}
+
+const sf::Texture* FileManager::getLev1Dec(icons place, levels currLevel) const
+{
+	switch (currLevel)
+	{
+	case LEVEL1:
+		return &this->m_dec1[place];
+		break;
+	case LEVEL2:
+		return &this->m_dec2[place];
+		break;
+	case LEVEL3:
+		return &this->m_dec3[place];
+		break;
+	default:
+		break;
+	}
+	
 }
 

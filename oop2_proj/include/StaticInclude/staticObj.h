@@ -13,15 +13,10 @@
 class StaticObj :public GameObjBase
 {
 public:
-	    StaticObj(icons , int, int);
+	using GameObjBase::GameObjBase;
+
 		virtual void startSound() = 0;
-		virtual bool getToDelete()const;
-		virtual void setDelete();
-		virtual bool getToReplace()const;
-		virtual void setReplace();
 
 		virtual void handleCollision(GameObjBase&) override = 0;
 private:
-	bool m_replace;
-	bool m_delete;
 	};

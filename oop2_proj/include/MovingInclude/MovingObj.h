@@ -8,7 +8,7 @@ class Controller;
 class MovingObj : public GameObjBase
 {
 public:
-	MovingObj(icons, int, int);
+	using GameObjBase::GameObjBase;
 	~MovingObj() {};
 
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }

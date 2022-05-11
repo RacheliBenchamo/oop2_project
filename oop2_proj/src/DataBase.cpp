@@ -29,14 +29,14 @@ void DataBase::setLevelSize(int x, int y)
 
 void DataBase::setData(char c, int i, int j)
 {
-		if(!createStaticObj(c, j, i))
-		createMovingObj(c, j, i);
+	sf::Vector2f pos(i, j);
+		if(!createStaticObj(c, pos))
+		createMovingObj(c, pos);
 }
 //-----------------------------------------------------------
 //create all the moving object in the level
 
-void DataBase::createMovingObj(const char c, const size_t i,
-	const size_t j)
+void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 {
 	switch (c)
 	{
@@ -52,8 +52,7 @@ void DataBase::createMovingObj(const char c, const size_t i,
 //-----------------------------------------------
 //create all the static object in the level
 
-bool DataBase::createStaticObj(const char c, const size_t i,
-	const size_t j)
+bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 {
 	switch (c)
 	{
@@ -62,11 +61,11 @@ bool DataBase::createStaticObj(const char c, const size_t i,
 	//	return true;
 	//	break;
 	case TELEPORT_C:
-		m_teleport.push_back(std::make_unique<Teleport>((TELEPORT), i, j));
+		m_teleport.push_back(std::make_unique<Teleport>(TELEPORT_SIZE, pos));
 		return true;
 		break;
 	case GIFT_C:
-		m_staticsObj.push_back(grillGiftType((GIFT), i, j));
+		//m_staticsObj.push_back(grillGiftType((GIFT), pos));
 		return true;
 		break;
 	default:

@@ -23,8 +23,32 @@ Controller::Controller()
 }
 //--------------------------------------------------
 //start the game
+//void Controller::run() try
+//{
+//
+//	while (m_window.isOpen())
+//	{
+//		m_window.clear();
+//
+//		switchScreens(toSwitchScreen, currentScreen);
+//
+//		if (currentScreen < MAX_SCREENS)
+//		{
+//			m_screens[currentScreen]->draw(m_window);
+//
+//			m_screens[currentScreen]->screenRun(m_window,
+//				toSwitchScreen, currentScreen);
+//		}
+//
+//		m_window.display();
+//	}
+//}
+//catch (const std::exception& e) {
+//	std::cout << e.what();
+//}
 
-void Controller::run()
+
+void Controller::run() try
 {
 	setNewGame();
 
@@ -52,6 +76,11 @@ void Controller::run()
 		else
 			m_statusBar.resetTimer();
 	}
+}
+
+ catch (const std::exception& e) {
+	std::cout << e.what();
+ 
 }
 //----------------------------------------------
 //set the menu, background and more for starting the game

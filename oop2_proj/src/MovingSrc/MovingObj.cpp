@@ -1,19 +1,6 @@
 #include "MovingInclude\\MovingObj.h"
 #include "Macros.h"
 
-//-------------------------------------------
-//constructor
-
-MovingObj::MovingObj(icons icon, int i, int j)
-	 :GameObjBase(icon, i, j),
-	m_animationCol(0), m_animationRow(0)
-{
-	sf::Sprite sprite = getSprite();
-	m_prevPos = sprite.getPosition();
-	sprite.setTextureRect(sf::IntRect(32,0, 32, 29));
-	sprite.setScale(1.8, 1.8);
-	setSprite(sprite);
-}
 //------------------------------------------
 //set the sprite pos to her prev pos
 
@@ -66,15 +53,15 @@ void MovingObj::updateAnimation()
 
 void MovingObj::updateSpriteCol()
 {
-	sf::Sprite sprite = getSprite();
+	sf::RectangleShape shape = getShape();
 
 	if (m_animationCol == 2)
 		m_animationCol = 0;
 	else
 		m_animationCol++;
 
-	sprite.setTextureRect(sf::IntRect(m_animationCol * 32, m_animationRow * 32, 32, 32));
-	setSprite(sprite);
+	shape.setTextureRect(sf::IntRect(m_animationCol * 32, m_animationRow * 32, 32, 32));
+	setShape(shape);
 }
 //------------------------------------------
 //return the right direction by which key pressed

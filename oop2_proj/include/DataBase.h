@@ -34,10 +34,8 @@ public:
     void eraseObj();
 
 private:
-    bool createStaticObj(const char , const size_t ,
-        const size_t );
-    void createMovingObj(const char , const size_t ,
-        const size_t );
+    bool createStaticObj(const char , const sf::Vector2f&);
+    void createMovingObj(const char , const sf::Vector2f&);
     void drawStaticObj(sf::RenderWindow& );
     void drawMovingObj(sf::RenderWindow& );
     void handelCollisions();

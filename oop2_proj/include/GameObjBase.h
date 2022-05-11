@@ -26,11 +26,11 @@ class GameObjBase
 {
 public:
 	GameObjBase() {};
-	GameObjBase(icons , int, int);
+	GameObjBase(const sf::Vector2f& , const sf::Vector2f& );
 	virtual ~GameObjBase() {};
 
-	sf::Sprite getSprite() const{ return m_sprite; }
-	void setSprite(sf::Sprite sprite) { m_sprite = sprite;  }
+	sf::RectangleShape getShape() const{ return m_shape; }
+	void setShape(sf::RectangleShape shape) { m_shape = shape; }
 	virtual void draw(sf::RenderWindow& );
 	virtual bool checkCollision(const GameObjBase& );
 	sf::Vector2f getPos() const;
@@ -41,9 +41,16 @@ public:
 	
 	virtual void handleCollision(GameObjBase& )  = 0;
 
-	
+	virtual bool getToDelete()const;
+	virtual void setDelete();
+	virtual bool getToReplace()const;
+	virtual void setReplace();
+
+protected:
+	sf::RectangleShape m_shape;
 
 private:
-	sf::Sprite m_sprite;
+	bool m_replace;
+	bool m_delete;
 };
 
