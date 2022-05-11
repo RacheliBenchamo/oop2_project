@@ -2,8 +2,10 @@
 #include <SFML/Graphics.hpp>
 
 // general data
-const unsigned int NUM_OF_ICONS = 14; 
-const unsigned int NUM_OF_PLAYERS = 4; 
+const unsigned int NUM_OF_LEVELS = 3;
+const unsigned int NUM_OF_STATIC_ICONS = 14; 
+const unsigned int NUM_OF_MONSTERS = 10; 
+const unsigned int NUM_OF_DEC = 10;
 const unsigned int NUM_OF_SOUNDS = 14; 
 const unsigned int NUM_OF_BACKGROUNDS = 7;
 const unsigned int NUM_OF_DIRECTION = 4;
@@ -62,11 +64,11 @@ const char
 PLAYER_C='P', EMPTY_C = ' ',
 DIAMOND_C = 'D', GATE_C = '#', TELEPORT_C = 'X',
 GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(', END_FLOOR_C = ')',
-TREE_C = 'T',BIG_MONSTER='B', MONSTER1 = '1', MONSTER2 = '2', MONSTER3 = '3';
+TREE_C = 'T',BIG_MONSTER='B', MONSTER1_C = '1', MONSTER2_C = '2', MONSTER3_C = '3';
 
 enum icons 
 {
-	KING, WARRIOR, THIEF, MAGE,THIEF_WITH_KEY,
+    MONSTER1, MONSTER2, MONSTER3,
 	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,
 	EMPTY
 };

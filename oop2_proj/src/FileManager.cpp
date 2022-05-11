@@ -9,13 +9,15 @@
 FileManager::FileManager()
 {
 	//loads from all the files:
-	loadFromFileIcons();
-	loadDecoration();
+	loadMovingObj();
+	loadStaticObj();
 	loadAudio();
 	loadMusicIcon();
 	loadStopAndPlayIcon();
 	loadBackgrounds();
 	loadResetIcon();
+	this->m_font.loadFromFile("Seagram tfb.ttf");
+
 }
 //--------------------------------------------------
 //return unic pointer to the object
@@ -27,36 +29,25 @@ FileManager& FileManager::p2FileManager()
 // //--------------------------------------------------
 // load all the object images
 
-void FileManager::loadFromFileIcons()
+void FileManager::loadMovingObj()
 {
-	m_icons[KING].loadFromFile("king.png");
-	m_icons[MAGE].loadFromFile("mage.png");
-	m_icons[WARRIOR].loadFromFile("warrior.png");
-	m_icons[THIEF].loadFromFile("thief.png");
-	m_icons[THIEF_WITH_KEY].loadFromFile("thiefWithKey.png");
-	m_icons[FAIRY].loadFromFile("fairy.png");
-	m_icons[KEY].loadFromFile("Key.png");
-	m_icons[THRONE].loadFromFile("Throne.png");
-	m_icons[FIRE].loadFromFile("Fire.png");
-	m_icons[TELEPORT].loadFromFile("Teleport.png");
-	m_icons[ORK].loadFromFile("Ork.png");
-	m_icons[GATE].loadFromFile("Gate.png");
-	m_icons[WALL].loadFromFile("Wall.png");
-	m_icons[GIFT].loadFromFile("Gift.png");
+	//m_player.loadFromFile("Player.png");
+	//m_monstersIcon[LEVEL1][MONSTER1].loadFromFile("Teleport.png");
 
-	this->m_font.loadFromFile("Seagram tfb.ttf");
+
 }
+//--------------------------------------------------
 // load all the object images
 
-void FileManager::loadDecoration()
+void FileManager::loadStaticObj()
 {
-	SharedDec[LIFE].loadFromFile("life.png");
-	SharedDec[DIAMOND].loadFromFile("diamond.png");
-	SharedDec[POWER].loadFromFile("power.png");
+	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
+	m_sharedStaticIcon[LIFE].loadFromFile("life.png");
+	m_sharedStaticIcon[DIAMOND].loadFromFile("diamond.png");
+	m_sharedStaticIcon[POWER].loadFromFile("power.png");
 
-	//m_dec1
+	//m_dec[LEV1][FLOOR]....
 
-	this->m_font.loadFromFile("Seagram tfb.ttf");
 }
 //--------------------------------------------------
 // load all the audio
@@ -153,46 +144,39 @@ const sf::Texture* FileManager::getBackGround(backgroundsType place)const
 }
 //--------------------------------------------------
 
-sf::Texture* FileManager::getIconTexture(const icons place)
-{
-	return &this->m_icons[place];
-}
-//--------------------------------------------------
-
 const sf::Font* FileManager::getFont()const
 {
 	return &this->m_font;
 }
-//------------------------------------------------------------------
+//--------------------------------------------------
 
-const sf::Texture* FileManager::getLev1Dec(icons place, levels currLevel) const
+sf::Texture* FileManager::getSharedStaticTexture(const icons place)
 {
-	switch (currLevel)
-	{
-	case LEVEL1:
-		return &this->m_dec1[place];
-		break;
-	case LEVEL2:
-		return &this->m_dec2[place];
-		break;
-	case LEVEL3:
-		return &this->m_dec3[place];
-		break;
-	default:
-		break;
-	}
-	
+	return &this->m_sharedStaticIcon[place];
+}
+//--------------------------------------------------
+
+sf::Texture* FileManager::getMonstersTexture(const icons place, levels currLevel)
+{
+	return &this->m_monstersIcon[currLevel - 1][place];
 }
 //------------------------------------------------------------------
 
-//---------------------- getStaticAnimationData ----------------------
-//			Set the Static objects animations data and time.
+const sf::Texture* FileManager::getCurrLevDec(icons place, levels currLevel) const
+{
+	return &this->m_dec[currLevel - 1][place];
+}
+//------------------------------------------------------------------
+
+const AnimationData& FileManager::getStaticData(icons object)
+{
+	return m_staticData[object];
+}
 //--------------------------------------------------------------------
-AnimationData getStaticAnimationData
-(const sf::Vector2i size,
-	const sf::Vector2i initSpace,
-	const sf::Vector2i middleSpace,
-	const int count)
+//Set the Static objects animations data and time.
+
+AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,const sf::Vector2i initSpace,
+	const sf::Vector2i middleSpace,const int count)
 {
 
 	auto staticData = AnimationData{};
@@ -217,37 +201,23 @@ AnimationData getStaticAnimationData
 	return staticData;
 }
 
-//-------------------------- setAnimationsData ---------------------------
-// Set all animation data used in the game.
 //------------------------------------------------------------------------
+// Set all animation data used in the game.
+
 void FileManager::setAnimationsData()
 {
-	m_data[0] = getStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
+	m_staticData[0] = createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
 
 	/*
-	m_data[KEY_DATA] =
-		getStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
-	m_data[KEY_DATA].m_time[Operation::Stay] = 0.2f;
+	m_staticData[KEY_DATA] =createStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
+	m_staticData[KEY_DATA].m_time[Operation::Stay] = 0.2f;
 
-	m_data[STAGE2_BACKGROUND_DATA].m_time[Operation::Stay] = 0.1f;
-	m_data[STAGE2_BACKGROUND_DATA].playOnce[Operation::Stay] = false;
+	m_staticData[EXTRA_LIFE_DATA] = createLifeAnimationData();
+	m_staticData[EXTRA_LIFE_DATA].m_time[Operation::Stay] = 0.5f;
 
-	m_data[EXTRA_LIFE_DATA] = getLifeAnimationData();
-	m_data[EXTRA_LIFE_DATA].m_time[Operation::Stay] = 0.5f;
+	m_movingObjData[PLAYER_DATA] = createPlayerAnimeData();
 
-	m_moveableObjectsData[PLAYER_DATA] = playerAnime();
-
-	m_moveableObjectsData[BEAR_DATA] = bearAnime();
-
-	m_moveableObjectsData[WOLF_DATA] = wolfAnime();
-
-	m_moveableObjectsData[CROW_DATA] = crowAnime();*/
-
-
-	
+	m_movingObjData[BEAR_DATA] = createMonstersAnimeData();???
+	*/
 }
 
-const AnimationData& FileManager::staticData(icons object)
-{
-	return m_data[object];
-}
