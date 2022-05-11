@@ -1,7 +1,6 @@
 #pragma once
 #include "FileManager.h"
 #include <iostream>
-#include "AnimationData.h"
 
 
 //--------------------------------------------------
@@ -10,6 +9,7 @@
 FileManager::FileManager()
 {
 	//loads from all the files:
+	loadFromFileIcons();
 	loadDecoration();
 	loadAudio();
 	loadMusicIcon();
@@ -24,7 +24,28 @@ FileManager& FileManager::p2FileManager()
 	static FileManager m_instance;
 	return m_instance;
 }
-//--------------------------------------------------
+// //--------------------------------------------------
+// load all the object images
+
+void FileManager::loadFromFileIcons()
+{
+	m_icons[KING].loadFromFile("king.png");
+	m_icons[MAGE].loadFromFile("mage.png");
+	m_icons[WARRIOR].loadFromFile("warrior.png");
+	m_icons[THIEF].loadFromFile("thief.png");
+	m_icons[THIEF_WITH_KEY].loadFromFile("thiefWithKey.png");
+	m_icons[FAIRY].loadFromFile("fairy.png");
+	m_icons[KEY].loadFromFile("Key.png");
+	m_icons[THRONE].loadFromFile("Throne.png");
+	m_icons[FIRE].loadFromFile("Fire.png");
+	m_icons[TELEPORT].loadFromFile("Teleport.png");
+	m_icons[ORK].loadFromFile("Ork.png");
+	m_icons[GATE].loadFromFile("Gate.png");
+	m_icons[WALL].loadFromFile("Wall.png");
+	m_icons[GIFT].loadFromFile("Gift.png");
+
+	this->m_font.loadFromFile("Seagram tfb.ttf");
+}
 // load all the object images
 
 void FileManager::loadDecoration()
@@ -132,7 +153,7 @@ const sf::Texture* FileManager::getBackGround(backgroundsType place)const
 }
 //--------------------------------------------------
 
-const sf::Texture* FileManager::getIconTexture(icons place)const
+sf::Texture* FileManager::getIconTexture(const icons place)
 {
 	return &this->m_icons[place];
 }
@@ -184,12 +205,13 @@ AnimationData getStaticAnimationData
 		return currentStart;
 	};
 
-	staticData.m_data[Operation::Stay].
-		emplace_back(currentStart, size);
-	for (int i = 0; i < count; i++) {
-		staticData.m_data[Operation::Stay].
-			emplace_back(nextStart(), size);
+	staticData.m_data[Operation::Stay].emplace_back(currentStart, size);
+
+	for (int i = 0; i < count; i++) 
+	{
+		staticData.m_data[Operation::Stay].emplace_back(nextStart(), size);
 	}
+
 	staticData.m_time[Operation::Stay] = 0.1f;
 	staticData.playOnce[Operation::Stay] = false;
 	return staticData;
@@ -200,8 +222,7 @@ AnimationData getStaticAnimationData
 //------------------------------------------------------------------------
 void FileManager::setAnimationsData()
 {
-	m_data[0] =
-		getStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
+	m_data[0] = getStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
 
 	/*
 	m_data[KEY_DATA] =
@@ -224,4 +245,9 @@ void FileManager::setAnimationsData()
 
 
 	
+}
+
+const AnimationData& FileManager::staticData(icons object)
+{
+	return m_data[object];
 }

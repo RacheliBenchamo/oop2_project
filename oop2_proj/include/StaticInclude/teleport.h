@@ -1,10 +1,10 @@
 
 #pragma once
 
-#include <SFML\Graphics.hpp>
-#include <vector>
 #include "Board.h"
 #include "StaticObj.h"
+#include "Animation.h"
+
 
 
 using std::vector;
@@ -21,12 +21,15 @@ public:
 	bool isOpen();
 	void toOpen() { m_isOpen = true; }
 
+
+	void update(const sf::Time& delta) override {m_animation.update(delta);};
+
 	void handleCollision(GameObjBase&) override;
 	
 private:
+	Animation m_animation;
 	sf::Vector2f m_Partner;
 	bool m_isOpen = true;
-	Animation m_animation;
 
 };
 

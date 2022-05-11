@@ -3,6 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 #include "Macros.h"
+#include "AnimationData.h"
 
 
 class FileManager
@@ -11,7 +12,7 @@ public:
 	~FileManager() {};
 	static FileManager& p2FileManager();
 
-	const sf::Texture* getIconTexture(icons )const;
+	 sf::Texture* getIconTexture(const icons );
 	const sf::Texture* getPlayAndStopIcon(bool )const;
 	const sf::SoundBuffer* getSound(sounds)const;
 	const sf::Texture* getMusicIcon(bool)const;
@@ -19,6 +20,7 @@ public:
 	const sf::Texture* getBackGround(backgroundsType)const;
 	const sf::Font* getFont()const;
 	const sf::Texture* getLev1Dec(icons, levels) const;
+	const AnimationData& staticData(icons);
 	void setAnimationsData();
 
 
@@ -27,6 +29,7 @@ private:
 	FileManager(const FileManager&) = default;
 	FileManager& operator=(const FileManager&) = default;
 
+	void loadFromFileIcons();
 	void loadDecoration();
 	/*void loadLevel1Dec();
 	void loadLevel2Dec();
@@ -37,6 +40,7 @@ private:
 	void loadResetIcon();
 	void loadBackgrounds();
 
+	sf::Texture m_icons[NUM_OF_ICONS];
 	sf::Texture m_dec1[NUM_OF_ICONS];
 	sf::Texture m_dec2[NUM_OF_ICONS];
 	sf::Texture m_dec3[NUM_OF_ICONS];

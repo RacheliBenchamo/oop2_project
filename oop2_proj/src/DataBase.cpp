@@ -61,7 +61,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 	//	return true;
 	//	break;
 	case TELEPORT_C:
-		m_teleport.push_back(std::make_unique<Teleport>(TELEPORT_SIZE, pos));
+		m_teleport.push_back(std::make_unique<Teleport>( pos));
 		return true;
 		break;
 	case GIFT_C:

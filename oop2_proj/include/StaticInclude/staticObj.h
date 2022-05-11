@@ -16,7 +16,10 @@ public:
 	using GameObjBase::GameObjBase;
 
 		virtual void startSound() = 0;
+		virtual void update(const sf::Time&) {};
 
 		virtual void handleCollision(GameObjBase&) override = 0;
+protected:
+
 private:
 	};

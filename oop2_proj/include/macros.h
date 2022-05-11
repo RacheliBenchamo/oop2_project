@@ -61,7 +61,7 @@ const sf::Vector2f DVec[] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 const char
 PLAYER_C='P', EMPTY_C = ' ',
 DIAMOND_C = 'D', GATE_C = '#', TELEPORT_C = 'X',
-GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(', FLOOR_C = ')',
+GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(', END_FLOOR_C = ')',
 TREE_C = 'T',BIG_MONSTER='B', MONSTER1 = '1', MONSTER2 = '2', MONSTER3 = '3';
 
 enum icons 
