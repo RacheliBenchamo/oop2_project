@@ -54,13 +54,12 @@ void Board::readLevel(DataBase& dataBase)
 				c = char((m_input).get());
 				if (c == EMPTY_C)
 					continue;
-				dataBase.setData(c, i + (MAX_HEIGHT-m_boardSize.x)/2,
-					j + (MAX_WIDTH -m_boardSize.y) / 2);
+				dataBase.setData(c, j + 1.f,i);
 			}
 			(m_input).get();
 		}
 	}
-	dataBase.FindTeleportPartner();
+	//dataBase.FindTeleportPartner();
 }
 //--------------------------------------------------
 //take the input stream to the begining of the curr level

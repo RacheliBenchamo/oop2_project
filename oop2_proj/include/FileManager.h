@@ -53,7 +53,7 @@ private:
 	sf::Texture m_restartIcon;
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::Font m_font;
-	std::vector<AnimationData> m_staticData;
+	AnimationData m_staticData[NUM_OF_DEC];
 
 };
 

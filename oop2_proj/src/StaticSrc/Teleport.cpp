@@ -42,4 +42,3 @@ void Teleport::handleCollision(GameObjBase& gameObject)
     // double dispatch
     gameObject.handleCollision(*this);
 }
-

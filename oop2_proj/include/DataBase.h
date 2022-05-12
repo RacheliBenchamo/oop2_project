@@ -26,7 +26,7 @@ public:
 
     void setLevelSize(int, int);
     void setData(char, int, int);
-    void draw(sf::RenderWindow& );
+    void draw(sf::RenderWindow&);
     void FindTeleportPartner() const;
     void move(sf::Time);
    // bool takeCurrGift(giftType g) { return m_takeGifts[g]; }
@@ -60,7 +60,8 @@ private:
     icons m_currPlayer;
     sf::RectangleShape m_movingRec;
     std::unique_ptr< Player> m_player;
-    std::vector<std::unique_ptr<StaticObj> > m_staticsObj;
+    std::vector<std::unique_ptr<StaticObj>> m_staticsObj;
    // std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
+    sf::Clock m_clock;
 };

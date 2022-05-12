@@ -179,13 +179,8 @@ const AnimationData& FileManager::getStaticData(icons object)
 AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,const sf::Vector2i initSpace,
 	const sf::Vector2i middleSpace,const int count)
 {
-	std::cout << "1\n";
-
 	auto staticData = AnimationData{};
 	auto currentStart = initSpace;
-
-	std::cout << "2\n";
-
 	auto nextStart = [&]()
 	{
 		currentStart.x += size.x;
@@ -193,19 +188,15 @@ AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,con
 		return currentStart;
 	};
 
-	std::cout << "3\n";
 	staticData.m_data[Stay].emplace_back(currentStart, size);
 
-	std::cout << "4\n";
 	for (int i = 0; i < count; i++) 
 	{
 		staticData.m_data[Stay].emplace_back(nextStart(), size);
 	}
-	std::cout << "5\n";
 
 	staticData.m_time[Stay] = 0.1f;
 	staticData.playOnce[Stay] = false;
-	std::cout << "6\n";
 
 	return staticData;
 }
@@ -216,10 +207,8 @@ AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,con
 void FileManager::setAnimationsData()
 {
 
-	m_staticData[TELEPORT] = createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
+	m_staticData[TELEPORT]=createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
 
-	
-	std::cout << m_staticData[TELEPORT].m_data.size() <<"\n";
 	/*
 	m_staticData[KEY_DATA] =createStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
 	m_staticData[KEY_DATA].m_time[Stay] = 0.2f;

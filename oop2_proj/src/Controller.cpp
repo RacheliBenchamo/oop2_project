@@ -21,31 +21,6 @@ Controller::Controller()
 	m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 	m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
 }
-//--------------------------------------------------
-//start the game
-//void Controller::run() try
-//{
-//
-//	while (m_window.isOpen())
-//	{
-//		m_window.clear();
-//
-//		switchScreens(toSwitchScreen, currentScreen);
-//
-//		if (currentScreen < MAX_SCREENS)
-//		{
-//			m_screens[currentScreen]->draw(m_window);
-//
-//			m_screens[currentScreen]->screenRun(m_window,
-//				toSwitchScreen, currentScreen);
-//		}
-//
-//		m_window.display();
-//	}
-//}
-//catch (const std::exception& e) {
-//	std::cout << e.what();
-//}
 
 
 void Controller::run() try

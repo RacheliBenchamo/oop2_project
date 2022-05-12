@@ -90,7 +90,10 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 		e->draw(window);*/
 
 	for (auto& e : m_teleport)
+	{
+		e->update(m_clock.restart());
 		e->draw(window);
+	}
 }
 //---------------------------------------------------
 //draw all the moving object in the level on the window
@@ -117,6 +120,7 @@ void DataBase::FindTeleportPartner() const
 
 void DataBase::move(sf::Time deltaTime)
 {
+
 	//move monsters
 	/*for (auto& f : m_monsters)
 		f->move(deltaTime, m_levelSize);*/
