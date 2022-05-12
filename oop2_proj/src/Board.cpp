@@ -53,8 +53,10 @@ void Board::readLevel(DataBase& dataBase)
 			{
 				c = char((m_input).get());
 				if (c == EMPTY_C)
+				{
 					continue;
-				dataBase.setData(c, j + 1.f, i);
+				}
+				dataBase.setData(c,i, j + 1.f);
 			}
 			(m_input).get();
 		}
