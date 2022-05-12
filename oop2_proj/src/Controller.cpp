@@ -10,7 +10,7 @@ using std::cout;
 //constructor
 
 Controller::Controller()
-	:m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT),
+	:m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
 		"The Diamonds Fighter!", sf::Style::Titlebar | sf::Style::Close)
 	, m_playButton(true)
 {
@@ -18,7 +18,7 @@ Controller::Controller()
 
 	m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
 
-	m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
+	m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
 	m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
 }
 

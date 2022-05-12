@@ -92,6 +92,7 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 	for (auto& e : m_teleport)
 	{
 		e->update(m_clock.restart());
+		std::cout << e->getPos().x << " " << e->getPos().y <<"\n";
 		e->draw(window);
 	}
 }

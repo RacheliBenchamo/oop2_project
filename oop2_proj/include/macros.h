@@ -29,10 +29,8 @@ const unsigned int VOLUME_BG = 5;
 const unsigned int VOLUME_COLLISION = 6;
 
 // window data
-const int MAX_HEIGHT = 12;
-const int MAX_WIDTH = 27;
-const int WINDOW_WIDTH = MAX_WIDTH*P_SIZE;
-const int WINDOW_HEIGHT = (MAX_HEIGHT+1) * P_SIZE;
+const int WINDOW_WIDTH = 1920,
+WINDOW_HEIGHT = 1080;
 
 //time data
 const float GIFT_TIME = 30;
