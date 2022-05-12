@@ -5,7 +5,7 @@
 const unsigned int NUM_OF_LEVELS = 3;
 const unsigned int NUM_OF_STATIC_ICONS = 14; 
 const unsigned int NUM_OF_MONSTERS = 10; 
-const unsigned int NUM_OF_DEC = 10;
+const unsigned int NUM_OF_DEC = 14;
 const unsigned int NUM_OF_SOUNDS = 14; 
 const unsigned int NUM_OF_BACKGROUNDS = 7;
 const unsigned int NUM_OF_DIRECTION = 4;
@@ -122,7 +122,6 @@ enum Operation
     Pick_up_Fall,
     Pick_up_Land,
     Pick_up_Idle,
-    Diamond,
     Dead,
     Max,
 };
