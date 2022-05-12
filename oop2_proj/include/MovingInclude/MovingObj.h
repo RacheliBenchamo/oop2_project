@@ -9,12 +9,12 @@ class MovingObj : public GameObjBase
 {
 public:
 	using GameObjBase::GameObjBase;
-	~MovingObj() {};
 
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }
 	sf::Vector2f getCurrDir()const { return m_currDirection; }
 	void backToPrevPos();
 	virtual void handleCollision(GameObjBase&) override =0;
+	virtual void update(const sf::Time&) {};
 	
 
 protected:
@@ -34,6 +34,5 @@ private:
 	int m_animationRow;
 	int m_animationCol;
 
-	Animation m_animation;
 	int m_life;
 };

@@ -41,9 +41,9 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 {
 	switch (c)
 	{
-	//case PLAYER_C:
-	
-
+	case PLAYER_C:
+		m_player = std::make_unique<Player>(pos);
+		break;
 	//case FAIRY_C:
 	//	//cout << "add fairies" << i << " " << j << " \n";
 	//	m_fairies.push_back(std::make_unique<Fairy>((FAIRY), i, j));
@@ -104,8 +104,14 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 //draw all the moving object in the level on the window
 
 void DataBase::drawMovingObj(sf::RenderWindow& window)
+
 {
-	
+	sf::Time delta_time = m_clock.restart();
+	if (m_player)
+	{
+		m_player->update(delta_time);
+		m_player->draw(window);
+	}
 }
 //--------------------------------------------------------------
 //find the partner of the teleports

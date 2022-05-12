@@ -16,6 +16,7 @@ public:
 
 private:
     void handelEvents();
+    void setView();
     void setNewGame();
     void handelMouseButtonReleased(sf::Event);
     void handelMusicButtonReleased();
@@ -38,7 +39,7 @@ private:
     sf::Sound m_backGroundMusic;
     int m_levelNum = 1;
     sf::RectangleShape m_currLevelBackground;
-
+    sf::View m_view;
     bool m_playButton;
 
 

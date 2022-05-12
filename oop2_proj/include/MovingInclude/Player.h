@@ -5,8 +5,10 @@
 class Player :public MovingObj
 {
 public:
-	using MovingObj::MovingObj;
-	virtual void move(sf::Time&, sf::Vector2f)override;
+	Player( const sf::Vector2f& );
+	virtual void move(sf::Time&, sf::Vector2f)override {};
+	virtual void move(sf::Time&);
+	void update(const sf::Time& delta) override { m_animation.update(delta); };
 
 	void handleFall() {};
 	void handleJump(bool) {};
@@ -19,10 +21,14 @@ public:
 	void incPower() {};
 	void addLife() {};
 	void addPower() {};
+	virtual void handleCollision(GameObjBase&) override {};
+
 
 private:
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;
 	int m_power;
+	Animation m_animation;
+
 };
 

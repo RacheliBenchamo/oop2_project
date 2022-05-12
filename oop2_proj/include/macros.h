@@ -29,15 +29,18 @@ const unsigned int VOLUME_BG = 5;
 const unsigned int VOLUME_COLLISION = 6;
 
 // window data
-const int WINDOW_WIDTH = 1920,
-WINDOW_HEIGHT = 1080;
+const int WINDOW_WIDTH = 1900,
+WINDOW_HEIGHT = 900,
+CAMERA_WIDTH = 360,
+CAMERA_HEIGHT = 240;
+
 
 //time data
 const float GIFT_TIME = 30;
 const int WIN_WIAT = 70;
 
 //speed data
-const float BASE_SPEED = 100.;
+const float PLAYER_SPEED = 100.;
 const float FAIRY_SPEED = 120;
 
 

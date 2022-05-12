@@ -33,6 +33,7 @@ public:
    // bool takeCurrGift(giftType g) { return m_takeGifts[g]; }
     bool winLevel();
     void eraseObj();
+    sf::Vector2f getPlayerPos() { return m_player->getPos(); };
 
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
@@ -58,9 +59,8 @@ private:
     bool m_takeGifts[NUM_OF_GIFT_TYPES];
     bool m_GiftsWithTime;
     int m_currTeleport;
-    icons m_currPlayer;
     sf::RectangleShape m_movingRec;
-    std::unique_ptr< Player> m_player;
+    std::unique_ptr<Player> m_player;
     std::vector<std::unique_ptr<StaticObj>> m_staticsObj;
    // std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;

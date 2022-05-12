@@ -33,6 +33,7 @@ void Controller::run() try
 		m_window.draw(m_currLevelBackground);
 		m_dataBase.draw(m_window);
 		m_statusBar.draw(m_window);
+		//setView();
 		m_window.display();
 
 		for (auto event = sf::Event(); m_window.pollEvent(event); )
@@ -231,4 +232,13 @@ void Controller::setBackground()
 		break;
 	}
 
+}
+//-----------------------------------------------------------
+
+void Controller::setView()
+{
+	m_view.setCenter(m_dataBase.getPlayerPos().x,m_dataBase.getPlayerPos().y);
+	m_view.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
+	m_window.setView(m_view);
+	m_currLevelBackground.setPosition(m_view.getCenter());
 }
