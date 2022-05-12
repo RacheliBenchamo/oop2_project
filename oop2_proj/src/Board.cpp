@@ -61,7 +61,7 @@ void Board::readLevel(DataBase& dataBase)
 
 				}
 				//std::cout <<i << " " << j << "\n";
-				dataBase.setData(c,i+ space_x, j + space_y);
+				dataBase.setData(c,i+ space_y, j + space_x);
 			}
 			(m_input).get();
 			space_x += 40;

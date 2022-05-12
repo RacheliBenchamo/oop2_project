@@ -43,8 +43,10 @@ void FileManager::loadMovingObj()
 void FileManager::loadStaticObj()
 {
 	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
+	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
+
 	m_sharedStaticIcon[LIFE].loadFromFile("life.png");
-	m_sharedStaticIcon[DIAMOND].loadFromFile("diamond.png");
+	//m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 	m_sharedStaticIcon[POWER].loadFromFile("power.png");
 
 	//m_dec[LEV1][FLOOR]....
@@ -208,6 +210,7 @@ void FileManager::setAnimationsData()
 {
 
 	m_staticData[TELEPORT]=createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
+	m_staticData[DIAMOND] = createStaticAnimationData({ 100, 100 }, { 43,0 }, { 0,0 }, 6);
 
 	/*
 	m_staticData[KEY_DATA] =createStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);

@@ -65,8 +65,8 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		m_teleport.push_back(std::make_unique<Teleport>( pos));
 		return true;
 		break;
-	case GIFT_C:
-		//m_staticsObj.push_back(grillGiftType((GIFT), pos));
+	case DIAMOND_C:
+		m_staticsObj.push_back(std::make_unique<Diamond>(pos));
 		return true;
 		break;
 	default:
@@ -87,13 +87,16 @@ void DataBase::draw(sf::RenderWindow& window)
 
 void DataBase::drawStaticObj(sf::RenderWindow& window)
 {
-	/*for (auto& e : m_staticsObj)
-		e->draw(window);*/
+	sf::Time delta_time = m_clock.restart();
 
+	for (auto& e : m_staticsObj)
+	{
+		e->update(delta_time);
+		e->draw(window);
+	}
 	for (auto& e : m_teleport)
 	{
-		e->update(m_clock.restart());
-		
+		e->update(delta_time);
 		e->draw(window);
 	}
 }

@@ -11,6 +11,7 @@ configure_file ("staticObjPic/Wall.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Gate.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Ork.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Teleport.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/Diamond.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Throne.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Gift.png" ${CMAKE_BINARY_DIR} COPYONLY)
 

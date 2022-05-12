@@ -66,7 +66,7 @@ TREE_C = 'T',BIG_MONSTER='B', MONSTER1_C = '1', MONSTER2_C = '2', MONSTER3_C = '
 
 enum icons 
 {
-    MONSTER1, MONSTER2, MONSTER3,
+    MONSTER1, MONSTER2, MONSTER3, DIAMOND,
 	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,
 	EMPTY
 };
@@ -92,7 +92,7 @@ enum backgroundsType
 
 enum giftType
 {
-	LIFE, POWER , DIAMOND
+	LIFE, POWER 
 };
 
 enum direction

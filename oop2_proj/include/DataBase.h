@@ -7,6 +7,7 @@
 #include <memory>
 #include <GameObjBase.h>
 #include "StaticInclude\Teleport.h"
+#include "StaticInclude\Diamond.h"
 #include "StaticInclude\Gate.h"
 #include "StaticInclude\Gift.h"
 #include "StaticInclude\LifeGift.h"
