@@ -104,7 +104,7 @@ enum direction
 
 const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 
-enum class Operation
+enum Operation
 {
     Up,
     Down,

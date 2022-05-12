@@ -184,20 +184,20 @@ AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,con
 
 	auto nextStart = [&]()
 	{
-		currentStart += middleSpace;
 		currentStart.x += size.x;
+		currentStart += middleSpace;
 		return currentStart;
 	};
 
-	staticData.m_data[Operation::Stay].emplace_back(currentStart, size);
+	staticData.m_data[Stay].emplace_back(currentStart, size);
 
 	for (int i = 0; i < count; i++) 
 	{
-		staticData.m_data[Operation::Stay].emplace_back(nextStart(), size);
+		staticData.m_data[Stay].emplace_back(nextStart(), size);
 	}
 
-	staticData.m_time[Operation::Stay] = 0.1f;
-	staticData.playOnce[Operation::Stay] = false;
+	staticData.m_time[Stay] = 0.1f;
+	staticData.playOnce[Stay] = false;
 	return staticData;
 }
 
@@ -206,14 +206,14 @@ AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,con
 
 void FileManager::setAnimationsData()
 {
-	m_staticData[0] = createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
+	m_staticData[TELEPORT] = createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
 
 	/*
 	m_staticData[KEY_DATA] =createStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
-	m_staticData[KEY_DATA].m_time[Operation::Stay] = 0.2f;
+	m_staticData[KEY_DATA].m_time[Stay] = 0.2f;
 
 	m_staticData[EXTRA_LIFE_DATA] = createLifeAnimationData();
-	m_staticData[EXTRA_LIFE_DATA].m_time[Operation::Stay] = 0.5f;
+	m_staticData[EXTRA_LIFE_DATA].m_time[Stay] = 0.5f;
 
 	m_movingObjData[PLAYER_DATA] = createPlayerAnimeData();
 

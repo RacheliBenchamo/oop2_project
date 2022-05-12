@@ -4,7 +4,7 @@ Teleport::Teleport(sf::Vector2f pos)
 	: StaticObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
 		m_animation
 		(   FileManager::p2FileManager().getStaticData(TELEPORT),
-			Operation::Stay,
+			Stay,
 			m_shape,
 			FileManager::p2FileManager().getSharedStaticTexture(TELEPORT))
 	{
