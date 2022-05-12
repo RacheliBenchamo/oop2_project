@@ -30,6 +30,7 @@ void DataBase::setLevelSize(int x, int y)
 void DataBase::setData(char c, int i, int j)
 {
 	sf::Vector2f pos(i, j);
+	std::cout << pos.x << " " << pos.y << "\n";
 		if(!createStaticObj(c, pos))
 		createMovingObj(c, pos);
 }
@@ -92,7 +93,7 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 	for (auto& e : m_teleport)
 	{
 		e->update(m_clock.restart());
-		std::cout << e->getPos().x << " " << e->getPos().y <<"\n";
+		
 		e->draw(window);
 	}
 }

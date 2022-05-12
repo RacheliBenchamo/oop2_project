@@ -46,19 +46,26 @@ void Board::readLevel(DataBase& dataBase)
 {
 	if ((m_input).is_open())
 	{
+		int space_x = 100 , space_y = 135;
 		char c;
 		for (size_t i = 0; i < m_boardSize.x; i++)
 		{
 			for (size_t j = 0; j < m_boardSize.y; j++)
 			{
+				space_y += 15;
 				c = char((m_input).get());
 				if (c == EMPTY_C)
 				{
+					//std::cout <<  "empte " <<i << " " << j << "\n";
 					continue;
+
 				}
-				dataBase.setData(c,i, j + 1.f);
+				//std::cout <<i << " " << j << "\n";
+				dataBase.setData(c,i+ space_x, j + space_y);
 			}
 			(m_input).get();
+			space_x += 40;
+			space_y = 100;
 		}
 	}
 	//dataBase.FindTeleportPartner();
