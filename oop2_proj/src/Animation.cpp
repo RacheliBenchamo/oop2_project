@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include <iostream>
 
 // C-tor
 Animation::Animation(const AnimationData& data, Operation dir,

@@ -3,7 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <vector>
 #include "Macros.h"
-#include "AnimationData.h"
+#include "Animation.h"
 
 
 class FileManager
