@@ -195,7 +195,7 @@ AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,con
 
 	staticData.m_data[Stay].emplace_back(currentStart, currSize);
 
-	for (int i = 0; i < count; i++) 
+	for (int i = 1; i < count; i++) 
 	{
 		staticData.m_data[Stay].emplace_back(nextStart(), currSize);
 	}
@@ -214,6 +214,7 @@ void FileManager::setAnimationsData()
 
 	m_staticData[TELEPORT]=createStaticAnimationData({ 444, 100 }, { 518,0 }, 6);
 	m_staticData[DIAMOND] = createStaticAnimationData({ 900, 110 }, { 49,0 }, 7);
+	m_staticData[DIAMOND].m_time[Stay] = 0.2f;
 
 	/*
 	m_staticData[KEY_DATA] =createStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
