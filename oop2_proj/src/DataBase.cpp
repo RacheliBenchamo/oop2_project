@@ -43,6 +43,7 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	{
 	case PLAYER_C:
 		m_player = std::make_unique<Player>(pos);
+		std::cout << "player\n";
 		break;
 	//case FAIRY_C:
 	//	//cout << "add fairies" << i << " " << j << " \n";
@@ -137,7 +138,7 @@ void DataBase::move(sf::Time deltaTime)
 		f->move(deltaTime, m_levelSize);*/
 
 	//move current player
-	//m_players[m_currPlayer]->move(deltaTime, m_levelSize);
+	m_player->move(deltaTime);
 	//handelCollisions();
 }
 //-------------------------------------------------

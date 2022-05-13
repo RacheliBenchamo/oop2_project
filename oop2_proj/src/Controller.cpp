@@ -33,7 +33,7 @@ void Controller::run() try
 		m_window.draw(m_currLevelBackground);
 		m_dataBase.draw(m_window);
 		m_statusBar.draw(m_window);
-		//setView();
+		setView();
 		m_window.display();
 
 		for (auto event = sf::Event(); m_window.pollEvent(event); )

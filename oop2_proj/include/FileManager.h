@@ -31,7 +31,7 @@ private:
 	FileManager(const FileManager&) = default;
 	FileManager& operator=(const FileManager&) = default;
 
-	AnimationData createStaticAnimationData(const sf::Vector2i ,const sf::Vector2i ,const sf::Vector2i ,const int );
+	AnimationData createStaticAnimationData(const sf::Vector2i,const sf::Vector2i ,const int );
 	void loadMovingObj();
 	void loadStaticObj();
 	void loadAudio();

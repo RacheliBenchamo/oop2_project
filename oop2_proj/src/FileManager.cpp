@@ -178,23 +178,26 @@ const AnimationData& FileManager::getStaticData(icons object)
 //--------------------------------------------------------------------
 //Set the Static objects animations data and time.
 
-AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,const sf::Vector2i initSpace,
-	const sf::Vector2i middleSpace,const int count)
+AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,const sf::Vector2i startPoint,const int count)
 {
 	auto staticData = AnimationData{};
-	auto currentStart = initSpace;
+	sf::Vector2i currSize;
+
+	currSize.x = size.x / count;
+	currSize.y = size.y;
+	auto currentStart = startPoint;
+
 	auto nextStart = [&]()
 	{
-		currentStart.x += size.x;
-		currentStart += middleSpace;
+		currentStart.x += currSize.x;
 		return currentStart;
 	};
 
-	staticData.m_data[Stay].emplace_back(currentStart, size);
+	staticData.m_data[Stay].emplace_back(currentStart, currSize);
 
 	for (int i = 0; i < count; i++) 
 	{
-		staticData.m_data[Stay].emplace_back(nextStart(), size);
+		staticData.m_data[Stay].emplace_back(nextStart(), currSize);
 	}
 
 	staticData.m_time[Stay] = 0.1f;
@@ -209,8 +212,8 @@ AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,con
 void FileManager::setAnimationsData()
 {
 
-	m_staticData[TELEPORT]=createStaticAnimationData({ 74, 100 }, { 518,0 }, { 0,0 }, 6);
-	m_staticData[DIAMOND] = createStaticAnimationData({ 100, 100 }, { 43,0 }, { 0,0 }, 6);
+	m_staticData[TELEPORT]=createStaticAnimationData({ 444, 100 }, { 518,0 }, 6);
+	m_staticData[DIAMOND] = createStaticAnimationData({ 900, 110 }, { 49,0 }, 7);
 
 	/*
 	m_staticData[KEY_DATA] =createStaticAnimationData({ 18,39 }, { 0,287 }, { 2,0 }, 4);
