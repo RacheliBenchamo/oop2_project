@@ -13,8 +13,8 @@ public:
 	static FileManager& p2FileManager();
 
     sf::Texture* getSharedStaticTexture(const icons );
-	sf::Texture* getMonstersTexture(const icons, levels);
-	// sf::Texture* getPlayerTexture(const icons);
+	sf::Texture* getMonstersTexture(const icons,const levels);
+	sf::Texture* getPlayerTexture();
 	const sf::Texture* getPlayAndStopIcon(bool )const;
 	const sf::SoundBuffer* getSound(sounds)const;
 	const sf::Texture* getMusicIcon(bool)const;
@@ -23,7 +23,7 @@ public:
 	const sf::Font* getFont()const;
 	const sf::Texture* getCurrLevDec(icons, levels) const;
 	const AnimationData& getStaticData(icons);
-	void setAnimationsData();
+	const AnimationData& getPlayerData();
 
 
 private:
@@ -31,7 +31,7 @@ private:
 	FileManager(const FileManager&) = default;
 	FileManager& operator=(const FileManager&) = default;
 
-	AnimationData createStaticAnimationData(const sf::Vector2i,const sf::Vector2i ,const int );
+
 	void loadMovingObj();
 	void loadStaticObj();
 	void loadAudio();
@@ -39,6 +39,14 @@ private:
 	void loadStopAndPlayIcon();
 	void loadResetIcon();
 	void loadBackgrounds();
+
+	void setAnimationsData();
+	AnimationData createPlayerAnimeData();
+	void setCurrentData(AnimationData& , Operation ,std::vector<sf::IntRect> , float , bool );
+	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,
+		const sf::Vector2i ,const int , Operation);
+	AnimationData createStaticAnimationData(const sf::Vector2i,const sf::Vector2i ,const int );
+
 
 	//sf::Texture m_icons[NUM_OF_STATIC_ICONS];
 	//sf::Texture m_staticIcon[NUM_OF_STATIC_ICONS];
@@ -54,6 +62,7 @@ private:
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];
+	AnimationData m_playerData;
 
 };
 

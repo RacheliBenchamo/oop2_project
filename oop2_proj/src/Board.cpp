@@ -46,7 +46,7 @@ void Board::readLevel(DataBase& dataBase)
 {
 	if ((m_input).is_open())
 	{
-		int space_x = 100 , space_y = 135;
+		int space_x = 100 , space_y = 100;
 		char c;
 		for (size_t i = 0; i < m_boardSize.x; i++)
 		{
@@ -64,7 +64,7 @@ void Board::readLevel(DataBase& dataBase)
 				dataBase.setData(c,i+ space_y, j + space_x);
 			}
 			(m_input).get();
-			space_x += 40;
+			space_x += 15;
 			space_y = 100;
 		}
 	}

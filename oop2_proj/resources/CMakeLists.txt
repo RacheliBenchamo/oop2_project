@@ -1,4 +1,4 @@
-﻿configure_file ("movingObjPic/thief.png" ${CMAKE_BINARY_DIR} COPYONLY)
+﻿configure_file ("movingObjPic/Player.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("movingObjPic/thiefWithKey.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("movingObjPic/king.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("movingObjPic/fairy.png" ${CMAKE_BINARY_DIR} COPYONLY)

@@ -6,9 +6,9 @@
 //------------------------------------------------------------------------
 Player::Player( const sf::Vector2f& pos)
 	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
-	    m_animation(FileManager::p2FileManager().getStaticData(TELEPORT),
+	    m_animation(FileManager::p2FileManager().getPlayerData(),
 		Operation::Stay, m_shape,
-		FileManager::p2FileManager().getSharedStaticTexture(TELEPORT))
+		FileManager::p2FileManager().getPlayerTexture())
 	//,
 	//m_healthBar({ sf::Vector2f(sf::Vector2f(50.f, 8.f)),
 		//sf::Vector2f(5, 1) })
