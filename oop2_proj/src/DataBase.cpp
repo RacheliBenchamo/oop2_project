@@ -43,7 +43,6 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	{
 	case PLAYER_C:
 		m_player = std::make_unique<Player>(pos);
-		std::cout << "player\n";
 		break;
 	//case FAIRY_C:
 	//	//cout << "add fairies" << i << " " << j << " \n";

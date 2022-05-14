@@ -45,8 +45,7 @@ void Animation::update(sf::Time delta)
         if (!m_gameData.playOnce.find(m_operation)->second)
         {
             // Set animation from the start if last frame played
-            m_index %= m_gameData.m_data.
-                find(m_operation)->second.size();
+            m_index %= m_gameData.m_data.find(m_operation)->second.size();
         }
         else
         {

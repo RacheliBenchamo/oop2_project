@@ -105,6 +105,10 @@ enum direction
 
 const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 
+const sf::Vector2f SCALE_RIGHT{ -1,1 };
+const sf::Vector2f SCALE_LEFT{ 1,1 };
+
+
 enum Operation
 {
     Up,

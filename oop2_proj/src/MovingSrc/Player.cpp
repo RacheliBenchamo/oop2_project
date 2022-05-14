@@ -9,9 +9,6 @@ Player::Player( const sf::Vector2f& pos)
 	    m_animation(FileManager::p2FileManager().getPlayerData(),
 		Operation::Stay, m_shape,
 		FileManager::p2FileManager().getPlayerTexture())
-	//,
-	//m_healthBar({ sf::Vector2f(sf::Vector2f(50.f, 8.f)),
-		//sf::Vector2f(5, 1) })
 {
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 }
@@ -30,18 +27,14 @@ Player::Player( const sf::Vector2f& pos)
 //------------------------------------------------------------------------
 void Player::move(sf::Time& deltaTime)
 {
-	m_shape.move(getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));
-
-	//if (m_healthBar.isAlive())
-	//{
-		//auto movement = getMovement();
-
-		//setMovementStatus(movement);
-
-	//	moveShape(movement);
-
+	if (isAlive())
+	{
+		
+		auto movement = getDirection();
+		m_shape.move(movement * deltaTime.asSeconds() * (PLAYER_SPEED));
+		setMovementStatus(movement);
 		//handleEvents();
-	//}
+	}
 	//else
 	//{
 	//	m_animation.operation(Operation::Dead);
@@ -49,32 +42,32 @@ void Player::move(sf::Time& deltaTime)
 }
 
 //
-////------------------------- setMovementStatus ----------------------------
-//// Sets the movement status of the player and checks what is the new 
-//// movement the player preformed.
-//// Depending on the movement of the player, the function updates the
-//// data and presents the appropriate animation.
-////------------------------------------------------------------------------
-//void Player::setMovementStatus(const sf::Vector2f& movement)
-//{
-//	doorCollide = insideHurricane = onFloor = mvRight = mvLeft = false;
-//
-//	if (movement.x < ZERO)
-//	{
-//		setScale(SCALE_LEFT);
-//		mvLeft = true;
-//	}
-//
-//	if (movement.x > ZERO)
-//	{
-//		setScale(SCALE_RIGHT);
-//		mvRight = true;
-//	}
-//
-//	playMovementAnimations();
-//}
-//
-//
+//------------------------- setMovementStatus ----------------------------
+// Sets the movement status of the player and checks what is the new 
+// movement the player preformed.
+// Depending on the movement of the player, the function updates the
+// data and presents the appropriate animation.
+//------------------------------------------------------------------------
+void Player::setMovementStatus(const sf::Vector2f& movement)
+{
+	//doorCollide = insideHurricane = onFloor = mvRight = mvLeft = false;
+
+	if (movement.x < 0)
+	{
+		setScale(SCALE_LEFT);
+		mvLeft = true;
+	}
+
+	if (movement.x > 0)
+	{
+		setScale(SCALE_RIGHT);
+		mvRight = true;
+	}
+
+	playMovementAnimations();
+}
+
+
 ////-------------------------- setExtraJumpStatus --------------------------
 //// Set the extra jump status.
 //// We enter this function if the player collects the extra jump boost gem.
@@ -141,30 +134,32 @@ void Player::move(sf::Time& deltaTime)
 
 
 //----------------------- playMovementAnimations -------------------------
-// Plays the animation according to the situation in which the player is.
-////------------------------------------------------------------------------
-//void Player::playMovementAnimations()
-//{
-//	if (mvRight || mvLeft)
-//	{
-//		if (!inHnaldeJump)
-//		{
-//			if (m_animation.getOperation() != Operation::Hit &&
-//				m_animation.getOperation() != Operation::Hurt)
-//			{
-//				m_animation.operation(Operation::Right);
-//			}
-//		}
-//		else
-//		{
-//			m_animation.operation(Operation::Jump);
-//		}
-//	}
-//	else if (inHnaldeJump)
-//	{
-//		m_animation.operation(Operation::Jump);
-//	}
-//}
+ //Plays the animation according to the situation in which the player is.
+//------------------------------------------------------------------------
+void Player::playMovementAnimations()
+{
+	if (mvRight || mvLeft)
+	{
+		//if (!inHnaldeJump)
+		{
+			if (m_animation.getOperation() != Operation::Hit )
+				//&& m_animation.getOperation() != Operation::Hurt)
+			{
+				m_animation.operation(Operation::Right);
+			}
+		}
+		//else
+		//{
+		//	m_animation.operation(Operation::Jump);
+		//}
+		mvRight = mvLeft = false;
+	}
+	/*else if (inHnaldeJump)
+	{
+		m_animation.operation(Operation::Jump);
+	}*/
+	else m_animation.operation(Operation::Stay);
+}
 
 
 ////-------------------------- pushBackFromSpike ---------------------------

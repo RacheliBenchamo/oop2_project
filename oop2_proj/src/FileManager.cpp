@@ -215,7 +215,8 @@ void FileManager::setAnimationsData()
 //--------------------------------------------------------------------
 //Set the Static objects animations data and time.
 
-AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size, const sf::Vector2i startPoint, const int count)
+AnimationData FileManager::createStaticAnimationData(const sf::Vector2i size,
+	const sf::Vector2i startPoint, const int count)
 {
 	auto staticData = AnimationData{};
 	sf::Vector2i currSize;
@@ -249,66 +250,22 @@ AnimationData FileManager::createPlayerAnimeData()
 {
 	auto player = AnimationData{};
 
-	setCurrentData(player, Operation::Stay, movableAnimationSet
-	({ 100, 100 }, { 348, 0 }, 1,Operation::Stay), 0.1f, false);
+	setCurrentData(player, Stay, movableAnimationSet
+	({ 100, 115 }, { 730, 5 }, 1,Stay), 0.1f, false);
 
-	//setCurrentData(player, Operation::Right, movableAnimationSet
-	//({ 45, 35 }, { 0, 93 }, { 3, 0 }, 7,
-	//	Operation::Right), 0.05f, false);
+	setCurrentData(player, Right, movableAnimationSet
+	({ 230, 120 }, { 480, 5 }, 2, Right), 0.05f, false);
 
-	//setCurrentData(player, Operation::Jump, movableAnimationSet
-	//({ 44, 55 }, { 91, 38 }, { 1, 0 }, 10,
-	//	Operation::Jump), 0.15f, true);
+	setCurrentData(player, Jump, movableAnimationSet
+	({ 100, 110 }, { 373, 5 }, 1,Jump), 0.15f, true);
 
-	//setCurrentData(player, Operation::Fall, movableAnimationSet
-	//({ 45, 55 }, { 451, 38 }, { 1, 0 }, 3,
-	//	Operation::Fall), 0.1f, false);
+	setCurrentData(player, Hit, movableAnimationSet
+	({ 220, 115 }, { 133, 5 }, 2, Hit), 0.05f, true);
 
-	//setCurrentData(player, Operation::Hit, movableAnimationSet
-	//({ 49, 36 }, { 1, 129 }, { 1, 0 }, 8,
-	//	Operation::Hit), 0.05f, true);
-
-	//setCurrentData(player, Operation::Shoot, movableAnimationSet
-	//({ 39, 37 }, { 1, 166 }, { 0, 0 }, 9,
-	//	Operation::Shoot), 0.08f, true);
-
-	//setCurrentData(player, Operation::Pick_up, movableAnimationSet
-	//({ 39, 47 }, { 0, 202 }, { 0, 0 }, 7,
-	//	Operation::Pick_up), 0.05f, true);
-
-	//setCurrentData(player, Operation::Pick_up_Right, movableAnimationSet
-	//({ 51, 32 }, { 0, 252 }, { 0, 0 }, 7,
-	//	Operation::Pick_up), 0.05f, false);
-
-	//setCurrentData(player, Operation::Pick_up_Jump, movableAnimationSet
-	//({ 42, 53 }, { 0, 288 }, { 0, 0 }, 11,
-	//	Operation::Pick_up_Jump), 0.1f, true);
-
-	//setCurrentData(player, Operation::Pick_up_Fall, movableAnimationSet
-	//({ 42, 53 }, { 462, 288 }, { 0, 0 }, 2,
-	//	Operation::Pick_up_Fall), 0.1f, false);
-
-	//setCurrentData(player, Operation::Pick_up_Land, movableAnimationSet
-	//({ 42, 53 }, { 588, 288 }, { 0, 0 }, 2,
-	//	Operation::Pick_up_Land), 0.1f, true);
-
-	//setCurrentData(player, Operation::Pick_up_Idle, movableAnimationSet
-	//({ 40, 39 }, { 0, 360 }, { 0, 0 }, 2,
-	//	Operation::Pick_up_Idle), 0.3f, true);
-
-	//setCurrentData(player, Operation::Loading1, movableAnimationSet
-	//({ 45, 45 }, { 0, 547 }, { 0, 0 }, 4,
-	//	Operation::Loading1), 0.05f, true);
-
-
-	//setCurrentData(player, Operation::Loading2, movableAnimationSet
-	//({ 45, 45 }, { 271, 547 }, { 0, 0 }, 8,
-	//	Operation::Loading2), 0.15f, false);
-
-	//setCurrentData(player, Operation::Loading1, movableAnimationSet
-	//({ 45, 45 }, { 0, 547 }, { 0, 0 }, 14,
-	//	Operation::Loading1), 0.05f, false);
-
+	//setCurrentData(player, Operation::Rope, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Rope), 0.05f, true);
+	// 
 	//setCurrentData(player, Operation::Hurt, movableAnimationSet
 	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
 	//	Operation::Hurt), 0.05f, true);

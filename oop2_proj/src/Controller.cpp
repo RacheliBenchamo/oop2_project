@@ -18,9 +18,9 @@ Controller::Controller()
 
 	m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
 
-	//m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
-	//m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
-	m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
+	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
+	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
+	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
 	m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
 }
 
@@ -35,7 +35,7 @@ void Controller::run() try
 		m_window.draw(m_currLevelBackground);
 		m_dataBase.draw(m_window);
 		//m_statusBar.draw(m_window);
-		//setView();
+		setView();
 		m_window.display();
 
 		for (auto event = sf::Event(); m_window.pollEvent(event); )

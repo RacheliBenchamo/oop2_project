@@ -48,7 +48,7 @@ public:
 
 protected:
 	sf::RectangleShape m_shape;
-
+	void setScale(const sf::Vector2f& scale) {m_shape.setScale(scale);}
 private:
 	bool m_replace;
 	bool m_delete;

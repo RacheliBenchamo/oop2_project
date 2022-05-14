@@ -25,7 +25,11 @@ protected:
 	virtual void move(sf::Time&, sf::Vector2f ) {};
 	void setPrevPos(sf::Vector2f p) { m_prevPos = p; }
 	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
+	bool isAlive() const {return m_life> 0;}
 
+	int m_life=20;
+	bool mvRight = false,
+		 mvLeft = false;
 private:
 	void updateSpriteCol();
 
@@ -34,5 +38,5 @@ private:
 	int m_animationRow;
 	int m_animationCol;
 
-	int m_life;
+	//int m_life;
 };

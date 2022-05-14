@@ -16,7 +16,6 @@ public:
 	void addDiamond() {};
 	const int getDiamondsCount() const {};
 	bool isFinishedLevel(const int) {};
-	const bool isAlive() const {};
 	void incLife() {};
 	void incPower() {};
 	void addLife() {};
@@ -25,6 +24,9 @@ public:
 
 
 private:
+	void setMovementStatus(const sf::Vector2f& movement);
+	void playMovementAnimations();
+
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;
 	int m_power;
