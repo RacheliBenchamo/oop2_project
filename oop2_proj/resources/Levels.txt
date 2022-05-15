@@ -1,8 +1,9 @@
-9 30
-                                                 
-                                                                                             
-P D    D   D                                                                                                          
-X                                                                                              
- D                                                                                                    
- D                                                                                                           
- D                                                                                                                              
+8 8
+P DD  D 
+        
+X       
+D    D  
+        
+ D      
+      X 
+        

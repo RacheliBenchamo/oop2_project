@@ -30,7 +30,7 @@ void DataBase::setLevelSize(int x, int y)
 void DataBase::setData(char c, int i, int j)
 {
 	sf::Vector2f pos(i, j);
-	std::cout << pos.x << " " << pos.y << "\n";
+	std::cout <<c <<" " <<pos.x << " " << pos.y << "\n";
 		if(!createStaticObj(c, pos))
 		createMovingObj(c, pos);
 }

@@ -49,8 +49,8 @@ void FileManager::loadStaticObj()
 	//m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 	m_sharedStaticIcon[POWER].loadFromFile("power.png");
 
-	//m_dec[LEV1][FLOOR]....
-
+	//m_dec[LEV1][FLOOR].loadFromFile("forestFloor.png");
+	//m_dec[LEV2][FLOOR].loadFromFile("desertFloor.png");
 }
 //--------------------------------------------------
 // load all the audio
@@ -171,9 +171,9 @@ sf::Texture* FileManager::getPlayerTexture()
 }
 //------------------------------------------------------------------
 
-const sf::Texture* FileManager::getCurrLevDec(icons place, levels currLevel) const
+const sf::Texture* FileManager::getCurrLevDec(icons icon, levels currLevel) const
 {
-	return &this->m_dec[currLevel - 1][place];
+	return &this->m_dec[currLevel - 1][icon];
 }
 //------------------------------------------------------------------
 
@@ -194,7 +194,7 @@ const AnimationData& FileManager::getPlayerData()
 void FileManager::setAnimationsData()
 {
 
-	m_staticData[TELEPORT]=createStaticAnimationData({ 444, 100 }, { 518,0 }, 6);
+	m_staticData[TELEPORT]=createStaticAnimationData({ 444, 95 }, { 518,0 }, 6);
 	m_staticData[DIAMOND] = createStaticAnimationData({ 900, 110 }, { 49,0 }, 7);
 	m_staticData[DIAMOND].m_time[Stay] = 0.2f;
 
@@ -251,10 +251,10 @@ AnimationData FileManager::createPlayerAnimeData()
 	auto player = AnimationData{};
 
 	setCurrentData(player, Stay, movableAnimationSet
-	({ 100, 115 }, { 730, 5 }, 1,Stay), 0.1f, false);
+	({ 110, 115 }, { 730, 5 }, 1,Stay), 0.1f, false);
 
 	setCurrentData(player, Right, movableAnimationSet
-	({ 230, 120 }, { 480, 5 }, 2, Right), 0.05f, false);
+	({ 230, 115 }, { 480, 5 }, 2, Right), 0.1f, true);
 
 	setCurrentData(player, Jump, movableAnimationSet
 	({ 100, 110 }, { 373, 5 }, 1,Jump), 0.15f, true);

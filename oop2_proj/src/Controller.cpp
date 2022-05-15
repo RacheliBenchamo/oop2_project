@@ -149,7 +149,9 @@ void Controller::startNewLevel()
 		startnewGame();
 	else
 	{
+		
 		m_levelNum++;
+		//m_dataBase.setLvelNum(m_levelNum);
 		setBackground();
 		winLevelScreen();
 		m_board.readLevel(m_dataBase);

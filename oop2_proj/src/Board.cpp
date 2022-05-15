@@ -46,25 +46,22 @@ void Board::readLevel(DataBase& dataBase)
 {
 	if ((m_input).is_open())
 	{
-		int space_x = 100 , space_y = 100;
+		int space_x = 100 , space_y = 75;
 		char c;
 		for (size_t i = 0; i < m_boardSize.x; i++)
 		{
 			for (size_t j = 0; j < m_boardSize.y; j++)
 			{
-				space_y += 15;
+				space_y += 40;
 				c = char((m_input).get());
 				if (c == EMPTY_C)
-				{
-					//std::cout <<  "empte " <<i << " " << j << "\n";
 					continue;
 
-				}
 				//std::cout <<i << " " << j << "\n";
-				dataBase.setData(c,i+ space_y, j + space_x);
+				dataBase.setData(c,j+ space_y, i + space_x);
 			}
 			(m_input).get();
-			space_x += 15;
+			space_x += 40;
 			space_y = 100;
 		}
 	}
