@@ -21,7 +21,7 @@ public:
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(backgroundsType)const;
 	const sf::Font* getFont()const;
-	const sf::Texture* getCurrLevDec(icons, levels) const;
+	const sf::Texture* getCurrLevDec(icons, int) const;
 	const AnimationData& getStaticData(icons);
 	const AnimationData& getPlayerData();
 

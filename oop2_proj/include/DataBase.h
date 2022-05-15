@@ -8,6 +8,7 @@
 #include <GameObjBase.h>
 #include "StaticInclude\Teleport.h"
 #include "StaticInclude\Diamond.h"
+#include "StaticInclude\Floor.h"
 #include "StaticInclude\Gate.h"
 #include "StaticInclude\Gift.h"
 #include "StaticInclude\LifeGift.h"
@@ -34,6 +35,7 @@ public:
     bool winLevel();
     void eraseObj();
     sf::Vector2f getPlayerPos() { return m_player->getPos(); };
+    void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
 
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
@@ -65,4 +67,5 @@ private:
    // std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
     sf::Clock m_clock;
+    int m_currLevel;
 };

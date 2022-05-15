@@ -69,7 +69,7 @@ TREE_C = 'T',BIG_MONSTER='B', MONSTER1_C = '1', MONSTER2_C = '2', MONSTER3_C = '
 
 enum icons 
 {
-    MONSTER1, MONSTER2, MONSTER3, DIAMOND,
+    MONSTER1, MONSTER2, MONSTER3, DIAMOND, FLOOR,
 	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,
 	EMPTY
 };
@@ -107,7 +107,6 @@ const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 
 const sf::Vector2f SCALE_RIGHT{ -1,1 };
 const sf::Vector2f SCALE_LEFT{ 1,1 };
-
 
 enum Operation
 {

@@ -10,7 +10,7 @@ using std::cout;
 //constructor
 
 DataBase::DataBase()
-	: m_currTeleport(0)
+	: m_currTeleport(0), m_currLevel(1)
 {
 	resetTakeGifts();
 	m_movingRec.setSize(sf::Vector2f((float)32, (float)32 / 15));
@@ -69,6 +69,9 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		m_staticsObj.push_back(std::make_unique<Diamond>(pos));
 		return true;
 		break;
+	case  FLOOR_C:
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, m_currLevel));
+		
 	default:
 		return false;
 		break;
@@ -91,7 +94,7 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 
 	for (auto& e : m_staticsObj)
 	{
-		e->update(delta_time);
+		//e->update(delta_time);
 		e->draw(window);
 	}
 	for (auto& e : m_teleport)

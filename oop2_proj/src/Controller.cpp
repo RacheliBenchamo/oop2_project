@@ -151,7 +151,7 @@ void Controller::startNewLevel()
 	{
 		
 		m_levelNum++;
-		//m_dataBase.setLvelNum(m_levelNum);
+		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
 		winLevelScreen();
 		m_board.readLevel(m_dataBase);

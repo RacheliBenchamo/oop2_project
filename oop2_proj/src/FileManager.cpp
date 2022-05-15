@@ -49,8 +49,9 @@ void FileManager::loadStaticObj()
 	//m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 	m_sharedStaticIcon[POWER].loadFromFile("power.png");
 
-	//m_dec[LEV1][FLOOR].loadFromFile("forestFloor.png");
-	//m_dec[LEV2][FLOOR].loadFromFile("desertFloor.png");
+	m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
+	m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");
+	m_dec[LEVEL3][FLOOR].loadFromFile("SnowFloor.png");
 }
 //--------------------------------------------------
 // load all the audio
@@ -171,7 +172,7 @@ sf::Texture* FileManager::getPlayerTexture()
 }
 //------------------------------------------------------------------
 
-const sf::Texture* FileManager::getCurrLevDec(icons icon, levels currLevel) const
+const sf::Texture* FileManager::getCurrLevDec(icons icon, int currLevel) const
 {
 	return &this->m_dec[currLevel - 1][icon];
 }

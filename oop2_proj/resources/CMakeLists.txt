@@ -14,6 +14,10 @@ configure_file ("staticObjPic/Teleport.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Diamond.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Throne.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Gift.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/DesertFloor.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/ForsetFloor.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/SnowFloor.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 configure_file ("backgrounds/menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/gameBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
