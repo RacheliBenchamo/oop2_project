@@ -82,6 +82,8 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 
 void DataBase::draw(sf::RenderWindow& window)
 {
+	//drowObj<m_staticsObj>();
+
 	drawStaticObj(window);
 	drawMovingObj(window);
 }
@@ -94,7 +96,7 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 
 	for (auto& e : m_staticsObj)
 	{
-		//e->update(delta_time);
+		e->update(delta_time);
 		e->draw(window);
 	}
 	for (auto& e : m_teleport)
@@ -352,3 +354,15 @@ void DataBase::resetTakeGifts()
 	for (int i = 0; i < NUM_OF_GIFT_TYPES; i++)
 		m_takeGifts[i] = false;
 }
+
+//template<class T>
+//void DataBase::drowObj()
+//{
+//	sf::Time delta_time = m_clock.restart();
+//
+//	for (auto& e : T)
+//	{
+//		update(delta_time);
+//		e->draw(window);
+//	}
+//}

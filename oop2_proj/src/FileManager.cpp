@@ -46,7 +46,6 @@ void FileManager::loadStaticObj()
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 
 	m_sharedStaticIcon[LIFE].loadFromFile("life.png");
-	//m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 	m_sharedStaticIcon[POWER].loadFromFile("power.png");
 
 	m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");

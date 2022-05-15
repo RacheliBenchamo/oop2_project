@@ -31,7 +31,11 @@ void Animation::operation(Operation op)
 //------------------------------- update ---------------------------------
 // Update the next frame index by the delta time.
 //------------------------------------------------------------------------
-
+//void Animation::update(sf::Time delta)
+//{
+//    if (m_index == )
+//    m_index++;
+//}
 void Animation::update(sf::Time delta)
 {
     auto temp = m_gameData.m_data;
@@ -46,12 +50,14 @@ void Animation::update(sf::Time delta)
         {
             // Set animation from the start if last frame played
             m_index %= m_gameData.m_data.find(m_operation)->second.size();
+            //m_index %= 2;
         }
+
         else
         {
             updateOnLastFrame();
         }
-
+        std::cout << m_index << "\n";
         update();
     }
 }

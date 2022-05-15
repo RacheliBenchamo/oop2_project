@@ -40,6 +40,10 @@ public:
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
     void createMovingObj(const char , const sf::Vector2f&);
+
+   /* template<class T>
+    void drowObj();*/
+
     void drawStaticObj(sf::RenderWindow& );
     void drawMovingObj(sf::RenderWindow& );
     void handelCollisions();
@@ -69,3 +73,4 @@ private:
     sf::Clock m_clock;
     int m_currLevel;
 };
+
