@@ -20,7 +20,10 @@ configure_file ("staticObjPic/SnowFloor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("backgrounds/menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("backgrounds/gameBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("backgrounds/forestBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("backgrounds/snowBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("backgrounds/desertBackgroundpng" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("backgrounds/helpBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/winGameBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/winLevelBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
