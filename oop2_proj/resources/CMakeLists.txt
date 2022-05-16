@@ -19,6 +19,8 @@ configure_file ("staticObjPic/ForsetFloor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/SnowFloor.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/PowerIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/LifeIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/DiamondIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

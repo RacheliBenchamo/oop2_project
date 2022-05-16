@@ -3,7 +3,7 @@
 
 
 Diamond::Diamond(sf::Vector2f pos)
-	: StaticObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE/2), pos),
+	: StaticObj(sf::Vector2f(BLOCK_SIZE/4, BLOCK_SIZE/6), pos),
 	m_animation
 	(FileManager::p2FileManager().getStaticData(DIAMOND),
 		Stay,

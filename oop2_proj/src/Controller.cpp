@@ -34,7 +34,8 @@ void Controller::run() try
 		m_window.clear();
 		m_window.draw(m_currLevelBackground);
 		m_dataBase.draw(m_window);
-		m_statusBar.draw(m_window,m_dataBase.getPlayerPower(), m_dataBase.getPlayerLife());
+		m_statusBar.draw(m_window,m_dataBase.getPlayerPower(),
+			m_dataBase.getPlayerLife(), m_dataBase.getPlayerDiamonds());
 		setView();
 		m_window.display();
 
@@ -76,6 +77,8 @@ void Controller::setNewGame()
 	m_board.readLevelData(m_dataBase);
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(true);
+	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
+
 }
 //----------------------------------------------
 //handle the event that occurred in the curent
@@ -155,7 +158,8 @@ void Controller::startNewLevel()
 		setBackground();
 		winLevelScreen();
 		m_board.readLevel(m_dataBase);
-		this->m_statusBar.updateLevel( true);
+		m_statusBar.updateLevel( true);
+		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	}
 }
 //------------------------------------------
@@ -166,6 +170,8 @@ void Controller::startnewGame()
 	m_gameClock.restart();
 	m_board.resetInputStream();
 	m_statusBar.resetNumOfLevel();
+	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
+
 	winGameScreen();
 	m_levelNum=1;
 	setBackground();
@@ -219,6 +225,8 @@ void Controller::setWinScreen(backgroundsType backgroundType, sounds soundType)
 		m_window.display();
 	}
 }
+//---------------------------------------------------------
+
 void Controller::setBackground()
 {
 	switch (m_levelNum)
@@ -235,7 +243,6 @@ void Controller::setBackground()
 	default:
 		break;
 	}
-
 }
 //-----------------------------------------------------------
 

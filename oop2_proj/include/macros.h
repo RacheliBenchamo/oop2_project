@@ -2,15 +2,17 @@
 #include <SFML/Graphics.hpp>
 
 // general data
-const unsigned int NUM_OF_LEVELS = 3;
-const unsigned int NUM_OF_STATIC_ICONS = 17; 
-const unsigned int NUM_OF_MONSTERS = 10; 
-const unsigned int NUM_OF_DEC = 17;
-const unsigned int NUM_OF_SOUNDS = 14; 
-const unsigned int NUM_OF_BACKGROUNDS = 7;
-const unsigned int NUM_OF_DIRECTION = 4;
-const unsigned int NUM_OF_GIFT_TYPES = 4;
-const unsigned int P_SIZE = 64; // pixel size
+const unsigned int
+NUM_OF_LEVELS = 3,
+NUM_OF_STATIC_ICONS = 17, 
+NUM_OF_BACKGROUNDSICONS=6,
+NUM_OF_MONSTERS = 10,
+NUM_OF_DEC = 17,
+ NUM_OF_SOUNDS = 14, 
+NUM_OF_BACKGROUNDS = 7,
+NUM_OF_DIRECTION = 4,
+NUM_OF_GIFT_TYPES = 4,
+P_SIZE = 64; // pixel size
 
 
 // sizes data
@@ -72,6 +74,11 @@ enum icons
     MONSTER1, MONSTER2, MONSTER3, DIAMOND, FLOOR,
 	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,POWER, LIFE,
 	EMPTY
+};
+
+enum bIcons
+{
+    B_DIAMOND, B_POWER, B_LIFE,
 };
 
 enum levels

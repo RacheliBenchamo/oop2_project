@@ -9,6 +9,7 @@
 FileManager::FileManager()
 {
 	//loads from all the files:
+	loadBackgroundIcons();
 	loadMovingObj();
 	loadStaticObj();
 	loadAudio();
@@ -27,6 +28,15 @@ FileManager& FileManager::p2FileManager()
 	static FileManager m_instance;
 	return m_instance;
 }
+//----------------------------------------------------
+void FileManager::loadBackgroundIcons()
+{
+	m_backgroundIcons[B_POWER].loadFromFile("PowerIcon.png");
+	m_backgroundIcons[B_LIFE].loadFromFile("LifeIcon.png");
+	m_backgroundIcons[B_DIAMOND].loadFromFile("DiamondIcon.png");
+	//m_backgroundIcons[B_RESTART].loadFromFile("resetButton.png");
+}
+
 // //--------------------------------------------------
 // load all the object images
 
@@ -44,9 +54,6 @@ void FileManager::loadStaticObj()
 {
 	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
-
-	m_sharedStaticIcon[LIFE].loadFromFile("LifeIcon.png");
-	m_sharedStaticIcon[POWER].loadFromFile("PowerIcon.png");
 
 	m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
 	m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");
@@ -132,6 +139,10 @@ const sf::Texture* FileManager::getPlayAndStopIcon(bool toPlay)const
 		return &this->m_playStopTexture[1];
 	else
 		return &this->m_playStopTexture[0];
+}
+const sf::Texture* FileManager::getBIcons(bIcons place)const
+{
+	return &this->m_backgroundIcons[place];
 }
 //--------------------------------------------------
 

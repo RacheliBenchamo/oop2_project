@@ -57,7 +57,7 @@ void Animation::update(sf::Time delta)
         {
             updateOnLastFrame();
         }
-        std::cout << m_index << "\n";
+     //   std::cout << m_index << "\n";
         update();
     }
 }

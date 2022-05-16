@@ -27,6 +27,8 @@ public:
     ~DataBase() {};
 
     void setLevelSize(int, int);
+    void setLevelMaxDiamonds(int max) { m_currLevelMaxDiamonds= max; }
+    const int getLevelMaxDiamonds() { return m_currLevelMaxDiamonds; }
     void setData(char, int, int);
     void draw(sf::RenderWindow&);
     void FindTeleportPartner() const;
@@ -37,6 +39,8 @@ public:
     sf::Vector2f getPlayerPos() const { return m_player->getPos(); }
     int getPlayerPower()const  { return m_player->getPower(); }
     int getPlayerLife()const { return m_player->getLife(); }
+    int getPlayerDiamonds()const { return m_player->getDiamondsCount(); }
+
     void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
 
 private:
@@ -67,11 +71,14 @@ private:
     bool m_takeGifts[NUM_OF_GIFT_TYPES];
     bool m_GiftsWithTime;
     int m_currTeleport;
+
     sf::RectangleShape m_movingRec;
     std::unique_ptr<Player> m_player;
     std::vector<std::unique_ptr<StaticObj>> m_staticsObj;
    // std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
+
+    int m_currLevelMaxDiamonds = 0;
     sf::Clock m_clock;
     int m_currLevel;
 };

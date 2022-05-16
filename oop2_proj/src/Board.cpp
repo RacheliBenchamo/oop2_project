@@ -20,6 +20,7 @@ bool Board::readLevelData(DataBase& dataBase)
 	if (m_input.eof())
 		return false;
 
+	int maxDimonds = 0;
 	if (m_input.is_open())
 	{
 	
@@ -30,10 +31,10 @@ bool Board::readLevelData(DataBase& dataBase)
 		m_startOfTheLevel = m_input.tellg();
 
 		char c;
-		m_input >> m_boardSize.x >> m_boardSize.y;
+		m_input >> m_boardSize.x >> m_boardSize.y>> maxDimonds;
 		m_input.get();
-		
 		dataBase.setLevelSize(m_boardSize.x, m_boardSize.y);
+		dataBase.setLevelMaxDiamonds(maxDimonds);
 	}
 
 	return true;
@@ -46,7 +47,7 @@ void Board::readLevel(DataBase& dataBase)
 {
 	if ((m_input).is_open())
 	{
-		int space_x = 100 , space_y = 75;
+		int space_x = 100 , space_y = 60;
 		char c;
 		for (size_t i = 0; i < m_boardSize.x; i++)
 		{

@@ -20,6 +20,8 @@ public:
 	const sf::Texture* getMusicIcon(bool)const;
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(backgroundsType)const;
+	const sf::Texture* getBIcons(bIcons)const;
+
 	const sf::Font* getFont()const;
 	const sf::Texture* getCurrLevDec(icons, int) const;
 	const AnimationData& getStaticData(icons);
@@ -39,6 +41,8 @@ private:
 	void loadStopAndPlayIcon();
 	void loadResetIcon();
 	void loadBackgrounds();
+	void loadBackgroundIcons();
+
 
 	void setAnimationsData();
 	AnimationData createPlayerAnimeData();
@@ -56,6 +60,8 @@ private:
 	sf::Texture m_sharedStaticIcon[NUM_OF_DEC];
 
 	sf::Texture m_backgrounds[NUM_OF_BACKGROUNDS];
+	sf::Texture m_backgroundIcons[NUM_OF_BACKGROUNDSICONS];
+
 	sf::Texture m_musicTexture[2];
 	sf::Texture m_playStopTexture[2];
 	sf::Texture m_restartIcon;
