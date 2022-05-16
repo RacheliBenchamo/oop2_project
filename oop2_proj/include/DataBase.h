@@ -34,7 +34,9 @@ public:
    // bool takeCurrGift(giftType g) { return m_takeGifts[g]; }
     bool winLevel();
     void eraseObj();
-    sf::Vector2f getPlayerPos() { return m_player->getPos(); };
+    sf::Vector2f getPlayerPos() const { return m_player->getPos(); }
+    int getPlayerPower()const  { return m_player->getPower(); }
+    int getPlayerLife()const { return m_player->getLife(); }
     void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
 
 private:

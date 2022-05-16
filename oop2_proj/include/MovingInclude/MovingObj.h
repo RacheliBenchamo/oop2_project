@@ -15,7 +15,7 @@ public:
 	void backToPrevPos();
 	virtual void handleCollision(GameObjBase&) override =0;
 	virtual void update(const sf::Time&) {};
-	
+	int getLife()  const { return m_life; }
 
 protected:
 
@@ -27,7 +27,8 @@ protected:
 	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
 	bool isAlive() const {return m_life> 0;}
 
-	int m_life=20;
+
+	int m_life=100;
 	bool mvRight = false,
 		 mvLeft = false;
 private:
@@ -37,6 +38,4 @@ private:
 	sf::Vector2f m_currDirection;
 	int m_animationRow;
 	int m_animationCol;
-
-	//int m_life;
 };

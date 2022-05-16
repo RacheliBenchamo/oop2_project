@@ -3,9 +3,9 @@
 
 // general data
 const unsigned int NUM_OF_LEVELS = 3;
-const unsigned int NUM_OF_STATIC_ICONS = 14; 
+const unsigned int NUM_OF_STATIC_ICONS = 17; 
 const unsigned int NUM_OF_MONSTERS = 10; 
-const unsigned int NUM_OF_DEC = 14;
+const unsigned int NUM_OF_DEC = 17;
 const unsigned int NUM_OF_SOUNDS = 14; 
 const unsigned int NUM_OF_BACKGROUNDS = 7;
 const unsigned int NUM_OF_DIRECTION = 4;
@@ -53,10 +53,10 @@ const float BOLD_OUTLINE = 10.0;
 
 // for the status bar
 const int STATUS_BAR_HEIGHT = 50;
-const int STATUS_BAR_CHAR_SIZE = 60;
+const int STATUS_BAR_CHAR_SIZE = 10;
 const float STATUS_BAR_OUTLINE_THICKNESS = 3.0;
 const int BUFF_DISTANCE = 40;
-const sf::Vector2f MUSIC_ICON_SCALE = { 0.08f, 0.08f };
+const sf::Vector2f MUSIC_ICON_SCALE = { 0.01f, 0.01f };
 
 //direction data
 const sf::Vector2f DVec[] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
@@ -70,7 +70,7 @@ TREE_C = 'T',BIG_MONSTER='B', MONSTER1_C = '1', MONSTER2_C = '2', MONSTER3_C = '
 enum icons 
 {
     MONSTER1, MONSTER2, MONSTER3, DIAMOND, FLOOR,
-	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,
+	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,POWER, LIFE,
 	EMPTY
 };
 
@@ -95,7 +95,7 @@ enum backgroundsType
 
 enum giftType
 {
-	LIFE, POWER 
+	
 };
 
 enum direction

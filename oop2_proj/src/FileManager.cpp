@@ -45,8 +45,8 @@ void FileManager::loadStaticObj()
 	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 
-	m_sharedStaticIcon[LIFE].loadFromFile("life.png");
-	m_sharedStaticIcon[POWER].loadFromFile("power.png");
+	m_sharedStaticIcon[LIFE].loadFromFile("LifeIcon.png");
+	m_sharedStaticIcon[POWER].loadFromFile("PowerIcon.png");
 
 	m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
 	m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");

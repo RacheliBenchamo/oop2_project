@@ -16,6 +16,7 @@ public:
 	void addDiamond() {};
 	const int getDiamondsCount() const {};
 	bool isFinishedLevel(const int) {};
+	int getPower()const { return m_power; }
 	void incLife() {};
 	void incPower() {};
 	void addLife() {};
@@ -29,7 +30,7 @@ private:
 
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;
-	int m_power;
+	int m_power=100;
 	Animation m_animation;
 
 };

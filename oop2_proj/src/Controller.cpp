@@ -34,7 +34,7 @@ void Controller::run() try
 		m_window.clear();
 		m_window.draw(m_currLevelBackground);
 		m_dataBase.draw(m_window);
-		//m_statusBar.draw(m_window);
+		m_statusBar.draw(m_window,m_dataBase.getPlayerPower(), m_dataBase.getPlayerLife());
 		setView();
 		m_window.display();
 
@@ -245,5 +245,6 @@ void Controller::setView()
 	m_view.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
 	m_window.setView(m_view);
 	m_currLevelBackground.setPosition(m_view.getCenter());
+	m_statusBar.updatePos(m_view.getCenter());
 	//m_currLevelBackground.setPosition(m_currLevelBackground.getPosition().x +400, m_currLevelBackground.getPosition().y +200);
 }

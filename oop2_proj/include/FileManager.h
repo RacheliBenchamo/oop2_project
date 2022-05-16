@@ -59,6 +59,7 @@ private:
 	sf::Texture m_musicTexture[2];
 	sf::Texture m_playStopTexture[2];
 	sf::Texture m_restartIcon;
+
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];

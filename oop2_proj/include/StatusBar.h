@@ -17,14 +17,14 @@ public:
 	float getTime() const;
 	void resetTimer();
 	void setTime(int);
-	void draw(sf::RenderWindow&);
+	void draw(sf::RenderWindow&,const int ,const int);
 	void resetNumOfLevel();
 	bool containsMusicIcon(const sf::Event&) const;
 	void setMusicIcon(bool);
 	bool containsStopAndPlayIcon(const sf::Event&) const;
 	void setStopAndPlayIcon(bool);
 	bool containsRestartIcon(const sf::Event&) const;
-
+	void updatePos(sf::Vector2f);
 
 private:
 	void setLevelText();
@@ -33,6 +33,10 @@ private:
 	void setStopIcon();
 	void setRestartIcon();
 	void updateTimePassText();
+	void setCurrLifeRect();
+	void setCurrPowerRect();//50.f, 8.f
+	void updateLifeAndPower(int power,int life);
+
 
 	sf::Clock m_timer;
 	float m_minutes;
@@ -47,5 +51,11 @@ private:
 	sf::Sprite m_stopAndPlayIcon;
 	sf::Sprite m_musicIcon;
 	sf::Sprite m_resetIcon;
+	sf::Sprite m_lifeIcon;
+	sf::Sprite m_powerIcon;
+
+	sf::RectangleShape
+		m_currLife,
+		m_currPower;
 };
 
