@@ -54,8 +54,11 @@ void FileManager::loadStaticObj()
 {
 	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
+	m_dec[LEVEL1][FLOOR_C].loadFromFile("staticDec.png");
 
-	m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
+	m_dec[LEVEL1][FLOOR_C] = m_dec[LEVEL1][FLOOR_C].copyToImage();
+
+	//m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
 	m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");
 	m_dec[LEVEL3][FLOOR].loadFromFile("SnowFloor.png");
 }
