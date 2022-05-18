@@ -71,16 +71,22 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		break;
 	case  START_FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), L_FLOOR));
+		break;
 	case  FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), M_FLOOR));
+		break;
 	case  END_FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), R_FLOOR));
+		break;
 	case  F_TREE_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), F_TREE));
+		break;
 	case  S_TREE_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), S_TREE));
+		break;
 	case  ROCK_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), ROCK));
+		break;
 		
 	default:
 		return false;

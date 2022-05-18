@@ -9,7 +9,7 @@ StageDec::StageDec(sf::Vector2f pos, levels level_num, decoration dec)
 	m_rect = FileManager::p2FileManager().getCurrLevDecRect(level_num, dec);
 
 	m_shape.setTextureRect(m_rect);
-	//m_texture.setSmooth(true);
+	//m_shape.setSmooth(true);
 }
 
 //--------------------------------------------------
