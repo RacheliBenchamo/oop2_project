@@ -4,8 +4,8 @@
 Floor::Floor(sf::Vector2f pos,int level_num)
 	: StaticObj(sf::Vector2f(BLOCK_SIZE*2, BLOCK_SIZE*2), pos)
 {
-auto m_pTexture = FileManager::p2FileManager().getCurrLevDec(FLOOR,level_num);
-m_shape.setTexture(m_pTexture);
+//auto m_pTexture = FileManager::p2FileManager().getCurrLevDec(FLOOR,level_num);
+//m_shape.setTexture(m_pTexture);
 }
 
 //--------------------------------------------------

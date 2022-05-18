@@ -54,13 +54,40 @@ void FileManager::loadStaticObj()
 {
 	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
-	m_dec[LEVEL1][FLOOR_C].loadFromFile("staticDec.png");
+	m_dec.loadFromFile("staticDec.png");
 
-	m_dec[LEVEL1][FLOOR_C] = m_dec[LEVEL1][FLOOR_C].copyToImage();
+	loadStaticObjRect();
+	//m_dec[LEVEL1][FLOOR_C] = m_dec[LEVEL1][FLOOR_C].copyToImage();
 
 	//m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
-	m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");
-	m_dec[LEVEL3][FLOOR].loadFromFile("SnowFloor.png");
+	/*m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");
+	m_dec[LEVEL3][FLOOR].loadFromFile("SnowFloor.png");*/
+}
+
+//--------------------------------------------------
+// load all the rect of the static decoration un the game
+void FileManager::loadStaticObjRect()
+{
+	m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L1;
+	m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L1;
+	m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L1;
+	m_decRect[LEVEL2][L_FLOOR] = LEFT_FLOOR_L2;
+	m_decRect[LEVEL2][M_FLOOR] = MIDDLE_FLOOR_L2;
+	m_decRect[LEVEL2][R_FLOOR] = RIGHT_FLOOR_L2;
+	m_decRect[LEVEL3][L_FLOOR] = LEFT_FLOOR_L3;
+	m_decRect[LEVEL3][M_FLOOR] = MIDDLE_FLOOR_L3;
+	m_decRect[LEVEL3][R_FLOOR] = RIGHT_FLOOR_L3;
+
+	m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L1;
+	m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L1;
+	m_decRect[LEVEL1][ROCK] = ROCK_L1;
+	m_decRect[LEVEL2][F_TREE] = FIRST_TREE_L2;
+	m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
+	m_decRect[LEVEL2][ROCK] = ROCK_L2;
+	m_decRect[LEVEL3][F_TREE] = FIRST_TREE_L3;
+	m_decRect[LEVEL3][S_TREE] = SECOUND_TREE_L3;
+	m_decRect[LEVEL3][ROCK] = ROCK_L3;
+
 }
 //--------------------------------------------------
 // load all the audio
@@ -184,10 +211,16 @@ sf::Texture* FileManager::getPlayerTexture()
 	return &this->m_player;
 }
 //------------------------------------------------------------------
-
-const sf::Texture* FileManager::getCurrLevDec(icons icon, int currLevel) const
+const sf::Texture* FileManager::getDec() const
 {
-	return &this->m_dec[currLevel - 1][icon];
+	return &this->m_dec;
+}
+//------------------------------------------------------------------
+
+//get the decoration of the level
+const sf::IntRect FileManager::getCurrLevDecRect(levels currLevel, decoration dec) const
+{
+	return this->m_decRect[currLevel - 1][dec];
 }
 //------------------------------------------------------------------
 

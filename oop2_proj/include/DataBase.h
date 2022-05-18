@@ -13,8 +13,10 @@
 #include "StaticInclude\Gift.h"
 #include "StaticInclude\LifeGift.h"
 #include "StaticInclude\PowerGift.h"
+#include "StaticInclude\StageDec.h"
 #include "MovingInclude\Player.h"
 #include "MovingInclude\Monster.h"
+
 
 
 #include <array>
