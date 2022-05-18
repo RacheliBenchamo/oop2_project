@@ -1,8 +1,8 @@
 #include "StaticInclude\StageDec.h"
 
 
-StageDec::StageDec(sf::Vector2f pos, levels level_num, decoration dec)
-	: StaticObj(sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE * 2), pos)
+StageDec::StageDec(sf::Vector2f pos, levels level_num, decoration dec, sf::Vector2f size)
+	: StaticObj(size, pos)
 {
 	auto m_pTexture = FileManager::p2FileManager().getDec();
 	m_shape.setTexture(m_pTexture);

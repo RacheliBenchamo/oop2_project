@@ -30,7 +30,7 @@ void DataBase::setLevelSize(int x, int y)
 void DataBase::setData(char c, int i, int j)
 {
 	sf::Vector2f pos(i, j);
-	std::cout <<c <<" " <<pos.x << " " << pos.y << "\n";
+	//std::cout <<c <<" " <<pos.x << " " << pos.y << "\n";
 		if(!createStaticObj(c, pos))
 		createMovingObj(c, pos);
 }
@@ -42,7 +42,7 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	switch (c)
 	{
 	case PLAYER_C:
-		m_player = std::make_unique<Player>(pos);
+		m_player = std::make_unique<Player>(pos+sf::Vector2f(0,20));
 		break;
 	//case FAIRY_C:
 	//	//cout << "add fairies" << i << " " << j << " \n";
@@ -70,22 +70,28 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  START_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), L_FLOOR));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), 
+			L_FLOOR,sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE/1.5)));
 		break;
 	case  FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), M_FLOOR));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), M_FLOOR,
+			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE / 1.5)));
 		break;
 	case  END_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), R_FLOOR));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), R_FLOOR
+			,sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE / 1.5)));
 		break;
 	case  F_TREE_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), F_TREE));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), F_TREE,
+			sf::Vector2f(BLOCK_SIZE*1.5, BLOCK_SIZE * 1.5)));
 		break;
 	case  S_TREE_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), S_TREE));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), S_TREE,
+			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE * 1.5)));
 		break;
 	case  ROCK_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), ROCK));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), ROCK,
+			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE)));
 		break;
 		
 	default:
