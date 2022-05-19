@@ -82,14 +82,6 @@ void FileManager::loadStaticObjRect()
 	m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
 	m_decRect[LEVEL2][ROCK] = ROCK_L2;
 
-
-	//m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L2;
-	//m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L2;
-	//m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L2;
-	//m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L2;
-	//m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L2;
-	//m_decRect[LEVEL1][ROCK] = ROCK_L2;
-
 	m_decRect[LEVEL3][L_FLOOR] = LEFT_FLOOR_L3;
 	m_decRect[LEVEL3][M_FLOOR] = MIDDLE_FLOOR_L3;
 	m_decRect[LEVEL3][R_FLOOR] = RIGHT_FLOOR_L3;
