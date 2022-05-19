@@ -53,7 +53,7 @@ void Board::readLevel(DataBase& dataBase)
 		{
 			for (size_t j = 0; j < m_boardSize.y; j++)
 			{
-				space_y += 17;
+				space_y += 17.7;
 				c = char((m_input).get());
 				if (c == EMPTY_C)
 					continue;

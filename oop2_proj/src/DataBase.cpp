@@ -71,27 +71,27 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		break;
 	case  START_FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), 
-			L_FLOOR,sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE/1.5)));
+			L_FLOOR,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE/1.5)));
 		break;
 	case  FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), M_FLOOR,
-			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE / 1.5)));
+			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  END_FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), R_FLOOR
-			,sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE / 1.5)));
+			,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  F_TREE_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), F_TREE,
-			sf::Vector2f(BLOCK_SIZE*1.5, BLOCK_SIZE * 1.5)));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel),
+			F_TREE,sf::Vector2f(BLOCK_SIZE*1.5, BLOCK_SIZE * 1.5)));
 		break;
 	case  S_TREE_C:
 		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), S_TREE,
 			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE * 1.5)));
 		break;
 	case  ROCK_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), ROCK,
-			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE)));
+		m_staticsObj.push_back(std::make_unique<StageDec>(pos + sf::Vector2f(0, 25), levels(m_currLevel),
+			ROCK,sf::Vector2f(BLOCK_SIZE/3, BLOCK_SIZE/3)));
 		break;
 		
 	default:
