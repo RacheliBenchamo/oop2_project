@@ -299,10 +299,10 @@ AnimationData FileManager::createPlayerAnimeData()
 	auto player = AnimationData{};
 
 	setCurrentData(player, Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1,Stay), 0.1f, false);
+	({ 110, 115 }, { 730, 5 }, 1,Stay), 0.2f, false);
 
 	setCurrentData(player, Right, movableAnimationSet
-	({ 230, 115 }, { 480, 5 }, 2, Right), 0.1f, true);
+	({ 230, 115 }, { 480, 5 }, 2, Right), 0.03f, false);
 
 	setCurrentData(player, Jump, movableAnimationSet
 	({ 100, 110 }, { 373, 5 }, 1,Jump), 0.15f, true);
