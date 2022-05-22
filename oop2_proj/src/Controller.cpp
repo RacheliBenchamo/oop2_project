@@ -20,7 +20,7 @@ Controller::Controller()
 
 	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
 	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
-	m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
+	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
 	m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
 }
 
