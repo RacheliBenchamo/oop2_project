@@ -9,6 +9,7 @@
                                                "DataBase.cpp"
                                               "MovingSrc/MovingObj.cpp"
                                               "MovingSrc/Player.cpp"
+                                               "MovingSrc/Monster.cpp"
                                               "StaticSrc/Teleport.cpp"
                                               "StaticSrc/Diamond.cpp"
                                               "StaticSrc/Gate.cpp"

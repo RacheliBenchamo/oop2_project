@@ -79,6 +79,7 @@ const int Animation::getCurrentIndex() const
 //------------------------------------------------------------------------
 void Animation::update()
 {
+
     auto inRect = m_gameData.m_data.find(m_operation)->second[m_index];
     m_shape.setTextureRect(inRect);
 }

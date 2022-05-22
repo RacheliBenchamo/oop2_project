@@ -44,10 +44,9 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	case PLAYER_C:
 		m_player = std::make_unique<Player>(pos+sf::Vector2f(0,20));
 		break;
-	//case FAIRY_C:
-	//	//cout << "add fairies" << i << " " << j << " \n";
-	//	m_fairies.push_back(std::make_unique<Fairy>((FAIRY), i, j));
-	//	break;
+	//case  MONSTER1_C:
+		//m_monsters.push_back(std::make_unique<Monster>(pos, levels(m_currLevel),
+		//	MONSTER1, sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 	}
 }
 //-----------------------------------------------
@@ -134,6 +133,11 @@ void DataBase::drawMovingObj(sf::RenderWindow& window)
 
 {
 	sf::Time delta_time = m_clock.restart();
+	for (auto& e : m_monsters)
+	{
+		//e->update(delta_time);
+		e->draw(window);
+	}
 	if (m_player)
 	{
 		m_player->update(delta_time);

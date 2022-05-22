@@ -26,6 +26,7 @@ public:
 	const sf::Texture* getDec() const;
 	const sf::IntRect getCurrLevDecRect(levels, decoration) const;
 	const AnimationData& getStaticData(icons);
+	const AnimationData& getMonstersData(levels,icons);
 	const AnimationData& getPlayerData();
 
 
@@ -47,7 +48,12 @@ private:
 
 
 	void setAnimationsData();
-	AnimationData createPlayerAnimeData();
+	void createPlayerAnimeData();
+	void createDesertMonstersAnimeData();
+	void createSnowMonstersAnimeData();
+	void createForestMonstersAnimeData();
+
+
 	void setCurrentData(AnimationData& , Operation ,std::vector<sf::IntRect> , float , bool );
 	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,
 		const sf::Vector2i ,const int , Operation);
@@ -74,7 +80,7 @@ private:
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];
 	AnimationData m_playerData;
-
+	AnimationData m_monsterData[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 };
 
 

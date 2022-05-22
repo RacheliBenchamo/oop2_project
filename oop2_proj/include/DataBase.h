@@ -77,7 +77,7 @@ private:
     sf::RectangleShape m_movingRec;
     std::unique_ptr<Player> m_player;
     std::vector<std::unique_ptr<StaticObj>> m_staticsObj;
-   // std::vector<std::unique_ptr<Monster>> m_monsters;
+    std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
 
     int m_currLevelMaxDiamonds = 0;
