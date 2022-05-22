@@ -6,12 +6,9 @@ StageDec::StageDec(sf::Vector2f pos, levels level_num, decoration dec, sf::Vecto
 {
 	auto m_pTexture = FileManager::p2FileManager().getDec();
 	m_shape.setTexture(m_pTexture);
-	m_rect = FileManager::p2FileManager().getCurrLevDecRect(level_num, dec);
-
-	m_shape.setTextureRect(m_rect);
+	m_shape.setTextureRect(FileManager::p2FileManager().getCurrLevDecRect(level_num, dec));
 	//m_shape.setSmooth(true);
 }
-
 //--------------------------------------------------
 
 //void StageDec::startSound()

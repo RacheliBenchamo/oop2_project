@@ -31,11 +31,6 @@ void Animation::operation(Operation op)
 //------------------------------- update ---------------------------------
 // Update the next frame index by the delta time.
 //------------------------------------------------------------------------
-//void Animation::update(sf::Time delta)
-//{
-//    if (m_index == )
-//    m_index++;
-//}
 void Animation::update(sf::Time delta)
 {
     auto temp = m_gameData.m_data;
