@@ -36,11 +36,11 @@ void Animation::update(sf::Time delta)
     auto temp = m_gameData.m_data;
     m_elapsed += delta;
 
-    std::cout <<"delta " <<m_elapsed.asSeconds() << "\n";
-    std::cout << "the " << m_gameData.m_time.find(m_operation)->second << "\n";
+    /*std::cout <<"delta " <<m_elapsed.asSeconds() << "\n";
+    std::cout << "the " << m_gameData.m_time.find(m_operation)->second << "\n";*/
     if (m_elapsed >= sf::seconds(m_gameData.m_time.find(m_operation)->second))
     {
-        std::cout << "in if" << "\n";
+        //std::cout << "in if" << "\n";
         m_elapsed -= sf::seconds(m_gameData.m_time.find(m_operation)->second);
         ++m_index;
 
