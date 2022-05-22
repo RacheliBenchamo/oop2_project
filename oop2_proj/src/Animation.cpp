@@ -36,6 +36,7 @@ void Animation::update(sf::Time delta)
     auto temp = m_gameData.m_data;
     m_elapsed += delta;
 
+    //std::cout << m_gameData.m_data.find(m_operation)->second.size() << "\n";
     if (m_elapsed >= sf::seconds(m_gameData.m_time.find(m_operation)->second))
     {
         m_elapsed -= sf::seconds(m_gameData.m_time.find(m_operation)->second);
@@ -45,6 +46,7 @@ void Animation::update(sf::Time delta)
         {
             // Set animation from the start if last frame played
             m_index %= m_gameData.m_data.find(m_operation)->second.size();
+            
             //m_index %= 2;
         }
 
