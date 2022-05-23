@@ -411,11 +411,11 @@ void FileManager::createSnowMonstersAnimeData()
 	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
 	//	Operation::Dead), 0.15f, true);
 
-	/*setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
+	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
+	({ 129, 40 }, { 0, 6 }, 3, Stay), 0.02f, false);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Right, movableAnimationSet
-	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Right, movableAnimationSet
+	//({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Operation::Hurt, movableAnimationSet
@@ -426,8 +426,8 @@ void FileManager::createSnowMonstersAnimeData()
 	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
 	//	Operation::Dead), 0.15f, true);
 
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Stay, movableAnimationSet
-	//({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
+	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Stay, movableAnimationSet
+	({ 129, 40 }, { 0, 6 }, 3, Stay), 0.02f, false);
 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Right, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);
