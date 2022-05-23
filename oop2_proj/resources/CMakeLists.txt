@@ -21,7 +21,7 @@ configure_file ("staticObjPic/staticDec.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/forestBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/snowBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("backgrounds/desertBackgroundpng" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("backgrounds/desertBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("backgrounds/helpBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/winGameBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
