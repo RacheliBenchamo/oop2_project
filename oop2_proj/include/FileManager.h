@@ -35,7 +35,6 @@ private:
 	FileManager(const FileManager&) = default;
 	FileManager& operator=(const FileManager&) = default;
 
-
 	void loadMovingObj();
 	void loadStaticObj();
 	void loadStaticObjRect();
@@ -46,38 +45,29 @@ private:
 	void loadBackgrounds();
 	void loadBackgroundIcons();
 
-
 	void setAnimationsData();
 	void createPlayerAnimeData();
 	void createDesertMonstersAnimeData();
 	void createSnowMonstersAnimeData();
 	void createForestMonstersAnimeData();
 
-
 	void setCurrentData(AnimationData& , Operation ,std::vector<sf::IntRect> , float , bool );
-	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,
-		const sf::Vector2i ,const int , Operation);
-	AnimationData createStaticAnimationData(const sf::Vector2i,const sf::Vector2i ,const int );
+	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,const sf::Vector2i ,const int , Operation);
 
-
-	//sf::Texture m_icons[NUM_OF_STATIC_ICONS];
-	//sf::Texture m_staticIcon[NUM_OF_STATIC_ICONS];
 	sf::Texture m_monstersIcon[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 	sf::Texture m_player;
-	//sf::Texture m_dec1[NUM_OF_LEVELS][NUM_OF_DEC];
 	sf::Texture m_sharedStaticIcon[NUM_OF_DEC];
 	sf::Texture m_dec;
 	sf::IntRect m_decRect[NUM_OF_LEVELS][NUM_OF_DEC];
-
 	sf::Texture m_backgrounds[NUM_OF_BACKGROUNDS];
 	sf::Texture m_backgroundIcons[NUM_OF_BACKGROUNDSICONS];
-
 	sf::Texture m_musicTexture[2];
 	sf::Texture m_playStopTexture[2];
 	sf::Texture m_restartIcon;
 
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::Font m_font;
+
 	AnimationData m_staticData[NUM_OF_DEC];
 	AnimationData m_playerData;
 	AnimationData m_monsterData[NUM_OF_LEVELS][NUM_OF_MONSTERS];

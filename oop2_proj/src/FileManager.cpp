@@ -66,30 +66,32 @@ void FileManager::loadStaticObj()
 	m_dec.loadFromFile("staticDec.png");
 
 	loadStaticObjRect();
-	//m_dec[LEVEL1][FLOOR_C] = m_dec[LEVEL1][FLOOR_C].copyToImage();
-
-	//m_dec[LEVEL1][FLOOR].loadFromFile("ForsetFloor.png");
-	/*m_dec[LEVEL2][FLOOR].loadFromFile("DesertFloor.png");
-	m_dec[LEVEL3][FLOOR].loadFromFile("SnowFloor.png");*/
 }
 
 //--------------------------------------------------
 // load all the rect of the static decoration un the game
 void FileManager::loadStaticObjRect()
 {
-	m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L1;
-	m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L1;
-	m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L1;
-	m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L1;
-	m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L1;
-	m_decRect[LEVEL1][ROCK] = ROCK_L1;
+	//m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L1;
+	//m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L1;
+	//m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L1;
+	//m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L1;
+	//m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L1;
+	//m_decRect[LEVEL1][ROCK] = ROCK_L1;
 
-	m_decRect[LEVEL2][L_FLOOR] = LEFT_FLOOR_L2;
-	m_decRect[LEVEL2][M_FLOOR] = MIDDLE_FLOOR_L2;
-	m_decRect[LEVEL2][R_FLOOR] = RIGHT_FLOOR_L2;
-	m_decRect[LEVEL2][F_TREE] = FIRST_TREE_L2;
-	m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
-	m_decRect[LEVEL2][ROCK] = ROCK_L2;
+	//m_decRect[LEVEL2][L_FLOOR] = LEFT_FLOOR_L2;
+	//m_decRect[LEVEL2][M_FLOOR] = MIDDLE_FLOOR_L2;
+	//m_decRect[LEVEL2][R_FLOOR] = RIGHT_FLOOR_L2;
+	//m_decRect[LEVEL2][F_TREE] = FIRST_TREE_L2;
+	//m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
+	//m_decRect[LEVEL2][ROCK] = ROCK_L2;
+
+	m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L2;
+	m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L2;
+	m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L2;
+	m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L2;
+	m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L2;
+	m_decRect[LEVEL1][ROCK] = ROCK_L2;
 
 	m_decRect[LEVEL3][L_FLOOR] = LEFT_FLOOR_L3;
 	m_decRect[LEVEL3][M_FLOOR] = MIDDLE_FLOOR_L3;
@@ -149,8 +151,8 @@ void FileManager::loadResetIcon()
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
-	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("gameBackground.png");
 	m_backgrounds[LEVEL2_BACKGROUND].loadFromFile("gameBackground.png");
+	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("snowBackground.png");
 	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("gameBackground.png");
 	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
 	m_backgrounds[WIN_LEVEL_BACKGROUND].loadFromFile("winLevelBackground.png");
@@ -242,7 +244,7 @@ const AnimationData& FileManager::getStaticData(icons object)
 
 const AnimationData& FileManager::getMonstersData(levels lev,icons object)
 {
-	return m_monsterData[lev][object];
+	return m_monsterData[lev-1][object];
 }
 //------------------------------------------------------------------
 
@@ -341,6 +343,106 @@ void FileManager::createPlayerAnimeData()
 //--------------------------- monstersAnime ----------------------------
 //Set the monsters animations.
 
+void FileManager::createForestMonstersAnimeData()
+{
+
+	setCurrentData(m_monsterData[LEVEL1][MONSTER1], Stay, movableAnimationSet
+	({ 178, 55 }, { 1, 1 }, 3, Stay), 0.01f, false);
+
+	/*setCurrentData(m_monsterData[LEVEL1][MONSTER1], Right, movableAnimationSet
+	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
+
+	// 
+	//setCurrentData(m_monsterData[LEVEL1][MONSTER1], Operation::Hurt, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Hurt), 0.05f, true);
+
+	//setCurrentData(m_monsterData[LEVEL1][MONSTER1], Operation::Dead, movableAnimationSet
+	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
+	//	Operation::Dead), 0.15f, true);
+
+	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Stay, movableAnimationSet
+	({ 355, 90 }, { 1, 1 }, 4, Stay), 0.01f, false);
+
+	/*setCurrentData(m_monsterData[LEVEL1][MONSTER2], Right, movableAnimationSet
+	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
+
+	// 
+	//setCurrentData(m_monsterData[LEVEL1][MONSTER2], Operation::Hurt, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Hurt), 0.05f, true);
+
+	//setCurrentData(m_monsterData[LEVEL1][MONSTER2], Operation::Dead, movableAnimationSet
+	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
+	//	Operation::Dead), 0.15f, true);
+
+	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Stay, movableAnimationSet
+	({ 297, 65 }, { 9, 6 }, 3, Stay), 0.02f, false);
+
+	/*
+	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Right, movableAnimationSet
+	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
+
+	// 
+	//setCurrentData(m_monsterData[LEVEL1][MONSTER3], Operation::Hurt, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Hurt), 0.05f, true);
+
+	//setCurrentData(m_monsterData[LEVEL1][MONSTER3], Operation::Dead, movableAnimationSet
+	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
+	//	Operation::Dead), 0.15f, true);
+}
+//----------------------------------------------------
+
+void FileManager::createSnowMonstersAnimeData()
+{
+	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Stay, movableAnimationSet
+	({ 225, 35 }, { 1, 6 },5, Stay), 0.01f, false);
+
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Right, movableAnimationSet
+	//({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);
+
+	// 
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Operation::Hurt, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Hurt), 0.05f, true);
+
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Operation::Dead, movableAnimationSet
+	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
+	//	Operation::Dead), 0.15f, true);
+
+	/*setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
+	({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
+
+	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Right, movableAnimationSet
+	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
+
+	// 
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Operation::Hurt, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Hurt), 0.05f, true);
+
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Operation::Dead, movableAnimationSet
+	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
+	//	Operation::Dead), 0.15f, true);
+
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Stay, movableAnimationSet
+	//({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
+
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Right, movableAnimationSet
+	//({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);
+
+	// 
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Operation::Hurt, movableAnimationSet
+	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
+	//	Operation::Hurt), 0.05f, true);
+
+	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Operation::Dead, movableAnimationSet
+	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
+	//	Operation::Dead), 0.15f, true);
+}
+//----------------------------------------------------
+
 void FileManager::createDesertMonstersAnimeData()
 {
 	/*setCurrentData(m_monsterData[LEVEL3][MONSTER1], Stay, movableAnimationSet
@@ -388,102 +490,4 @@ void FileManager::createDesertMonstersAnimeData()
 	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
 	//	Operation::Dead), 0.15f, true);
 }
-//----------------------------------------------------
 
-void FileManager::createSnowMonstersAnimeData()
-{
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Stay, movableAnimationSet
-	//({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
-
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Right, movableAnimationSet
-	//({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);
-
-	// 
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-
-	/*setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
-
-	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Right, movableAnimationSet
-	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
-
-	// 
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Stay, movableAnimationSet
-	//({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
-
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Right, movableAnimationSet
-	//({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);
-
-	// 
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-}
-//----------------------------------------------------
-
-void FileManager::createForestMonstersAnimeData()
-{
-
-	setCurrentData(m_monsterData[LEVEL1] [MONSTER1] , Stay, movableAnimationSet
-	({ 175, 55 }, { 1, 1 }, 3, Stay), 0.01f, false);
-
-	/*setCurrentData(m_monsterData[LEVEL1][MONSTER1], Right, movableAnimationSet
-	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
-
-	// 
-	//setCurrentData(m_monsterData[LEVEL1][MONSTER1], Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(m_monsterData[LEVEL1][MONSTER1], Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-
-	/*setCurrentData(m_monsterData[LEVEL1][MONSTER2], Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
-
-	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Right, movableAnimationSet
-	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
-
-	// 
-	//setCurrentData(m_monsterData[LEVEL1][MONSTER2], Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(m_monsterData[LEVEL1][MONSTER2], Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-
-	/*setCurrentData(m_monsterData[LEVEL1][MONSTER3], Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
-
-	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Right, movableAnimationSet
-	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/
-
-	// 
-	//setCurrentData(m_monsterData[LEVEL1][MONSTER3], Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(m_monsterData[LEVEL1][MONSTER3], Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-}
