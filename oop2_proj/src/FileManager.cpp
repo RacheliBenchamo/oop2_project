@@ -72,33 +72,26 @@ void FileManager::loadStaticObj()
 // load all the rect of the static decoration un the game
 void FileManager::loadStaticObjRect()
 {
-	//m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L1;
-	//m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L1;
-	//m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L1;
-	//m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L1;
-	//m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L1;
-	//m_decRect[LEVEL1][ROCK] = ROCK_L1;
+	m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L1;
+	m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L1;
+	m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L1;
+	m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L1;
+	m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L1;
+	m_decRect[LEVEL1][ROCK] = ROCK_L1;
 
-	//m_decRect[LEVEL2][L_FLOOR] = LEFT_FLOOR_L2;
-	//m_decRect[LEVEL2][M_FLOOR] = MIDDLE_FLOOR_L2;
-	//m_decRect[LEVEL2][R_FLOOR] = RIGHT_FLOOR_L2;
-	//m_decRect[LEVEL2][F_TREE] = FIRST_TREE_L2;
-	//m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
-	//m_decRect[LEVEL2][ROCK] = ROCK_L2;
+	m_decRect[LEVEL2][L_FLOOR] = LEFT_FLOOR_L2;
+	m_decRect[LEVEL2][M_FLOOR] = MIDDLE_FLOOR_L2;
+	m_decRect[LEVEL2][R_FLOOR] = RIGHT_FLOOR_L2;
+	m_decRect[LEVEL2][F_TREE] = FIRST_TREE_L2;
+	m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
+	m_decRect[LEVEL2][ROCK] = ROCK_L2;
 
-	//m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L2;
-	//m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L2;
-	//m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L2;
-	//m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L2;
-	//m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L2;
-	//m_decRect[LEVEL1][ROCK] = ROCK_L2;
-
-	m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L3;
-	m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L3;
-	m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L3;
-	m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L3;
-	m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L3;
-	m_decRect[LEVEL1][ROCK] = ROCK_L3;
+	m_decRect[LEVEL3][L_FLOOR] = LEFT_FLOOR_L3;
+	m_decRect[LEVEL3][M_FLOOR] = MIDDLE_FLOOR_L3;
+	m_decRect[LEVEL3][R_FLOOR] = RIGHT_FLOOR_L3;
+	m_decRect[LEVEL3][F_TREE] = FIRST_TREE_L3;
+	m_decRect[LEVEL3][S_TREE] = SECOUND_TREE_L3;
+	m_decRect[LEVEL3][ROCK] = ROCK_L3;
 
 }
 //--------------------------------------------------
@@ -151,9 +144,9 @@ void FileManager::loadResetIcon()
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
-	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("gameBackground.png");
+	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("gameBackground.png");
 	m_backgrounds[LEVEL2_BACKGROUND].loadFromFile("snowBackground.png");
-	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("desertBackground.png");
+	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("desertBackground.png");
 	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
 	m_backgrounds[WIN_LEVEL_BACKGROUND].loadFromFile("winLevelBackground.png");
 	m_backgrounds[WIN_GAME_BACKGROUND].loadFromFile("winGameBackground.png");

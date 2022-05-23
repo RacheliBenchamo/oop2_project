@@ -18,10 +18,8 @@ Controller::Controller()
 
 	m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
 
-	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
-	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
+
 	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
-	m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
 }
 
 
@@ -47,6 +45,10 @@ void Controller::run() try
 				break;
 			case sf::Event::MouseButtonReleased:
 				handelMouseButtonReleased(event);
+				break;
+			case sf::Event::KeyPressed:
+				if (event.key.code == sf::Keyboard::P)
+					startNewLevel();
 				break;
 			}
 
@@ -78,6 +80,7 @@ void Controller::setNewGame()
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(true);
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
+	setBackground();
 
 }
 //----------------------------------------------
@@ -229,6 +232,8 @@ void Controller::setWinScreen(backgroundsType backgroundType, sounds soundType)
 
 void Controller::setBackground()
 {
+	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
+	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
 	switch (m_levelNum)
 	{
 	case STAGE_ONE:

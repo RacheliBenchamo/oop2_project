@@ -65,7 +65,7 @@ private:
     std::unique_ptr<Gift>  grillGiftType(icons, int, int);
     void takeGift();
     void resetTakeGifts();
-    //void eraseAllFairies();
+    void eraseAllMonsters();
 
     sf::Vector2f m_levelSize;
     sf::RenderWindow m_window;

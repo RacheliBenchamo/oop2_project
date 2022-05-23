@@ -45,15 +45,15 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 		m_player = std::make_unique<Player>(pos+sf::Vector2f(0,20));
 		break;
 	case  MONSTER1_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel+2),
+		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel),
 			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 )));
 		break;
 	case  MONSTER2_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel+2),
+		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel),
 			MONSTER2, sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE)));
 		break;
 	case  MONSTER3_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel+2),
+		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel),
 			MONSTER3, sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE)));
 		break;
 	}
@@ -369,19 +369,19 @@ void DataBase::eraseObj()
 		auto teleportPtr = m_teleport.begin();
 		m_teleport.erase(teleportPtr);
 	}
-	//this->eraseAllMonsters();
+	this->eraseAllMonsters();
 }
 //----------------------------------------------
 //erase all the fairies from the vectors
-//
-//void DataBase::eraseAllMonsters()
-//{
-//	while (!m_monsters.empty())
-//	{
-//		auto monsterPtr = m_monsters.begin();
-//		m_monsters.erase(monsterPtr);
-//	}
-//}
+
+void DataBase::eraseAllMonsters()
+{
+	while (!m_monsters.empty())
+	{
+		auto monsterPtr = m_monsters.begin();
+		m_monsters.erase(monsterPtr);
+	}
+}
 //----------------------------------------------
 
 void DataBase::resetTakeGifts()
