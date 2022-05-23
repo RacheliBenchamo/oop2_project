@@ -476,7 +476,7 @@ void FileManager::createDesertMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1, Stay), 0.2f, false);
+	({ 666, 42 }, { 8, 9 }, 11, Stay), 0.01f, false);
 
 	/*setCurrentData(m_monsterData[LEVEL3][MONSTER3], Right, movableAnimationSet
 	({ 240, 115 }, { 480, 5 }, 2, Right), 0.01f, false);*/

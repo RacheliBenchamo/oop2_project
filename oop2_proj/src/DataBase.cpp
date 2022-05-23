@@ -53,7 +53,7 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 			MONSTER2, sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE)));
 		break;
 	case  MONSTER3_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel+1),
+		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel+2),
 			MONSTER3, sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE)));
 		break;
 	}
