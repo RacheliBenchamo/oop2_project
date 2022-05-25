@@ -550,22 +550,7 @@ void Player::playMovementAnimations()
 //	m_hitingStatus = status;
 //}
 
-////------------------------------- addKey ---------------------------------
-//// Increases the amount of m_diamonds collected by 1.
-////------------------------------------------------------------------------
-//void Player::addDiamond()
-//{
-//	m_diamondsCount++;
-//}
-//
 
-////---------------------------- getKeyCount -------------------------------
-//// Returns the amount of m_diamonds collected.
-////------------------------------------------------------------------------
-//const int Player::getDiamondCount() const
-//{
-//	return m_diamondsCount;
-//}
 
 
 ////-------------------------- isFinishedLevel -----------------------------

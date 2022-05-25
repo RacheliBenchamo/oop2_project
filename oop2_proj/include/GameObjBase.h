@@ -38,18 +38,19 @@ public:
 	float getIconWidth() const;
 	float getIconHeight() const;
 	sf::Vector2f getScale() const;
-	
+	void setDisappear(bool);
 	virtual void handleCollision(GameObjBase& )  = 0;
 
 	virtual bool getToDelete()const;
-	virtual void setDelete();
-	virtual bool getToReplace()const;
-	virtual void setReplace();
+	virtual void setToDelete();
+	//virtual bool getToReplace()const;
+	//virtual void setReplace();
 
 protected:
 	sf::RectangleShape m_shape;
 	void setScale(const sf::Vector2f& scale) {m_shape.setScale(scale);}
 private:
+	bool m_disappear = false;
 	bool m_replace;
 	bool m_delete;
 };

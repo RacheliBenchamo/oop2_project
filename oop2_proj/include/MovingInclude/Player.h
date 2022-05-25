@@ -13,7 +13,7 @@ public:
 	void handleFall() {};
 	void handleJump(bool) {};
 	void shoot() {};
-	void addDiamond() {};
+	void addDiamond() { m_diamondsCount++; };
 	const int getDiamondsCount() const { return m_diamondsCount; }
 	bool isFinishedLevel(const int) {};
 	int getPower()const { return m_power; }

@@ -7,6 +7,7 @@
                                               "Board.cpp"
                                               "Animation.cpp"
                                                "DataBase.cpp"
+                                              "CollisionDetection.cpp"
                                               "MovingSrc/MovingObj.cpp"
                                               "MovingSrc/Player.cpp"
                                                "MovingSrc/Monster.cpp"
@@ -17,5 +18,7 @@
                                                "StaticSrc/Gift.cpp"
                                                 "StaticSrc/Floor.cpp"
                                                 "StaticSrc/StageDec.cpp"
+
+
                                                
                                              )

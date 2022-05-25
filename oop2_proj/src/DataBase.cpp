@@ -173,8 +173,8 @@ void DataBase::move(sf::Time deltaTime)
 {
 
 	//move monsters
-	/*for (auto& f : m_monsters)
-		f->move(deltaTime, m_levelSize);*/
+	for (auto& f : m_monsters)
+		f->move(deltaTime, m_levelSize);
 
 	//move current player
 	m_player->move(deltaTime);
@@ -196,10 +196,11 @@ void DataBase::handelCollisions()
 void DataBase::handelPlayerCollisions()
 {
 	// check collition with static object
-	//for (auto& p : m_staticsObj)
-	//	if (m_players[m_currPlayer]->checkCollision(*p))
-	//		m_players[m_currPlayer]->handleCollision(*p);
-	//
+	for (auto& p : m_staticsObj)
+		if (m_player->checkCollision(*p))
+			processCollision(*m_player ,*p);
+	
+
 	//for (auto& p : m_players)
 	//	if (m_players[m_currPlayer]->checkCollision(*p))
 	//		m_players[m_currPlayer]->handleCollision(*p);
@@ -278,7 +279,6 @@ bool DataBase::ThereIsNoObjectOnTheMemberTel(int index)
 void DataBase::deleteRelevantObj()
 {
 	//replaceMonsterWithPotion();
-	takeGift();
 	std::erase_if(m_staticsObj, [](const auto& object) {return object->getToDelete(); });
 }
 //-----------------------------------------------------

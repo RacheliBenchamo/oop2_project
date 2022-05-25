@@ -42,22 +42,22 @@ void GameObjBase::setPos(const sf::Vector2f& position)
 }
 
 
-void GameObjBase::setDelete()
+void GameObjBase::setToDelete()
 {
 	m_delete = true;
 }
 //--------------------------------------------------
 
-bool GameObjBase::getToReplace()const
-{
-	return m_replace;
-}
-//--------------------------------------------------
-
-void GameObjBase::setReplace()
-{
-	m_replace = true;
-}
+//bool GameObjBase::getToReplace()const
+//{
+//	return m_replace;
+//}
+////--------------------------------------------------
+//
+//void GameObjBase::setReplace()
+//{
+//	m_replace = true;
+//}
 //--------------------------------------------------
 
 bool GameObjBase::getToDelete()const
@@ -89,3 +89,10 @@ bool GameObjBase::checkCollision(const GameObjBase& obj)
 	return false;
 }
 
+//---------------------------- setDisappear ------------------------------
+// Update that the object should disappear.
+//------------------------------------------------------------------------
+void GameObjBase::setDisappear(bool status)
+{
+	m_disappear = status;
+}

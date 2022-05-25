@@ -19,6 +19,7 @@ public:
 		virtual void update(const sf::Time&) {};
 
 		virtual void handleCollision(GameObjBase&) override = 0;
+		//virtual bool getToReplace()const;
 protected:
 
 private:

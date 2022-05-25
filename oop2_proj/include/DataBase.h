@@ -17,6 +17,8 @@
 #include "MovingInclude\Player.h"
 #include "MovingInclude\Monster.h"
 
+#include "CollisionDetection.h"
+
 
 
 #include <array>
