@@ -284,7 +284,6 @@ bool DataBase::ThereIsNoObjectOnTheMemberTel(int index)
 
 void DataBase::deleteRelevantObj()
 {
-	std::cout << " t\n";
 	//replaceMonsterWithPotion();
 	std::erase_if(m_staticsObj, [](const auto& object) {return object->getToDelete(); });
 }

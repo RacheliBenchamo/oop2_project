@@ -46,10 +46,10 @@ void playerTeleport(GameObjBase& p, GameObjBase& h)
 //------------------------------------------------------------------------
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    auto d = static_cast<Diamond&>(g);
+    //auto d = static_cast<Diamond&>(g);
     static_cast<Player&>(p).addDiamond();
     //voice of takinf diamonds
-    d.setToDelete();
+    static_cast<Diamond&>(g).setToDelete();
 }
 
 
