@@ -42,7 +42,7 @@ public:
 	virtual void handleCollision(GameObjBase& )  = 0;
 
 	virtual bool getToDelete()const;
-	virtual void setToDelete();
+    void setToDelete();
 	//virtual bool getToReplace()const;
 	//virtual void setReplace();
 
@@ -52,6 +52,6 @@ protected:
 private:
 	bool m_disappear = false;
 	bool m_replace;
-	bool m_delete;
+	bool m_delete = false;
 };
 

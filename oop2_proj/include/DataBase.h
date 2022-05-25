@@ -57,7 +57,7 @@ private:
     void drawStaticObj(sf::RenderWindow& );
     void drawMovingObj(sf::RenderWindow& );
     void handelCollisions();
-    void handelPlayerCollisions();
+    bool handelPlayerCollisions();
     void handelTeleportCollisions();
     void itsAllowedToEnterTheTeleport(int, int);
     bool ThereIsNoObjectOnTheMemberTel(int);
