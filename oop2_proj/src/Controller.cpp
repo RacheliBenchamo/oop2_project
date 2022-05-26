@@ -258,6 +258,7 @@ void Controller::setView()
 	m_window.setView(m_view);
 	m_currLevelBackground.setPosition(m_view.getCenter());
 	m_statusBar.updatePos(m_view.getCenter());
-	//m_currLevelBackground.setPosition(m_currLevelBackground.getPosition().x +400, m_currLevelBackground.getPosition().y +200);
+	//m_currLevelBackground.setPosition(m_currLevelBackground.getPosition().x +400, 
+	//m_currLevelBackground.getPosition().y +200);
 }
 //set view center by player pos and level size.
