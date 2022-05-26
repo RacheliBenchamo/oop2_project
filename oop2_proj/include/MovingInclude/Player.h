@@ -6,8 +6,7 @@ class Player :public MovingObj
 {
 public:
 	Player( const sf::Vector2f& );
-	virtual void move(sf::Time&, sf::Vector2f)override {};
-	virtual void move(sf::Time&);
+	virtual void move(sf::Time&, sf::Vector2f)override;
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
 
 	void handleFall() {};

@@ -177,7 +177,7 @@ void DataBase::move(sf::Time deltaTime)
 		f->move(deltaTime, m_levelSize);
 
 	//move current player
-	m_player->move(deltaTime);
+	m_player->move(deltaTime, m_levelSize);
 	handelCollisions();
 }
 //-------------------------------------------------
@@ -350,12 +350,9 @@ void DataBase::takeGift()
 bool DataBase::winLevel()
 {
 
-	//if (m_player)
-	//	if (m_player->gotAllDiamonds())
-	//	{
-	//		m_player->resetGotAllDiamonds();
-	//		return true;
-	//	}
+	if (m_player)
+		if (m_player->getDiamondsCount()== m_currLevelMaxDiamonds)
+			return true;
 
 	return false;
 }

@@ -14,10 +14,10 @@ void MovingObj::backToPrevPos()
 
 bool MovingObj::outWindow(sf::Vector2f pos, sf::Vector2f levelSize) const
 {
-	/*if (pos.x < ((MAX_WIDTH -levelSize.y) / 2) || pos.y < ((MAX_HEIGHT -levelSize.x) / 2) ||
-		pos.y >= (levelSize.x+((MAX_HEIGHT - levelSize.x) / 2) - 1)* P_SIZE ||
-		pos.x >= (levelSize.y + ((MAX_WIDTH -levelSize.y) / 2) - 1) * P_SIZE)*/
-			//return true;
+	if (pos.x <= START_SPACE*1.5 ||
+		pos.y >= (levelSize.x * X_SPACE) - START_SPACE /3||
+		pos.x >= (levelSize.y * Y_SPACE) + START_SPACE*3.5)
+			return true;
 	
 	    return false;
 }

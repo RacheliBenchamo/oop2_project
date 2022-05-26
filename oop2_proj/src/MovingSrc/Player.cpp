@@ -25,8 +25,9 @@ Player::Player( const sf::Vector2f& pos)
 // 3. Moves the shape of the player.
 // 4. Handles all the possible events that can accure in the game.
 //------------------------------------------------------------------------
-void Player::move(sf::Time& deltaTime)
+void Player::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 {
+	setPrevPos(m_shape.getPosition());
 	if (isAlive())
 	{
 		
@@ -39,6 +40,9 @@ void Player::move(sf::Time& deltaTime)
 	//{
 	//	m_animation.operation(Operation::Dead);
 	//}
+	if (outWindow(m_shape.getPosition(), levelSize))
+		this->backToPrevPos();
+
 }
 
 //

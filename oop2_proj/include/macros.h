@@ -17,6 +17,9 @@ P_SIZE = 64; // pixel size
 
 // sizes data
 const int BLOCK_SIZE = 40;
+const int X_SPACE = 40;
+const int Y_SPACE = 17.7;
+const int START_SPACE = 40;
 
 const sf::Vector2f
 SMALL_MONSTER_SIZE = sf::Vector2f(BLOCK_SIZE * 0.8, BLOCK_SIZE * 0.8),

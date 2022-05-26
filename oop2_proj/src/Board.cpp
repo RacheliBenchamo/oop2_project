@@ -45,23 +45,25 @@ bool Board::readLevelData(DataBase& dataBase)
 
 void Board::readLevel(DataBase& dataBase)
 {
+	int space_x = START_SPACE,
+		space_y = START_SPACE- Y_SPACE;
+	char c;
+
 	if ((m_input).is_open())
 	{
-		int space_x = 100 , space_y = 60;
-		char c;
 		for (size_t i = 0; i < m_boardSize.x; i++)
 		{
 			for (size_t j = 0; j < m_boardSize.y; j++)
 			{
-				space_y += 17.7;
+				space_y += Y_SPACE;
 				c = char((m_input).get());
 				if (c == EMPTY_C)
 					continue;
 				dataBase.setData(c,j+ space_y, i + space_x);
 			}
 			(m_input).get();
-			space_x += 40;
-			space_y = 100;
+			space_x += X_SPACE;
+			space_y = START_SPACE;
 		}
 	}
 	//dataBase.FindTeleportPartner();
