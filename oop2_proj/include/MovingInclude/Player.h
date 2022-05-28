@@ -6,11 +6,11 @@ class Player :public MovingObj
 {
 public:
 	Player( const sf::Vector2f& );
-	virtual void move(sf::Vector2f)override;
+	virtual void move(sf::Time& ,sf::Vector2f)override;
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
 	void draw(sf::RenderWindow&)override;
-	void handleFall(sf::Vector2f);
-	void handleJump(bool , sf::Vector2f);
+	void handleFall(sf::Time& , sf::Vector2f );
+	void handleJump(sf::Time& , bool , sf::Vector2f );
 	void setHittingStatus(const bool status);
 	void hit();
 	void addDiamond() { m_diamondsCount++; };
@@ -27,7 +27,7 @@ public:
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
 	void playMovementAnimations();
-	const sf::Vector2f getMovement();
+	const sf::Vector2f getMovement(sf::Time& );
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
 
 

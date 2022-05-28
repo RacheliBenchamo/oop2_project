@@ -25,13 +25,12 @@ Player::Player( const sf::Vector2f& pos)
 // 3. Moves the shape of the player.
 // 4. Handles all the possible events that can accure in the game.
 //------------------------------------------------------------------------
-void Player::move(sf::Vector2f levelSize)
+void Player::move(sf::Time& deltaTime,sf::Vector2f levelSize)
 {
 	setPrevPos(m_shape.getPosition());
 	if (isAlive())
 	{
-		
-		auto movement = getMovement();
+		auto movement = getMovement(deltaTime);
 		m_shape.move(movement);
 		setMovementStatus(movement);
 		stayInPlaceAnimation(movement);
@@ -42,6 +41,7 @@ void Player::move(sf::Vector2f levelSize)
 	//{
 	//	m_animation.operation(Operation::Dead);
 	//}
+
 	if (outWindow(m_shape.getPosition(), levelSize))
 		this->backToPrevPos();
 }
@@ -54,14 +54,15 @@ void Player::move(sf::Vector2f levelSize)
 //------------------------------------------------------------------------
 void Player::setMovementStatus(const sf::Vector2f& movement)
 {
-	//doorCollide = insideHurricane = onFloor = mvRight = mvLeft = false;
+	 m_right = m_left = false;
+
+	 m_onFloor = true;
 
 	if (movement.x < 0)
 	{
 		setScale(SCALE_LEFT);
 		m_left = true;
 	}
-
 	if (movement.x > 0)
 	{
 		setScale(SCALE_RIGHT);
@@ -130,17 +131,17 @@ void Player::playMovementAnimations()
 //// the air ==> don't fall and exit.
 //// If the player is falling ==> move the player downwards.
 ////------------------------------------------------------------------------
-void Player::handleFall(sf::Vector2f levelSize)
+void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 {
 	if (!m_inHnaldeJump && !m_onFloor)
 	{
 		m_inHandleFall = true;
 		m_falling = true;
 
-		move(levelSize);
+		move(deltaTime,levelSize);
 
 		if (!m_onFloor)
-			m_animation.operation(Operation::Fall);
+			m_animation.operation(Operation::Stay);
 
 		m_inHandleFall = false;
 	}
@@ -153,7 +154,7 @@ void Player::handleFall(sf::Vector2f levelSize)
 // wants. If the player is neither falling or jumping, return the next
 // movement the user wants to preform.
 ////------------------------------------------------------------------------
-const sf::Vector2f Player::getMovement()
+const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
 {
 	if (m_inHandleFall)
 	{
@@ -161,9 +162,10 @@ const sf::Vector2f Player::getMovement()
 	}
 	else if (m_inHnaldeJump)
 	{
-		return ((getDirection() + UP_MOVEMENT) *m_deltaTime * HANDLE_JUMP_SPEED);
+		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}
-	return getDirection() * m_deltaTime * (PLAYER_SPEED);
+
+	return (getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));
 }
 
 ////------------------------------- draw -----------------------------------
@@ -223,8 +225,9 @@ void Player::hit()
 //// move function will be summoned more times to elevate the player
 //// further upwards.
 ////------------------------------------------------------------------------
-void Player::handleJump(bool jump, sf::Vector2f levelSize)
+void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
 {
+
 	static int jumpCounter = 0;
 
 	m_inHnaldeJump = true;
@@ -234,18 +237,19 @@ void Player::handleJump(bool jump, sf::Vector2f levelSize)
 		m_falling = true;
 		m_onFloor = false;
 		jumpCounter = JUMP_COUNTER;
-
 	}
-
 	if (jumpCounter != 0)
 	{
 		jumpCounter--;
-		move(levelSize);
+		move(deltaTime,levelSize);
 	}
 	else
 	{
 		m_inHnaldeJump = false;
 		jumpCounter = 0;
+		//need to delete later:
+		m_falling = false;
+		m_onFloor = true;
 	}
 }
 
@@ -257,9 +261,6 @@ void Player::handleJump(bool jump, sf::Vector2f levelSize)
 //	m_animation.operation(Operation::Hit);
 //}
 
-
-
-//
 ////-------------------------- setHittingStatus ----------------------------
 //// Sets the hitting status of the player.
 ////------------------------------------------------------------------------

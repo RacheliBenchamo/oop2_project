@@ -7,7 +7,7 @@ class Monster :public MovingObj
 public:
 	Monster(const sf::Vector2f&, levels, icons, sf::Vector2f);
 
-	virtual void move( sf::Vector2f)override {};
+	virtual void move(sf::Time& delta,sf::Vector2f)override {};
 	virtual void move(sf::Time&);
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
 

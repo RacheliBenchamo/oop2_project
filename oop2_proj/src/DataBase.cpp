@@ -174,12 +174,14 @@ void DataBase::move(sf::Time deltaTime)
 
 	//move monsters
 	for (auto& f : m_monsters)
-		f->move( m_levelSize);
+		f->move(deltaTime, m_levelSize);
 
 	//move current player
-	m_player->move( m_levelSize);
-	m_player->handleJump(false, m_levelSize);
-	m_player->handleFall(m_levelSize);
+	m_player->move(deltaTime,m_levelSize);
+	m_player->handleJump(deltaTime, 
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
+
+	m_player->handleFall(deltaTime,m_levelSize);
 	m_player->setHittingStatus(false);
 
 

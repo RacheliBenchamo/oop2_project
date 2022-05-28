@@ -22,7 +22,7 @@ protected:
 	sf::Vector2f getDirection() const;
 	bool outWindow(sf::Vector2f, sf::Vector2f) const;
 	void updateAnimation();
-	virtual void move( sf::Vector2f ) {};
+	virtual void move(sf::Time& , sf::Vector2f ) {};
 	void setPrevPos(sf::Vector2f p) { m_prevPos = p; }
 	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
 	bool isAlive() const {return m_life> 0;}
@@ -31,7 +31,7 @@ protected:
 	int m_life=100;
 	bool m_right = false,
 		m_left = false,
-		m_onFloor = false,
+		m_onFloor = true,
 		m_inHnaldeJump = false,
 		m_inHandleFall = false,
 		m_hitingStatus = false,
