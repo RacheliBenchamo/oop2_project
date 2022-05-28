@@ -53,13 +53,13 @@ void Monster::setMovementStatus(const sf::Vector2f& movement)
 	if (movement.x < 0)
 	{
 		setScale(SCALE_LEFT);
-		mvLeft = true;
+		m_left = true;
 	}
 
 	if (movement.x > 0)
 	{
 		setScale(SCALE_RIGHT);
-		mvRight = true;
+		m_right = true;
 	}
 
 	playMovementAnimations();
@@ -136,7 +136,7 @@ void Monster::setMovementStatus(const sf::Vector2f& movement)
 //------------------------------------------------------------------------
 void Monster::playMovementAnimations()
 {
-	if (mvRight || mvLeft)
+	if (m_right || m_left)
 	{
 		//if (!inHnaldeJump)
 		{
@@ -150,7 +150,7 @@ void Monster::playMovementAnimations()
 		//{
 		//	m_animation.operation(Operation::Jump);
 		//}
-		mvRight = mvLeft = false;
+		m_right = m_left = false;
 	}
 	/*else if (inHnaldeJump)
 	{

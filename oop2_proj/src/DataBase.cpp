@@ -174,10 +174,10 @@ void DataBase::move(sf::Time deltaTime)
 
 	//move monsters
 	for (auto& f : m_monsters)
-		f->move(deltaTime, m_levelSize);
+		f->move( m_levelSize);
 
 	//move current player
-	m_player->move(deltaTime, m_levelSize);
+	m_player->move( m_levelSize);
 	handelCollisions();
 }
 //-------------------------------------------------

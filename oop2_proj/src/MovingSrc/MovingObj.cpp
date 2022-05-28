@@ -69,13 +69,9 @@ void MovingObj::updateSpriteCol()
 sf::Vector2f MovingObj::getDirection() const
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		return { 1, 0 };
+		return RIGHT_MOVEMENT;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		return { -1, 0 };
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-		return { 0, -1 };
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		return { 0, 1 };
+		return LEFT_MOVEMENT;
 
-	return { 0, 0 };
+	return STAY_IN_PLACE;
 }

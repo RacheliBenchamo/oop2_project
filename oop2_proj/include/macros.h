@@ -70,7 +70,8 @@ const char
 PLAYER_C='P', EMPTY_C = ' ',
 DIAMOND_C = 'D', GATE_C = '#', TELEPORT_C = 'X',
 GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(', END_FLOOR_C = ')',
-F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R', BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2', MONSTER3_C = '3';
+F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R', BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2',
+MONSTER3_C = '3';
 
 enum icons 
 {
@@ -122,6 +123,29 @@ const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 const sf::Vector2f SCALE_RIGHT{ -1,1 };
 const sf::Vector2f SCALE_LEFT{ 1,1 };
 
+
+// movement consts
+const sf::Vector2f UP_MOVEMENT(0, -1);
+const sf::Vector2f LEFT_MOVEMENT(-1, 0);
+const sf::Vector2f RIGHT_MOVEMENT(1, 0);
+const sf::Vector2f DOWN_MOVEMENT(0, 1);
+const sf::Vector2f STAY_IN_PLACE(0, 0);
+const sf::Vector2f PUSH_FROM(5, 0);
+const sf::Vector2f PUSH_FROM_SPIKE(2, 0);
+const sf::Vector2f FALL_PUSH(0, 5);
+
+const float HANDLE_JUMP_SPEED = 80.f;
+const int JUMP_COUNTER = 20;
+
+
+// scale consts
+const sf::Vector2f WALK_SCALE(0.9f, 1);
+const sf::Vector2f JUMP_SCALE(1.2f, 1);
+const sf::Vector2f HIT_SCALE(0.8f, 1);
+const sf::Vector2f HURT_SCALE(0.8f, 1);
+
+const float HALF_SIZE = 10.f;
+
 enum Operation
 {
     Up,
@@ -132,6 +156,7 @@ enum Operation
     Hit,
     Jump,
     Fall,
+    Walk,
     Land,
     Loading1,
     Loading2,

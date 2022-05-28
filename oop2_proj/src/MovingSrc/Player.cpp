@@ -25,16 +25,16 @@ Player::Player( const sf::Vector2f& pos)
 // 3. Moves the shape of the player.
 // 4. Handles all the possible events that can accure in the game.
 //------------------------------------------------------------------------
-void Player::move(sf::Time& deltaTime, sf::Vector2f levelSize)
+void Player::move(sf::Vector2f levelSize)
 {
 	setPrevPos(m_shape.getPosition());
 	if (isAlive())
 	{
 		
-		auto movement = getDirection();
-		m_shape.move(movement * deltaTime.asSeconds() * (PLAYER_SPEED));
+		auto movement = getMovement();
+		m_shape.move(movement);
 		setMovementStatus(movement);
-		//handleEvents();
+		//handleEvents();//hendle collision
 	}
 	//else
 	//{
@@ -59,13 +59,13 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 	if (movement.x < 0)
 	{
 		setScale(SCALE_LEFT);
-		mvLeft = true;
+		m_left = true;
 	}
 
 	if (movement.x > 0)
 	{
 		setScale(SCALE_RIGHT);
-		mvRight = true;
+		m_right = true;
 	}
 
 	playMovementAnimations();
@@ -142,21 +142,21 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 //------------------------------------------------------------------------
 void Player::playMovementAnimations()
 {
-	if (mvRight || mvLeft)
+	if (m_right || m_left)
 	{
 		//if (!inHnaldeJump)
 		{
 			if (m_animation.getOperation() != Operation::Hit )
 				//&& m_animation.getOperation() != Operation::Hurt)
 			{
-				m_animation.operation(Operation::Right);
+				m_animation.operation(Operation::Walk);
 			}
 		}
 		//else
 		//{
 		//	m_animation.operation(Operation::Jump);
 		//}
-		mvRight = mvLeft = false;
+		m_right = m_left = false;
 	}
 	/*else if (inHnaldeJump)
 	{
@@ -220,27 +220,6 @@ void Player::playMovementAnimations()
 //	}
 //}
 
-
-////---------------------------- keyToDirection ----------------------------
-//// Checks the key that the user has performed and returns the movement
-//// accordingly
-////------------------------------------------------------------------------
-//const sf::Vector2f Player::keyToDirection() const
-//{
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-//	{
-//		return LEFT_MOVEMENT;
-//	}
-//
-//	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-//	{
-//		return RIGHT_MOVEMENT;
-//	}
-//
-//	return STAY_IN_PLACE;
-//}
-
-
 //----------------------------- getMovement ------------------------------
 // Returns the next move depending on the situation.
 // i.e. if the player is falling, return a downward movement, if the is
@@ -248,20 +227,18 @@ void Player::playMovementAnimations()
 // wants. If the player is neither falling or jumping, return the next
 // movement the user wants to preform.
 ////------------------------------------------------------------------------
-//const sf::Vector2f Player::getMovement()
-//{
-//	if (inHandleFall)
-//	{
-//		return FALL_PUSH;
-//	}
-//	else if (inHnaldeJump)
-//	{
-//		return ((keyToDirection() + UP_MOVEMENT) *
-//			m_deltaTime * HANDLE_JUMP_SPEED);
-//	}
-//
-//	return keyToDirection() * m_deltaTime * (PLAYER_SPEED + m_extraSpeed);
-//}
+const sf::Vector2f Player::getMovement()
+{
+	if (m_inHandleFall)
+	{
+		return FALL_PUSH;
+	}
+	else if (m_inHnaldeJump)
+	{
+		return ((getDirection() + UP_MOVEMENT) *m_deltaTime * HANDLE_JUMP_SPEED);
+	}
+	return getDirection() * m_deltaTime * (PLAYER_SPEED);
+}
 
 
 ////------------------------- setExtraSpeedStatus --------------------------
@@ -344,82 +321,51 @@ void Player::playMovementAnimations()
 ////------------------------------- draw -----------------------------------
 //// Prints the player upon the window.
 ////------------------------------------------------------------------------
-//void Player::draw(sf::RenderWindow& window)
-//{
-//	//m_healthBar.draw(window);
-//
-//	auto temp_shape = m_shape;
-//
-//	switch (m_animation.getOperation())
-//	{
-//	case Operation::Stay:
-//		temp_shape.setPosition(temp_shape.getPosition().x,
-//			temp_shape.getPosition().y +
-//			temp_shape.getOrigin().y / HALF_SIZE);
-//		break;
-//
-//	case Operation::Right:
-//		temp_shape.scale(RIGHT_AND_LEFT_SCALE);
-//		temp_shape.setPosition(temp_shape.getPosition().x,
-//			temp_shape.getPosition().y +
-//			temp_shape.getOrigin().y / HALF_SIZE);
-//		break;
-//
-//	case Operation::Fall:
-//	case Operation::Jump:
-//		temp_shape.scale(JUMP_SCALE);
-//		break;
-//	case Operation::Shoot:
-//		temp_shape.scale(SHOOT_SCALE);
-//		break;
-//	case Operation::Hurt:
-//		temp_shape.scale(HURT_SCALE);
-//	}
-//	window.draw(temp_shape);
-//}
+void Player::draw(sf::RenderWindow& window)
+{
+	auto temp_shape = m_shape;
 
+	switch (m_animation.getOperation())
+	{
+	case Operation::Stay:
+		temp_shape.setPosition(temp_shape.getPosition().x,
+			temp_shape.getPosition().y +
+			temp_shape.getOrigin().y / HALF_SIZE);
+		break;
 
-////-------------------------- setSpecialAbility ---------------------------
-//// Set the appropriate ability according to the special ability that the
-//// player has collected.
-////------------------------------------------------------------------------
-//void Player::setSpecialAbility(const std::string& specialAbility)
-//{
-//	m_damageBoost = m_extraJumpBoost = m_extraSpeed = ZERO;
-//
-//	Resources::instance().playSound(COLLECT_ABILITY_SOUND);
-//
-//	if (specialAbility == EXTRA_JUMP_ABILITY)
-//	{
-//		setExtraJumpStatus();
-//	}
-//
-//	if (specialAbility == EXTRA_SPEED_ABILITY)
-//	{
-//		setExtraSpeedStatus();
-//	}
-//
-//	if (specialAbility == FIRE_ARROWS_ABILITY)
-//	{
-//		turnOnDamageBoost();
-//	}
-//}
+	case Operation::Walk:
+		temp_shape.scale(WALK_SCALE);
+		temp_shape.setPosition(temp_shape.getPosition().x,
+			temp_shape.getPosition().y +
+			temp_shape.getOrigin().y / HALF_SIZE);
+		break;
+
+	case Operation::Fall:
+	case Operation::Jump:
+		temp_shape.scale(JUMP_SCALE);
+		break;
+	case Operation::Hit:
+		temp_shape.scale(HIT_SCALE);
+		break;
+	}
+	window.draw(temp_shape);
+}
 
 
 ////-------------------------------- hit -----------------------------------
 //// The player reguests to attack. Therefore, we needed to update the
 //// status of the hit and display the hiting animation.
 ////------------------------------------------------------------------------
-//void Player::hit()
-//{
-//	if (m_healthBar.getHp() > ZERO && onFloor &&
-//		isEventDelayPassed(FIST_ATTACK))
-//	{
-//		Resources::instance().playSound(PLAYER_ATTACK_SOUND);
-//		m_hitingStatus = true;
-//		m_animation.operation(Operation::Hit);
-//	}
-//}
+void Player::hit()
+{
+	//&& isEventDelayPassed(FIST_ATTACK)
+	if (m_power > 0 && m_onFloor )
+	{
+		//Resources::instance().playSound(PLAYER_ATTACK_SOUND);
+		m_hitingStatus = true;
+		m_animation.operation(Operation::Hit);
+	}
+}
 
 
 ////----------------------------- handleJump -------------------------------
@@ -431,119 +377,42 @@ void Player::playMovementAnimations()
 //// move function will be summoned more times to elevate the player
 //// further upwards.
 ////------------------------------------------------------------------------
-//void Player::handleJump(bool jump)
-//{
-//	static int jumpCounter = ZERO;
-//
-//	inHnaldeJump = true;
-//	if (jump && onFloor && jumpCounter == ZERO)
-//	{
-//		Resources::instance().playSound(JUMP_SOUND);
-//		falling = true;
-//		onFloor = false;
-//		jumpCounter = JUMP_COUNTER + m_extraJumpBoost;
-//
-//	}
-//
-//	if (jumpCounter != ZERO && !insideHurricane)
-//	{
-//		jumpCounter--;
-//		move();				// move the player upwards.
-//	}
-//	else
-//	{
-//		inHnaldeJump = false;
-//		jumpCounter = ZERO;
-//	}
-//}
+void Player::handleJump(bool jump, sf::Vector2f levelSize)
+{
+	static int jumpCounter = 0;
+
+	m_inHnaldeJump = true;
+	if (jump && m_onFloor && jumpCounter == 0)
+	{
+		//Resources::instance().playSound(JUMP_SOUND);
+		m_falling = true;
+		m_onFloor = false;
+		jumpCounter = JUMP_COUNTER;
+
+	}
+
+	if (jumpCounter != 0)
+	{
+		jumpCounter--;
+		move(levelSize);
+	}
+	else
+	{
+		m_inHnaldeJump = false;
+		jumpCounter = 0;
+	}
+}
 
 
 ////------------------------------- shoot ----------------------------------
 //// Plays the shoot animation.
 ////------------------------------------------------------------------------
-//void Player::shoot()
+//void Player::hit()
 //{
-//	m_animation.operation(Operation::Shoot);
+//	m_animation.operation(Operation::Hit);
 //}
 
 
-//-------------------------- handleCollision -----------------------------
-// Handles collision with hurricane.
-// The hurricane lifst the player up (moves the player shape upwards).
-// We Make an accurate calculation of the player's position within
-// a hurricane to check if the player is really inside the hurricane.
-// If the player is inside the hurricane, we update that the player is 
-// not on floor. 
-////------------------------------------------------------------------------
-//void Player::handleCollision(Hurricane& hurricane)
-//{
-//	if (m_shape.getPosition().y + m_shape.getSize().y / 2 <=
-//		hurricane.getPosition().y - hurricane.getShape().y * 2)
-//	{
-//		onFloor = true;
-//	}
-//	else if (isInsideHurricane(hurricane))
-//	{
-//		insideHurricane = true;
-//		m_shape.move(UP_MOVEMENT * (m_deltaTime * PLAYER_SPEED));
-//	}
-//	m_animation.operation(Operation::Fall);
-//}
-
-////-------------------------- handleCollision -----------------------------
-//// Handle collision with a box.
-////------------------------------------------------------------------------
-//void Player::handleCollision(Box& box)
-//{
-//	if (collisionFromLeft(box))
-//	{
-//		pushFromBox(box, -PUSH_FROM, PUSH_FROM);
-//	}
-//	else if (collisionFromRight(box))
-//	{
-//		pushFromBox(box, PUSH_FROM, -PUSH_FROM);
-//	}
-//	else if (CollisionFromAboveBox(box))
-//	{
-//		setPositionOnBox(box);
-//	}
-//}
-
-//-------------------------- handleCollision -----------------------------
-// Handles collision with the enemy.
-//// If the enemy is dead, we do nothing.
-//// Absorbs the hit, player the hurt animation and updates his amount of
-//// life accordingly.
-////------------------------------------------------------------------------
-//void Player::handleCollision(Enemy& e)
-//{
-//	if (e.isHiting() && e.isAlive())
-//	{
-//		Resources::instance().playSound(PLAYER_HURT_SOUND);
-//		m_healthBar.decreaseHealth(e.getDamagePoints());
-//		if (m_animation.getOperation() != Operation::Dead)
-//		{
-//			m_animation.operation(Operation::Hurt);
-//			m_shape.move(HIT_PUSH_BACK * m_shape.getScale().x, ZERO);
-//		}
-//	}
-//
-//	if (!m_healthBar.isAlive())
-//	{
-//		m_animation.operation(Operation::Dead);
-//		Resources::instance().playSound(GAME_OVER_SOUND);
-//	}
-//}
-
-
-
-////------------------------ setHealthBarPosition --------------------------
-//// Sets the position of the health bar
-////------------------------------------------------------------------------
-//void Player::setHealthBarPosition(sf::Vector2f pos)
-//{
-//	m_healthBar.setPosition(pos);
-//}
 
 //
 ////-------------------------- setHittingStatus ----------------------------
@@ -556,22 +425,6 @@ void Player::playMovementAnimations()
 
 
 
-
-////-------------------------- isFinishedLevel -----------------------------
-//// Returns if the current level has finished by checking if the player 
-//// collected keys equal to world existed keys and checking collison with
-//// door was occured.
-////------------------------------------------------------------------------
-//bool Player::isFinishedLevel(const int worldKeys)
-//{
-//	if (m_keysCount == worldKeys && doorCollide)
-//	{
-//		return true;
-//	}
-//
-//	return false;
-//}
-//
 
 
 
