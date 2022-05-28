@@ -34,6 +34,8 @@ void Player::move(sf::Vector2f levelSize)
 		auto movement = getMovement();
 		m_shape.move(movement);
 		setMovementStatus(movement);
+		stayInPlaceAnimation(movement);
+
 		//handleEvents();//hendle collision
 	}
 	//else
@@ -42,10 +44,8 @@ void Player::move(sf::Vector2f levelSize)
 	//}
 	if (outWindow(m_shape.getPosition(), levelSize))
 		this->backToPrevPos();
-
 }
 
-//
 //------------------------- setMovementStatus ----------------------------
 // Sets the movement status of the player and checks what is the new 
 // movement the player preformed.
@@ -71,46 +71,20 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 	playMovementAnimations();
 }
 
-
-////-------------------------- setExtraJumpStatus --------------------------
-//// Set the extra jump status.
-//// We enter this function if the player collects the extra jump boost gem.
-////------------------------------------------------------------------------
-//void Player::setExtraJumpStatus()
-//{
-//	m_extraJumpBoost = JUMP_BOOST_BONUS;
-//}
-//
-//
 ////------------------------------------------------------------------------
 //// Checks if the player doesn't move. If he is not, plays the standing
 //// animation.
 ////------------------------------------------------------------------------
-//void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
-//{
-//	if (movement == STAY_IN_PLACE &&
-//		m_animation.getOperation() != Operation::Hit &&
-//		m_animation.getOperation() != Operation::Shoot &&
-//		m_animation.getOperation() != Operation::Hurt &&
-//		!inHnaldeJump)
-//	{
-//		m_animation.operation(Operation::Stay);
-//	}
-//}
-//
-//
-////------------------------------ moveShape -------------------------------
-//// Moves the shape of the obejct and saves the old position for handle
-//// collisions.
-////------------------------------------------------------------------------
-//void Player::moveShape(const sf::Vector2f& movement)
-//{
-//	//stayInPlaceAnimation(movement);
-//	//m_oldPos = m_shape.getPosition();
-//	m_shape.move(movement);
-//}
-
-
+void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
+{
+	if (movement == STAY_IN_PLACE &&
+		m_animation.getOperation() != Operation::Hit &&
+		//m_animation.getOperation() != Operation::Hurt &&
+		!m_inHnaldeJump)
+	{
+		m_animation.operation(Operation::Stay);
+	}
+}
 //---------------------------- setEventsClock ----------------------------
 // Set the extra jump status.
 // We enter this function if the player collects the extra jump boost gem.
@@ -122,21 +96,6 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 //}
 //
 
-//------------------------- isInsideHurricane ----------------------------
-// Returns if the player is inside a hurricane.
-// We want to want accurate behavior so we calculate by the position of 
-// the player whether he is really inside the hurricane and not just 
-// collided with him
-////------------------------------------------------------------------------
-//bool Player::isInsideHurricane(Hurricane& hurricane)
-//{
-//	return (m_shape.getPosition().x >= hurricane.getPosition().x
-//		- hurricane.getShape().x / 2 &&
-//		m_shape.getPosition().x <= hurricane.getPosition().x
-//		+ hurricane.getShape().x / 2);
-//}
-
-
 //----------------------- playMovementAnimations -------------------------
  //Plays the animation according to the situation in which the player is.
 //------------------------------------------------------------------------
@@ -144,7 +103,7 @@ void Player::playMovementAnimations()
 {
 	if (m_right || m_left)
 	{
-		//if (!inHnaldeJump)
+		if (!m_inHnaldeJump)
 		{
 			if (m_animation.getOperation() != Operation::Hit )
 				//&& m_animation.getOperation() != Operation::Hurt)
@@ -152,48 +111,17 @@ void Player::playMovementAnimations()
 				m_animation.operation(Operation::Walk);
 			}
 		}
-		//else
-		//{
-		//	m_animation.operation(Operation::Jump);
-		//}
+		else
+          m_animation.operation(Operation::Jump);
+		
 		m_right = m_left = false;
 	}
-	/*else if (inHnaldeJump)
+	else if (m_inHnaldeJump)
 	{
 		m_animation.operation(Operation::Jump);
-	}*/
-	else m_animation.operation(Operation::Stay);
+	}
 }
 
-
-////-------------------------- pushBackFromSpike ---------------------------
-//// Pushes the player backwards depending on the location of his collision
-//// with the spikes.
-////------------------------------------------------------------------------
-//void Player::pushBackFromSpike(Spike& spike)
-//{
-//	if (collisionFromLeft(spike) && m_shape.getPosition().y +
-//		m_shape.getSize().y / 2 > spike.getPosition().y)
-//	{
-//		m_shape.move(-PUSH_FROM_SPIKE);
-//	}
-//	else if (collisionFromRight(spike) && m_shape.getPosition().y +
-//		m_shape.getSize().y / 2 > spike.getPosition().y)
-//	{
-//		m_shape.move(PUSH_FROM_SPIKE);
-//	}
-//}
-
-
-////---------------------------- getPosition -------------------------------
-//// Returns the position of the player.
-////------------------------------------------------------------------------
-//const sf::Vector2f& Player::getPosition() const
-//{
-//	return m_shape.getPosition();
-//}
-//
-//
 ////------------------------------ handleFall ------------------------------
 //// Handle the fall of the player.
 //// Assume that the player is falling.
@@ -202,23 +130,21 @@ void Player::playMovementAnimations()
 //// the air ==> don't fall and exit.
 //// If the player is falling ==> move the player downwards.
 ////------------------------------------------------------------------------
-//void Player::handleFall()
-//{
-//	if (!inHnaldeJump && !onFloor && !insideHurricane)
-//	{
-//		inHandleFall = true;
-//		falling = true;
-//
-//		move();
-//
-//		if (!onFloor)
-//		{
-//			m_animation.operation(Operation::Fall);
-//		}
-//
-//		inHandleFall = false;
-//	}
-//}
+void Player::handleFall(sf::Vector2f levelSize)
+{
+	if (!m_inHnaldeJump && !m_onFloor)
+	{
+		m_inHandleFall = true;
+		m_falling = true;
+
+		move(levelSize);
+
+		if (!m_onFloor)
+			m_animation.operation(Operation::Fall);
+
+		m_inHandleFall = false;
+	}
+}
 
 //----------------------------- getMovement ------------------------------
 // Returns the next move depending on the situation.
@@ -239,84 +165,6 @@ const sf::Vector2f Player::getMovement()
 	}
 	return getDirection() * m_deltaTime * (PLAYER_SPEED);
 }
-
-
-////------------------------- setExtraSpeedStatus --------------------------
-//// Set the speed status of the player.
-////------------------------------------------------------------------------
-//void Player::setExtraSpeedStatus()
-//{
-//	m_extraSpeed = EXTRA_SPEED_BONUS;
-//}
-
-
-////-------------------------- turnOnDamageBoost ---------------------------
-//// Turn on the damage bonus.
-////------------------------------------------------------------------------
-//void Player::turnOnDamageBoost()
-//{
-//	m_damageBoost = true;
-//}
-
-
-////----------------------------- pushFromBox ------------------------------
-//// Pushses the player from the box.
-////------------------------------------------------------------------------
-//void Player::pushFromBox(Box& box, const sf::Vector2f& playerPush,
-//	const sf::Vector2f& boxPush)
-//{
-//	if (box.isMoveAble())
-//	{
-//		box.move(boxPush);
-//	}
-//	else
-//	{
-//		m_shape.move(playerPush);
-//	}
-//}
-
-
-////--------------------------- setPositionOnBox ---------------------------
-//// Sets the position of the player when he is above the box so that he
-//// will stand on it accurately.
-////------------------------------------------------------------------------
-//void Player::setPositionOnBox(Box& box)
-//{
-//	m_shape.setPosition(m_shape.getPosition().x,
-//		box.getPosition().y - box.getShape().y / 2 - PUSH_FROM_BOX);
-//	falling = false;
-//	onFloor = true;
-//}
-
-
-////---------------------------- getExtraSpeed -----------------------------
-//// Return the extra speed of the player.
-//// If the player didn't collected the extra speed gem, the extra speed 
-//// is by default zero.
-////------------------------------------------------------------------------
-//const bool Player::getExtraSpeed() const
-//{
-//	return m_extraSpeed;
-//}
-
-
-////---------------------------- getExtraJump ------------------------------
-//// Return the extra jump bonus.
-////------------------------------------------------------------------------
-//const bool Player::getExtraJump() const
-//{
-//	return m_extraJumpBoost;
-//}
-//
-//
-////-------------------------- hasSpecialArrow -----------------------------
-//// Return if the plyaer has a special arrow or not.
-////------------------------------------------------------------------------
-//const bool Player::hasSpecialArrow() const
-//{
-//	return m_damageBoost;
-//}
-
 
 ////------------------------------- draw -----------------------------------
 //// Prints the player upon the window.
@@ -351,7 +199,6 @@ void Player::draw(sf::RenderWindow& window)
 	window.draw(temp_shape);
 }
 
-
 ////-------------------------------- hit -----------------------------------
 //// The player reguests to attack. Therefore, we needed to update the
 //// status of the hit and display the hiting animation.
@@ -366,7 +213,6 @@ void Player::hit()
 		m_animation.operation(Operation::Hit);
 	}
 }
-
 
 ////----------------------------- handleJump -------------------------------
 //// handles the jump event.
@@ -403,7 +249,6 @@ void Player::handleJump(bool jump, sf::Vector2f levelSize)
 	}
 }
 
-
 ////------------------------------- shoot ----------------------------------
 //// Plays the shoot animation.
 ////------------------------------------------------------------------------
@@ -418,10 +263,10 @@ void Player::handleJump(bool jump, sf::Vector2f levelSize)
 ////-------------------------- setHittingStatus ----------------------------
 //// Sets the hitting status of the player.
 ////------------------------------------------------------------------------
-//void Player::setHittingStatus(const bool status)
-//{
-//	m_hitingStatus = status;
-//}
+void Player::setHittingStatus(const bool status)
+{
+	m_hitingStatus = status;
+}
 
 
 

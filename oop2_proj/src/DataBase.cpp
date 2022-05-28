@@ -178,6 +178,11 @@ void DataBase::move(sf::Time deltaTime)
 
 	//move current player
 	m_player->move( m_levelSize);
+	m_player->handleJump(false, m_levelSize);
+	m_player->handleFall(m_levelSize);
+	m_player->setHittingStatus(false);
+
+
 	handelCollisions();
 }
 //-------------------------------------------------
