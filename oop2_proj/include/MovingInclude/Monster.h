@@ -6,20 +6,30 @@ class Monster :public MovingObj
 {
 public:
 	Monster(const sf::Vector2f&, levels, icons, sf::Vector2f);
-
-	virtual void move(sf::Time& delta,sf::Vector2f)override {};
-	virtual void move(sf::Time&);
+	void setPlayerPos(const sf::Vector2f pos) { m_playerPos = pos; }
+	virtual void move(sf::Time& delta,sf::Vector2f)override ;
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
-
+	void hit();
 	void handleFall() {};
 	int getForce()const { return m_force; }
 	virtual void handleCollision(GameObjBase&) override {};
+	void setOperation(const Operation );
+	void handleHit();
 
 
 private:
-	void setMovementStatus(const sf::Vector2f& movement);
+	bool isPlayerClose();
+	void setMovementStatus(const sf::Vector2f& );
 	void playMovementAnimations();
+	void scaleAccordingToPlayerPos();
+	sf::Vector2f getMove();
 
+
+	void playDeathSound() const {};
+	void playHurtSound() const {};
+	void playAttackSound() const {};
+
+	sf::Vector2f m_playerPos{ 0,0 };
 	int m_force = 10;
 	Animation m_animation;
 

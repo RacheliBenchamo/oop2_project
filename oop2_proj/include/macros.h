@@ -137,6 +137,7 @@ const sf::Vector2f FALL_PUSH(0, 5);
 const float HANDLE_JUMP_SPEED = 80.f;
 const int JUMP_COUNTER = 20;
 
+const int PLAYER_DAMAGE = 20;
 
 // scale consts
 const sf::Vector2f WALK_SCALE(0.9f, 1);
@@ -157,6 +158,7 @@ enum Operation
     Jump,
     Fall,
     Walk,
+    Hurt,
     Land,
     Loading1,
     Loading2,

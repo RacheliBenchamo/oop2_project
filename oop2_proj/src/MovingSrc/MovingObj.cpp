@@ -21,48 +21,7 @@ bool MovingObj::outWindow(sf::Vector2f pos, sf::Vector2f levelSize) const
 	
 	    return false;
 }
-//------------------------------------------
-//update the animation of the charcter by 
-//the direction it goes to
 
-void MovingObj::updateAnimation()
-{
-	if (m_currDirection == DVec[DOWN])
-	{
-		m_animationRow = 0;
-		updateSpriteCol();
-	}
-	else if (m_currDirection == DVec[LEFT])
-	{
-		m_animationRow = 1;
-		updateSpriteCol();
-	}
-	else if (m_currDirection == DVec[RIGHT])
-	{
-		m_animationRow = 2;
-		updateSpriteCol();
-	}
-	else if (m_currDirection == DVec[UP])
-	{
-		m_animationRow = 3;
-		updateSpriteCol();
-	}
-}
-//------------------------------------------------------------
-//update the col in the sprite pic to create run affect
-
-void MovingObj::updateSpriteCol()
-{
-	sf::RectangleShape shape = getShape();
-
-	if (m_animationCol == 2)
-		m_animationCol = 0;
-	else
-		m_animationCol++;
-
-	shape.setTextureRect(sf::IntRect(m_animationCol * 32, m_animationRow * 32, 32, 32));
-	setShape(shape);
-}
 //------------------------------------------
 //return the right direction by which key pressed
 

@@ -29,6 +29,7 @@ protected:
 
 
 	int m_life=100;
+
 	bool m_right = false,
 		m_left = false,
 		m_onFloor = true,
@@ -45,6 +46,5 @@ private:
 
 	sf::Vector2f m_prevPos;	
 	sf::Vector2f m_currDirection;
-	int m_animationRow;
-	int m_animationCol;
+
 };

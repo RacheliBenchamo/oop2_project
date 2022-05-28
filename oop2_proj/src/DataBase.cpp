@@ -174,7 +174,10 @@ void DataBase::move(sf::Time deltaTime)
 
 	//move monsters
 	for (auto& f : m_monsters)
+	{
+		f->setPlayerPos(m_player->getPos());
 		f->move(deltaTime, m_levelSize);
+	}
 
 	//move current player
 	m_player->move(deltaTime,m_levelSize);
