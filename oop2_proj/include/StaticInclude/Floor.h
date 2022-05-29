@@ -1,28 +1,16 @@
 
 #pragma once
-
-#include "Board.h"
-#include "StaticObj.h"
-#include "Animation.h"
-
-
+#include "StageDec.h"
 
 using std::vector;
 
 
-class Floor :public StaticObj
+class Floor :public StageDec
 {
 public:
 	//using StaticObj::StaticObj;
-	Floor(sf::Vector2f ,int );
-	virtual void startSound()override;
+	using StageDec::StageDec;
 
-
-
+	virtual void startSound() {};
 private:
-
 };
-
-
-
-

@@ -135,10 +135,12 @@ sf::Vector2f Monster::getMove()
 	//	return STAY_IN_PLACE;
 	//}
 
-	movementClock.restart();
-	m_animation.operation(Operation::Stay);
-	m_shape.setScale(SCALE_LEFT);
-	return LEFT_MOVEMENT;
+	//movementClock.restart();
+	//m_animation.operation(Operation::Stay);
+	//m_shape.setScale(SCALE_LEFT);
+	//return LEFT_MOVEMENT;
+
+	return{ 0,0 };
 
 }
 

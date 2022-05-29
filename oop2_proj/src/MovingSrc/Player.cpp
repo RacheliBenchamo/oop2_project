@@ -54,9 +54,7 @@ void Player::move(sf::Time& deltaTime,sf::Vector2f levelSize)
 //------------------------------------------------------------------------
 void Player::setMovementStatus(const sf::Vector2f& movement)
 {
-	 m_right = m_left = false;
-
-	 m_onFloor = true;
+	m_onFloor=m_right = m_left = false;
 
 	if (movement.x < 0)
 	{
@@ -247,9 +245,6 @@ void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
 	{
 		m_inHnaldeJump = false;
 		jumpCounter = 0;
-		//need to delete later:
-		m_falling = false;
-		m_onFloor = true;
 	}
 }
 

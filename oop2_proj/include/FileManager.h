@@ -52,7 +52,7 @@ private:
 	void createForestMonstersAnimeData();
 
 	void setCurrentData(AnimationData& , Operation ,std::vector<sf::IntRect> , float , bool );
-	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,const sf::Vector2i ,const int , Operation);
+	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,const sf::Vector2i , const int ,const int , Operation);
 
 	sf::Texture m_monstersIcon[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 	sf::Texture m_player;

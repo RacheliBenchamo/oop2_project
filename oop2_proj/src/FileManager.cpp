@@ -251,18 +251,19 @@ const AnimationData& FileManager::getPlayerData()
 std::vector<sf::IntRect> FileManager::movableAnimationSet(
 	const sf::Vector2i size,
 	const sf::Vector2i startPos,
+	const int space,
 	const int count, Operation typeOperation)
 {
 	auto stand_anime = AnimationData{};
 	auto currentStart = startPos;
 	sf::Vector2i currSize;
 
-	currSize.x = size.x / count;
+	currSize.x = size.x ;
 	currSize.y = size.y;
 
 	auto nextStart = [&]()
 	{
-		currentStart.x += currSize.x;
+		currentStart.x += currSize.x+space;
 		return currentStart;
 	};
 
@@ -290,11 +291,8 @@ void FileManager::setCurrentData(AnimationData& data, Operation op,
 
 void FileManager::setAnimationsData()
 {
-	setCurrentData(m_staticData[TELEPORT], Stay, movableAnimationSet
-	({ 444, 95 }, { 518,0 }, 6, Stay), 0.1f, false);
-
 	setCurrentData(m_staticData[DIAMOND], Stay, movableAnimationSet
-	({ 900, 110 }, { 49,0 }, 7, Stay), 0.2f, false);
+	({ 105, 110 }, { 49,0 }, 15,7, Stay), 0.2f, false);
 
 	createPlayerAnimeData();
 	createForestMonstersAnimeData();
@@ -308,16 +306,16 @@ void FileManager::setAnimationsData()
 void FileManager::createPlayerAnimeData()
 {
 	setCurrentData(m_playerData, Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 }, 1,Stay), 0.2f, false);
+	({ 110, 115 }, { 730, 5 },27, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData, Walk, movableAnimationSet
-	({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
+	({ 123, 115 }, { 480, 5 }, 5,2, Walk), 0.01f, false);
 
 	setCurrentData(m_playerData, Jump, movableAnimationSet
-	({ 100, 110 }, { 373, 5 }, 1,Jump), 0.15f, true);
+	({ 100, 110 }, { 373, 5 },27, 1,Jump), 0.15f, true);
 
 	setCurrentData(m_playerData, Hit, movableAnimationSet
-	({ 220, 115 }, { 133, 5 }, 2, Hit), 0.05f, true);
+	({ 100, 115 }, { 133, 5 },20, 2, Hit), 0.05f, true);
 
 	//setCurrentData(player, Operation::Rope, movableAnimationSet
 	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
@@ -340,7 +338,7 @@ void FileManager::createForestMonstersAnimeData()
 {
 
 	setCurrentData(m_monsterData[LEVEL1][MONSTER1], Stay, movableAnimationSet
-	({ 178, 55 }, { 1, 1 }, 3, Stay), 0.01f, false);
+	({ 60, 55 }, { 1, 1 }, 5,3, Stay), 0.01f, false);
 
 	/*setCurrentData(m_monsterData[LEVEL1][MONSTER1], Walk, movableAnimationSet
 	({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);*/
@@ -355,7 +353,7 @@ void FileManager::createForestMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Stay, movableAnimationSet
-	({ 355, 90 }, { 1, 1 }, 4, Stay), 0.01f, false);
+	({ 83, 90 }, { 1, 1 },12, 4, Stay), 0.01f, false);
 
 	/*setCurrentData(m_monsterData[LEVEL1][MONSTER2], Walk, movableAnimationSet
 	({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);*/
@@ -370,7 +368,7 @@ void FileManager::createForestMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Stay, movableAnimationSet
-	({ 297, 65 }, { 9, 6 }, 3, Stay), 0.02f, false);
+	({ 104, 65 }, { 9, 6 },1, 3, Stay), 0.02f, false);
 
 	/*
 	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Walk, movableAnimationSet
@@ -390,7 +388,7 @@ void FileManager::createForestMonstersAnimeData()
 void FileManager::createSnowMonstersAnimeData()
 {
 	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Stay, movableAnimationSet
-	({ 225, 35 }, { 1, 6 },5, Stay), 0.01f, false);
+	({ 33, 35 }, { 1, 6 },10,5, Stay), 0.01f, false);
 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Walk, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
@@ -405,7 +403,7 @@ void FileManager::createSnowMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
-	({ 610, 65 }, { 13, 36 },4, Stay), 0.02f, false);
+	({ 120, 65 }, { 13, 36 },40,4, Stay), 0.02f, false);
 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Walk, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
@@ -420,7 +418,7 @@ void FileManager::createSnowMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Stay, movableAnimationSet
-	({ 129, 40 }, { 0, 6 }, 3, Stay), 0.02f, false);
+	({ 40, 40 }, { 0, 6 }, 7,3, Stay), 0.02f, false);
 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Walk, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
@@ -439,7 +437,7 @@ void FileManager::createSnowMonstersAnimeData()
 void FileManager::createDesertMonstersAnimeData()
 {
 	setCurrentData(m_monsterData[LEVEL3][MONSTER1], Stay, movableAnimationSet
-	({ 416, 76 }, { 1, 4 }, 6, Stay), 0.02f, false);
+	({ 65, 76 }, { 1, 4 },2, 6, Stay), 0.02f, false);
 
 	/*setCurrentData(m_monsterData[LEVEL3][MONSTER1], Walk, movableAnimationSet
 	({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);*/
@@ -454,7 +452,7 @@ void FileManager::createDesertMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL3][MONSTER2], Stay, movableAnimationSet
-	({ 526, 95 }, { 1, 0 },9, Stay), 0.01f, false);
+	({ 50, 95 }, { 1, 0 },5,9, Stay), 0.01f, false);
 
 	//setCurrentData(m_monsterData[LEVEL3][MONSTER2], Walk, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
@@ -469,7 +467,7 @@ void FileManager::createDesertMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Stay, movableAnimationSet
-	({ 666, 42 }, { 8, 9 }, 11, Stay), 0.01f, false);
+	({ 53, 42 }, { 8, 9 }, 4,11, Stay), 0.01f, false);
 
 	/*setCurrentData(m_monsterData[LEVEL3][MONSTER3], Walk, movableAnimationSet
 	({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);*/

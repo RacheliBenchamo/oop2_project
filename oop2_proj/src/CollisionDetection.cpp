@@ -30,10 +30,10 @@ namespace // anonymous namespace — the standard way to make function "static"
 //// Handle the event that the player collides with the floor.
 //// Push the player back to his previous position before the collision.
 ////------------------------------------------------------------------------
-//void PlayerFloor(GameObjBase& p, GameObjBase& f)
-//{
-//    static_cast<MoveObject&>(p).handleCollision(static_cast<Block&>(f));
-//}
+void PlayerFloor(GameObjBase& p, GameObjBase& f)
+{
+    static_cast<Player&>(p).handleCollision(static_cast<Floor&>(f));
+}
 
 
 //--------------------------- playerHurricane ----------------------------
@@ -246,7 +246,7 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     void setPlayerCollisionHandling(HitMap& phm)
     {
         //// Player & floor.
-        //phm[MapKey(typeid(Player), typeid(Floor))] = &PlayerFloor;
+        phm[MapKey(typeid(Player), typeid(Floor))] = &PlayerFloor;
 
         // Player & Diamond.
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;

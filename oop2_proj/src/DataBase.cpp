@@ -78,15 +78,15 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  START_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), 
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), 
 			L_FLOOR,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE/1.5)));
 		break;
 	case  FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), M_FLOOR,
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), M_FLOOR,
 			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  END_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), R_FLOOR
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), R_FLOOR
 			,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  F_TREE_C:
@@ -171,6 +171,7 @@ void DataBase::FindTeleportPartner() const
 
 void DataBase::move(sf::Time deltaTime)
 {
+	handelCollisions();
 
 	//move monsters
 	for (auto& f : m_monsters)
@@ -184,11 +185,9 @@ void DataBase::move(sf::Time deltaTime)
 	m_player->handleJump(deltaTime, 
 		sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
 
-	m_player->handleFall(deltaTime,m_levelSize);
+	//m_player->handleFall(deltaTime, m_levelSize);
 	m_player->setHittingStatus(false);
 
-
-	handelCollisions();
 }
 //-------------------------------------------------
 //handle the collisions in this moment
