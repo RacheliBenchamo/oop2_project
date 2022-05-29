@@ -270,6 +270,32 @@ void Player::setHittingStatus(const bool status)
 }
 
 
+//-------------------------- handleCollision -----------------------------
+// Handles collision with the floor.
+// Pushes the moving object off the floor depending on the location of the
+// collision.
+//------------------------------------------------------------------------
+void Player::handleCollision(GameObjBase& floor)
+{
+	if (CollisionFromAboveFloor(floor))
+	{
+		setPrevPos(m_shape.getPosition());
+		m_falling = false;
+		m_onFloor = true;
+	}
+	else if (collisionFromLeft(floor))
+	{
+		m_shape.move(-PUSH_FROM);
+	}
+	else if (collisionFromRight(floor))
+	{
+		m_shape.move(PUSH_FROM);
+	}
+	else if (collisionFromBelow(floor))
+	{
+		setPrevPos(m_shape.getPosition());
+	}
+}
 
 
 

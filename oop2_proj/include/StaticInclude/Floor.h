@@ -18,7 +18,6 @@ public:
 	virtual void startSound()override;
 
 
-	void handleCollision(GameObjBase&) override;
 
 private:
 

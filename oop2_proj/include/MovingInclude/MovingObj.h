@@ -13,11 +13,16 @@ public:
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }
 	sf::Vector2f getCurrDir()const { return m_currDirection; }
 	void backToPrevPos();
-	virtual void handleCollision(GameObjBase&) override =0;
 	virtual void update(const sf::Time&) {};
 	int getLife()  const { return m_life; }
+	virtual void handleCollision(GameObjBase& floor)=0;
 
 protected:
+	bool collisionFromLeft(GameObjBase& g) const;
+	bool collisionFromRight(GameObjBase& g) const;
+	bool collisionFromBelow(GameObjBase& g) const;
+	bool CollisionFromAboveFloor(GameObjBase& floor) const;
+
 
 	sf::Vector2f getDirection() const;
 	bool outWindow(sf::Vector2f, sf::Vector2f) const;

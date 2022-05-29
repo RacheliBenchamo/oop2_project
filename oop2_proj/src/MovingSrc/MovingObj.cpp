@@ -34,3 +34,46 @@ sf::Vector2f MovingObj::getDirection() const
 
 	return STAY_IN_PLACE;
 }
+
+
+//--------------------------- collisionFromLeft --------------------------
+// Returns if there was a collision from left side with a static object.
+//------------------------------------------------------------------------
+bool MovingObj::collisionFromLeft(GameObjBase& g) const
+{
+	return m_shape.getPosition().x <
+		(g.getPos().x - g.getShape().getSize().x / 2);
+}
+
+//-------------------------- collisionFromRight ---------------------------
+// Returns if there was a collision from right side with a static object.
+//------------------------------------------------------------------------
+bool MovingObj::collisionFromRight(GameObjBase& g) const
+{
+	return m_shape.getPosition().x >
+		(g.getPos().x + g.getShape().getSize().x / 2);
+}
+
+
+//------------------------- collisionFromBelow ---------------------------
+// Returns if there was a collision from below with a static object.
+//------------------------------------------------------------------------
+bool MovingObj::collisionFromBelow(GameObjBase& g) const
+{
+	return m_shape.getPosition().y >
+		(g.getPos().y - g.getShape().getSize().y / 2);
+}
+
+
+//----------------------- CollisionFromAboveFloor ------------------------
+// Returns if there is collision from above with the floor.
+//------------------------------------------------------------------------
+bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
+{
+	return m_shape.getPosition().y + m_shape.getSize().x / 2.f <=
+		(floor.getPos().y - floor.getShape().getSize().y / 2) &&
+		m_shape.getPosition().x >=
+		(floor.getPos().x - floor.getShape().getSize().x / 2) &&
+		m_shape.getPosition().x <=
+		(floor.getPos().x + floor.getShape().getSize().x / 2);
+}

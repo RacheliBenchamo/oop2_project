@@ -21,7 +21,6 @@ public:
 	void incPower() {};
 	void addLife() {};
 	void addPower() {};
-	virtual void handleCollision(GameObjBase&) override {};
 
 
 private:
@@ -29,8 +28,7 @@ private:
 	void playMovementAnimations();
 	const sf::Vector2f getMovement(sf::Time& );
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
-
-
+	void handleCollision(GameObjBase& floor)override;
 
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;

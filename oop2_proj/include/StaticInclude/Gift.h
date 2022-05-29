@@ -7,5 +7,4 @@ public:
 	using StaticObj::StaticObj;
 
 	virtual void startSound()override;
-	virtual void handleCollision(GameObjBase&) override {};
 };

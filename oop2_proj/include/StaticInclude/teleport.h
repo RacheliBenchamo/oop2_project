@@ -24,7 +24,6 @@ public:
 
 	void update(const sf::Time& delta) override {m_animation.update(delta);};
 
-	void handleCollision(GameObjBase&) override;
 	
 private:
 	Animation m_animation;

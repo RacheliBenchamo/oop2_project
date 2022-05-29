@@ -20,6 +20,8 @@ class Key;
 class Wall;
 class Gift;
 class Fairy;
+class Floor;
+
 
 
 class GameObjBase
@@ -39,7 +41,6 @@ public:
 	float getIconHeight() const;
 	sf::Vector2f getScale() const;
 	void setDisappear(bool);
-	virtual void handleCollision(GameObjBase& )  = 0;
 
 	virtual bool getToDelete()const;
     void setToDelete();

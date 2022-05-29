@@ -12,17 +12,16 @@ public:
 	void hit();
 	void handleFall() {};
 	int getForce()const { return m_force; }
-	virtual void handleCollision(GameObjBase&) override {};
 	void setOperation(const Operation );
 	void handleHit();
+	void handleCollision(GameObjBase& floor)override;
 
 
 private:
 	bool isPlayerClose();
-	void setMovementStatus(const sf::Vector2f& );
-	void playMovementAnimations();
 	void scaleAccordingToPlayerPos();
 	sf::Vector2f getMove();
+
 
 
 	void playDeathSound() const {};

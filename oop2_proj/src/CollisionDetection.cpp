@@ -18,6 +18,13 @@
 #include "StaticInclude/ExtraLife.h"
 
 
+namespace // anonymous namespace — the standard way to make function "static"
+{
+    using HitFunctionPtr = void (*)(GameObjBase&, GameObjBase&);
+    using MapKey = std::pair<std::type_index, std::type_index>;
+    using HitMap = std::map<MapKey, HitFunctionPtr>;
+
+
 
 ////----------------------------- PlayerFloor ------------------------------
 //// Handle the event that the player collides with the floor.
@@ -33,10 +40,10 @@
 // Handle the event that the player collides with a hurricane.
 // The hurricane lifts the player upwards.
 //------------------------------------------------------------------------
-void playerTeleport(GameObjBase& p, GameObjBase& h)
-{
-    static_cast<Player&>(p).handleCollision(static_cast<Teleport&>(h));
-}
+//void playerTeleport(GameObjBase& p, GameObjBase& h)
+//{
+//    static_cast<Player&>(p).handleCollision(static_cast<Teleport&>(h));
+//}
 
 
 //---------------------------- playerGold --------------------------------
@@ -50,18 +57,8 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     static_cast<Player&>(p).addDiamond();
     //voice of takinf diamonds
     static_cast<Diamond&>(g).setToDelete();
+   // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
 }
-
-
-//----------------------------- playerBox --------------------------------
-// Handle the event that the player collides with a box.
-// If possible, allow the player to push the box.
-//------------------------------------------------------------------------
-//void playerBox(GameObject& player, GameObject& box)
-//{
-//    static_cast<Player&>(player).handleCollision(static_cast<Box&>(box));
-//}
-
 
 ////----------------------------- playerKey --------------------------------
 //// Handle the event that the player collides with a key.
@@ -243,13 +240,6 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
 //}
 
 
-namespace // anonymous namespace — the standard way to make function "static"
-{
-    using HitFunctionPtr = void (*)(GameObjBase&, GameObjBase&);
-    using MapKey = std::pair<std::type_index, std::type_index>;
-    using HitMap = std::map<MapKey, HitFunctionPtr>;
-
-
     //---------------------- setPlayerCollisionHandling ----------------------
     // Insert all the players collision functions into the map Data Structure.
     //------------------------------------------------------------------------
@@ -260,41 +250,18 @@ namespace // anonymous namespace — the standard way to make function "static"
 
         // Player & Diamond.
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
-        //// Player & Box.
-        //phm[MapKey(typeid(Player), typeid(Box))] = &playerBox;
-
-        //// Player & Hurricane.
-        //phm[MapKey(typeid(Player), typeid(Hurricane))] = &playerHurricane;
-
-        //// Player & Key.
-        //phm[MapKey(typeid(Player), typeid(Key))] = &playerKey;
-
-        //// Player & FastMoving
-        //phm[MapKey(typeid(Player), typeid(FastMoving))] = &playerFastMoving;
-
-        //// Player & FireArrows
-        //phm[MapKey(typeid(Player), typeid(FireArrows))] = &playerFireArrows;
-
-        //// Player & JumpBoost
-        //phm[MapKey(typeid(Player), typeid(JumpBoost))] = &playerJumpBoost;
 
         //// Player & ExtraLife
         //phm[MapKey(typeid(Player), typeid(ExtraLife))] = &playerExtraLife;
 
-        //// Player & Bear
+         //// Player & ExtraPower
+        //phm[MapKey(typeid(Player), typeid(ExtraPower))] = &playerExtraLife;
+
+        //// Player & Monster
         //phm[MapKey(typeid(Player), typeid(Bear))] = &playerEnemy;
-
-        //// Player & Wolf
-        //phm[MapKey(typeid(Player), typeid(Wolf))] = &playerEnemy;
-
-        //// Player & Crow
-        //phm[MapKey(typeid(Player), typeid(Crow))] = &playerEnemy;
 
         //// Player & Door
         //phm[MapKey(typeid(Player), typeid(Door))] = &playerDoor;
-
-        //// Player & Spike
-        //phm[MapKey(typeid(Player), typeid(Spike))] = &playerSpike;
     }
 
 

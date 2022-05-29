@@ -14,6 +14,7 @@
 #include "StaticInclude\LifeGift.h"
 #include "StaticInclude\PowerGift.h"
 #include "StaticInclude\StageDec.h"
+#include "StaticInclude\Floor.h"
 #include "MovingInclude\Player.h"
 #include "MovingInclude\Monster.h"
 

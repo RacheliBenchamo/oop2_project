@@ -34,11 +34,4 @@ bool Teleport::isOpen()
 {
     return m_isOpen;
 }
-//--------------------------------------------------
 
-void Teleport::handleCollision(GameObjBase& gameObject)
-{
-    if (&gameObject == this) return;
-    // double dispatch
-    gameObject.handleCollision(*this);
-}

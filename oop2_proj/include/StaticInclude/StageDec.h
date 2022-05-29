@@ -15,7 +15,6 @@ public:
 	//void update(const sf::Time& delta) override { m_animation.update(delta); };
 	virtual void startSound() {};
 
-	void handleCollision(GameObjBase&) override {};
 
 private:
 

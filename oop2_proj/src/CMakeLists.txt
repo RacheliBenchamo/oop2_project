@@ -16,7 +16,6 @@
                                               "StaticSrc/Gate.cpp"
                                                "StaticSrc/StaticObj.cpp"
                                                "StaticSrc/Gift.cpp"
-                                                "StaticSrc/Floor.cpp"
                                                 "StaticSrc/StageDec.cpp"
 
 
