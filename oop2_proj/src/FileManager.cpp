@@ -2,7 +2,12 @@
 #include "FileManager.h"
 #include <iostream>
 
-
+/*5 5 2
+     
+     
+ P   
+(===)
+     */
 //--------------------------------------------------
 //constructor
 
@@ -292,7 +297,7 @@ void FileManager::setCurrentData(AnimationData& data, Operation op,
 void FileManager::setAnimationsData()
 {
 	setCurrentData(m_staticData[DIAMOND], Stay, movableAnimationSet
-	({ 105, 110 }, { 49,0 }, 15,7, Stay), 0.2f, false);
+	({ 106, 110 }, { 37,16 }, 15,7, Stay), 0.2f, false);
 
 	createPlayerAnimeData();
 	createForestMonstersAnimeData();
@@ -306,13 +311,13 @@ void FileManager::setAnimationsData()
 void FileManager::createPlayerAnimeData()
 {
 	setCurrentData(m_playerData, Stay, movableAnimationSet
-	({ 110, 115 }, { 730, 5 },27, 1,Stay), 0.2f, false);
+	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData, Walk, movableAnimationSet
-	({ 123, 115 }, { 480, 5 }, 5,2, Walk), 0.01f, false);
+	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.008f, false);
 
 	setCurrentData(m_playerData, Jump, movableAnimationSet
-	({ 100, 110 }, { 373, 5 },27, 1,Jump), 0.15f, true);
+	({ 118, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
 
 	setCurrentData(m_playerData, Hit, movableAnimationSet
 	({ 100, 115 }, { 133, 5 },20, 2, Hit), 0.05f, true);

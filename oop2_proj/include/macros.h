@@ -135,7 +135,7 @@ const sf::Vector2f PUSH_FROM_SPIKE(2, 0);
 const sf::Vector2f FALL_PUSH(0, 5);
 
 const float HANDLE_JUMP_SPEED = 80.f;
-const int JUMP_COUNTER = 15;
+const int JUMP_COUNTER = 23;
 
 const int PLAYER_DAMAGE = 20;
 
