@@ -133,6 +133,7 @@ void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 {
 	if (!m_inHnaldeJump && !m_onFloor)
 	{
+		std::cout << "";
 		m_inHandleFall = true;
 		m_falling = true;
 
@@ -274,7 +275,6 @@ void Player::handleCollision(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
-		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;
 	}
@@ -288,7 +288,7 @@ void Player::handleCollision(GameObjBase& floor)
 	}
 	else if (collisionFromBelow(floor))
 	{
-		setPrevPos(m_shape.getPosition());
+		this->backToPrevPos();
 	}
 }
 

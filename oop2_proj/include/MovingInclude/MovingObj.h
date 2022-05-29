@@ -37,7 +37,7 @@ protected:
 
 	bool m_right = false,
 		m_left = false,
-		m_onFloor = true,
+		m_onFloor = false,
 		m_inHnaldeJump = false,
 		m_inHandleFall = false,
 		m_hitingStatus = false,
