@@ -32,7 +32,9 @@ namespace // anonymous namespace — the standard way to make function "static"
 ////------------------------------------------------------------------------
 void PlayerFloor(GameObjBase& p, GameObjBase& f)
 {
+    std::cout << "2\n";
     static_cast<Player&>(p).handleCollision(static_cast<Floor&>(f));
+
 }
 
 
