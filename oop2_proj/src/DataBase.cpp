@@ -180,8 +180,12 @@ void DataBase::move(sf::Time deltaTime)
 		f->move(deltaTime, m_levelSize);
 	}
 
+	
 	//move current player
 	m_player->move(deltaTime,m_levelSize);
+
+	handelCollisions();
+
 	m_player->handleJump(deltaTime, 
 		sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
 	m_player->handleFall(deltaTime, m_levelSize);

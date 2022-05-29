@@ -133,7 +133,6 @@ void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 {
 	if (!m_inHnaldeJump && !m_onFloor)
 	{
-		std::cout << "";
 		m_inHandleFall = true;
 		m_falling = true;
 
