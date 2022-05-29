@@ -236,7 +236,7 @@ void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
 		m_onFloor = false;
 		jumpCounter = JUMP_COUNTER;
 	}
-	if (jumpCounter != 0)
+	else if (jumpCounter != 0)
 	{
 		jumpCounter--;
 		move(deltaTime,levelSize);
@@ -274,6 +274,7 @@ void Player::handleCollision(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
+		std::cout << "t\n";
 		m_falling = false;
 		m_onFloor = true;
 	}

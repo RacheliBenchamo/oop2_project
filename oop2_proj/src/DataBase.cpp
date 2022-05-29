@@ -78,15 +78,15 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  START_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), 
+		m_floor.push_back(std::make_unique<Floor>(pos, levels(m_currLevel),
 			L_FLOOR,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE/1.5)));
 		break;
 	case  FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), M_FLOOR,
+		m_floor.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), M_FLOOR,
 			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  END_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), R_FLOOR
+		m_floor.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), R_FLOOR
 			,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  F_TREE_C:
@@ -132,6 +132,10 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 	for (auto& e : m_teleport)
 	{
 		e->update(delta_time);
+		e->draw(window);
+	}
+	for (auto& e : m_floor)
+	{
 		e->draw(window);
 	}
 }
@@ -209,12 +213,19 @@ void DataBase::handelCollisions()
 bool DataBase::handelPlayerCollisions()
 {
 	// check collition with static object
-	for (auto& p : m_staticsObj)
+	//for (auto& p : m_staticsObj)
+	//	if (m_player->checkCollision(*p))
+	//	{
+	//		processCollision(*m_player, *p);
+	//		return true;
+	//	}
+	for (auto& p : m_floor)
 		if (m_player->checkCollision(*p))
 		{
 			processCollision(*m_player, *p);
 			return true;
 		}
+	
 			
 	return false;
 	

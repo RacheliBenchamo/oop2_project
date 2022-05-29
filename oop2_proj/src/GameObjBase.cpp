@@ -86,6 +86,7 @@ bool GameObjBase::checkCollision(const GameObjBase& obj)
 	if (&obj)
 		if (m_shape.getGlobalBounds().intersects(obj.m_shape.getGlobalBounds()))
 			return true;
+			
 
 	return false;
 }
