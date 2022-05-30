@@ -393,7 +393,7 @@ void FileManager::createForestMonstersAnimeData()
 void FileManager::createSnowMonstersAnimeData()
 {
 	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Stay, movableAnimationSet
-	({ 33, 35 }, { 1, 6 },10,5, Stay), 0.01f, false);
+	({ 34, 35 }, { 1, 7 },11,5, Stay), 0.01f, false);
 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Walk, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
