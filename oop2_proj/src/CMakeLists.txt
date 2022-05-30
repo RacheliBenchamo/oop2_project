@@ -15,7 +15,7 @@
                                               "StaticSrc/Diamond.cpp"
                                               "StaticSrc/Gate.cpp"
                                                "StaticSrc/StaticObj.cpp"
-                                               "StaticSrc/Gift.cpp"
+                                               "StaticSrc/Posion.cpp"
                                                 "StaticSrc/StageDec.cpp"
 
 

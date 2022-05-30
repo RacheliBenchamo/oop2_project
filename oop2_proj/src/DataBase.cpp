@@ -324,13 +324,24 @@ void DataBase::deleteRelevantObj()
 
 void DataBase::replaceMonsterWithPotion()
 {
-	for( auto &e : m_monsters)
+	for(int i = 0; i < m_monsters.size(); i++ )
+	{
+		if (m_monsters[i]->getToDelete())
+		{
+			grillPotion(m_monsters[i]->getPos());
+
+			m_monsters.erase(m_monsters.begin());
+
+		}
+	}
+
+	for (auto& e : m_monsters)
 	{
 		if (e->getToDelete())
 		{
-			grillGiftType(e.getPos());
+			grillPotion(e->getPos());
 
-			m_monsters.erase(e);
+			m_monsters.erase(m_monsters.begin());
 
 		}
 	}
@@ -344,12 +355,12 @@ void  DataBase::grillPotion(sf::Vector2f pos)
 	int type = rand() % 3;
 	switch ((posion)type)
 	{
-	case posion::POWER:
+	case posion::POWERPOSION:
+		m_staticsObj.push_back(std::make_unique<PowerPosion>(pos));
+		break;
+	case posion::LIFE_POSION:
 		m_staticsObj.push_back(std::make_unique<LifePosion>(pos));
 		break;
-	case posion::LIFE:
-		m_staticsObj.puse_back(std::make_unique<PowerPosion>((GIFT));
-		break
 	default:
 		break;//pos);
 

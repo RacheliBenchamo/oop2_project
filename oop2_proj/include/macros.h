@@ -107,8 +107,8 @@ enum levels
 
 enum posion
 {
-    POWER,
-    LIFE
+    POWERPOSION,
+    LIFE_POSION
 };
 enum sounds
 {

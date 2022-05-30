@@ -52,7 +52,7 @@ protected:
 	void setScale(const sf::Vector2f& scale) {m_shape.setScale(scale);}
 private:
 	bool m_disappear = false;
-	bool m_replace;
+	bool m_replace = false;
 	bool m_delete = false;
 };
 

@@ -42,7 +42,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
         static_cast<Monster&>(f).handleHit();
 
     else
-        static_cast<Player&>(p).decLife(static_cast<Monster&>(f).getForce());
+        static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
 
     //static_cast<Player&>(p).handleCollision(static_cast<Floor&>(f));
 
