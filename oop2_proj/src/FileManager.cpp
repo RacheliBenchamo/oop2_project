@@ -408,7 +408,7 @@ void FileManager::createSnowMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
-	({ 120, 65 }, { 13, 36 },40,4, Stay), 0.02f, false);
+	({ 112, 65 }, { 13, 36 },40,4, Stay), 0.02f, false);
 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Walk, movableAnimationSet
 	//({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);
