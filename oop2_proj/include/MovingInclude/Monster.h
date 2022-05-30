@@ -21,7 +21,7 @@ private:
 	bool isPlayerClose();
 	void scaleAccordingToPlayerPos();
 	sf::Vector2f getMove();
-
+	void grillDir();
 
 
 	void playDeathSound() const {};
@@ -29,6 +29,7 @@ private:
 	void playAttackSound() const {};
 
 	sf::Vector2f m_playerPos{ 0,0 };
+	sf::Vector2f m_lastDir= RIGHT_MOVEMENT;
 	int m_force = 10;
 	Animation m_animation;
 

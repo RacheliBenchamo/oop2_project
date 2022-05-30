@@ -3,15 +3,14 @@
 
 // Moveable Objects
 #include "MovingInclude/Player.h"
-#include "MovingInclude/DesertMonster.h"
-#include "MovingInclude/ForestMonster.h"
-#include "MovingInclude/SnowMonster.h"
+#include "MovingInclude/Monster.h"
+
 
 //#include "MovingInclude/Box.h"
 
 // Static Objects.
 //#include "StaticInclude/Block.h"
-//#include "StaticInclude/Floor.h"
+#include "StaticInclude/Floor.h"
 //#include "StaticInclude/Rope.h"
 #include "StaticInclude/Teleport.h"
 #include "StaticInclude/Diamond.h"
@@ -154,10 +153,10 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
 //// Handle the event that the enemy collides with the floor.
 //// Push the enemy back to his previous position before the collision.
 ////------------------------------------------------------------------------
-//void enemyFloor(GameObject& e, GameObject& f)
-//{
-//    static_cast<Enemy&>(e).handleCollision(static_cast<Block&>(f));
-//}
+void monsterFloor(GameObjBase& e, GameObjBase& f)
+{
+    static_cast<Monster&>(e).handleCollision(static_cast<Floor&>(f));
+}
 
 
 ////----------------------------- enemyBox ---------------------------------
@@ -270,10 +269,10 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     //---------------------- setEnemyCollisionHandling -----------------------
     // Insert all the enemy's collision functions into the map Data Structure.
     //------------------------------------------------------------------------
-    void setEnemyCollisionHandling(HitMap& phm)
+    void setMonsterCollisionHandling(HitMap& phm)
     {
-        //// Bear & Block.
-        //phm[MapKey(typeid(Bear), typeid(Block))] = &enemyFloor;
+        //// Bear & Floor.
+        phm[MapKey(typeid(Monster), typeid(Floor))] = &monsterFloor;
 
         //// Bear & player.
         //phm[MapKey(typeid(Bear), typeid(Player))] = &bearPlayer;
@@ -287,37 +286,6 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
         //// Bear & FireArrow.
         //phm[MapKey(typeid(Bear), typeid(FireArrow))] = &enemyArrow;
 
-
-        //// Wolf & Block.
-        //phm[MapKey(typeid(Wolf), typeid(Block))] = &enemyFloor;
-
-        //// Wolf & Player.
-        //phm[MapKey(typeid(Wolf), typeid(Player))] = &wolfPlayer;
-
-        //// Wolf & Box.
-        //phm[MapKey(typeid(Wolf), typeid(Box))] = &enemyBox;
-
-        //// Wolf & Arrow.
-        //phm[MapKey(typeid(Wolf), typeid(StoneArrow))] = &enemyArrow;
-
-        //// Wolf & FireArrow.
-        //phm[MapKey(typeid(Wolf), typeid(FireArrow))] = &enemyArrow;
-
-
-        //// Crow & block.
-        //phm[MapKey(typeid(Crow), typeid(Block))] = &enemyFloor;
-
-        //// Crow & Player.
-        //phm[MapKey(typeid(Crow), typeid(Player))] = &crowPlayer;
-
-        //// Crow & Box.
-        //phm[MapKey(typeid(Crow), typeid(Box))] = &enemyBox;
-
-        //// Crow & Arrow.
-        //phm[MapKey(typeid(Crow), typeid(StoneArrow))] = &enemyArrow;
-
-        //// Crow & FireArrow.
-        //phm[MapKey(typeid(Crow), typeid(FireArrow))] = &enemyArrow;
     }
 
 
@@ -356,7 +324,7 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
 
         setPlayerCollisionHandling(phm);
 
-        //setEnemyCollisionHandling(phm);
+        setMonsterCollisionHandling(phm);
 
         //setStaticCollisionHandling(phm);
 

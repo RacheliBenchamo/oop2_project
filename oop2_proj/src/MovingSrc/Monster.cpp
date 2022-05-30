@@ -11,6 +11,25 @@ Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, sf::Vector2f s
 		FileManager::p2FileManager().getMonstersTexture(icon,lev))
 {
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
+	grillDir();
+}
+//------------------------------------------------------------------------
+
+void Monster::grillDir()
+{
+	int dir = rand() % 2;
+
+	switch ((direction)dir)
+	{
+	case RIGHT:
+		m_lastDir = RIGHT_MOVEMENT;
+		m_shape.setScale(SCALE_RIGHT);
+		break;
+	case LEFT:
+		m_lastDir = LEFT_MOVEMENT;
+		m_shape.setScale(SCALE_LEFT);
+		break;
+	}
 }
 
 //-------------------------------- move ----------------------------------
@@ -30,8 +49,20 @@ void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 
 	//MoveObject::handleEvents();
 
-	if (outWindow(m_shape.getPosition(), levelSize))
+	if (outWindow(m_shape.getPosition(), levelSize))//|| !m_onFloor
+	{
 		this->backToPrevPos();
+		/*m_lastDir = -m_lastDir;
+		m_shape.setScale(-m_shape.getScale().x , 1);*/
+	}
+	//to delete later:
+	if (!m_onFloor)
+	{
+		m_lastDir = RIGHT_MOVEMENT;
+		m_shape.setScale(SCALE_RIGHT);
+	}
+
+	m_onFloor = false;
 }
 
 //---------------------------- isPlayerClose -----------------------------
@@ -105,42 +136,39 @@ sf::Vector2f Monster::getMove()
 	// static timer to have the movement every X time
 	static sf::Clock movementClock;
 
-	//if (m_animation.getOperation() == Operation::Hurt ||
-	//	m_animation.getOperation() == Operation::Hit)
-	//{
-	//	return STAY_IN_PLACE;
-	//}
 
-	//if (movementClock.getElapsedTime().asSeconds() <= 2)
-	//{
-	//	m_animation.operation(Operation::Walk);
-	//	m_shape.setScale(SCALE_LEFT);
-	//	return LEFT_MOVEMENT;
-	//}
-	//else if (movementClock.getElapsedTime().asSeconds() <= 4)
-	//{
-	//	m_animation.operation(Operation::Stay);
-	//	return STAY_IN_PLACE;
-	//}
-	//else if (movementClock.getElapsedTime().asSeconds() <= 6)
-	//{
-	//	m_animation.operation(Operation::Walk);
-	//	m_shape.setScale(SCALE_RIGHT);
-	//	return RIGHT_MOVEMENT;
-	//}
-	//else if (movementClock.getElapsedTime().asSeconds() >= 6 &&
-	//	movementClock.getElapsedTime().asSeconds() <= 8)
-	//{
-	//	m_animation.operation(Operation::Stay);
-	//	return STAY_IN_PLACE;
-	//}
+	if (m_animation.getOperation() == Operation::Hurt ||
+		m_animation.getOperation() == Operation::Hit)
+	{
+		return STAY_IN_PLACE;
+	}
 
-	//movementClock.restart();
-	//m_animation.operation(Operation::Stay);
-	//m_shape.setScale(SCALE_LEFT);
-	//return LEFT_MOVEMENT;
+	if (movementClock.getElapsedTime().asSeconds() <= 2)
+	{
+		m_animation.operation(Operation::Stay);
+		return m_lastDir;
+	}
+	else if (movementClock.getElapsedTime().asSeconds() <= 4)
+	{
+		m_animation.operation(Operation::Stay);
+		return STAY_IN_PLACE;
+	}
+	else if (movementClock.getElapsedTime().asSeconds() <= 6)
+	{
+		m_animation.operation(Operation::Stay);
+		return m_lastDir;
+	}
+	else if (movementClock.getElapsedTime().asSeconds() >= 6 &&
+		movementClock.getElapsedTime().asSeconds() <= 8)
+	{
+		m_animation.operation(Operation::Stay);
+		return STAY_IN_PLACE;
+	}
 
-	return{ 0,0 };
+	movementClock.restart();
+	m_shape.setScale(SCALE_LEFT);
+	return LEFT_MOVEMENT;
+
 
 }
 
@@ -184,11 +212,10 @@ void Monster::scaleAccordingToPlayerPos()
 //------------------------------------------------------------------------
 void Monster::handleCollision(GameObjBase& floor)
 {
-	if (!CollisionFromAboveFloor(floor))
+	if (CollisionFromAboveFloor(floor))
 	{
 		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;
-		//getNewDir();
 	}
 }
