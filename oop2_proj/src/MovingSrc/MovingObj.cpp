@@ -68,10 +68,12 @@ bool MovingObj::collisionFromBelow(GameObjBase& g) const
 //------------------------------------------------------------------------
 bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
 {
-	if ((m_shape.getPosition().y + m_shape.getSize().y >
-		(floor.getPos().y + floor.getShape().getSize().y) ||
+	if (!m_left&&(m_shape.getPosition().y + m_shape.getSize().y >
+		(floor.getPos().y + floor.getShape().getSize().y)) ||
+		m_left && m_shape.getPosition().y - m_shape.getSize().y >
+			(floor.getPos().y + floor.getShape().getSize().y)||
 		(m_shape.getPosition().x <
-			floor.getPos().x)) || (m_shape.getPosition().x >
+			floor.getPos().x) || (m_shape.getPosition().x >
 				floor.getPos().x + floor.getShape().getSize().x))
 	{
 		std::cout << "player pos y- " << m_shape.getPosition().y << "player size y- " << m_shape.getSize().y <<
