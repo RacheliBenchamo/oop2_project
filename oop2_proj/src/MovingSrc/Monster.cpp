@@ -144,7 +144,7 @@ sf::Vector2f Monster::getMove()
 
 	if (movementClock.getElapsedTime().asSeconds() <= 2)
 	{
-		m_animation.operation(Operation::Stay);
+		m_animation.operation(Operation::Walk);
 		return m_lastDir;
 	}
 	else if (movementClock.getElapsedTime().asSeconds() <= 4)
@@ -154,7 +154,7 @@ sf::Vector2f Monster::getMove()
 	}
 	else if (movementClock.getElapsedTime().asSeconds() <= 6)
 	{
-		m_animation.operation(Operation::Stay);
+		m_animation.operation(Operation::Walk);
 		return m_lastDir;
 	}
 	else if (movementClock.getElapsedTime().asSeconds() >= 6 &&
