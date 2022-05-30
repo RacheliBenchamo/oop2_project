@@ -358,7 +358,7 @@ void FileManager::createForestMonstersAnimeData()
 	//	Operation::Dead), 0.15f, true);
 
 	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Stay, movableAnimationSet
-	({ 83, 90 }, { 1, 1 },12, 4, Stay), 0.01f, false);
+	({ 82, 82 }, { 1, 1 },5, 4, Stay), 0.01f, false);
 
 	/*setCurrentData(m_monsterData[LEVEL1][MONSTER2], Walk, movableAnimationSet
 	({ 240, 115 }, { 480, 5 }, 2, Walk), 0.01f, false);*/
