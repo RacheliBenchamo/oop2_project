@@ -61,7 +61,6 @@ void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 		m_lastDir = RIGHT_MOVEMENT;
 		m_shape.setScale(SCALE_RIGHT);
 	}
-
 	m_onFloor = false;
 }
 

@@ -326,15 +326,6 @@ void FileManager::createPlayerAnimeData()
 	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
 	//	Operation::Rope), 0.05f, true);
 	// 
-	//setCurrentData(player, Operation::Hurt, movableAnimationSet
-	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
-	//	Operation::Hurt), 0.05f, true);
-
-	//setCurrentData(player, Operation::Dead, movableAnimationSet
-	//({ 50, 30 }, { 0, 443 }, { 0, 0 }, 5,
-	//	Operation::Dead), 0.15f, true);
-
-	//return player;
 }
 //--------------------------- monstersAnime ----------------------------
 //Set the monsters animations.
