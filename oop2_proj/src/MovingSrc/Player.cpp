@@ -209,6 +209,7 @@ void Player::hit()
 	if (m_power > 0 && m_onFloor )
 	{
 		//Resources::instance().playSound(PLAYER_ATTACK_SOUND);
+		m_power -= HITTING_POWER;
 		m_hitingStatus = true;
 		m_animation.operation(Operation::Hit);
 	}

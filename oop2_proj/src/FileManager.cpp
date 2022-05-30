@@ -320,7 +320,7 @@ void FileManager::createPlayerAnimeData()
 	({ 118, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
 
 	setCurrentData(m_playerData, Hit, movableAnimationSet
-	({ 100, 115 }, { 133, 5 },20, 2, Hit), 0.05f, true);
+	({ 100, 115 }, { 133, 5 },20, 2, Hit), 0.06f, true);
 
 	//setCurrentData(player, Operation::Rope, movableAnimationSet
 	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,

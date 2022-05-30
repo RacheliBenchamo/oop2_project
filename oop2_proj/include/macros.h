@@ -14,6 +14,8 @@ NUM_OF_DIRECTION = 4,
 NUM_OF_GIFT_TYPES = 4,
 P_SIZE = 64; // pixel size
 
+const unsigned int
+HITTING_POWER = 1;
 
 // sizes data
 const int BLOCK_SIZE = 40;

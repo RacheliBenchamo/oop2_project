@@ -60,6 +60,7 @@ private:
     void handelCollisions();
     bool handelPlayerCollisions();
     void handelTeleportCollisions();
+    void handelPlayerStuff(sf::Time);
     void itsAllowedToEnterTheTeleport(int, int);
     bool ThereIsNoObjectOnTheMemberTel(int);
    //void handelMonstersCollisions();

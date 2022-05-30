@@ -189,11 +189,7 @@ void DataBase::move(sf::Time deltaTime)
 	m_player->move(deltaTime,m_levelSize);
 
 	handelCollisions();
-
-	m_player->handleJump(deltaTime, 
-		sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
-	m_player->handleFall(deltaTime, m_levelSize);
-	m_player->setHittingStatus(false);
+	handelPlayerStuff(deltaTime);
 
 }
 //-------------------------------------------------
@@ -274,6 +270,19 @@ void DataBase::handelTeleportCollisions()
 				itsAllowedToEnterTheTeleport(index , -1);
 		}
 	}*/
+}
+
+//----------------------------------------------------
+
+void DataBase::handelPlayerStuff(sf::Time deltaTime)
+{
+	m_player->handleJump(deltaTime,sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
+	m_player->handleFall(deltaTime, m_levelSize);
+	m_player->setHittingStatus(false);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+		m_player->hit();
+
+	m_player->setHittingStatus(false);
 }
 //-----------------------------------------------------
 //check if its allowed to enter the teleport
