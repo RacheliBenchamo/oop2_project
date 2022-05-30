@@ -45,16 +45,16 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 		m_player = std::make_unique<Player>(pos+sf::Vector2f(0,20));
 		break;
 	case  MONSTER1_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel),
-			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 )));
+		m_monsters.push_back(std::make_unique<Monster>(pos , levels(m_currLevel),
+			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 ),MON1_FORCE));
 		break;
 	case  MONSTER2_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel),
-			MONSTER2, sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE)));
+		m_monsters.push_back(std::make_unique<Monster>(pos, levels(m_currLevel),
+			MONSTER2, sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE));
 		break;
 	case  MONSTER3_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos + sf::Vector2f(0, 22), levels(m_currLevel),
-			MONSTER3, sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE)));
+		m_monsters.push_back(std::make_unique<Monster>(pos , levels(m_currLevel),
+			MONSTER3, sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE));
 		break;
 	}
 }
@@ -321,37 +321,40 @@ void DataBase::deleteRelevantObj()
 }
 //-----------------------------------------------------
 //replace the orks that killed with key sprite
-//
-//void DataBase::replaceMonsterWithPotion()
-//{
-//	for (int i = 0; i < m_staticsObj.size(); i++)
-//	{
-//		if (m_staticsObj[i]->getToReplace())
-//		{
-//			auto sprite = m_staticsObj[i]->getSprite();
-//			int x = (sprite.getPosition().x) / (float)P_SIZE;
-//			int y = (sprite.getPosition().y) / (float)P_SIZE;
-//			m_staticsObj.push_back(std::make_unique<Key>((KEY), x, y));
-//			m_staticsObj[i]->setDelete();
-//		}
-//	}
-//}
+
+void DataBase::replaceMonsterWithPotion()
+{
+	for( auto &e : m_monsters)
+	{
+		if (e->getToDelete())
+		{
+			grillGiftType(e.getPos());
+
+			m_monsters.erase(e);
+
+		}
+	}
+}
 //-------------------------------------------------------------
 //gril which gift the current gift will be
 
-std::unique_ptr<Gift>  DataBase::grillGiftType(icons, int i, int j)
+void  DataBase::grillPotion(sf::Vector2f pos)
 {
-	//if (!m_GiftsWithTime)
 
-	//	int type = rand() % (NUM_OF_GIFT_TYPES / 2);
-	//switch ((giftType)type)
-	//{
-	//case giftType::LIFE:
-	//	return std::make_unique<LifeGift>((GIFT), i, j);
-	//case giftType::POWER:
-	//	return std::make_unique<PowerGift>((GIFT), i, j);
-	//}
-	return nullptr;
+	int type = rand() % 3;
+	switch ((posion)type)
+	{
+	case posion::POWER:
+		m_staticsObj.push_back(std::make_unique<LifePosion>(pos));
+		break;
+	case posion::LIFE:
+		m_staticsObj.puse_back(std::make_unique<PowerPosion>((GIFT));
+		break
+	default:
+		break;//pos);
+
+	}
+	
 }
 //---------------------------------------------
 //handle taking gift by the player

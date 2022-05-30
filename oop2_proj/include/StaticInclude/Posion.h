@@ -1,7 +1,7 @@
 #pragma once
 #include "StaticObj.h"
 
-class Gift : public StaticObj
+class Posion : public StaticObj
 {
 public:
 	using StaticObj::StaticObj;

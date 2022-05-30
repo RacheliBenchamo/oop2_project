@@ -17,7 +17,7 @@ public:
 	const int getDiamondsCount() const { return m_diamondsCount; }
 	bool isFinishedLevel(const int) {};
 	int getPower()const { return m_power; }
-	void incLife() {};
+	void handelHit(int) ;
 	void incPower() {};
 	void addLife() {};
 	void addPower() {};

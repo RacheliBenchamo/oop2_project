@@ -15,6 +15,9 @@ public:
 	void backToPrevPos();
 	virtual void update(const sf::Time&) {};
 	int getLife()  const { return m_life; }
+	int getForce()const { return m_force; }
+	bool getHitingStatus() const { return m_hitingStatus; };
+	void beHurt() ;
 	virtual void handleCollision(GameObjBase& floor)=0;
 
 protected:
@@ -34,6 +37,7 @@ protected:
 
 
 	int m_life=100;
+	int m_force = 0;
 
 	bool m_right = false,
 		m_left = false,

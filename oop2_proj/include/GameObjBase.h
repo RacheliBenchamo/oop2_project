@@ -44,8 +44,8 @@ public:
 
 	virtual bool getToDelete()const;
     void setToDelete();
-	//virtual bool getToReplace()const;
-	//virtual void setReplace();
+	bool getToReplace()const;
+	void setToReplace();
 
 protected:
 	sf::RectangleShape m_shape;

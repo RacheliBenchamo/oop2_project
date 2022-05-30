@@ -36,6 +36,18 @@ void PlayerFloor(GameObjBase& p, GameObjBase& f)
 
 }
 
+void playerMonster(GameObjBase& p, GameObjBase& f)
+{
+    if (static_cast<Player&>(p).getHitingStatus())
+        static_cast<Monster&>(f).handleHit();
+
+    else
+        static_cast<Player&>(p).decLife(static_cast<Monster&>(f).getForce());
+
+    //static_cast<Player&>(p).handleCollision(static_cast<Floor&>(f));
+
+}
+
 
 //--------------------------- playerHurricane ----------------------------
 // Handle the event that the player collides with a hurricane.
@@ -248,9 +260,11 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
     {
         //// Player & floor.
         phm[MapKey(typeid(Player), typeid(Floor))] = &PlayerFloor;
-
         // Player & Diamond.
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
+        // Player & Monster.
+        phm[MapKey(typeid(Player), typeid(Monster))] = &playerMonster;
+
 
         //// Player & ExtraLife
         //phm[MapKey(typeid(Player), typeid(ExtraLife))] = &playerExtraLife;

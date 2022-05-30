@@ -10,6 +10,7 @@ Player::Player( const sf::Vector2f& pos)
 		Operation::Stay, m_shape,
 		FileManager::p2FileManager().getPlayerTexture())
 {
+	m_force = PAYER_FORCE;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 }
 
@@ -264,6 +265,12 @@ void Player::setHittingStatus(const bool status)
 	m_hitingStatus = status;
 }
 
+
+void Player::handelHit(int force)
+{
+	// play sound
+	m_life -= force;
+}
 
 //-------------------------- handleCollision -----------------------------
 // Handles collision with the floor.

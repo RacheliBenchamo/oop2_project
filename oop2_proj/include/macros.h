@@ -15,7 +15,16 @@ NUM_OF_GIFT_TYPES = 4,
 P_SIZE = 64; // pixel size
 
 const unsigned int
-HITTING_POWER = 1;
+HITTING_POWER = 0.1,
+LESS_LIFE = 0.1,
+PAYER_FORCE = 15;
+
+//monster force
+const unsigned int
+MON1_FORCE = 10,
+MON2_FORCE = 12,
+MON3_FORCE = 14;
+
 
 // sizes data
 const int BLOCK_SIZE = 40;
@@ -96,6 +105,11 @@ enum levels
     LEVEL1,LEVEL2,LEVEL3
 };
 
+enum posion
+{
+    POWER,
+    LIFE
+};
 enum sounds
 {
 	S_TOUCH_WALL, S_TURN_OFF_FIRE, S_GIFT, S_KILL_ORK, S_IN_TELEPORT,
@@ -119,6 +133,8 @@ enum direction
 {
 	LEFT, RIGHT, UP, DOWN,
 };
+
+
 
 const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 
@@ -148,6 +164,7 @@ const sf::Vector2f HIT_SCALE(0.8f, 1);
 const sf::Vector2f HURT_SCALE(0.8f, 1);
 
 const float HALF_SIZE = 10.f;
+
 
 enum Operation
 {

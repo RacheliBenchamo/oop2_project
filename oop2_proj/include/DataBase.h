@@ -10,9 +10,9 @@
 #include "StaticInclude\Diamond.h"
 #include "StaticInclude\Floor.h"
 #include "StaticInclude\Gate.h"
-#include "StaticInclude\Gift.h"
-#include "StaticInclude\LifeGift.h"
-#include "StaticInclude\PowerGift.h"
+#include "StaticInclude\Posion.h"
+#include "StaticInclude\LifePosion.h"
+#include "StaticInclude\PowerPosion.h"
 #include "StaticInclude\StageDec.h"
 #include "StaticInclude\Floor.h"
 #include "MovingInclude\Player.h"
@@ -51,7 +51,7 @@ public:
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
     void createMovingObj(const char , const sf::Vector2f&);
-
+    void replaceMonsterWithPotion();
    /* template<class T>
     void drowObj();*/
 
@@ -65,8 +65,7 @@ private:
     bool ThereIsNoObjectOnTheMemberTel(int);
    //void handelMonstersCollisions();
     void deleteRelevantObj();
-    //void replaceMonsterWithPotion();
-    std::unique_ptr<Gift>  grillGiftType(icons, int, int);
+    void grillPotion(sf::Vector2f pos);
     void takeGift();
     void resetTakeGifts();
     void eraseAllMonsters();

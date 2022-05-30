@@ -4,12 +4,13 @@
 // Sets features using the base class constructor.
 // Also, sets it's unique size and events clock.
 //------------------------------------------------------------------------
-Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, sf::Vector2f size)
-	:MovingObj(size, pos),
+Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, sf::Vector2f size, int force)
+	:MovingObj(size, pos + sf::Vector2f(0, 22)), 
 	m_animation(FileManager::p2FileManager().getMonstersData(lev, icon),
 		Operation::Stay, m_shape,
 		FileManager::p2FileManager().getMonstersTexture(icon,lev))
 {
+	m_force = force;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 	grillDir();
 }
@@ -115,11 +116,13 @@ void Monster::handleHit()
 		else
 		{
 			//e.playDeathSound();
+
 		}
 	}
 	else
 	{
 		//m_animation.operation(Operation::Dead);
+		//do_telete
 	}
 }
 

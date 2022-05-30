@@ -48,6 +48,18 @@ void GameObjBase::setToDelete()
 }
 //--------------------------------------------------
 
+bool GameObjBase::getToReplace() const
+{
+	return m_replace;
+}
+//--------------------------------------------------
+
+void GameObjBase::setToReplace()
+{
+	m_replace = true;
+}
+//--------------------------------------------------
+
 //bool GameObjBase::getToReplace()const
 //{
 //	return m_replace;
