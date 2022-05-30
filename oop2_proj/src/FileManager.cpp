@@ -297,7 +297,7 @@ void FileManager::setCurrentData(AnimationData& data, Operation op,
 void FileManager::setAnimationsData()
 {
 	setCurrentData(m_staticData[DIAMOND], Stay, movableAnimationSet
-	({ 106, 110 }, { 37,16 }, 15,7, Stay), 0.2f, false);
+	({ 110, 110 }, { 36,16 }, 15,7, Stay), 0.2f, false);
 
 	createPlayerAnimeData();
 	createForestMonstersAnimeData();
