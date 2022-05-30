@@ -387,7 +387,7 @@ void FileManager::createSnowMonstersAnimeData()
 
 	//
 	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Walk, movableAnimationSet
-	({ 37, 35 }, { 1, 53 }, 10, 6, Stay), 0.01f, false);
+	({ 37, 35 }, { 1, 53 }, 10, 6, Walk), 0.01f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER1], Operation::Hurt, movableAnimationSet
@@ -403,7 +403,7 @@ void FileManager::createSnowMonstersAnimeData()
 
 	//
 	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Walk, movableAnimationSet
-	({ 125, 65 }, { 13, 145 }, 40, 3, Stay), 0.02f, false);
+	({ 125, 65 }, { 13, 145 }, 40, 3, Walk), 0.02f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER2], Operation::Hurt, movableAnimationSet
@@ -419,7 +419,7 @@ void FileManager::createSnowMonstersAnimeData()
 
 	//
 	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Walk, movableAnimationSet
-	({ 45, 40 }, { 1, 56 }, 5, 4, Stay), 0.02f, false);
+	({ 45, 40 }, { 1, 56 }, 5, 4, Walk), 0.02f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL2][MONSTER3], Operation::Hurt, movableAnimationSet
@@ -439,7 +439,7 @@ void FileManager::createDesertMonstersAnimeData()
 
 	//
 	setCurrentData(m_monsterData[LEVEL3][MONSTER1], Walk, movableAnimationSet
-	({ 67, 76 }, { 1, 5 },9, 6, Stay), 0.02f, false);
+	({ 67, 80 }, { 1, 86 },9, 6, Walk), 0.02f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL3][MONSTER1], Operation::Hurt, movableAnimationSet
@@ -455,7 +455,7 @@ void FileManager::createDesertMonstersAnimeData()
 
 	//
 	setCurrentData(m_monsterData[LEVEL3][MONSTER2], Walk, movableAnimationSet
-	({ 48, 94 }, { 1, 1 }, 11, 9, Stay), 0.01f, false);
+	({ 49, 90 }, { 1, 92 }, 15, 4, Walk), 0.01f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL3][MONSTER2], Operation::Hurt, movableAnimationSet
@@ -471,7 +471,7 @@ void FileManager::createDesertMonstersAnimeData()
 
 	//
 	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Walk, movableAnimationSet
-	({ 55, 42 }, { 8, 11 }, 6,11, Stay), 0.01f, false);
+	({ 55, 42 }, { 6, 67 }, 3,12, Walk), 0.01f, false);
 
 	// 
 	//setCurrentData(m_monsterData[LEVEL3][MONSTER3], Operation::Hurt, movableAnimationSet
