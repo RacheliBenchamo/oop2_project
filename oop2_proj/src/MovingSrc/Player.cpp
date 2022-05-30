@@ -214,7 +214,6 @@ void Player::hit()
 		m_animation.operation(Operation::Hit);
 	}
 }
-
 ////----------------------------- handleJump -------------------------------
 //// handles the jump event.
 //// The player is shifted upwards with calling the function move that knows
