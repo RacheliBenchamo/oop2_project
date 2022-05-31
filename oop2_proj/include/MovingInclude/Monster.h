@@ -21,6 +21,7 @@ private:
 	void scaleAccordingToPlayerPos();
 	sf::Vector2f getMove();
 	void grillDir();
+	void goAccordingToPlayerPos();
 
 
 	void playDeathSound() const {};

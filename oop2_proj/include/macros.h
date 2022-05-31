@@ -15,15 +15,15 @@ NUM_OF_GIFT_TYPES = 4,
 P_SIZE = 64; // pixel size
 
 const unsigned int
-HITTING_POWER = 0.1,
-LESS_LIFE = 0.1,
+HITTING_POWER = 1,
+LESS_LIFE = 1,
 PAYER_FORCE = 15;
 
 //monster force
 const unsigned int
-MON1_FORCE = 10,
-MON2_FORCE = 12,
-MON3_FORCE = 14;
+MON1_FORCE = 4,
+MON2_FORCE = 6,
+MON3_FORCE = 8;
 
 
 // sizes data
@@ -154,8 +154,10 @@ const sf::Vector2f FALL_PUSH(0, 5);
 
 const float HANDLE_JUMP_SPEED = 80.f;
 const int JUMP_COUNTER = 23;
+const int HIT_COUNTER = 23;
 
-const int PLAYER_DAMAGE = 20;
+
+const int PLAYER_DAMAGE = 5;
 
 // scale consts
 const sf::Vector2f WALK_SCALE(0.9f, 1);

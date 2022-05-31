@@ -115,7 +115,8 @@ void StatusBar::updatePos(sf::Vector2f center)
 }
 //------------------------------------------
 
-void StatusBar::draw(sf::RenderWindow& window,const int power,const int life,const int currDiamonds)
+void StatusBar::draw(sf::RenderWindow& window,const int power,
+	const int life,const int currDiamonds)
 {
 	updateTime();
 	updateDiamondText(currDiamonds);
@@ -142,8 +143,8 @@ void StatusBar::draw(sf::RenderWindow& window,const int power,const int life,con
 
 void StatusBar::updateLifeAndPower(int power, int life)
 {
-	m_currPower.setSize(sf::Vector2f(power * 0.5, m_currPower.getSize().y));
-	m_currLife.setSize(sf::Vector2f(life * 0.5, m_currLife.getSize().y));
+	m_currPower.setSize(sf::Vector2f(power * 0.05, m_currPower.getSize().y));
+	m_currLife.setSize(sf::Vector2f(life * 0.05, m_currLife.getSize().y));
 
 }
 //------------------------------------------

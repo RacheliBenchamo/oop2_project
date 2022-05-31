@@ -36,7 +36,7 @@ protected:
 	bool isAlive() const {return m_life> 0;}
 
 
-	int m_life=100;
+	int m_life=300;
 	int m_force = 0;
 
 	bool m_right = false,

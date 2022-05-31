@@ -39,7 +39,6 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Player&>(p).getHitingStatus())
         static_cast<Monster&>(f).handleHit();
-
     else
         static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
 
@@ -72,6 +71,32 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
    // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
 }
 
+//------------------------------------------------
+
+void playerLifePotion(GameObjBase& p, GameObjBase& g)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+    {
+        //auto d = static_cast<Diamond&>(g);
+        static_cast<Player&>(p).addLife();
+        //voice of takinf diamonds
+        static_cast<LifePosion&>(g).setToDelete();
+        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+    }
+}
+//------------------------------------------------
+
+void playerPowerPotion(GameObjBase& p, GameObjBase& g)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+    {
+        //auto d = static_cast<Diamond&>(g);
+        static_cast<Player&>(p).addPower();
+        //voice of takinf diamonds
+        static_cast<PowerPosion&>(g).setToDelete();
+        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+    }
+}
 ////----------------------------- playerKey --------------------------------
 //// Handle the event that the player collides with a key.
 //// Let the player to pick up the key and update the key status of the
@@ -263,19 +288,10 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
         // Player & Monster.
         phm[MapKey(typeid(Player), typeid(Monster))] = &playerMonster;
-
-
         //// Player & ExtraLife
-        //phm[MapKey(typeid(Player), typeid(ExtraLife))] = &playerExtraLife;
-
+        phm[MapKey(typeid(Player), typeid(LifePosion))] = &playerLifePotion;
          //// Player & ExtraPower
-        //phm[MapKey(typeid(Player), typeid(ExtraPower))] = &playerExtraLife;
-
-        //// Player & Monster
-        //phm[MapKey(typeid(Player), typeid(Bear))] = &playerEnemy;
-
-        //// Player & Door
-        //phm[MapKey(typeid(Player), typeid(Door))] = &playerDoor;
+        phm[MapKey(typeid(Player), typeid(PowerPosion))] = &playerPowerPotion;
     }
 
 

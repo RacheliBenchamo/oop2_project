@@ -11,6 +11,8 @@ Player::Player( const sf::Vector2f& pos)
 		FileManager::p2FileManager().getPlayerTexture())
 {
 	m_force = PAYER_FORCE;
+	m_life = 1000;
+	m_power = 1000;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 }
 
@@ -210,7 +212,7 @@ void Player::hit()
 	if (m_power > 0 && m_onFloor )
 	{
 		//Resources::instance().playSound(PLAYER_ATTACK_SOUND);
-		m_power -= HITTING_POWER;
+		m_power - HITTING_POWER<=0? m_power=0: m_power -= HITTING_POWER;
 		m_hitingStatus = true;
 		m_animation.operation(Operation::Hit);
 	}
@@ -268,8 +270,18 @@ void Player::setHittingStatus(const bool status)
 
 void Player::handelHit(int force)
 {
-	// play sound
-	m_life -= force;
+	static int hitCounter = 0;
+
+	if (hitCounter == 0)
+	{
+		hitCounter = HIT_COUNTER;
+		// play sound
+		m_life - force <= 0 ? m_life = 0 : m_life -= force;
+	}
+	else if (hitCounter != 0)
+		hitCounter--;
+	else
+		hitCounter = 0;
 }
 
 //-------------------------- handleCollision -----------------------------

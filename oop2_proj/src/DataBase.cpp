@@ -175,7 +175,8 @@ void DataBase::FindTeleportPartner() const
 
 void DataBase::move(sf::Time deltaTime)
 {
-	handelCollisions();
+	//handelCollisions();
+	deleteRelevantObj();
 
 	//move monsters
 	for (auto& f : m_monsters)
@@ -197,38 +198,35 @@ void DataBase::move(sf::Time deltaTime)
 
 void DataBase::handelCollisions()
 {
-	if(handelPlayerCollisions())
-		deleteRelevantObj();
+	handelPlayerCollisions();
 	//handelMonstersCollisions();
-	//handelTeleportCollisions();
-	
+	//handelTeleportCollisions();	
 }
 //----------------------------------------------------
 //handle the current player collisions in this moment
 
-bool DataBase::handelPlayerCollisions()
-{
-	// check collition with static object
-	//for (auto& p : m_staticsObj)
-	//	if (m_player->checkCollision(*p))
-	//	{
-	//		processCollision(*m_player, *p);
-	//		return true;
-	//	}
+void DataBase::handelPlayerCollisions()
+{	
 	for (auto& p : m_floor)
 		if (m_player->checkCollision(*p))
 		{
 			processCollision(*m_player, *p);
-			return true;
+			
 		}
 	
-			
-	return false;
-	
+	for (auto& p : m_monsters)
+		if (m_player->checkCollision(*p))
+		{
+			processCollision(*m_player, *p);
 
-	//for (auto& p : m_players)
-	//	if (m_players[m_currPlayer]->checkCollision(*p))
-	//		m_players[m_currPlayer]->handleCollision(*p);
+		}
+
+	// check collition with static object
+	for (auto& p : m_staticsObj)
+		if (m_player->checkCollision(*p))
+		{
+			processCollision(*m_player, *p);
+		}
 }
 //----------------------------------------------------
  //handle the fairies collisions in this moment
@@ -276,13 +274,13 @@ void DataBase::handelTeleportCollisions()
 
 void DataBase::handelPlayerStuff(sf::Time deltaTime)
 {
+	m_player->setHittingStatus(false);
 	m_player->handleJump(deltaTime,sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
 	m_player->handleFall(deltaTime, m_levelSize);
 	m_player->setHittingStatus(false);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 		m_player->hit();
 
-	m_player->setHittingStatus(false);
 }
 //-----------------------------------------------------
 //check if its allowed to enter the teleport
@@ -316,7 +314,7 @@ bool DataBase::ThereIsNoObjectOnTheMemberTel(int index)
 
 void DataBase::deleteRelevantObj()
 {
-	//replaceMonsterWithPotion();
+	replaceMonsterWithPotion();
 	std::erase_if(m_staticsObj, [](const auto& object) {return object->getToDelete(); });
 }
 //-----------------------------------------------------
@@ -324,25 +322,13 @@ void DataBase::deleteRelevantObj()
 
 void DataBase::replaceMonsterWithPotion()
 {
-	for(int i = 0; i < m_monsters.size(); i++ )
+
+	for (int i=0 ; i < m_monsters.size() ;i++)
 	{
 		if (m_monsters[i]->getToDelete())
 		{
 			grillPotion(m_monsters[i]->getPos());
-
-			m_monsters.erase(m_monsters.begin());
-
-		}
-	}
-
-	for (int i ; i < m_monsters.size() ;i++)
-	{
-		if (m_monsters[i]->getToDelete())
-		{
-			grillPotion(m_monsters[i]->getPos());
-
 			m_monsters.erase(m_monsters.begin()+i);
-
 		}
 	}
 }

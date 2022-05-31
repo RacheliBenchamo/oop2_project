@@ -19,8 +19,8 @@ public:
 	int getPower()const { return m_power; }
 	void handelHit(int) ;
 	void incPower() {};
-	void addLife() {};
-	void addPower() {};
+	void addLife() { m_life + 100 > 1000 ? m_life = 1000 : m_life += 100 ;};
+	void addPower() { m_power+200>1000? m_power=1000:m_power += 200; };
 	void handleCollision(GameObjBase& floor)override;
 
 
