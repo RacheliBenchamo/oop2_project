@@ -335,13 +335,13 @@ void DataBase::replaceMonsterWithPotion()
 		}
 	}
 
-	for (auto& e : m_monsters)
+	for (int i ; i < m_monsters.size() ;i++)
 	{
-		if (e->getToDelete())
+		if (m_monsters[i]->getToDelete())
 		{
-			grillPotion(e->getPos());
+			grillPotion(m_monsters[i]->getPos());
 
-			m_monsters.erase(m_monsters.begin());
+			m_monsters.erase(m_monsters.begin()+i);
 
 		}
 	}

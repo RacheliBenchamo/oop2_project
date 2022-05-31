@@ -66,7 +66,6 @@ bool MovingObj::collisionFromBelow(GameObjBase& g) const
 {
 	return m_shape.getPosition().y <= (g.getPos().y + g.getShape().getSize().y);
 }
-
 //----------------------- CollisionFromAboveFloor ------------------------
 // Returns if there is collision from above with the floor.
 //------------------------------------------------------------------------
