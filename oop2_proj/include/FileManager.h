@@ -4,19 +4,23 @@
 #include <vector>
 #include "Macros.h"
 #include "Animation.h"
+#include <chrono>
+#include <thread>
+#include <iostream>
+
 
 
 class FileManager
 {
 public:
 	~FileManager() {};
-	static FileManager& p2FileManager();
+	static FileManager& instance();
 
     sf::Texture* getSharedStaticTexture(const icons );
 	sf::Texture* getMonstersTexture(const icons,const levels);
 	sf::Texture* getPlayerTexture();
 	const sf::Texture* getPlayAndStopIcon(bool )const;
-	const sf::SoundBuffer* getSound(sounds)const;
+	void playSound(sounds)const;
 	const sf::Texture* getMusicIcon(bool)const;
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(backgroundsType)const;
@@ -66,6 +70,10 @@ private:
 	sf::Texture m_restartIcon;
 
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
+	sf::SoundBuffer m_backGroundAudio[NUM_OF_LEVELS];
+	sf::SoundBuffer m_playerAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
+	sf::SoundBuffer m_monstersAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
+
 	sf::Font m_font;
 
 	AnimationData m_staticData[NUM_OF_DEC];

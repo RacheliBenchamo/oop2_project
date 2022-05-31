@@ -8,7 +8,7 @@ public:
 	//using Posion::Posion;
 	PowerPosion(sf::Vector2f pos)
 		: Posion({ BLOCK_SIZE/3,BLOCK_SIZE/3 }, pos)
-	{m_shape.setTexture(FileManager::p2FileManager().getSharedStaticTexture(POTION_P));}
+	{m_shape.setTexture(FileManager::instance().getSharedStaticTexture(POTION_P));}
 
 	~PowerPosion() {};
 

@@ -7,7 +7,7 @@ class LifePosion : public Posion
 public:
 	LifePosion(sf::Vector2f pos)
 		: Posion({ BLOCK_SIZE / 3,BLOCK_SIZE / 3 }, pos)
-	{m_shape.setTexture(FileManager::p2FileManager().getSharedStaticTexture(POTION_L));}
+	{m_shape.setTexture(FileManager::instance().getSharedStaticTexture(POTION_L));}
 
 	~LifePosion() {};
 	virtual void startSound() {};

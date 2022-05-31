@@ -28,7 +28,7 @@ FileManager::FileManager()
 }
 //--------------------------------------------------
 //return unic pointer to the object
-FileManager& FileManager::p2FileManager()
+FileManager& FileManager::instance()
 {
 	static FileManager m_instance;
 	return m_instance;
@@ -107,20 +107,24 @@ void FileManager::loadStaticObjRect()
 
 void FileManager::loadAudio()
 {
-	m_audio[S_TOUCH_WALL].loadFromFile("touchWallSound.wav");
-	m_audio[S_TURN_OFF_FIRE].loadFromFile("turnOffFireSound.wav");
-	m_audio[S_GIFT].loadFromFile("giftSound.wav");
-	m_audio[S_KILL_ORK].loadFromFile("killOrkSound.wav");
-	m_audio[S_IN_TELEPORT].loadFromFile("inTeleportSound.wav");
+	//m_audio[S_GIFT].loadFromFile("giftSound.wav");
+	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
-	m_audio[S_BACKROUND].loadFromFile("backgroundMusic.wav");
-	m_audio[S_TOUCH_FIRE].loadFromFile("touchFireSound.wav");
-	m_audio[S_TOUCH_ORK].loadFromFile("touchOrkSound.wav");
-	m_audio[S_TOUCH_GATE].loadFromFile("touchGateSound.wav");
-	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
-	m_audio[S_OPEN_GATE].loadFromFile("openGateSound.wav");
-	m_audio[S_TOUCH_FAIRY].loadFromFile("touchFairySound.wav");
+
+	//m_backGroundAudio[LEVEL1].loadFromFile("backgroundMusic.wav");
+	//m_backGroundAudio[LEVEL2].loadFromFile("backgroundMusic.wav");
+	//m_backGroundAudio[LEVEL3].loadFromFile("backgroundMusic.wav");
+
+	//*for 3 levels
+	//m_playerAudio[LEVEL1][WALK].loadFromFile("takeKeySound.wav");
+	//m_playerAudio[LEVEL1][JUMP].loadFromFile("takeKeySound.wav");
+	//m_playerAudio[LEVEL1][HURT].loadFromFile("takeKeySound.wav");
+
+	//for each monster in each level
+	//m_monstersAudio[LEVEL1][M1_WALK].loadFromFile("takeKeySound.wav");
+	//m_monstersAudio[LEVEL1][M1_HURT].loadFromFile("takeKeySound.wav");
+
 
 }
 //--------------------------------------------------
@@ -161,9 +165,15 @@ void FileManager::loadBackgrounds()
 }
 //--------------------------------------------
 
-const sf::SoundBuffer* FileManager::getSound(sounds sound)const
+void FileManager::playSound(sounds sound)const
 {
-	return &this->m_audio[(int)sound];
+	static sf::Sound m_sound;
+
+	m_sound.setBuffer(m_audio[sound]);
+	m_sound.setVolume(20);
+	m_sound.play();
+	std::this_thread::sleep_for(std::chrono::milliseconds(WIN_WIAT));
+
 }
 //--------------------------------------------------
 

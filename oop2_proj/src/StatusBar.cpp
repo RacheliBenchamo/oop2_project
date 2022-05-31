@@ -9,7 +9,7 @@
 
 StatusBar::StatusBar() : m_level(0), m_minutes(0), m_seconds(0)
 {
-	this->m_font = (*(FileManager::p2FileManager().getFont()));
+	this->m_font = (*(FileManager::instance().getFont()));
 
 	//setCurrPlayerText();
 	setCurrPowerRect();
@@ -171,7 +171,7 @@ bool StatusBar::containsStopAndPlayIcon(const sf::Event& event) const
 
 void StatusBar::setStopAndPlayIcon(bool ToPlay)
 {
-	this->m_stopAndPlayIcon.setTexture(*FileManager::p2FileManager().getPlayAndStopIcon(ToPlay));
+	this->m_stopAndPlayIcon.setTexture(*FileManager::instance().getPlayAndStopIcon(ToPlay));
 }
 //------------------------------------------
 
@@ -185,7 +185,7 @@ bool StatusBar::containsMusicIcon(const sf::Event& event) const
 
 void StatusBar::setMusicIcon(bool isSoundOn)
 {
-	this->m_musicIcon.setTexture(*FileManager::p2FileManager().getMusicIcon(isSoundOn));
+	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
 }
 //------------------------------------------
 
@@ -199,7 +199,7 @@ bool StatusBar::containsRestartIcon(const sf::Event& event) const
 
 void StatusBar::setLevelText()
 {
-	this->m_levelText.setFont(*FileManager::p2FileManager().getFont());
+	this->m_levelText.setFont(*FileManager::instance().getFont());
 	this->m_levelText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
 	//this->m_levelText.setPosition(WINDOW_WIDTH / 4, WINDOW_HEIGHT - BUFF_DISTANCE);
 	this->m_levelText.setColor(sf::Color(153, 153, 255, 255));
@@ -210,7 +210,7 @@ void StatusBar::setLevelText()
 
 void StatusBar::setTimeText()
 {
-	this->m_timeText.setFont(*FileManager::p2FileManager().getFont());
+	this->m_timeText.setFont(*FileManager::instance().getFont());
 	this->m_timeText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
 	//this->m_timeText.setPosition(WINDOW_WIDTH / 2.5, WINDOW_HEIGHT - BUFF_DISTANCE);
 	this->m_timeText.setColor(sf::Color(153, 153, 255, 255));
@@ -221,20 +221,20 @@ void StatusBar::setTimeText()
 
 void StatusBar::setDiamondCounter()
 {
-	this->m_diamondText.setFont(*FileManager::p2FileManager().getFont());
+	this->m_diamondText.setFont(*FileManager::instance().getFont());
 	this->m_diamondText.setCharacterSize(STATUS_BAR_CHAR_SIZE-2);
 	this->m_diamondText.setColor(sf::Color(230, 230, 255, 255));
 	//this->m_diamondText.setOutlineColor(sf::Color(230, 230, 255, 255));
 	//this->m_diamondText.setOutlineThickness(STATUS_BAR_OUTLINE_THICKNESS);
 
-	m_diamondIcon.setTexture(*FileManager::p2FileManager().getBIcons(B_DIAMOND));
+	m_diamondIcon.setTexture(*FileManager::instance().getBIcons(B_DIAMOND));
 	m_diamondIcon.scale(MUSIC_ICON_SCALE*3.f);
 }
 //--------------------------------------------
 
 void StatusBar::setMusicIcon()
 {
-	this->m_musicIcon.setTexture(*FileManager::p2FileManager().getMusicIcon(true));
+	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(true));
 	//this->m_musicIcon.setPosition(WINDOW_WIDTH/1.3, WINDOW_HEIGHT - BUFF_DISTANCE/2);
 	this->m_musicIcon.scale(MUSIC_ICON_SCALE);
 }
@@ -242,7 +242,7 @@ void StatusBar::setMusicIcon()
 
 void StatusBar::setStopIcon()
 {
-	this->m_stopAndPlayIcon.setTexture(*FileManager::p2FileManager().getPlayAndStopIcon(true));
+	this->m_stopAndPlayIcon.setTexture(*FileManager::instance().getPlayAndStopIcon(true));
 	//this->m_stopAndPlayIcon.setPosition(WINDOW_WIDTH/ 1.19, WINDOW_HEIGHT - BUFF_DISTANCE / 2);
 	this->m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE);
 }
@@ -250,7 +250,7 @@ void StatusBar::setStopIcon()
 
 void StatusBar::setRestartIcon()
 {
-	this->m_resetIcon.setTexture(*FileManager::p2FileManager().getRestartIcon());
+	this->m_resetIcon.setTexture(*FileManager::instance().getRestartIcon());
 	//this->m_resetIcon.setPosition(WINDOW_WIDTH/1.1 , WINDOW_HEIGHT - BUFF_DISTANCE / 2);
 	this->m_resetIcon.scale(MUSIC_ICON_SCALE);
 }
@@ -261,7 +261,7 @@ void StatusBar::setCurrLifeRect()
 	m_currLife.setFillColor(sf::Color::Green);
 	m_currLife.setSize(sf::Vector2f(50.f, 8.f));
 
-	m_lifeIcon.setTexture(*FileManager::p2FileManager().getBIcons(B_LIFE));
+	m_lifeIcon.setTexture(*FileManager::instance().getBIcons(B_LIFE));
 	m_lifeIcon.scale(MUSIC_ICON_SCALE* 2.f);
 
 }
@@ -269,7 +269,7 @@ void StatusBar::setCurrLifeRect()
 
 void StatusBar::setCurrPowerRect()
 {
-	m_powerIcon.setTexture(*FileManager::p2FileManager().getBIcons(B_POWER));
+	m_powerIcon.setTexture(*FileManager::instance().getBIcons(B_POWER));
 	m_powerIcon.scale(MUSIC_ICON_SCALE);
 
 	m_currPower.setFillColor(sf::Color::Yellow);

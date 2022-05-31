@@ -16,7 +16,7 @@ Controller::Controller()
 {
 	m_window.setFramerateLimit(60);
 
-	m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
+	//m_backGroundMusic.setBuffer(*FileManager::p2FileManager().getSound(S_BACKROUND));
 
 
 	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
@@ -212,14 +212,14 @@ void Controller::winLevelScreen()
 
 void Controller::setWinScreen(backgroundsType backgroundType, sounds soundType)
 {
-	sf::Sound effect;
-	effect.setBuffer(*FileManager::p2FileManager().getSound(soundType));
+	/*sf::Sound effect;
+	effect.setBuffer(*FileManager::instance().getSound(soundType));
 	effect.setVolume(VOLUME_BG);
-	effect.play();
+	effect.play();*/
 
 	sf::RectangleShape background;
 	background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	background.setTexture(FileManager::p2FileManager().getBackGround(backgroundType));
+	background.setTexture(FileManager::instance().getBackGround(backgroundType));
 
 	for (int i = 0; i < WIN_WIAT && m_window.isOpen(); i++)
 	{
@@ -237,13 +237,13 @@ void Controller::setBackground()
 	switch (m_levelNum)
 	{
 	case STAGE_ONE:
-		m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL1_BACKGROUND));
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL1_BACKGROUND));
 		break;
 	case STAGE_TWO:
-		m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL2_BACKGROUND));
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL2_BACKGROUND));
 		break;
 	case STAGE_THREE:
-		m_currLevelBackground.setTexture(FileManager::p2FileManager().getBackGround(LEVEL3_BACKGROUND));
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL3_BACKGROUND));
 		break;
 	default:
 		break;

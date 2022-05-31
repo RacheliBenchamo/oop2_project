@@ -3,10 +3,10 @@
 Teleport::Teleport(sf::Vector2f pos)
 	: StaticObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
 		m_animation
-		(   FileManager::p2FileManager().getStaticData(TELEPORT),
+		(   FileManager::instance().getStaticData(TELEPORT),
 			Stay,
 			m_shape,
-			FileManager::p2FileManager().getSharedStaticTexture(TELEPORT))
+			FileManager::instance().getSharedStaticTexture(TELEPORT))
 	{
 		m_shape.setPosition(m_shape.getPosition().x, m_shape.getPosition().y + m_shape.getSize().y / 2);
 		m_shape.setOrigin(m_shape.getOrigin().x, m_shape.getOrigin().y + m_shape.getSize().y / 2);
@@ -17,10 +17,7 @@ Teleport::Teleport(sf::Vector2f pos)
 
 void Teleport::startSound()
 {
-    static sf::Sound effect;
-    effect.setBuffer(*FileManager::p2FileManager().getSound(S_IN_TELEPORT));
-    effect.play();
-    effect.setVolume(VOLUME_COLLISION);
+
 }
 //--------------------------------------------------
 

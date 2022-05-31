@@ -6,9 +6,9 @@
 //------------------------------------------------------------------------
 Player::Player( const sf::Vector2f& pos)
 	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
-	    m_animation(FileManager::p2FileManager().getPlayerData(),
+	    m_animation(FileManager::instance().getPlayerData(),
 		Operation::Stay, m_shape,
-		FileManager::p2FileManager().getPlayerTexture())
+		FileManager::instance().getPlayerTexture())
 {
 	m_force = PAYER_FORCE;
 	m_life = 1000;

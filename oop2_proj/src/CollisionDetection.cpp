@@ -68,7 +68,7 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     static_cast<Player&>(p).addDiamond();
     //voice of takinf diamonds
     static_cast<Diamond&>(g).setToDelete();
-   // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+   // Resources::instance().playSound(S_TAKE_DIAMOND);
 }
 
 //------------------------------------------------
@@ -81,7 +81,7 @@ void playerLifePotion(GameObjBase& p, GameObjBase& g)
         static_cast<Player&>(p).addLife();
         //voice of takinf diamonds
         static_cast<LifePosion&>(g).setToDelete();
-        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+        // FileManager::instance().playSound(COLLECT_DIAMOND_SOUND);
     }
 }
 //------------------------------------------------

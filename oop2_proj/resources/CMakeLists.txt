@@ -45,17 +45,13 @@ configure_file ("Seagram tfb.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/backgroundMusic.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winLevelSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winGameSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/touchWallSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/giftSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/InTeleportSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/killOrkSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/turnOffFireSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/touchFireSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/touchOrkSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/touchGateSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/touchFairySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/takeKeySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/openGateSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+
+configure_file ("sounds/pickUpDiamond.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

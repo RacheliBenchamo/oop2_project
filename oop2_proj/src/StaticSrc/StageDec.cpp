@@ -4,9 +4,9 @@
 StageDec::StageDec(sf::Vector2f pos, levels level_num, decoration dec, sf::Vector2f size)
 	: StaticObj(size, pos)
 {
-	auto m_pTexture = FileManager::p2FileManager().getDec();
+	auto m_pTexture = FileManager::instance().getDec();
 	m_shape.setTexture(m_pTexture);
-	m_shape.setTextureRect(FileManager::p2FileManager().getCurrLevDecRect(level_num, dec));
+	m_shape.setTextureRect(FileManager::instance().getCurrLevDecRect(level_num, dec));
 	//m_shape.setSmooth(true);
 }
 //--------------------------------------------------

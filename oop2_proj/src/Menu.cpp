@@ -9,7 +9,7 @@
 Menu::Menu()
 	:m_pressStart(false), m_pressHelp(false)
 {
-	this->m_font=(*(FileManager::p2FileManager().getFont()));
+	this->m_font=(*(FileManager::instance().getFont()));
 
 	setHeader();
 	setStart();
@@ -17,7 +17,7 @@ Menu::Menu()
 	setHelp();
 
 	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_background.setTexture(FileManager::p2FileManager().getBackGround(MENU_BACKGROUND));
+	this->m_background.setTexture(FileManager::instance().getBackGround(MENU_BACKGROUND));
 }
 //--------------------------------------------------
 //set the header details
@@ -237,5 +237,5 @@ void Menu::setHelpWindow(sf::RenderWindow& window)
 	m_start.setPosition({ 20,  WINDOW_HEIGHT- BUFF_DISTANCE });
 
 	this->m_helpBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_helpBackground.setTexture(FileManager::p2FileManager().getBackGround(HELP_BACKGROUND));
+	this->m_helpBackground.setTexture(FileManager::instance().getBackGround(HELP_BACKGROUND));
 }
