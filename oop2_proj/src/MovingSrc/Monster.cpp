@@ -41,7 +41,6 @@ void Monster::grillDir()
 //------------------------------------------------------------------------
 void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 {
-	m_onFloor = false;
 
 	setPrevPos(m_shape.getPosition());
 	auto movement = getMove();
@@ -49,19 +48,18 @@ void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 	m_shape.move(movement);
 
 	//MoveObject::handleEvents();
-
-	if (outWindow(m_shape.getPosition(), levelSize))//|| !m_onFloor
+	if (outWindow(m_shape.getPosition(), levelSize)||!m_onFloor)
 	{
 		this->backToPrevPos();
-		/*m_lastDir = -m_lastDir;
-		m_shape.setScale(-m_shape.getScale().x , 1);*/
+		m_lastDir = -m_lastDir;
+		m_shape.setScale(-m_shape.getScale().x , 1);
 	}
 	//to delete later:
-	if (!m_onFloor)
+	/*if (!m_onFloor)
 	{
 		m_lastDir = RIGHT_MOVEMENT;
 		m_shape.setScale(SCALE_RIGHT);
-	}
+	}*/
 	m_onFloor = false;
 }
 
@@ -216,6 +214,7 @@ void Monster::handleCollision(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
+		std::cout << "in handleCollision\n";
 		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;

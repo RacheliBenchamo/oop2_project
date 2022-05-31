@@ -281,18 +281,17 @@ void Player::handleCollision(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
-		std::cout << "t\n";
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromLeft(floor))
+	/*else if (collisionFromLeft(floor))
 	{
 		m_shape.move(-PUSH_FROM);
 	}
 	else if (collisionFromRight(floor))
 	{
 		m_shape.move(PUSH_FROM);
-	}
+	}*/
 	else if (collisionFromBelow(floor))
 	{
 		this->backToPrevPos();
