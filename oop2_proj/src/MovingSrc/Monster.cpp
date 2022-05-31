@@ -48,7 +48,7 @@ void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 	m_shape.move(movement);
 
 	//MoveObject::handleEvents();
-	if (outWindow(m_shape.getPosition(), levelSize)/*||!m_onFloor*/)
+	if (outWindow(m_shape.getPosition(), levelSize)||!m_onFloor)
 	{
 		this->backToPrevPos();
 		m_lastDir = -m_lastDir;
@@ -198,9 +198,10 @@ void Monster::scaleAccordingToPlayerPos()
 //------------------------------------------------------------------------
 void Monster::handleCollision(GameObjBase& floor)
 {
+	std::cout << "in handleCollision\n";
 	if (CollisionFromAboveFloor(floor))
 	{
-		//std::cout << "in handleCollision\n";
+		
 		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;
