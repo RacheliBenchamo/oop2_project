@@ -51,6 +51,7 @@ configure_file ("sounds/killOrkSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/takeKeySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("sounds/pickUpDiamond.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/potionDrinking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 

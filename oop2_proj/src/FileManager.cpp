@@ -112,7 +112,7 @@ void FileManager::loadAudio()
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
 
-	//m_backGroundAudio[LEVEL1].loadFromFile("backgroundMusic.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("winLevelSound.wav");
 	//m_backGroundAudio[LEVEL2].loadFromFile("backgroundMusic.wav");
 	//m_backGroundAudio[LEVEL3].loadFromFile("backgroundMusic.wav");
 
@@ -165,18 +165,34 @@ void FileManager::loadBackgrounds()
 }
 //--------------------------------------------
 
-void FileManager::playSound(sounds sound)const
+//sf::SoundBuffer* FileManager::playSound(sounds sound)
+//{
+//	std::cout << "in playSound diamond\n";
+//
+//	return &m_audio[sound];
+//
+//}
+void FileManager::playSound(sounds sound)
 {
-	static sf::Sound m_sound;
+	std::cout << "in playSound diamond\n";
+	//static sf::Sound m_sound;
 
 	m_sound.setBuffer(m_audio[sound]);
 	m_sound.setVolume(20);
 	m_sound.play();
-	std::this_thread::sleep_for(std::chrono::milliseconds(WIN_WIAT));
+	std::this_thread::sleep_for(std::chrono::milliseconds(50));
 
 }
-//--------------------------------------------------
 
+
+sf::SoundBuffer* FileManager::playBackgraund(sounds sound) 
+{
+	return &this->m_backGroundAudio[sound];
+}
+
+
+
+//--------------------------------------------------
 const sf::Texture* FileManager::getMusicIcon(bool musicOn)const
 {
 	if (musicOn)

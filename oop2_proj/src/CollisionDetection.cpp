@@ -46,17 +46,6 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 
 }
 
-
-//--------------------------- playerHurricane ----------------------------
-// Handle the event that the player collides with a hurricane.
-// The hurricane lifts the player upwards.
-//------------------------------------------------------------------------
-//void playerTeleport(GameObjBase& p, GameObjBase& h)
-//{
-//    static_cast<Player&>(p).handleCollision(static_cast<Teleport&>(h));
-//}
-
-
 //---------------------------- playerGold --------------------------------
 // Handle the event that the player collides with gold.
 // 1. Update the amount of gold the player has accumulated so far.
@@ -68,7 +57,7 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     static_cast<Player&>(p).addDiamond();
     //voice of takinf diamonds
     static_cast<Diamond&>(g).setToDelete();
-   // Resources::instance().playSound(S_TAKE_DIAMOND);
+    FileManager::instance().playSound(S_TAKE_DIAMOND);
 }
 
 //------------------------------------------------
@@ -97,93 +86,6 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
         // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
     }
 }
-////----------------------------- playerKey --------------------------------
-//// Handle the event that the player collides with a key.
-//// Let the player to pick up the key and update the key status of the
-//// player.
-////------------------------------------------------------------------------
-//void playerKey(GameObject& player, GameObject& key)
-//{
-//    //static_cast<Player&>(player).setKeyStatus(true);
-//    if (!key.getDisapperStatus()) {
-//        static_cast<Player&>(player).addKey();
-//        key.setDisappear(true);
-//        Resources::instance().playSound(COLLECT_KEY_SOUND);
-//    }
-//}
-//
-
-////---------------------------- playerSpike -------------------------------
-//// Handle the event that the player collides with a key.
-//// Let the player to pick up the key and update the key status of the
-//// player.
-////------------------------------------------------------------------------
-//void playerSpike(GameObject& p, GameObject& s)
-//{
-//    static_cast<Player&>(p).handleCollision(static_cast<Spike&>(s));
-//}
-
-//
-////-------------------------- playerFastMoving ----------------------------
-//// Handle the event that the player collides with a fast moving ability 
-//// gem. Update the player's special ability and also update that the gem
-//// object does not exist anymore.
-////------------------------------------------------------------------------
-//void playerFastMoving(GameObject& player, GameObject& fastMoving)
-//{
-//    static_cast<Player&>(player).setSpecialAbility(EXTRA_SPEED_ABILITY);
-//    fastMoving.setDisappear(true);
-//}
-//
-////-------------------------- playerJumpBoost -----------------------------
-//// Handle the event that the player collides with a jump boot ability gem.
-//// Update the player's special ability and also update that the gem object
-//// does not exist anymore.
-////------------------------------------------------------------------------
-//void playerJumpBoost(GameObject& player, GameObject& jumpBoost)
-//{
-//    static_cast<Player&>(player).setSpecialAbility(EXTRA_JUMP_ABILITY);
-//    jumpBoost.setDisappear(true);
-//}
-//
-
-////------------------------- playerExtraLife ------------------------------
-//// Handle the event that the player collides with a heart that adds life 
-//// to the player current health. Also, update that the heart object does
-//// not exist anymore.
-////------------------------------------------------------------------------
-//void playerExtraLife(GameObjBase& player, GameObjBase& extraLife)
-//{
-//    static_cast<Player&>(player).incLife();
-//    Resources::instance().playSound(LIFE_BOOST_SOUND);
-//    extraLife.setDisappear(true);
-//}
-
-////----------------------------- playerDoor -------------------------------
-//// Handle the event that the player collides with the door.
-//// If the player has already collected the key, update that the level is
-//// over.
-////------------------------------------------------------------------------
-//void playerDoor(GameObject& p, GameObject& d)
-//{
-//    static_cast<Player&>(p).handleCollision(static_cast<Door&>(d));
-//}
-
-
-////---------------------------- playerEnemy -------------------------------
-//// Handle the event that the enemy collides with a player.
-//// If the player attacks absorb the blow.
-////------------------------------------------------------------------------
-//void playerMonster(GameObjBase& p, GameObjBase& e)
-//{
-//    auto& enemy = static_cast<Enemy&>(e);
-//
-//    if (static_cast<Player&>(p).isHiting())
-//    {
-//        enemy.handleHit(enemy, 50);//damage
-//    }
-//}
-
 
 ////--------------------------- enemyFloor ---------------------------------
 //// Handle the event that the enemy collides with the floor.
@@ -193,88 +95,6 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
 {
     static_cast<Monster&>(e).handleCollision(static_cast<Floor&>(f));
 }
-
-
-////----------------------------- enemyBox ---------------------------------
-//// Handle the event that the enemy collides with a box.
-//// Push the enemy back to his previous position before the collision.
-////------------------------------------------------------------------------
-//void enemyBox(GameObject& e, GameObject& b)
-//{
-//    static_cast<Enemy&>(e).handleCollision(static_cast<Box&>(b));
-//}
-
-
-////----------------------------- bearPlayer -------------------------------
-//// Handle the event that the enemy collides with a bear.
-//// 1. Attack the player - Displays the necessary animations.
-//// 2. Lower the player's amount of life.
-////------------------------------------------------------------------------
-//void bearPlayer(GameObject& b, GameObject& p)
-//{
-//    auto& bear = static_cast<Bear&>(b);
-//    bear.hit(bear);
-//    static_cast<Player&>(p).handleCollision(bear);
-//}
-
-
-////----------------------------- crowPlayer -------------------------------
-//// Handle the event that the enemy collides with a bear.
-//// 1. Attack the player - Displays the necessary animations.
-//// 2. Lower the player's amount of life.
-////------------------------------------------------------------------------
-//void crowPlayer(GameObjBase& c, GameObjBase& p)
-//{
-//    auto& crow = static_cast<Crow&>(c);
-//    crow.hit(crow);
-//    static_cast<Player&>(p).handleCollision(crow);
-//}
-
-////----------------------------- crowPlayer -------------------------------
-//// Handle the event that the enemy collides with a bear.
-//// 1. Attack the player - Displays the necessary animations.
-//// 2. Lower the player's amount of life.
-////------------------------------------------------------------------------
-//void wolfPlayer(GameObjBase& w, GameObjBase& p)
-//{
-//    auto& wolf = static_cast<Wolf&>(w);
-//    wolf.hit(wolf);
-//    static_cast<Player&>(p).handleCollision(wolf);
-//}
-
-////---------------------------- enemyPlayer -------------------------------
-//// Handle the event that the enemy collides with an Arrow.
-//// 1. Absorb the damage from the arrow.
-//// 2. Update that the arrow no longer exists.
-////------------------------------------------------------------------------
-//void enemyArrow(GameObjBase& enemy, GameObjBase& arrow)
-//{
-//    auto& e = static_cast<Enemy&>(enemy);
-//    auto& a = static_cast<StoneArrow&>(arrow);
-//
-//    e.handleHit(e, a.getDamage());
-//    a.setDisappear(true);
-//}
-
-
-////----------------------------- boxFloor ---------------------------------
-//// Handle the event that the box collides with the floor.
-//// Push back the box from the floor.
-////------------------------------------------------------------------------
-//void boxFloor(GameObjBase& b, GameObjBase& f)
-//{
-//    static_cast<Box&>(b).handleCollision(static_cast<Block&>(f));
-//}
-
-
-////------------------------- arrowStaticObject ----------------------------
-//// Handle the event that the arrow collides with the a block.
-//// Disappear the arrow.
-////------------------------------------------------------------------------
-//void arrowStaticObject(GameObjBase& arrow, GameObjBase& floor)
-//{
-//    arrow.setDisappear(true);
-//}
 
 
     //---------------------- setPlayerCollisionHandling ----------------------
@@ -302,18 +122,6 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
     {
         //// Bear & Floor.
         phm[MapKey(typeid(Monster), typeid(Floor))] = &monsterFloor;
-
-        //// Bear & player.
-        //phm[MapKey(typeid(Bear), typeid(Player))] = &bearPlayer;
-
-        //// Bear & Box.
-        //phm[MapKey(typeid(Bear), typeid(Box))] = &enemyBox;
-
-        //// Bear & Arrow.
-        //phm[MapKey(typeid(Bear), typeid(StoneArrow))] = &enemyArrow;
-
-        //// Bear & FireArrow.
-        //phm[MapKey(typeid(Bear), typeid(FireArrow))] = &enemyArrow;
 
     }
 
@@ -354,8 +162,6 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
         setPlayerCollisionHandling(phm);
 
         setMonsterCollisionHandling(phm);
-
-        //setStaticCollisionHandling(phm);
 
         return phm;
     }

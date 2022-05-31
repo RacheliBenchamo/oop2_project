@@ -198,7 +198,6 @@ void Monster::scaleAccordingToPlayerPos()
 //------------------------------------------------------------------------
 void Monster::handleCollision(GameObjBase& floor)
 {
-	std::cout << "in handleCollision\n";
 	if (CollisionFromAboveFloor(floor))
 	{
 		
