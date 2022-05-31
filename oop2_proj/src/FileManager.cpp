@@ -68,6 +68,9 @@ void FileManager::loadStaticObj()
 {
 	m_sharedStaticIcon[TELEPORT].loadFromFile("Teleport.png");
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
+	m_sharedStaticIcon[POTION_L].loadFromFile("LifePotion.png");
+	m_sharedStaticIcon[POTION_P].loadFromFile("PowerPotion.png");
+
 	m_dec.loadFromFile("staticDec.png");
 
 	loadStaticObjRect();

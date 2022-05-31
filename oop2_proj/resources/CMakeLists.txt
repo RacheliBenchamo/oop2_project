@@ -16,6 +16,9 @@ configure_file ("staticObjPic/PowerIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/LifeIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/DiamondIcon.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/staticDec.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/LifePotion.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/PowerPotion.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 configure_file ("backgrounds/menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)

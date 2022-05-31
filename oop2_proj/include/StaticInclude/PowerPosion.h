@@ -9,7 +9,7 @@ public:
 	PowerPosion(sf::Vector2f pos)
 		:Posion(sf::Vector2f(BLOCK_SIZE / 4, BLOCK_SIZE / 6), pos),
 		m_animation
-		(FileManager::p2FileManager().getStaticData(DIAMOND),
+		(FileManager::p2FileManager().getStaticData(POTION_L),
 			Stay,
 			m_shape,
 			FileManager::p2FileManager().getSharedStaticTexture(DIAMOND))
