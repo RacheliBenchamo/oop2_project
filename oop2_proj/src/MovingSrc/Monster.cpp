@@ -97,7 +97,9 @@ void Monster::hit()
 //------------------------------------------------------------------------
 void Monster::handleHit()
 {
-		m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
+	static int deadCounter = 0;
+
+	m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 
 		if (isAlive())
 		{
@@ -107,9 +109,16 @@ void Monster::handleHit()
 		}
 		else
 		{
-			//e.playDeathSound();
-			//m_animation.operation(Operation::Dead);
-			setToDelete();
+			if (deadCounter==0)
+			{
+				deadCounter = 10;
+				//e.playDeathSound();
+				m_animation.operation(Operation::Dead);
+			}
+			else if(deadCounter>1)
+				deadCounter--;
+			else
+			    setToDelete();
 		}
 }
 //------------------------------- getMove --------------------------------
