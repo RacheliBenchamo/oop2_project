@@ -349,7 +349,7 @@ void FileManager::createPlayerAnimeData()
 	({ 118, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
 
 	setCurrentData(m_playerData, Hit, movableAnimationSet
-	({ 100, 115 }, { 133, 5 },20, 2, Hit), 0.06f, true);
+	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.06f, true);
 
 	setCurrentData(m_playerData, Hurt, movableAnimationSet
 	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.01f, true);
