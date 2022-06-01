@@ -14,6 +14,7 @@ public:
 	void setOperation(const Operation );
 	void handleHit();
 	void handleCollision(GameObjBase& floor)override;
+	void pushFrom();
 
 
 private:

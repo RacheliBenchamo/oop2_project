@@ -351,6 +351,9 @@ void FileManager::createPlayerAnimeData()
 	setCurrentData(m_playerData, Hit, movableAnimationSet
 	({ 100, 115 }, { 133, 5 },20, 2, Hit), 0.06f, true);
 
+	setCurrentData(m_playerData, Hurt, movableAnimationSet
+	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.01f, true);
+
 	//setCurrentData(player, Operation::Rope, movableAnimationSet
 	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,
 	//	Operation::Rope), 0.05f, true);
@@ -441,7 +444,7 @@ void FileManager::createSnowMonstersAnimeData()
 	({ 38, 40 }, { 2, 105 }, 3, 2,Hurt), 0.05f, true);
 
 	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Dead, movableAnimationSet
-	({ 38, 40 }, { 2, 105 }, 3, 2, Dead), 0.02f, true);
+	({ 62, 40 }, { 4, 155 }, 0, 7, Dead), 0.02f, true);
 
 }
 //----------------------------------------------------

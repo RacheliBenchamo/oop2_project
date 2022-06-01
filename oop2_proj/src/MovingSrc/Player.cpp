@@ -266,7 +266,7 @@ void Player::setHittingStatus(const bool status)
 {
 	m_hitingStatus = status;
 }
-
+//---------------------------------------------------------
 
 void Player::handelHit(int force)
 {
@@ -279,7 +279,10 @@ void Player::handelHit(int force)
 		m_life - force <= 0 ? m_life = 0 : m_life -= force;
 	}
 	else if (hitCounter != 0)
+	{
+		m_animation.operation(Operation::Hurt);
 		hitCounter--;
+	}
 	else
 		hitCounter = 0;
 }
@@ -309,7 +312,6 @@ void Player::handleCollision(GameObjBase& floor)
 		this->backToPrevPos();
 	}
 }
-
 
 
 

@@ -105,6 +105,7 @@ void Monster::handleHit()
 		{
 			m_animation.operation(Operation::Hurt);
 			goAccordingToPlayerPos();
+			pushFrom();
 			//e.playHurtSound();
 		}
 		else
@@ -230,4 +231,16 @@ void Monster::goAccordingToPlayerPos()
 		m_lastDir = LEFT_MOVEMENT;
 		m_shape.setScale(SCALE_LEFT);
 	}
+}
+
+//-----------------------------------
+
+void Monster::pushFrom()
+{
+	if (m_playerPos.x >= m_shape.getPosition().x)
+		m_shape.move(-PUSH_FROM_MONSTER);
+	else
+		m_shape.move(PUSH_FROM_MONSTER);
+
+
 }

@@ -34,15 +34,20 @@ void PlayerFloor(GameObjBase& p, GameObjBase& f)
     static_cast<Player&>(p).handleCollision(static_cast<Floor&>(f));
 
 }
+//------------------------------------------------------------------
 
 void playerMonster(GameObjBase& p, GameObjBase& f)
 {
+    auto player = static_cast<Player&>(p);
+    auto monster = static_cast<Monster&>(f);
+
+
     if (static_cast<Player&>(p).getHitingStatus())
         static_cast<Monster&>(f).handleHit();
     else
+    {
         static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
-
-    //static_cast<Player&>(p).handleCollision(static_cast<Floor&>(f));
+    }
 
 }
 

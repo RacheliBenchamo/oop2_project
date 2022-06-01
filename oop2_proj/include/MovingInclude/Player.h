@@ -23,7 +23,6 @@ public:
 	void handleCollision(GameObjBase& floor)override;
 
 
-
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
 	void playMovementAnimations();
