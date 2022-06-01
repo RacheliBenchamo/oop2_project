@@ -42,7 +42,6 @@ configure_file ("Levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Seagram tfb.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
-
 configure_file ("sounds/takeKeySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/Level1beckgraund.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/Level2beckgraund.wav" ${CMAKE_BINARY_DIR} COPYONLY)

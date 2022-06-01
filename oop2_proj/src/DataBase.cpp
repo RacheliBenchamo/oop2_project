@@ -134,10 +134,6 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 		e->update(delta_time);
 		e->draw(window);
 	}
-	for (auto& e : m_floor)
-	{
-		e->draw(window);
-	}
 }
 //---------------------------------------------------
 //draw all the moving object in the level on the window
