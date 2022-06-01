@@ -78,15 +78,15 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  START_FLOOR_C:
-		m_floor.push_back(std::make_unique<Floor>(pos, levels(m_currLevel),
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel),
 			L_FLOOR,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  FLOOR_C:
-		m_floor.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), M_FLOOR,
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), M_FLOOR,
 			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  END_FLOOR_C:
-		m_floor.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), R_FLOOR
+		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), R_FLOOR
 			,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  F_TREE_C:
@@ -207,44 +207,27 @@ void DataBase::handelCollisions()
 
 void DataBase::handelPlayerCollisions()
 {
-	for (auto& f : m_floor)
-	{
-		if (m_player->checkCollision(*f))
-		{
-			processCollision(*m_player, *f);
-
-		}
-		for (auto& m : m_monsters)
-			if (m->checkCollision(*f))
-			{
-				processCollision(*m, *f);
-			}
-	}
-
-	for (auto& p : m_monsters)
-		if (m_player->checkCollision(*p))
-		{
-			processCollision(*m_player, *p);
-
-		}
-	for (auto& p : m_monsters)
-		if (m_player->checkCollision(*p))
-		{
-			processCollision(*m_player, *p);
-
-		}
-
 	// check collition with static object
 	for (auto& s : m_staticsObj)
 	{
 		if (m_player->checkCollision(*s))
 		{
 			processCollision(*m_player, *s);
+
 		}
+		for (auto& m : m_monsters)
+			if (m->checkCollision(*s))
+			{
+				processCollision(*m, *s);
+			}
 	}
+	// check collition between player and monsters
+	for (auto& p : m_monsters)
+		if (m_player->checkCollision(*p))
+		{
+			processCollision(*m_player, *p);
 
-
-
+		}
 }
 //----------------------------------------------------
  //handle the fairies collisions in this moment

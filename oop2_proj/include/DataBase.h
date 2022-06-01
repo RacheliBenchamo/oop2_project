@@ -82,7 +82,7 @@ private:
     std::vector<std::unique_ptr<StaticObj>> m_staticsObj;
     std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
-    std::vector<std::unique_ptr<Floor>> m_floor;
+    //std::vector<std::unique_ptr<Floor>> m_floor;
 
     int m_currLevelMaxDiamonds = 0;
     sf::Clock m_clock;
