@@ -42,7 +42,7 @@ configure_file ("Levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Seagram tfb.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("sounds/backgroundMusic.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/beckgraundLevel1.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winLevelSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winGameSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/giftSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)

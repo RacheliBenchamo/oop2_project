@@ -112,7 +112,7 @@ void FileManager::loadAudio()
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
 
-	m_backGroundAudio[LEVEL1].loadFromFile("winLevelSound.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("beckgraundLevel1.wav");
 	//m_backGroundAudio[LEVEL2].loadFromFile("backgroundMusic.wav");
 	//m_backGroundAudio[LEVEL3].loadFromFile("backgroundMusic.wav");
 
