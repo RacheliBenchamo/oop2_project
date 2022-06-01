@@ -111,7 +111,7 @@ void Monster::handleHit()
 		{
 			if (deadCounter==0)
 			{
-				deadCounter = 10;
+				deadCounter = 100;
 				//e.playDeathSound();
 				m_animation.operation(Operation::Dead);
 			}
