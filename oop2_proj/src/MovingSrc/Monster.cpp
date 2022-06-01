@@ -97,7 +97,7 @@ void Monster::hit()
 //------------------------------------------------------------------------
 void Monster::handleHit()
 {
-	static int deadCounter = 0;
+	static bool dead = false;
 
 	m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 
@@ -109,16 +109,18 @@ void Monster::handleHit()
 		}
 		else
 		{
-			if (deadCounter==0)
+			if (!dead)
 			{
-				deadCounter = 100;
 				//e.playDeathSound();
 				m_animation.operation(Operation::Dead);
+				dead = true;
 			}
-			else if(deadCounter>1)
-				deadCounter--;
-			else
-			    setToDelete();
+			else 
+			{
+				std::this_thread::sleep_for(std::chrono::milliseconds(200));
+				setToDelete();
+				//dead = false;
+			}
 		}
 }
 //------------------------------- getMove --------------------------------
