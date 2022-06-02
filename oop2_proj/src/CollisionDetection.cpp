@@ -29,14 +29,17 @@ namespace // anonymous namespace — the standard way to make function "static"
 //// Handle the event that the player collides with the floor.
 //// Push the player back to his previous position before the collision.
 ////------------------------------------------------------------------------
-void PlayerFloor(GameObjBase& p, GameObjBase& f)
-{
-    if (typeid(f) == typeid(RightFloor))
-        static_cast<Player&>(p).handleCollisionLeftFloor(f);
-    else
-        static_cast<Player&>(p).handleCollisionFloor(f);
+    void PlayerFloor(GameObjBase& p, GameObjBase& f)
+    {
+        if (typeid(f) == typeid(RightFloor)|| typeid(f) == typeid(LeftFloor))
+        {
+            static_cast<Player&>(p).handleCollisionLeftFloor(f);
+        }
 
-}
+        else
+            static_cast<Player&>(p).handleCollisionFloor(f);
+
+    }
 //------------------------------------------------------------------
 
 void playerMonster(GameObjBase& p, GameObjBase& f)
@@ -112,6 +115,8 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
     {
         //// Player & floor.
         phm[MapKey(typeid(Player), typeid(Floor))] = &PlayerFloor;
+        phm[MapKey(typeid(Player), typeid(RightFloor))] = &PlayerFloor;
+        phm[MapKey(typeid(Player), typeid(LeftFloor))] = &PlayerFloor;
         // Player & Diamond.
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
         // Player & Monster.

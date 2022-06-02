@@ -318,7 +318,7 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 	// }
 	 if (collisionFromBelow(floor))
 		 m_shape.move(FALL_PUSH);
-	
+
 
 
 }
