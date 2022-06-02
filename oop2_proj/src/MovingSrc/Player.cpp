@@ -292,33 +292,54 @@ void Player::handelHit(int force)
 // Pushes the moving object off the floor depending on the location of the
 // collision.
 //------------------------------------------------------------------------
-void Player::handleCollision(GameObjBase& floor)
+void Player::handleCollisionFloor(GameObjBase& floor)
 {
      if (collisionFromBelow(floor))
-	{
-		 std::cout << "player FromBelow\n";
-
-	m_shape.move(FALL_PUSH);
-	}
+	     m_shape.move(FALL_PUSH);
+	
 	 else if (CollisionFromAboveFloor(floor))
 	{
-		 std::cout << "player FromAbove\n";
 
 		m_falling = false;
 		m_onFloor = true;
 	}
+	
+
+}
+//------------------------------------------------------------------------
+void Player::handleCollisionLeftFloor(GameObjBase& floor)
+{
+	if (collisionFromBelow(floor))
+		m_shape.move(FALL_PUSH);
+	else if (CollisionFromAboveFloor(floor) && CollisionFromAboveLeftFloor(floor))
+	{
+
+	m_falling = false;
+	m_onFloor = true;
+	}
 	else if (collisionFromLeft(floor))
 	{
-		 std::cout << "player FromLeft\n";
 
-		m_shape.move(-PUSH_FROM);
+	m_shape.move(-PUSH_FROM);
 	}
-	else if (collisionFromRight(floor))
+	
+}
+//------------------------------------------------------------------------
+void Player::handleCollisionRightFloor(GameObjBase& floor)
+{
+	if (collisionFromBelow(floor))
+		m_shape.move(FALL_PUSH);
+	else if (CollisionFromAboveFloor(floor)&&CollisionFromAboveRightFloor(floor))
 	{
-		 std::cout << "player FromRight\n";
 
-		m_shape.move(PUSH_FROM);
+		m_falling = false;
+		m_onFloor = true;
 	}
+	if (collisionFromRight(floor))
+	{
+	m_shape.move(PUSH_FROM);
+	}
+
 
 }
 

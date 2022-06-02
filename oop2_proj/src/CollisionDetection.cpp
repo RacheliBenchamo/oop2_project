@@ -31,11 +31,12 @@ namespace // anonymous namespace — the standard way to make function "static"
 ////------------------------------------------------------------------------
 void PlayerFloor(GameObjBase& p, GameObjBase& f)
 {
-    static_cast<Player&>(p).co
+    if (typeid(f) == typeid(Floor))
+    static_cast<Player&>(p).handleCollisionFloor(f);
     if (typeid(f) == typeid(LeftFloor))
-        static_cast<Player&>(p).handleCollision(static_cast<LeftFloor&>(f));
+        static_cast<Player&>(p).handleCollisionLeftFloor(f);
     if (typeid(f) == typeid(RightFloor))
-        static_cast<Player&>(p).handleCollision(static_cast<RightFloor&>(f));
+        static_cast<Player&>(p).handleCollisionRightFloor(f);
 
 }
 //------------------------------------------------------------------
@@ -102,11 +103,13 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
 ////------------------------------------------------------------------------
 void monsterFloor(GameObjBase& e, GameObjBase& f)
 {
-    static_cast<Monster&>(e).handleCollision(static_cast<Floor&>(f));
+    if (typeid(f) == typeid(Floor))
+        static_cast<Monster&>(e).handleCollisionFloor(f);
     if (typeid(f) == typeid(LeftFloor))
-        static_cast<Monster&>(e).handleCollision(static_cast<LeftFloor&>(f));
+        static_cast<Monster&>(e).handleCollisionLeftFloor(f);
     if (typeid(f) == typeid(RightFloor))
-        static_cast<Monster&>(e).handleCollision(static_cast<RightFloor&>(f));
+        static_cast<Monster&>(e).handleCollisionRightFloor(f);
+
 
 }
 

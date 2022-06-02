@@ -20,7 +20,9 @@ public:
 	void incPower() {};
 	void addLife() { m_life + 100 > 1000 ? m_life = 1000 : m_life += 100 ;};
 	void addPower() { m_power+200>1000? m_power=1000:m_power += 200; };
-	void handleCollision(GameObjBase& floor)override;
+	void handleCollisionFloor(GameObjBase& floor)override;
+	void handleCollisionLeftFloor(GameObjBase& floor) override;
+	void handleCollisionRightFloor(GameObjBase& floor) override;
 
 
 private:

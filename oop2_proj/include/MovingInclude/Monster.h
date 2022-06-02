@@ -13,7 +13,9 @@ public:
 	void handleFall() {};
 	void setOperation(const Operation );
 	void handleHit();
-	void handleCollision(GameObjBase& floor)override;
+	void handleCollisionFloor(GameObjBase& floor)override;
+	void handleCollisionLeftFloor(GameObjBase& floor) override;
+	void handleCollisionRightFloor(GameObjBase& floor) override;
 	void pushFrom();
 
 

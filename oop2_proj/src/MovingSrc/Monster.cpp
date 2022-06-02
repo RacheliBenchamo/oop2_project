@@ -208,17 +208,37 @@ void Monster::scaleAccordingToPlayerPos()
 // Pushes the moving object off the floor depending on the location of the
 // collision.
 //------------------------------------------------------------------------
-void Monster::handleCollision(GameObjBase& floor)
+void Monster::handleCollisionFloor(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
-		//std::cout << "monster FromAbove\n";
-
 		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;
 	}
 }
+//------------------------------------------------------------------------
+void Monster::handleCollisionLeftFloor(GameObjBase& floor)
+{
+	if (CollisionFromAboveFloor(floor) && CollisionFromAboveLeftFloor(floor))
+	{
+		setPrevPos(m_shape.getPosition());
+		m_falling = false;
+		m_onFloor = true;
+	}
+}
+//------------------------------------------------------------------------
+void Monster::handleCollisionRightFloor(GameObjBase& floor)
+{
+
+	if (CollisionFromAboveFloor(floor) && CollisionFromAboveRightFloor(floor))
+	{
+		setPrevPos(m_shape.getPosition());
+		m_falling = false;
+		m_onFloor = true;
+	}
+}
+
 //------------------------------------------------------------------------
 void Monster::goAccordingToPlayerPos()
 {

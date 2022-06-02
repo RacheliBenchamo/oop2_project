@@ -18,13 +18,18 @@ public:
 	int getForce()const { return m_force; }
 	bool getHitingStatus() const { return m_hitingStatus; };
 	void beHurt() ;
-	virtual void handleCollision(GameObjBase& floor)=0;
+	virtual void handleCollisionFloor(GameObjBase& floor)=0;
+	virtual void handleCollisionLeftFloor(GameObjBase& floor) = 0;
+	virtual void handleCollisionRightFloor(GameObjBase& floor) = 0;
 
 protected:
 	bool collisionFromLeft(GameObjBase& g) const;
 	bool collisionFromRight(GameObjBase& g) const;
 	bool collisionFromBelow(GameObjBase& g) const;
 	bool CollisionFromAboveFloor(GameObjBase& floor) const;
+	bool CollisionFromAboveLeftFloor(GameObjBase& floor) const;
+	bool CollisionFromAboveRightFloor(GameObjBase& floor) const;
+
 
 
 	sf::Vector2f getDirection() const;
