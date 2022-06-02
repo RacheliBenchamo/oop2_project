@@ -294,11 +294,8 @@ void Player::handelHit(int force)
 //------------------------------------------------------------------------
 void Player::handleCollisionFloor(GameObjBase& floor)
 {
-
-
-	     if (CollisionFromAboveFloor(floor))
+	 if (CollisionFromAboveFloor(floor))
 	{
-
 		m_falling = false;
 		m_onFloor = true;
 	}
@@ -325,20 +322,25 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 //------------------------------------------------------------------------
 void Player::handleCollisionLeftFloor(GameObjBase& floor)
 {
-	std::cout << "l\n";
-
-
-	if (collisionFromLeft(floor))
+	if (CollisionFromAboveFloor(floor))
 	{
-		backToPrevPos();
-	m_shape.move(-PUSH_FROM); 
+		m_falling = false;
+		m_onFloor = true;
 	}
+
 	else if (collisionFromLeft(floor))
 	{
-		backToPrevPos();
+	m_shape.move(-PUSH_FROM); 
+	}
+	else if (collisionFromRight(floor))
+	{
+		m_shape.move(PUSH_FROM);
+
 
 		// m_shape.move(-PUSH_FROM);
 	}
+	if (collisionFromBelow(floor))
+		m_shape.move(FALL_PUSH);
 	
 }
 //------------------------------------------------------------------------
