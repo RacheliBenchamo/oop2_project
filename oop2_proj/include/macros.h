@@ -148,7 +148,7 @@ const sf::Vector2f LEFT_MOVEMENT(-1, 0);
 const sf::Vector2f RIGHT_MOVEMENT(1, 0);
 const sf::Vector2f DOWN_MOVEMENT(0, 1);
 const sf::Vector2f STAY_IN_PLACE(0, 0);
-const sf::Vector2f PUSH_FROM(2, 0);
+const sf::Vector2f PUSH_FROM(10, 0);
 const sf::Vector2f PUSH_FROM_MONSTER(0.2, 0);
 const sf::Vector2f FALL_PUSH(0, 3);
 

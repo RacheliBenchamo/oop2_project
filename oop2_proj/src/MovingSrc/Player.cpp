@@ -294,39 +294,57 @@ void Player::handelHit(int force)
 //------------------------------------------------------------------------
 void Player::handleCollisionFloor(GameObjBase& floor)
 {
-     if (collisionFromBelow(floor))
-	     m_shape.move(FALL_PUSH);
-	
-	 else if (CollisionFromAboveFloor(floor))
+
+
+	     if (CollisionFromAboveFloor(floor))
 	{
 
 		m_falling = false;
 		m_onFloor = true;
 	}
+	// else if (collisionFromRight(floor))
+	// {
+	//	 std::cout << "r\n";
+	//	 backToPrevPos();
+	////	 m_shape.move(PUSH_FROM);
+	// }
+
+	//  else if (collisionFromLeft(floor))
+	// {
+	//	 std::cout << "l\n";
+	//	 backToPrevPos();
+
+	//	// m_shape.move(-PUSH_FROM);
+	// }
+	 if (collisionFromBelow(floor))
+		 m_shape.move(FALL_PUSH);
 	
+
 
 }
 //------------------------------------------------------------------------
 void Player::handleCollisionLeftFloor(GameObjBase& floor)
 {
-	if (collisionFromBelow(floor))
-		m_shape.move(FALL_PUSH);
-	else if (CollisionFromAboveFloor(floor) && CollisionFromAboveLeftFloor(floor))
-	{
+	std::cout << "l\n";
 
-	m_falling = false;
-	m_onFloor = true;
+
+	if (collisionFromLeft(floor))
+	{
+		backToPrevPos();
+	m_shape.move(-PUSH_FROM); 
 	}
 	else if (collisionFromLeft(floor))
 	{
+		backToPrevPos();
 
-	m_shape.move(-PUSH_FROM);
+		// m_shape.move(-PUSH_FROM);
 	}
 	
 }
 //------------------------------------------------------------------------
 void Player::handleCollisionRightFloor(GameObjBase& floor)
 {
+	std::cout << "right "<< "player: " << m_shape.getPosition().x << " floor: " << floor.getPos().x << "\n";
 	if (collisionFromBelow(floor))
 		m_shape.move(FALL_PUSH);
 	else if (CollisionFromAboveFloor(floor)&&CollisionFromAboveRightFloor(floor))
@@ -335,8 +353,9 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	if (collisionFromRight(floor))
+	else if (collisionFromRight(floor))
 	{
+		std::cout << "from right\n";
 	m_shape.move(PUSH_FROM);
 	}
 

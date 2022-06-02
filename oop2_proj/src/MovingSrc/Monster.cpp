@@ -220,6 +220,8 @@ void Monster::handleCollisionFloor(GameObjBase& floor)
 //------------------------------------------------------------------------
 void Monster::handleCollisionLeftFloor(GameObjBase& floor)
 {
+	std::cout << "kk\n";
+
 	if (CollisionFromAboveFloor(floor) && CollisionFromAboveLeftFloor(floor))
 	{
 		setPrevPos(m_shape.getPosition());
@@ -230,6 +232,7 @@ void Monster::handleCollisionLeftFloor(GameObjBase& floor)
 //------------------------------------------------------------------------
 void Monster::handleCollisionRightFloor(GameObjBase& floor)
 {
+	std::cout << "rr\n";
 
 	if (CollisionFromAboveFloor(floor) && CollisionFromAboveRightFloor(floor))
 	{

@@ -45,8 +45,10 @@ sf::Vector2f MovingObj::getDirection() const
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromLeft(GameObjBase& g) const
 {
+	std::cout << "left player: " << m_shape.getPosition().x << " floor: " << g.getPos().x << "\n";
+
 	return m_shape.getPosition().x >=
-		(g.getPos().x + g.getShape().getSize().x );
+		(g.getPos().x );
 }
 
 //-------------------------- collisionFromRight ---------------------------
@@ -54,8 +56,10 @@ bool MovingObj::collisionFromLeft(GameObjBase& g) const
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromRight(GameObjBase& g) const
 {
+	std::cout << " right player: " << m_shape.getPosition().x << " floor: " << g.getPos().x << "\n";
+
 	return m_shape.getPosition().x <=
-		(g.getPos().x - g.getShape().getSize().x );
+		(g.getPos().x  );
 }
 
 //------------------------- collisionFromBelow ---------------------------

@@ -31,12 +31,10 @@ namespace // anonymous namespace — the standard way to make function "static"
 ////------------------------------------------------------------------------
 void PlayerFloor(GameObjBase& p, GameObjBase& f)
 {
-    if (typeid(f) == typeid(Floor))
-    static_cast<Player&>(p).handleCollisionFloor(f);
-    if (typeid(f) == typeid(LeftFloor))
-        static_cast<Player&>(p).handleCollisionLeftFloor(f);
     if (typeid(f) == typeid(RightFloor))
-        static_cast<Player&>(p).handleCollisionRightFloor(f);
+        static_cast<Player&>(p).handleCollisionLeftFloor(f);
+    else
+        static_cast<Player&>(p).handleCollisionFloor(f);
 
 }
 //------------------------------------------------------------------
@@ -105,14 +103,7 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
 {
     if (typeid(f) == typeid(Floor))
         static_cast<Monster&>(e).handleCollisionFloor(f);
-    if (typeid(f) == typeid(LeftFloor))
-        static_cast<Monster&>(e).handleCollisionLeftFloor(f);
-    if (typeid(f) == typeid(RightFloor))
-        static_cast<Monster&>(e).handleCollisionRightFloor(f);
-
-
 }
-
 
     //---------------------- setPlayerCollisionHandling ----------------------
     // Insert all the players collision functions into the map Data Structure.
