@@ -46,7 +46,7 @@ sf::Vector2f MovingObj::getDirection() const
 bool MovingObj::collisionFromLeft(GameObjBase& g) const
 {
 	return m_shape.getPosition().x <
-		(g.getPos().x - g.getShape().getSize().x / 2);
+		(g.getPos().x - g.getShape().getSize().x / 2);//
 }
 
 //-------------------------- collisionFromRight ---------------------------
@@ -58,13 +58,13 @@ bool MovingObj::collisionFromRight(GameObjBase& g) const
 		(g.getPos().x + g.getShape().getSize().x / 2);
 }
 
-
 //------------------------- collisionFromBelow ---------------------------
 // Returns if there was a collision from below with a static object.
 //------------------------------------------------------------------------
+
 bool MovingObj::collisionFromBelow(GameObjBase& g) const
 {
-	return m_shape.getPosition().y < (g.getPos().y + g.getShape().getSize().y/2);
+	return m_shape.getPosition().y >(g.getPos().y - g.getShape().getSize().y / 2);
 }
 //----------------------- CollisionFromAboveFloor ------------------------
 // Returns if there is collision from above with the floor.
@@ -72,35 +72,25 @@ bool MovingObj::collisionFromBelow(GameObjBase& g) const
 bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
 {
 
-	if ((m_shape.getPosition().y + m_shape.getSize().y/2) >
-		(floor.getPos().y + floor.getShape().getSize().y/2))
-		return false;
-
-	/*if (m_shape.getPosition().x  <
-		(floor.getPos().x - floor.getShape().getSize().x/2) )
-		return false;
-	if (m_shape.getPosition().x  >
-		(floor.getPos().x + floor.getShape().getSize().x / 2))
-		return false;*/
+	return m_shape.getPosition().y <=
+		(floor.getPos().y - floor.getShape().getSize().y/2 );
+	/*	m_shape.getPosition().x + HALF_SIZE >=
+		(floor.getPos().x - floor.getShape().getSize().x / 2) &&
+		m_shape.getPosition().x - HALF_SIZE <=
+		(floor.getPos().x + floor.getShape().getSize().x / 2);*/
 
 
-		/*std::cout << "player pos y- " << m_shape.getPosition().y << "player size y- " << m_shape.getSize().y <<
-			" floor pos y- " << floor.getPos().y << "Floor size y- " << floor.getShape().getSize().y << '\n';
-		std::cout << "player pos x- " << m_shape.getPosition().x << "player size x- " << m_shape.getSize().x <<
-			" floor pos x- " << floor.getPos().x << "Floor size x- " << floor.getShape().getSize().x << '\n';*/
 
+	//if ((m_shape.getPosition().y + m_shape.getSize().y/2) >
+	//	(floor.getPos().y + floor.getShape().getSize().y/2))
 	//	return false;
-	//}
-	//return true;
 
-		/*if ((m_shape.getPosition().y + m_shape.getSize().y) >
-		(floor.getPos().y + floor.getShape().getSize().y))
-		return false;
-	if(m_left && (m_shape.getPosition().x < floor.getPos().x) ||
-		(m_shape.getPosition().x > floor.getPos().x - floor.getShape().getSize().x))
-		return false;
-	if((!m_left &&(m_shape.getPosition().x < floor.getPos().x) ||
-			(m_shape.getPosition().x > floor.getPos().x + floor.getShape().getSize().x)))*/
+	//if (m_shape.getPosition().x + m_shape.getSize().x / 2 <(floor.getPos().x - floor.getShape().getSize().x/2) )
+	//	return false;
+	//if (m_shape.getPosition().x - m_shape.getSize().x/2 >(floor.getPos().x + floor.getShape().getSize().x / 2))
+	//	return false;
+
+
 	
 	return true;
 }

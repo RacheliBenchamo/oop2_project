@@ -294,7 +294,11 @@ void Player::handelHit(int force)
 //------------------------------------------------------------------------
 void Player::handleCollision(GameObjBase& floor)
 {
-	if (CollisionFromAboveFloor(floor))
+     if (collisionFromBelow(floor))
+	{
+	m_shape.move(FALL_PUSH);
+	}
+	 else if (CollisionFromAboveFloor(floor))
 	{
 		m_falling = false;
 		m_onFloor = true;
@@ -307,11 +311,7 @@ void Player::handleCollision(GameObjBase& floor)
 	{
 		m_shape.move(PUSH_FROM);
 	}
-	else if (collisionFromBelow(floor))
-	{
-		
-		this->backToPrevPos();
-	}
+
 }
 
 
