@@ -73,11 +73,10 @@ bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
 {
 
 	return m_shape.getPosition().y <=
-		(floor.getPos().y - floor.getShape().getSize().y/2 );
-	/*	m_shape.getPosition().x + HALF_SIZE >=
-		(floor.getPos().x - floor.getShape().getSize().x / 2) &&
-		m_shape.getPosition().x - HALF_SIZE <=
-		(floor.getPos().x + floor.getShape().getSize().x / 2);*/
+		(floor.getPos().y - floor.getShape().getSize().y/2 )
+	 &&( m_shape.getPosition().x < (floor.getPos().x - floor.getShape().getSize().x / 2)||
+		m_shape.getPosition().x >
+		(floor.getPos().x + floor.getShape().getSize().x / 2));
 
 
 

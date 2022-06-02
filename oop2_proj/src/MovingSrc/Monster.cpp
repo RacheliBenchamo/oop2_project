@@ -212,7 +212,8 @@ void Monster::handleCollision(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
-		
+		//std::cout << "monster FromAbove\n";
+
 		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;

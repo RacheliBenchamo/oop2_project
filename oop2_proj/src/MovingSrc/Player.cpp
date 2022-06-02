@@ -296,19 +296,27 @@ void Player::handleCollision(GameObjBase& floor)
 {
      if (collisionFromBelow(floor))
 	{
+		 std::cout << "player FromBelow\n";
+
 	m_shape.move(FALL_PUSH);
 	}
 	 else if (CollisionFromAboveFloor(floor))
 	{
+		 std::cout << "player FromAbove\n";
+
 		m_falling = false;
 		m_onFloor = true;
 	}
 	else if (collisionFromLeft(floor))
 	{
+		 std::cout << "player FromLeft\n";
+
 		m_shape.move(-PUSH_FROM);
 	}
 	else if (collisionFromRight(floor))
 	{
+		 std::cout << "player FromRight\n";
+
 		m_shape.move(PUSH_FROM);
 	}
 
