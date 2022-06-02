@@ -78,7 +78,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  START_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel),
+		m_staticsObj.push_back(std::make_unique<LeftFloor>(pos, levels(m_currLevel),
 			L_FLOOR,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  FLOOR_C:
@@ -86,7 +86,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  END_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), R_FLOOR
+		m_staticsObj.push_back(std::make_unique<RightFloor>(pos, levels(m_currLevel), R_FLOOR
 			,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5)));
 		break;
 	case  F_TREE_C:

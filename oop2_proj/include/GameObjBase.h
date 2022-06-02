@@ -7,6 +7,7 @@
 #include <fstream>
 #include "FileManager.h"
 
+
 class King;
 class Warrior;
 class Mage;
