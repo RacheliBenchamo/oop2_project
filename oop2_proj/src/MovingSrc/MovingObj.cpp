@@ -45,8 +45,8 @@ sf::Vector2f MovingObj::getDirection() const
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromLeft(GameObjBase& g) const
 {
-	return m_shape.getPosition().x <
-		(g.getPos().x - g.getShape().getSize().x / 2);//
+	return m_shape.getPosition().x >=
+		(g.getPos().x + g.getShape().getSize().x );
 }
 
 //-------------------------- collisionFromRight ---------------------------
@@ -54,8 +54,8 @@ bool MovingObj::collisionFromLeft(GameObjBase& g) const
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromRight(GameObjBase& g) const
 {
-	return m_shape.getPosition().x >
-		(g.getPos().x + g.getShape().getSize().x / 2);
+	return m_shape.getPosition().x <=
+		(g.getPos().x - g.getShape().getSize().x );
 }
 
 //------------------------- collisionFromBelow ---------------------------

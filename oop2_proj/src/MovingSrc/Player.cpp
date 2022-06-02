@@ -340,7 +340,6 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 	m_shape.move(PUSH_FROM);
 	}
 
-
 }
 
 
