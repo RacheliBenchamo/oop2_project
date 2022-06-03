@@ -5,9 +5,6 @@
 #include "MovingInclude/Player.h"
 #include "MovingInclude/Monster.h"
 
-
-//#include "MovingInclude/Box.h"
-
 // Static Objects.
 //#include "StaticInclude/Block.h"
 #include "StaticInclude/Floor.h"
@@ -135,7 +132,6 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
         phm[MapKey(typeid(Player), typeid(PowerPosion))] = &playerPowerPotion;
     }
 
-
     //---------------------- setEnemyCollisionHandling -----------------------
     // Insert all the enemy's collision functions into the map Data Structure.
     //------------------------------------------------------------------------
@@ -145,31 +141,6 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
         phm[MapKey(typeid(Monster), typeid(Floor))] = &monsterFloor;
 
     }
-
-
-    //---------------------- setStaticCollisionHandling ----------------------
-    // Insert all the static collision functions into the map Data Structure.
-    //------------------------------------------------------------------------
-    void setStaticCollisionHandling(HitMap& phm)
-    {
-    //    // Box & floor
-    //    phm[MapKey(typeid(Box), typeid(Block))] = &boxFloor;
-
-
-    //    // StoneArrow & Block
-    //    phm[MapKey(typeid(StoneArrow), typeid(Block))] = &arrowStaticObject;
-
-    //    // StoneArrow & Box
-    //    phm[MapKey(typeid(StoneArrow), typeid(Box))] = &arrowStaticObject;
-
-
-    //    // FireArrow & Block
-    //    phm[MapKey(typeid(FireArrow), typeid(Block))] = &arrowStaticObject;
-
-    //    // FireArrow & Box
-    //    phm[MapKey(typeid(FireArrow), typeid(Box))] = &arrowStaticObject;
-    }
-
 
     //------------------------ initializeCollisionMap ------------------------
     // Intialize the collision handling map.

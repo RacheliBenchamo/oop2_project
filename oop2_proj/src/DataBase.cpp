@@ -310,9 +310,6 @@ void  DataBase::grillPotion(sf::Vector2f pos)
 	}
 	
 }
-
-
-
 //---------------------------------------------
 //check if the player win the level means the 
 //king reached the throne
