@@ -144,6 +144,7 @@ const sf::Vector2f SCALE_LEFT{ 1,1 };
 
 // movement consts
 const sf::Vector2f UP_MOVEMENT(0, -1);
+const sf::Vector2f HEIGHT(0, 12);
 const sf::Vector2f LEFT_MOVEMENT(-1, 0);
 const sf::Vector2f RIGHT_MOVEMENT(1, 0);
 const sf::Vector2f DOWN_MOVEMENT(0, 1);

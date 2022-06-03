@@ -59,16 +59,13 @@ private:
     void drawStaticObj(sf::RenderWindow& );
     void drawMovingObj(sf::RenderWindow& );
     void handelCollisions();
-    void handelPlayerCollisions();
+    void handelMovingCollisions();
     void handelTeleportCollisions();
     void handelPlayerStuff(sf::Time);
-    void itsAllowedToEnterTheTeleport(int, int);
-    bool ThereIsNoObjectOnTheMemberTel(int);
+    void AllowedToEnterTeleport(int, int);
    //void handelMonstersCollisions();
     void deleteRelevantObj();
     void grillPotion(sf::Vector2f pos);
-    void takeGift();
-    void resetTakeGifts();
     void eraseAllMonsters();
 
     sf::Vector2f m_levelSize;

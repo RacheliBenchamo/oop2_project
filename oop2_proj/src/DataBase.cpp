@@ -12,7 +12,6 @@ using std::cout;
 DataBase::DataBase()
 	: m_currTeleport(0), m_currLevel(1)
 {
-	resetTakeGifts();
 	m_movingRec.setSize(sf::Vector2f((float)32, (float)32 / 15));
 	m_movingRec.setFillColor(sf::Color(255, 255, 0, 250));
 }
@@ -70,7 +69,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 	//	return true;
 	//	break;
 	case TELEPORT_C:
-		m_teleport.push_back(std::make_unique<Teleport>( pos));
+		m_teleport.push_back(std::make_unique<Teleport>( pos+ HEIGHT));
 		return true;
 		break;
 	case DIAMOND_C:
@@ -171,9 +170,6 @@ void DataBase::FindTeleportPartner() const
 
 void DataBase::move(sf::Time deltaTime)
 {
-	//handelCollisions();
-	deleteRelevantObj();
-
 	//move monsters
 	for (auto& f : m_monsters)
 	{
@@ -194,14 +190,14 @@ void DataBase::move(sf::Time deltaTime)
 
 void DataBase::handelCollisions()
 {
-	handelPlayerCollisions();
-	//handelMonstersCollisions();
-	//handelTeleportCollisions();	
+	handelMovingCollisions();
+	handelTeleportCollisions();	
+	deleteRelevantObj();
 }
 //----------------------------------------------------
 //handle the current player collisions in this moment
 
-void DataBase::handelPlayerCollisions()
+void DataBase::handelMovingCollisions()
 {
 	// check collition with static object
 	for (auto& s : m_staticsObj)
@@ -226,45 +222,24 @@ void DataBase::handelPlayerCollisions()
 		}
 }
 //----------------------------------------------------
- //handle the fairies collisions in this moment
-//
-//void DataBase::handelMonstersCollisions()
-//{
-//	for (auto& f : m_fairies)
-//	{
-//		for (auto& p : m_players)
-//			if (f->checkCollision(*p))
-//				f->handleCollision(*p);
-//
-//		for (auto& c : m_staticsObj)
-//			if (f->checkCollision(*c))
-//				f->handleCollision(*c);
-//
-//		for (auto& fa : m_fairies)
-//			if (f != fa)
-//				if (f->checkCollision(*fa))
-//					f->handleCollision(*fa);
-//	}
-//}
-//----------------------------------------------------
 //handle the teleports collisions in this moment
 
 void DataBase::handelTeleportCollisions()
 {
-	/*for (int index = 0; index < m_teleport.size(); index++)
+	for (int index = 0; index < m_teleport.size(); index++)
 	{
-		if (!(m_players[m_currPlayer]->checkCollision(*m_teleport[m_currTeleport])))
+		if (!(m_player->checkCollision(*m_teleport[m_currTeleport])))
 			m_teleport[m_currTeleport]->toOpen();
 
-		if (m_players[m_currPlayer]->checkCollision(*m_teleport[index])
+		if (m_player->checkCollision(*m_teleport[index])
 			&& m_teleport[index]->isOpen())
 		{
 			if (index % 2 == 0)
-				itsAllowedToEnterTheTeleport(index , 1);
+				AllowedToEnterTeleport(index , 1);
 			else
-				itsAllowedToEnterTheTeleport(index , -1);
+				AllowedToEnterTeleport(index , -1);
 		}
-	}*/
+	}
 }
 
 //----------------------------------------------------
@@ -282,29 +257,14 @@ void DataBase::handelPlayerStuff(sf::Time deltaTime)
 //-----------------------------------------------------
 //check if its allowed to enter the teleport
 
-void DataBase::itsAllowedToEnterTheTeleport(int place,int move)
+void DataBase::AllowedToEnterTeleport(int place,int move)
 {
-	/*if (m_teleport[place + move]->isOpen() && ThereIsNoObjectOnTheMemberTel(place + move))
+	if (m_teleport[place + move]->isOpen() && sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		m_teleport[place + move]->toClose();
 		m_currTeleport = place + move;
-		m_players[m_currPlayer]->handleCollision(*m_teleport[place]);
-	}*/
-}
-//-----------------------------------------------------
-//check if there is no object on the member teleport
-
-bool DataBase::ThereIsNoObjectOnTheMemberTel(int index)
-{
-	//for (auto& p : m_players)
-	//	if (p->checkCollision(*m_teleport[index]))
-			return false;
-
-	//for (auto& fa : m_fairies)
-	//	if (fa->checkCollision(*m_teleport[index]))
-	//		return false;
-
-	//return true;
+		processCollision(*m_player, *m_teleport[place]);
+	}
 }
 //-----------------------------------------------------
 //delete the relevant Objects from the level
@@ -330,7 +290,7 @@ void DataBase::replaceMonsterWithPotion()
 	}
 }
 //-------------------------------------------------------------
-//gril which gift the current gift will be
+//gril curent poision  
 
 void  DataBase::grillPotion(sf::Vector2f pos)
 {
@@ -350,28 +310,9 @@ void  DataBase::grillPotion(sf::Vector2f pos)
 	}
 	
 }
-//---------------------------------------------
-//handle taking gift by the player
 
-void DataBase::takeGift()
-{
-	resetTakeGifts();
 
-	//for (int i = 0; i < m_staticsObj.size(); i++)
-	//{
-	//	if (typeid(*m_staticsObj[i]) == typeid(RemoveFairiesGift) && m_staticsObj[i]->getToDelete())
-	//		this->eraseAllFairies();
 
-	//	else if (typeid(*m_staticsObj[i]) == typeid(TakeTimeGift) && m_staticsObj[i]->getToDelete())
-	//		m_takeGifts[TAKE_TIME] = true;
-
-	//	else if (typeid(*m_staticsObj[i]) == typeid(TakeToPrevLevelGift) && m_staticsObj[i]->getToDelete())
-	//		m_takeGifts[TAKE_TO_PREV_LEVEL] = true;
-
-	//	else if (typeid(*m_staticsObj[i]) == typeid(AddTimeGift) && m_staticsObj[i]->getToDelete())
-	//		m_takeGifts[ADD_TIME] = true;
-	//}
-}
 //---------------------------------------------
 //check if the player win the level means the 
 //king reached the throne
@@ -404,8 +345,6 @@ void DataBase::eraseObj()
 	this->eraseAllMonsters();
 }
 //----------------------------------------------
-//erase all the fairies from the vectors
-
 void DataBase::eraseAllMonsters()
 {
 	while (!m_monsters.empty())
@@ -414,22 +353,3 @@ void DataBase::eraseAllMonsters()
 		m_monsters.erase(monsterPtr);
 	}
 }
-//----------------------------------------------
-
-void DataBase::resetTakeGifts()
-{
-	for (int i = 0; i < NUM_OF_GIFT_TYPES; i++)
-		m_takeGifts[i] = false;
-}
-
-//template<class T>
-//void DataBase::drowObj()
-//{
-//	sf::Time delta_time = m_clock.restart();
-//
-//	for (auto& e : T)
-//	{
-//		update(delta_time);
-//		e->draw(window);
-//	}
-//}

@@ -41,6 +41,12 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     }
 //------------------------------------------------------------------
+void PlayerTeleport(GameObjBase& p, GameObjBase& f)
+{
+    static_cast<Player&>(p).setPos(static_cast<Teleport&>(f).getPertnetPos());
+    //startSound();
+}
+//------------------------------------------------------------------
 
 void playerMonster(GameObjBase& p, GameObjBase& f)
 {
@@ -119,7 +125,9 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
         phm[MapKey(typeid(Player), typeid(LeftFloor))] = &PlayerFloor;
         // Player & Diamond.
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
-        // Player & Monster.
+        //Player & Teleport
+        phm[MapKey(typeid(Player), typeid(Teleport))] = &PlayerTeleport;
+        // Player & Monster
         phm[MapKey(typeid(Player), typeid(Monster))] = &playerMonster;
         //// Player & ExtraLife
         phm[MapKey(typeid(Player), typeid(LifePosion))] = &playerLifePotion;

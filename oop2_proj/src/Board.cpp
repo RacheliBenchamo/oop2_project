@@ -66,7 +66,7 @@ void Board::readLevel(DataBase& dataBase)
 			space_y = START_SPACE;
 		}
 	}
-	//dataBase.FindTeleportPartner();
+	dataBase.FindTeleportPartner();
 }
 //--------------------------------------------------
 //take the input stream to the begining of the curr level
