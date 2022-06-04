@@ -28,7 +28,12 @@ namespace // anonymous namespace — the standard way to make function "static"
 ////------------------------------------------------------------------------
     void PlayerFloor(GameObjBase& p, GameObjBase& f)
     {
-        if (typeid(f) == typeid(RightFloor)|| typeid(f) == typeid(LeftFloor))
+        if (typeid(f) == typeid(RightFloor))
+        {
+            static_cast<Player&>(p).handleCollisionRightFloor(f);
+
+        }
+        else if( typeid(f) == typeid(LeftFloor))
         {
             static_cast<Player&>(p).handleCollisionLeftFloor(f);
         }
