@@ -38,7 +38,6 @@ void Player::move(sf::Time& deltaTime,sf::Vector2f levelSize)
 		setMovementStatus(movement);
 		stayInPlaceAnimation(movement);
 
-		//handleEvents();//hendle collision
 	}
 	//else
 	//{
@@ -57,7 +56,7 @@ void Player::move(sf::Time& deltaTime,sf::Vector2f levelSize)
 //------------------------------------------------------------------------
 void Player::setMovementStatus(const sf::Vector2f& movement)
 {
-	m_onFloor=m_right = m_left = false;
+	m_climbing=m_onFloor=m_right = m_left = false;
 
 	if (movement.x < 0)
 	{
@@ -124,7 +123,7 @@ void Player::playMovementAnimations()
 ////------------------------------------------------------------------------
 void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 {
-	if (!m_inHnaldeJump && !m_onFloor)
+	if (!m_inHnaldeJump && !m_onFloor && !m_climbing)
 	{
 		m_inHandleFall = true;
 		m_falling = true;
@@ -151,6 +150,12 @@ const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
 	{
 		return FALL_PUSH;
 	}
+	else if (m_climbing)
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			return UP_MOVEMENT;
+	}
+
 	else if (m_inHnaldeJump)
 	{
 		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
@@ -222,7 +227,7 @@ void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
 	static int jumpCounter = 0;
 
 	m_inHnaldeJump = true;
-	if (jump && m_onFloor && jumpCounter == 0)
+	if (jump && m_onFloor && jumpCounter == 0&& !m_climbing)
 	{
 		//Resources::instance().playSound(JUMP_SOUND);
 		m_falling = true;
@@ -240,14 +245,6 @@ void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
 		jumpCounter = 0;
 	}
 }
-
-////------------------------------- shoot ----------------------------------
-//// Plays the shoot animation.
-////------------------------------------------------------------------------
-//void Player::hit()
-//{
-//	m_animation.operation(Operation::Hit);
-//}
 
 ////-------------------------- setHittingStatus ----------------------------
 //// Sets the hitting status of the player.
@@ -277,6 +274,17 @@ void Player::handelHit(int force)
 		hitCounter = 0;
 }
 
+//---------------------------------------------------------
+
+void Player::handelClimbing()
+{
+	if (m_climbing)
+	{
+		m_animation.operation(Operation::Climbe);
+	}
+
+}
+
 //-------------------------- handleCollision -----------------------------
 // Handles collision with the floor.
 // Pushes the moving object off the floor depending on the location of the
@@ -289,7 +297,7 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	 if (collisionFromBelow(floor))
+	 else if (collisionFromBelow(floor)&& !m_climbing)
 		 m_shape.move(FALL_PUSH);
 
 
@@ -304,7 +312,7 @@ void Player::handleCollisionLeftFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromBelow(floor) )
+	else if (collisionFromBelow(floor)&& !m_climbing)
 		m_shape.move(FALL_PUSH);
 	else if (collisionFromLeft(floor))
 	{
@@ -322,7 +330,7 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromBelow(floor) )
+	else if (collisionFromBelow(floor) && !m_climbing)
 		 m_shape.move(FALL_PUSH);
 	else if (collisionFromRight(floor))
 	{

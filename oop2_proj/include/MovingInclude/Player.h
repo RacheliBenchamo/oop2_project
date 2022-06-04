@@ -11,6 +11,7 @@ public:
 	void draw(sf::RenderWindow&)override;
 	void handleFall(sf::Time& , sf::Vector2f );
 	void handleJump(sf::Time& , bool , sf::Vector2f );
+	void handelClimbing();
 	void setHittingStatus(const bool status);
 	void hit();
 	void addDiamond() { m_diamondsCount++; };
@@ -23,7 +24,7 @@ public:
 	void handleCollisionFloor(GameObjBase& floor)override;
 	void handleCollisionLeftFloor(GameObjBase& floor) override;
 	void handleCollisionRightFloor(GameObjBase& floor) override;
-
+	void setClimbing() { m_climbing = true; }
 
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
@@ -31,6 +32,7 @@ private:
 	const sf::Vector2f getMovement(sf::Time& );
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
 
+	bool m_climbing = false;
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;
 	int m_power=100;

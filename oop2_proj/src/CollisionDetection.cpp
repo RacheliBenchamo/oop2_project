@@ -78,7 +78,17 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     static_cast<Diamond&>(g).setToDelete();
     FileManager::instance().playSound(S_TAKE_DIAMOND);
 }
+//------------------------------------------------
 
+void playerRope(GameObjBase& p, GameObjBase& g)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        static_cast<Player&>(p).setClimbing();
+       
+        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+    }
+}
 //------------------------------------------------
 
 void playerLifePotion(GameObjBase& p, GameObjBase& g)
@@ -127,6 +137,9 @@ void monsterFloor(GameObjBase& e, GameObjBase& f)
         phm[MapKey(typeid(Player), typeid(LeftFloor))] = &PlayerFloor;
         // Player & Diamond.
         phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
+        // Player & Rope.
+        phm[MapKey(typeid(Player), typeid(Rope))] = &playerRope;
+
         //Player & Teleport
         phm[MapKey(typeid(Player), typeid(Teleport))] = &PlayerTeleport;
         // Player & Monster

@@ -35,6 +35,7 @@ sf::Vector2f MovingObj::getDirection() const
 		return RIGHT_MOVEMENT;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		return LEFT_MOVEMENT;
+	
 
 	return STAY_IN_PLACE;
 }

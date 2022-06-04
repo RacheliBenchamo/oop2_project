@@ -253,6 +253,7 @@ void DataBase::handelPlayerStuff(sf::Time deltaTime)
 	m_player->handleJump(deltaTime,sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
 	m_player->handleFall(deltaTime, m_levelSize);
 	m_player->setHittingStatus(false);
+	m_player->handelClimbing();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 		m_player->hit();
 
