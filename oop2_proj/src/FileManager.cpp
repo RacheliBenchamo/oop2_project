@@ -70,6 +70,7 @@ void FileManager::loadStaticObj()
 	m_sharedStaticIcon[DIAMOND].loadFromFile("Diamond.png");
 	m_sharedStaticIcon[POTION_L].loadFromFile("LifePotion.png");
 	m_sharedStaticIcon[POTION_P].loadFromFile("PowerPotion.png");
+	m_sharedStaticIcon[ROPE].loadFromFile("Rope.png");
 
 	m_dec.loadFromFile("staticDec.png");
 
@@ -340,7 +341,7 @@ void FileManager::setAnimationsData()
 void FileManager::createPlayerAnimeData()
 {
 	setCurrentData(m_playerData, Stay, movableAnimationSet
-	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
+	({ 112, 110 }, { 736, 10 },0, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData, Walk, movableAnimationSet
 	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.008f, false);
@@ -352,7 +353,7 @@ void FileManager::createPlayerAnimeData()
 	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.06f, true);
 
 	setCurrentData(m_playerData, Hurt, movableAnimationSet
-	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.01f, true);
+	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.008f, true);
 
 	//setCurrentData(player, Operation::Rope, movableAnimationSet
 	//({ 37, 36 }, { 0, 405 }, { 0, 0 }, 8,

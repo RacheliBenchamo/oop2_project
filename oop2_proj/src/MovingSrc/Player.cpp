@@ -81,22 +81,12 @@ void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
 {
 	if (movement == STAY_IN_PLACE &&
 		m_animation.getOperation() != Operation::Hit &&
-		//m_animation.getOperation() != Operation::Hurt &&
+		m_animation.getOperation() != Operation::Hurt &&
 		!m_inHnaldeJump)
 	{
 		m_animation.operation(Operation::Stay);
 	}
 }
-//---------------------------- setEventsClock ----------------------------
-// Set the extra jump status.
-// We enter this function if the player collects the extra jump boost gem.
-////------------------------------------------------------------------------
-//void Player::setEventsClock()
-//{
-//	MoveObject::setEventsClock(FIST_RATIO);
-//	MoveObject::setEventsClock(SHOOT_RATIO);
-//}
-//
 
 //----------------------- playMovementAnimations -------------------------
  //Plays the animation according to the situation in which the player is.
@@ -107,8 +97,8 @@ void Player::playMovementAnimations()
 	{
 		if (!m_inHnaldeJump)
 		{
-			if (m_animation.getOperation() != Operation::Hit )
-				//&& m_animation.getOperation() != Operation::Hurt)
+			if (m_animation.getOperation() != Operation::Hit 
+				&& m_animation.getOperation() != Operation::Hurt)
 			{
 				m_animation.operation(Operation::Walk);
 			}
@@ -142,7 +132,7 @@ void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 		move(deltaTime,levelSize);
 
 		if (!m_onFloor)
-			m_animation.operation(Operation::Stay);
+			m_animation.operation(Operation::Jump);
 
 		m_inHandleFall = false;
 	}
@@ -299,20 +289,6 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	// else if (collisionFromRight(floor))
-	// {
-	//	 std::cout << "r\n";
-	//	 backToPrevPos();
-	////	 m_shape.move(PUSH_FROM);
-	// }
-
-	//  else if (collisionFromLeft(floor))
-	// {
-	//	 std::cout << "l\n";
-	//	 backToPrevPos();
-
-	//	// m_shape.move(-PUSH_FROM);
-	// }
 	 if (collisionFromBelow(floor))
 		 m_shape.move(FALL_PUSH);
 
@@ -328,7 +304,7 @@ void Player::handleCollisionLeftFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromBelow(floor))
+	else if (collisionFromBelow(floor) )
 		m_shape.move(FALL_PUSH);
 	else if (collisionFromLeft(floor))
 	{
@@ -346,7 +322,7 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromBelow(floor))
+	else if (collisionFromBelow(floor) )
 		 m_shape.move(FALL_PUSH);
 	else if (collisionFromRight(floor))
 	{

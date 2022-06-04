@@ -4,10 +4,10 @@
 // general data
 const unsigned int
 NUM_OF_LEVELS = 3,
-NUM_OF_STATIC_ICONS = 17, 
+NUM_OF_STATIC_ICONS = 19, 
 NUM_OF_BACKGROUNDSICONS=6,
 NUM_OF_MONSTERS = 3,
-NUM_OF_DEC = 17,
+NUM_OF_DEC = 19,
  NUM_OF_SOUNDS = 14, 
 NUM_OF_BACKGROUNDS = 7,
 NUM_OF_DIRECTION = 4,
@@ -79,7 +79,7 @@ const sf::Vector2f DVec[] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
 
 const char
 PLAYER_C='P', EMPTY_C = ' ',
-DIAMOND_C = 'D', GATE_C = '#', TELEPORT_C = 'X',
+DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X',
 GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(', END_FLOOR_C = ')',
 F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R', BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2',
 MONSTER3_C = '3';
@@ -87,7 +87,7 @@ MONSTER3_C = '3';
 enum icons 
 {
     MONSTER1, MONSTER2, MONSTER3, DIAMOND,
-	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,POWER, LIFE,POTION_L,POTION_P,
+	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,POWER, LIFE,POTION_L,POTION_P,ROPE,
 	EMPTY
 };
 
@@ -154,7 +154,7 @@ const sf::Vector2f PUSH_FROM_MONSTER(0.2, 0);
 const sf::Vector2f FALL_PUSH(0, 3);
 
 const float HANDLE_JUMP_SPEED = 80.f;
-const int JUMP_COUNTER = 23;
+const int JUMP_COUNTER = 22;
 const int HIT_COUNTER = 40;
 
 

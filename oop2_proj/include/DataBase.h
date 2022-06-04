@@ -8,6 +8,8 @@
 #include <GameObjBase.h>
 #include "StaticInclude\Teleport.h"
 #include "StaticInclude\Diamond.h"
+#include "StaticInclude\Rope.h"
+
 #include "StaticInclude\Floor.h"
 #include "StaticInclude\LeftFloor.h"
 #include "StaticInclude\RightFloor.h"
