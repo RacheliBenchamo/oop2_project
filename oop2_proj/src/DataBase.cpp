@@ -77,7 +77,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  ROPE_C:
-		m_staticsObj.push_back(std::make_unique<Rope>(pos + sf::Vector2f(0, -27)));
+		m_rope.push_back(std::make_unique<Rope>(pos + sf::Vector2f(0, -27)));
 		break;
 	case  START_FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<LeftFloor>(pos, levels(m_currLevel),
@@ -132,6 +132,11 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 		e->draw(window);
 	}
 	for (auto& e : m_teleport)
+	{
+		e->update(delta_time);
+		e->draw(window);
+	}
+	for (auto& e : m_rope)
 	{
 		e->update(delta_time);
 		e->draw(window);
@@ -202,24 +207,16 @@ void DataBase::handelCollisions()
 
 void DataBase::handelMovingCollisions()
 {
-
-	// check collition with static object
-	for (auto& s : m_staticsObj)
+	for (auto& r : m_rope)
 	{
-		std::cout << m_player->getClimbing() << "after1\n";
-
-		if (typeid(s) == typeid(Rope))
-		if (m_player->checkCollision(*s))
+		if (m_player->checkCollision(*r))
 		{
-			processCollision(*m_player, *s);
+			processCollision(*m_player, *r);
 
 		}
 	}
-	std::cout << m_player->getClimbing() << "after2\n";
-	// check collition with static object
 	for (auto& s : m_staticsObj)
 	{
-		if (typeid(s) != typeid(Rope))
 		if (m_player->checkCollision(*s))
 		{
 			processCollision(*m_player, *s);
@@ -231,6 +228,40 @@ void DataBase::handelMovingCollisions()
 				processCollision(*m, *s);
 			}
 	}
+	//// check collition with static object
+	//for (auto& s : m_staticsObj)
+	//{
+	//	std::cout << m_player->getClimbing() << "after1\n";
+
+	//	if (typeid(s) == typeid(Rope))
+	//	{
+	//		if (m_player->checkCollision(*s))
+	//		{
+	//			processCollision(*m_player, *s);
+
+	//		}
+	//	}
+	//	
+	//}
+	//std::cout << m_player->getClimbing() << "after2\n";
+	//// check collition with static object
+	//for (auto& s : m_staticsObj)
+	//{
+	//	if (typeid(s) != typeid(Rope))
+	//	{
+	//		if (m_player->checkCollision(*s))
+	//		{
+	//			processCollision(*m_player, *s);
+
+	//		}
+	//	}
+	//	
+	//	for (auto& m : m_monsters)
+	//		if (m->checkCollision(*s))
+	//		{
+	//			processCollision(*m, *s);
+	//		}
+	//}
 	// check collition between player and monsters
 	for (auto& p : m_monsters)
 		if (m_player->checkCollision(*p))
