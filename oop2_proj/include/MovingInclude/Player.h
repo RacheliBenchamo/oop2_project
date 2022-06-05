@@ -26,13 +26,14 @@ public:
 	void handleCollisionRightFloor(GameObjBase& floor) override;
 	void setClimbing(bool c) { m_climbing = c; }
 	bool getClimbing() { return m_climbing; }
-
+	bool m_wasClimbing = false;
 
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
 	void playMovementAnimations();
 	const sf::Vector2f getMovement(sf::Time& );
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
+
 
 	bool m_climbing = false;
 	int m_diamondsCount = 0;

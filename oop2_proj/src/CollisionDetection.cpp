@@ -30,6 +30,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     {
         if (!static_cast<Player&>(p).getClimbing())
         {
+
             if (typeid(f) == typeid(RightFloor))
             {
                 static_cast<Player&>(p).handleCollisionRightFloor(f);
@@ -44,6 +45,8 @@ namespace // anonymous namespace — the standard way to make function "static"
                 static_cast<Player&>(p).handleCollisionFloor(f);
 
         }
+        else
+            std::cout << "ddd\n";
 
     }
 //------------------------------------------------------------------
@@ -86,10 +89,10 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
 
 void playerRope(GameObjBase& p, GameObjBase& g)
 {
+
        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
         static_cast<Player&>(p).setClimbing(true);
        // static_cast<Player&>(p).setPos({ static_cast<Floor&>(g).getPos().x,static_cast<Player&>(p).getPos().y });
-
 }
 //------------------------------------------------
 

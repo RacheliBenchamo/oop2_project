@@ -283,6 +283,7 @@ void Player::handelClimbing()
 	if (m_climbing)
 	{
 		m_animation.operation(Operation::Climbe);
+		m_wasClimbing = true;
 	}
 
 }

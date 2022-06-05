@@ -202,9 +202,24 @@ void DataBase::handelCollisions()
 
 void DataBase::handelMovingCollisions()
 {
+
 	// check collition with static object
 	for (auto& s : m_staticsObj)
 	{
+		std::cout << m_player->getClimbing() << "after1\n";
+
+		if (typeid(s) == typeid(Rope))
+		if (m_player->checkCollision(*s))
+		{
+			processCollision(*m_player, *s);
+
+		}
+	}
+	std::cout << m_player->getClimbing() << "after2\n";
+	// check collition with static object
+	for (auto& s : m_staticsObj)
+	{
+		if (typeid(s) != typeid(Rope))
 		if (m_player->checkCollision(*s))
 		{
 			processCollision(*m_player, *s);
