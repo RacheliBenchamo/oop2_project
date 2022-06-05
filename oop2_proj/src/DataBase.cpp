@@ -77,7 +77,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return true;
 		break;
 	case  ROPE_C:
-		m_staticsObj.push_back(std::make_unique<Rope>(pos + sf::Vector2f(0, -15)));
+		m_staticsObj.push_back(std::make_unique<Rope>(pos + sf::Vector2f(0, -27)));
 		break;
 	case  START_FLOOR_C:
 		m_staticsObj.push_back(std::make_unique<LeftFloor>(pos, levels(m_currLevel),

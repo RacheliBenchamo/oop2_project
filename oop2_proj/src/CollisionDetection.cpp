@@ -28,18 +28,21 @@ namespace // anonymous namespace — the standard way to make function "static"
 ////------------------------------------------------------------------------
     void PlayerFloor(GameObjBase& p, GameObjBase& f)
     {
-        if (typeid(f) == typeid(RightFloor))
+        if (!static_cast<Player&>(p).getClimbing())
         {
-            static_cast<Player&>(p).handleCollisionRightFloor(f);
+            if (typeid(f) == typeid(RightFloor))
+            {
+                static_cast<Player&>(p).handleCollisionRightFloor(f);
 
-        }
-        else if( typeid(f) == typeid(LeftFloor))
-        {
-            static_cast<Player&>(p).handleCollisionLeftFloor(f);
-        }
+            }
+            else if (typeid(f) == typeid(LeftFloor))
+            {
+                static_cast<Player&>(p).handleCollisionLeftFloor(f);
+            }
 
-        else
-            static_cast<Player&>(p).handleCollisionFloor(f);
+            else
+                static_cast<Player&>(p).handleCollisionFloor(f);
+        }
 
     }
 //------------------------------------------------------------------
@@ -82,12 +85,21 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
 
 void playerRope(GameObjBase& p, GameObjBase& g)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-    {
+    //static bool first = false;
+    //if (first)
+    //{
+    //    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    //    {
+    //        first = true;
+    //        static_cast<Player&>(p).setClimbing();
+    //        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+    //    }
+    //}
+    //else
         static_cast<Player&>(p).setClimbing();
-       
-        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
-    }
+        static_cast<Player&>(p).setPos({ static_cast<Floor&>(g).getPos().x,
+            static_cast<Player&>(p).getPos().y });
+
 }
 //------------------------------------------------
 

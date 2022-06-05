@@ -154,6 +154,8 @@ const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 			return UP_MOVEMENT;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			return DOWN_MOVEMENT;
 	}
 
 	else if (m_inHnaldeJump)
@@ -297,7 +299,7 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	 else if (collisionFromBelow(floor)&& !m_climbing)
+	 else if (collisionFromBelow(floor))
 		 m_shape.move(FALL_PUSH);
 
 
@@ -312,7 +314,7 @@ void Player::handleCollisionLeftFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromBelow(floor)&& !m_climbing)
+	else if (collisionFromBelow(floor))
 		m_shape.move(FALL_PUSH);
 	else if (collisionFromLeft(floor))
 	{
@@ -330,7 +332,7 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 		m_falling = false;
 		m_onFloor = true;
 	}
-	else if (collisionFromBelow(floor) && !m_climbing)
+	else if (collisionFromBelow(floor) )
 		 m_shape.move(FALL_PUSH);
 	else if (collisionFromRight(floor))
 	{

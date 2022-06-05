@@ -25,6 +25,8 @@ public:
 	void handleCollisionLeftFloor(GameObjBase& floor) override;
 	void handleCollisionRightFloor(GameObjBase& floor) override;
 	void setClimbing() { m_climbing = true; }
+	bool getClimbing() { return m_climbing; }
+
 
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
