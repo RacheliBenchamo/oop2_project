@@ -24,7 +24,7 @@ public:
 	void handleCollisionFloor(GameObjBase& floor)override;
 	void handleCollisionLeftFloor(GameObjBase& floor) override;
 	void handleCollisionRightFloor(GameObjBase& floor) override;
-	void setClimbing() { m_climbing = true; }
+	void setClimbing(bool c) { m_climbing = c; }
 	bool getClimbing() { return m_climbing; }
 
 

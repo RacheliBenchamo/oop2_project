@@ -42,6 +42,7 @@ namespace // anonymous namespace — the standard way to make function "static"
 
             else
                 static_cast<Player&>(p).handleCollisionFloor(f);
+
         }
 
     }
@@ -85,20 +86,9 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
 
 void playerRope(GameObjBase& p, GameObjBase& g)
 {
-    //static bool first = false;
-    //if (first)
-    //{
-    //    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-    //    {
-    //        first = true;
-    //        static_cast<Player&>(p).setClimbing();
-    //        // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
-    //    }
-    //}
-    //else
-        static_cast<Player&>(p).setClimbing();
-        static_cast<Player&>(p).setPos({ static_cast<Floor&>(g).getPos().x,
-            static_cast<Player&>(p).getPos().y });
+       // Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
+        static_cast<Player&>(p).setClimbing(true);
+       // static_cast<Player&>(p).setPos({ static_cast<Floor&>(g).getPos().x,static_cast<Player&>(p).getPos().y });
 
 }
 //------------------------------------------------
