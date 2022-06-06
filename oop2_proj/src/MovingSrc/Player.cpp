@@ -283,14 +283,10 @@ void Player::handelHit(int force)
 }
 
 //---------------------------------------------------------
-
 void Player::handelClimbing()
 {
 	if (m_climbing)
-	{
 		m_animation.operation(Operation::Climbe);
-	}
-
 }
 
 //-------------------------- handleCollision -----------------------------
@@ -307,9 +303,6 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 	}
 	 else if (collisionFromBelow(floor))
 		 m_shape.move(FALL_PUSH);
-
-
-
 }
 //------------------------------------------------------------------------
 void Player::handleCollisionLeftFloor(GameObjBase& floor)

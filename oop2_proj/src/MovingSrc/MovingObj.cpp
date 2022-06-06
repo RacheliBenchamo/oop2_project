@@ -19,7 +19,6 @@ void MovingObj::beHurt()
 bool MovingObj::outWindow(sf::Vector2f pos, sf::Vector2f levelSize) const
 {
 	if (pos.x <= START_SPACE*1.8 || pos.y <= -10||
-		//pos.y >= (levelSize.x * X_SPACE) - START_SPACE /3.1||
 		pos.x >= (levelSize.y * Y_SPACE) + START_SPACE*3)
 			return true;
 	
@@ -36,18 +35,13 @@ sf::Vector2f MovingObj::getDirection() const
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		return LEFT_MOVEMENT;
 	
-
 	return STAY_IN_PLACE;
 }
-
-
 //--------------------------- collisionFromLeft --------------------------
 // Returns if there was a collision from left side with a static object.
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromLeft(GameObjBase& g) const
 {
-	std::cout << "left player: " << m_shape.getPosition().x << " floor: " << g.getPos().x << "\n";
-
 	return m_shape.getPosition().x >=
 		(g.getPos().x );
 }
@@ -57,8 +51,6 @@ bool MovingObj::collisionFromLeft(GameObjBase& g) const
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromRight(GameObjBase& g) const
 {
-	std::cout << " right player: " << m_shape.getPosition().x << " floor: " << g.getPos().x << "\n";
-
 	return m_shape.getPosition().x <=
 		(g.getPos().x  );
 }
