@@ -98,7 +98,10 @@ void Monster::hit()
 void Monster::handleHit()
 {
 	static bool dead = false;
-
+	static sf::Sound effect;
+	/*effect.setBuffer(*FileManager::p2FileManager().getSound(S_TOUCH_FAIRY));
+	effect.play();
+	effect.setVolume(VOLUME_COLLISION);*/
 	m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 
 		if (isAlive())
@@ -255,6 +258,10 @@ void Monster::goAccordingToPlayerPos()
 		m_lastDir = LEFT_MOVEMENT;
 		m_shape.setScale(SCALE_LEFT);
 	}
+}
+
+void Monster::getHurtSound() const
+{
 }
 
 //-----------------------------------

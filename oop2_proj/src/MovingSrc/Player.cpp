@@ -261,6 +261,11 @@ void Player::setHittingStatus(const bool status)
 void Player::handelHit(int force)
 {
 	static int hitCounter = 0;
+	static sf::Sound effect;
+	/*effect.setBuffer(*FileManager::p2FileManager().getSound(S_TOUCH_FAIRY));
+	effect.play();
+	effect.setVolume(VOLUME_COLLISION);*/
+
 
 	if (hitCounter == 0)
 	{

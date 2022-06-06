@@ -173,20 +173,19 @@ void FileManager::loadBackgrounds()
 //	return &m_audio[sound];
 //
 //}
-void FileManager::playSound(sounds sound)
+sf::SoundBuffer* FileManager::getPlayerSound(sounds sound, levels level)
 {
-	std::cout << "in playSound diamond\n";
-	//static sf::Sound m_sound;
-
-	m_sound.setBuffer(m_audio[sound]);
-	m_sound.setVolume(20);
-	m_sound.play();
-	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	return &m_playerAudio[level][sound];
 
 }
 
+sf::SoundBuffer* FileManager::getMonsterSound(sounds)
+{
+	return nullptr;
+}
 
-sf::SoundBuffer* FileManager::playBackgraund(sounds sound) 
+
+sf::SoundBuffer* FileManager::getBackgraundSaund(sounds sound)
 {
 	return &this->m_backGroundAudio[sound];
 }
