@@ -138,7 +138,6 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 	}
 	for (auto& e : m_rope)
 	{
-		e->update(delta_time);
 		e->draw(window);
 	}
 }
@@ -228,40 +227,7 @@ void DataBase::handelMovingCollisions()
 				processCollision(*m, *s);
 			}
 	}
-	//// check collition with static object
-	//for (auto& s : m_staticsObj)
-	//{
-	//	std::cout << m_player->getClimbing() << "after1\n";
-
-	//	if (typeid(s) == typeid(Rope))
-	//	{
-	//		if (m_player->checkCollision(*s))
-	//		{
-	//			processCollision(*m_player, *s);
-
-	//		}
-	//	}
-	//	
-	//}
-	//std::cout << m_player->getClimbing() << "after2\n";
-	//// check collition with static object
-	//for (auto& s : m_staticsObj)
-	//{
-	//	if (typeid(s) != typeid(Rope))
-	//	{
-	//		if (m_player->checkCollision(*s))
-	//		{
-	//			processCollision(*m_player, *s);
-
-	//		}
-	//	}
-	//	
-	//	for (auto& m : m_monsters)
-	//		if (m->checkCollision(*s))
-	//		{
-	//			processCollision(*m, *s);
-	//		}
-	//}
+	
 	// check collition between player and monsters
 	for (auto& p : m_monsters)
 		if (m_player->checkCollision(*p))

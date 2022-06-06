@@ -156,6 +156,7 @@ const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
 			return UP_MOVEMENT;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			return DOWN_MOVEMENT;
+		return STAY_IN_PLACE;
 	}
 
 	else if (m_inHnaldeJump)
@@ -283,7 +284,6 @@ void Player::handelClimbing()
 	if (m_climbing)
 	{
 		m_animation.operation(Operation::Climbe);
-		m_wasClimbing = true;
 	}
 
 }
