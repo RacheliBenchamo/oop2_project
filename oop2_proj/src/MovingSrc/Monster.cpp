@@ -10,6 +10,7 @@ Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, sf::Vector2f s
 		Operation::Stay, m_shape,
 		FileManager::instance().getMonstersTexture(icon,lev))
 {
+	m_level= int(lev);
 	m_force = force;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 	grillDir();

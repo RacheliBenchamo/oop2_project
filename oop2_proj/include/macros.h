@@ -124,18 +124,28 @@ enum backgroundsType
 	WIN_GAME_BACKGROUND
 };
 
-enum giftType
-{
-	
-};
 
 enum direction
 {
 	LEFT, RIGHT, UP, DOWN,
 };
 
+enum playerSounds {
+    WALK,
+    JUMP,
+    HURT
+};
 
+enum monsterSounds
+{
+    HIT1,
+    HURT1,
+    HIT2,
+    HURT2,
+    HIT3,
+    HURT3,
 
+};
 const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 
 const sf::Vector2f SCALE_RIGHT{ -1,1 };

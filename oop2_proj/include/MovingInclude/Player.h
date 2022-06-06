@@ -5,7 +5,7 @@
 class Player :public MovingObj
 {
 public:
-	Player( const sf::Vector2f& );
+	Player( const sf::Vector2f& , levels);
 	virtual void move(sf::Time& ,sf::Vector2f)override;
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
 	void draw(sf::RenderWindow&)override;

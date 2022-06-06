@@ -29,7 +29,7 @@ protected:
 	bool CollisionFromAboveFloor(GameObjBase& floor) const;
 	bool CollisionFromAboveLeftFloor(GameObjBase& floor) const;
 	bool CollisionFromAboveRightFloor(GameObjBase& floor) const;
-
+	int m_level;
 
 
 	sf::Vector2f getDirection() const;
