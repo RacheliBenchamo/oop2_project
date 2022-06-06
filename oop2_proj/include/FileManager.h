@@ -20,8 +20,9 @@ public:
 	sf::Texture* getMonstersTexture(const icons,const levels);
 	sf::Texture* getPlayerTexture();
 	const sf::Texture* getPlayAndStopIcon(bool )const;
-	void playSound(sounds);
-	sf::SoundBuffer* playBackgraund(sounds);
+	sf::SoundBuffer* getPlayerSound(sounds , levels );
+	sf::SoundBuffer* getMonsterSound(sounds);
+	sf::SoundBuffer* getBackgraundSaund(sounds);
 	const sf::Texture* getMusicIcon(bool)const;
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(backgroundsType)const;
@@ -75,7 +76,7 @@ private:
 	sf::SoundBuffer m_playerAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
 	sf::SoundBuffer m_monstersAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
 
-	sf::Sound m_sound;
+	//sf::Sound m_sound;
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];
 	AnimationData m_playerData;
