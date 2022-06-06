@@ -81,7 +81,7 @@ void playerDiamond(GameObjBase& p, GameObjBase& g)
     static_cast<Player&>(p).addDiamond();
     //voice of takinf diamonds
     static_cast<Diamond&>(g).setToDelete();
-    FileManager::instance().playSound(S_TAKE_DIAMOND);
+    //FileManager::instance().playSound(S_TAKE_DIAMOND);
 }
 //------------------------------------------------
 

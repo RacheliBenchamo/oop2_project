@@ -15,7 +15,7 @@ Controller::Controller()
 	, m_playButton(true)
 {
 	m_window.setFramerateLimit(60);
-	m_backGroundMusic.setBuffer(*FileManager::instance().playBackgraund(S_GIFT));
+	m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(S_GIFT));
 
 
 	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
