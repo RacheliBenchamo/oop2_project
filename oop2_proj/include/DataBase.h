@@ -35,6 +35,7 @@ public:
     ~DataBase() {};
 
     void setLevelSize(int, int);
+    const sf::Vector2f getLevelSize() { return m_levelSize; }
     void setLevelMaxDiamonds(int max) { m_currLevelMaxDiamonds= max; }
     const int getLevelMaxDiamonds() { return m_currLevelMaxDiamonds; }
     void setData(char, int, int);

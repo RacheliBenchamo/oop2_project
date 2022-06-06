@@ -340,7 +340,7 @@ void FileManager::setAnimationsData()
 void FileManager::createPlayerAnimeData()
 {
 	setCurrentData(m_playerData, Stay, movableAnimationSet
-	({ 112, 110 }, { 736, 10 },0, 1,Stay), 0.2f, false);
+	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData, Walk, movableAnimationSet
 	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.008f, false);

@@ -252,7 +252,7 @@ void Controller::setBackground()
 
 void Controller::setView()
 {
-	m_view.setCenter(m_dataBase.getPlayerPos().x,m_dataBase.getPlayerPos().y);
+	setViewToCenter();
 	m_view.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
 	m_window.setView(m_view);
 	m_currLevelBackground.setPosition(m_view.getCenter());
@@ -261,3 +261,37 @@ void Controller::setView()
 	//m_currLevelBackground.getPosition().y +200);
 }
 //set view center by player pos and level size.
+void Controller::setViewToCenter()
+{
+	sf::Vector2f pos, playerPos=m_dataBase.getPlayerPos();
+	pos = playerPos;
+
+	if((playerPos.x< m_dataBase.getLevelSize().y * Y_SPACE
+		+ START_SPACE * 3.5 - CAMERA_WIDTH / 2)&& 
+		(playerPos.x > START_SPACE * 3.5+CAMERA_WIDTH / 2)
+		&& (playerPos.y < m_dataBase.getLevelSize().x * X_SPACE
+			+ START_SPACE/2  - CAMERA_HEIGHT / 2))
+		m_view.setCenter(playerPos.x, playerPos.y);
+
+	else
+	{
+		if ((playerPos.x > m_dataBase.getLevelSize().y * Y_SPACE
+			+ START_SPACE * 3.5 - CAMERA_WIDTH / 2))
+			pos.x = playerPos.x-(playerPos.x - (m_dataBase.getLevelSize().y * Y_SPACE
+				+ START_SPACE * 3.5 - CAMERA_WIDTH / 2));
+
+		else if(playerPos.x < START_SPACE*1.3 +CAMERA_WIDTH / 2)
+			pos.x= playerPos.x +( START_SPACE * 1.3 +CAMERA_WIDTH / 2- playerPos.x );
+
+		if(playerPos.y > m_dataBase.getLevelSize().x * X_SPACE
+			+ START_SPACE/2  - CAMERA_HEIGHT / 2)
+			pos.y = playerPos.y - (playerPos.y - (m_dataBase.getLevelSize().x * X_SPACE
+				+START_SPACE/2 - CAMERA_HEIGHT / 2));
+
+		m_view.setCenter(pos);
+	}
+
+
+
+	
+}

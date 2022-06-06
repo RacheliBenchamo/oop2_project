@@ -28,7 +28,7 @@ private:
     void winLevelScreen();
     void setWinScreen(backgroundsType, sounds);
     void setBackground();
-
+    void setViewToCenter();
 
     sf::RenderWindow m_window;
     StatusBar m_statusBar;
