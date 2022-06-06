@@ -88,5 +88,6 @@ private:
     int m_currLevelMaxDiamonds = 0;
     sf::Clock m_clock;
     int m_currLevel;
+    //CollisionDetection m_co;
 };
 

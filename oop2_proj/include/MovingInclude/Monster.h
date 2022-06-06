@@ -27,9 +27,9 @@ private:
 	void goAccordingToPlayerPos();
 
 
-	void playDeathSound() const {};
-	void playHurtSound() const {};
-	void playAttackSound() const {};
+	void getDeathSound() const {};
+	void getHurtSound() const {};
+	void getAttackSound() const {};
 
 	sf::Vector2f m_playerPos{ 0,0 };
 	sf::Vector2f m_lastDir= RIGHT_MOVEMENT;

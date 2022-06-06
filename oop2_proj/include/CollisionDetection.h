@@ -10,3 +10,6 @@
 
 // search and activate the suitable function for the current collison.
 void processCollision(GameObjBase&, GameObjBase&);
+//void platSound(sf:sound);
+
+
