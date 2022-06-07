@@ -45,15 +45,15 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 		break;
 	case  MONSTER1_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos , levels(m_currLevel),
-			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 ),MON1_FORCE));
+			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 ),MON1_FORCE), M_FIRST);
 		break;
 	case  MONSTER2_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos, levels(m_currLevel),
-			MONSTER2, sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE));
+			MONSTER2, sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE),M_SECOND);
 		break;
 	case  MONSTER3_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos , levels(m_currLevel),
-			MONSTER3, sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE));
+			MONSTER3, sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE), M_THIRD);
 		break;
 	}
 }

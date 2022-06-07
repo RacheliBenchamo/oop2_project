@@ -263,9 +263,9 @@ void Player::handelHit(int force)
 {
 	static int hitCounter = 0;
 	static sf::Sound effect;
-	/*effect.setBuffer(*FileManager::p2FileManager().getSound(S_TOUCH_FAIRY));
+	effect.setBuffer(*FileManager::instance().getPlayerSound(HURT,levels(m_level)));
 	effect.play();
-	effect.setVolume(VOLUME_COLLISION);*/
+	effect.setVolume(VOLUME_COLLISION);
 
 
 	if (hitCounter == 0)
@@ -341,6 +341,22 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 
 }
 
+void Player::startSound() const
+{
+	static sf::Sound effect;
+	if (m_climbing)
+	{
+		effect.setBuffer(*FileManager::instance().getPlayerSound(CLIME, levels(m_level)));
+	}
+	else
+	{
+		effect.setBuffer(*FileManager::instance().getPlayerSound(WALK, levels(m_level)));
+	}
+
+
+	effect.play();
+	effect.setVolume(VOLUME_COLLISION);
+}
 
 
 

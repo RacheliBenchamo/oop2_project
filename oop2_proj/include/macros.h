@@ -112,9 +112,15 @@ enum posion
 };
 enum sounds
 {
-	S_GIFT, S_KILL_ORK, S_IN_TELEPORT,
+	S_IN_TELEPORT,
 	S_WIN_LEVEL, S_WIN_GAME, S_BACKROUND,
-	 S_TAKE_KEY,S_TAKE_DIAMOND
+	 S_TAKE_KEY,S_TAKE_DIAMOND,S_TAKE_POSION
+};
+enum monster 
+{
+    M_FIRST,
+    M_SECOND,
+    M_THIRD
 };
 
 enum backgroundsType
@@ -130,9 +136,11 @@ enum direction
 	LEFT, RIGHT, UP, DOWN,
 };
 
-enum playerSounds {
+enum playerSounds 
+{
     WALK,
     JUMP,
+    CLIME,
     HURT
 };
 

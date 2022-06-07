@@ -110,25 +110,30 @@ void FileManager::loadAudio()
 {
 	//m_audio[S_GIFT].loadFromFile("giftSound.wav");
 	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
+	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
+	m_audio[S_TAKE_POSION].loadFromFile("potionDrinking.wav");
 
 	m_backGroundAudio[LEVEL1].loadFromFile("Level1beckgraund.wav");
-	m_backGroundAudio[LEVEL2].loadFromFile("Level1beckgraund.wav");
-	m_backGroundAudio[LEVEL3].loadFromFile("Level1beckgraund.wav");
+	m_backGroundAudio[LEVEL2].loadFromFile("Level2beckgraund.wav");
+	m_backGroundAudio[LEVEL3].loadFromFile("Level3beckgraund.wav");
 
 	//for 3 levels
 	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
 	m_playerAudio[LEVEL1][JUMP].loadFromFile("takeKeySound.wav");
+	m_playerAudio[LEVEL1][CLIME].loadFromFile("takeKeySound.wav");
 	m_playerAudio[LEVEL1][HURT].loadFromFile("takeKeySound.wav");
 
 	m_playerAudio[LEVEL2][WALK].loadFromFile("IceWalking.wav");
 	m_playerAudio[LEVEL2][JUMP].loadFromFile("takeKeySound.wav");
+	m_playerAudio[LEVEL2][CLIME].loadFromFile("takeKeySound.wav");
 	m_playerAudio[LEVEL2][HURT].loadFromFile("takeKeySound.wav");
 
 	m_playerAudio[LEVEL3][WALK].loadFromFile("SandWalking.wav");
 	m_playerAudio[LEVEL3][JUMP].loadFromFile("takeKeySound.wav");
+	m_playerAudio[LEVEL3][CLIME].loadFromFile("takeKeySound.wav");
 	m_playerAudio[LEVEL3][HURT].loadFromFile("takeKeySound.wav");
 
 	//for each monster in each level
@@ -200,23 +205,27 @@ void FileManager::loadBackgrounds()
 //	return &m_audio[sound];
 //
 //}
-sf::SoundBuffer* FileManager::getPlayerSound(sounds sound, levels level)
+sf::SoundBuffer* FileManager::getPlayerSound(playerSounds sound, levels currLevel)
 {
-	return &m_playerAudio[level][sound];
+	return &m_playerAudio[currLevel - 1][sound];
 
 }
 
-sf::SoundBuffer* FileManager::getMonsterSound(sounds)
+sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel)
 {
-	return nullptr;
+	return &m_monstersAudio[currLevel - 1][sound];
 }
 
 
-sf::SoundBuffer* FileManager::getBackgraundSaund(sounds sound)
+sf::SoundBuffer* FileManager::getBackgraundSaund(levels currLevel)
 {
-	return &this->m_backGroundAudio[sound];
+	return &this->m_backGroundAudio[currLevel -1];
 }
 
+sf::SoundBuffer* FileManager::getShareSaund(sounds sound)
+{
+	return &this->m_backGroundAudio[sound - 1];
+}
 
 
 //--------------------------------------------------

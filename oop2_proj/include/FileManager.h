@@ -16,13 +16,14 @@ public:
 	~FileManager() {};
 	static FileManager& instance();
 
-    sf::Texture* getSharedStaticTexture(const icons );
+    sf::Texture* getSharedStaticTexture(const icons);
 	sf::Texture* getMonstersTexture(const icons,const levels);
 	sf::Texture* getPlayerTexture();
 	const sf::Texture* getPlayAndStopIcon(bool )const;
-	sf::SoundBuffer* getPlayerSound(sounds , levels );
-	sf::SoundBuffer* getMonsterSound(sounds);
-	sf::SoundBuffer* getBackgraundSaund(sounds);
+	sf::SoundBuffer* getPlayerSound(playerSounds, levels);
+	sf::SoundBuffer* getMonsterSound(monsterSounds, levels);
+	sf::SoundBuffer* getBackgraundSaund(levels);
+	sf::SoundBuffer* getShareSaund(sounds);
 	const sf::Texture* getMusicIcon(bool)const;
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(backgroundsType)const;

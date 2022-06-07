@@ -55,9 +55,7 @@ configure_file ("sounds/winLevelSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winGameSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/giftSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/InTeleportSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/killOrkSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/takeKeySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-
 configure_file ("sounds/pickUpDiamond.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/potionDrinking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 

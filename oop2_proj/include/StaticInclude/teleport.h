@@ -16,7 +16,7 @@ public:
 	Teleport(sf::Vector2f pos);
 	virtual void startSound()override;
 	void setPartnerPos(sf::Vector2f);
-	void toClose() { m_isOpen = false; }
+	void toClose();
 	bool isOpen();
 	void toOpen() { m_isOpen = true; }
 	sf::Vector2f getPertnetPos()const { return m_Partner; };

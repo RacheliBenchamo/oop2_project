@@ -4,11 +4,13 @@
 // Sets features using the base class constructor.
 // Also, sets it's unique size and events clock.
 //------------------------------------------------------------------------
-Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, sf::Vector2f size, int force)
-	:MovingObj(size, pos + sf::Vector2f(0, 22)), 
+Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, 
+	sf::Vector2f size, int force, monster num)
+	:MovingObj(size, pos + sf::Vector2f(0, 22)),
 	m_animation(FileManager::instance().getMonstersData(lev, icon),
 		Operation::Stay, m_shape,
 		FileManager::instance().getMonstersTexture(icon,lev))
+	, m_monsterNum(num)
 {
 	m_level= int(lev);
 	m_force = force;
@@ -100,9 +102,13 @@ void Monster::handleHit()
 {
 	static bool dead = false;
 	static sf::Sound effect;
-	/*effect.setBuffer(*FileManager::p2FileManager().getSound(S_TOUCH_FAIRY));
-	effect.play();
-	effect.setVolume(VOLUME_COLLISION);*/
+	if (m_monsterNum == 0)
+		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT1, levels(m_level)));
+	else if(m_monsterNum = 1)
+		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT2, levels(m_level)));
+	else
+		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT3, levels(m_level)));
+	
 	m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 
 		if (isAlive())
@@ -127,6 +133,8 @@ void Monster::handleHit()
 				//dead = false;
 			}
 		}
+		effect.play();
+		effect.setVolume(VOLUME_COLLISION);
 }
 //------------------------------- getMove --------------------------------
 // Return the next move of the Bear.
@@ -275,4 +283,21 @@ void Monster::pushFrom()
 		m_shape.move(PUSH_FROM_MONSTER);
 
 
+}
+
+void Monster::startSound() const
+{
+	static sf::Sound effect;
+	if (m_climbing)
+	{
+		effect.setBuffer(*FileManager::instance().getPlayerSound(CLIME, levels(m_level)));
+	}
+	else
+	{
+		effect.setBuffer(*FileManager::instance().getPlayerSound(WALK, levels(m_level)));
+	}
+
+
+	effect.play();
+	effect.setVolume(VOLUME_COLLISION);
 }
