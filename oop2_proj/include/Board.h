@@ -13,7 +13,7 @@ public:
 	Board();
 	~Board() {};
 
-	bool readLevelData(DataBase&);
+	bool readLevelData(DataBase&,gender);
 	void readLevel(DataBase &);
 	sf::Vector2f getBoardSize()const { return m_boardSize; }
 	void TakeBackInputStreamToBegLevel();

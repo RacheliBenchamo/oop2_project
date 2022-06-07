@@ -74,8 +74,7 @@ void Controller::setNewGame()
 	m_playButton = true;
 
 	m_menu.activateMenuScreen(m_window);
-
-	m_board.readLevelData(m_dataBase);
+	m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer());
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(true);
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
@@ -150,7 +149,8 @@ void Controller::startNewLevel()
 
 	m_dataBase.eraseObj();
 
-	if (!m_board.readLevelData(m_dataBase)) //if there is no more levels
+	//if there is no more levels
+	if (!m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer())) 
 		startnewGame();
 	else
 	{
@@ -186,7 +186,8 @@ void Controller::resetLevel()
 {
 	m_dataBase.eraseObj();
 	m_board.TakeBackInputStreamToBegLevel();
-	m_board.readLevelData(m_dataBase);//board size and time
+	//board size and time
+	m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer());
 	//read all the char from the text:
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel( false);

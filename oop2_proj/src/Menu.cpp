@@ -170,12 +170,16 @@ bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 	if (this->m_girlplayer.getGlobalBounds().contains(Location)) // pressed help
 	{
 		m_selectedPlayer = FEMALE;
-	
+		this->m_girlplayer.setOutlineColor(sf::Color::Yellow);
+		this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
+		this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
 	}
 	if (this->m_boyplayer.getGlobalBounds().contains(Location)) // pressed help
 	{
 		m_selectedPlayer = MALE;
-
+		this->m_boyplayer.setOutlineColor(sf::Color::Yellow);
+		this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
+		this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
 	}
 	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
 		window.close();
@@ -220,28 +224,38 @@ void Menu::handleMove(const sf::Vector2f& Location)
 		this->m_help.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 
-	// mark/unmark help button
-	if (this->m_boyplayer.getGlobalBounds().contains(Location))
+	if (this->m_boyplayer.getOutlineColor() != sf::Color::Yellow)
 	{
-		this->m_boyplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
-		this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
-	}
-	else
-	{
-		this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
-		this->m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
-	}
+		// mark/unmark help button
+		if (this->m_boyplayer.getGlobalBounds().contains(Location))
+		{
+			this->m_boyplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
+			this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
+		}
+		else
+		{
 
-	// mark/unmark help button
-	if (this->m_girlplayer.getGlobalBounds().contains(Location))
-	{
-		this->m_girlplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
-		this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
+			this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+			this->m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
+
+		}
 	}
-	else
+	if (this->m_girlplayer.getOutlineColor() != sf::Color::Yellow)
 	{
-		this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
-		this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
+		// mark/unmark help button
+		if (this->m_girlplayer.getGlobalBounds().contains(Location))
+		{
+
+			this->m_girlplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
+			this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
+		}
+		else
+		{
+
+			this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+			this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
+
+		}
 	}
 }
 //-----------------------------------------------------------------

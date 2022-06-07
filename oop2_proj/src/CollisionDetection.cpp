@@ -85,8 +85,9 @@ void playerRope(GameObjBase& p, GameObjBase& g)
 {
        //Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
         static_cast<Player&>(p).setClimbing(true);
+
         static_cast<Player&>(p).setPos({ static_cast<Rope&>(g).getPos().x+
-            (8* static_cast<Player&>(p).getScale().x)
+            (9* static_cast<Player&>(p).getScale().x)
            ,static_cast<Player&>(p).getPos().y });
 }
 //------------------------------------------------

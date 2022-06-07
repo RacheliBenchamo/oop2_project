@@ -49,7 +49,7 @@ public:
     int getPlayerPower()const  { return m_player->getPower(); }
     int getPlayerLife()const { return m_player->getLife(); }
     int getPlayerDiamonds()const { return m_player->getDiamondsCount(); }
-
+    void setGender(const gender g) { m_gender = g; };
     void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
 
 private:
@@ -89,6 +89,7 @@ private:
     int m_currLevelMaxDiamonds = 0;
     sf::Clock m_clock;
     int m_currLevel;
+    gender m_gender = MALE;
     //CollisionDetection m_co;
 };
 

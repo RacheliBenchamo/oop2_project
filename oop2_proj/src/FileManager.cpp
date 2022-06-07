@@ -326,9 +326,9 @@ const AnimationData& FileManager::getMonstersData(levels lev,icons object)
 }
 //------------------------------------------------------------------
 
-const AnimationData& FileManager::getPlayerData()
+const AnimationData& FileManager::getPlayerData(gender g)
 {
-	return m_playerData;
+	return m_playerData[g];
 }
 //----------------------- movableAnimationSet ------------------------
 //		Set the Movable objects animations data, time and frequancy.
@@ -390,23 +390,42 @@ void FileManager::setAnimationsData()
 
 void FileManager::createPlayerAnimeData()
 {
-	setCurrentData(m_playerData, Stay, movableAnimationSet
+	setCurrentData(m_playerData[MALE], Stay, movableAnimationSet
 	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
 
-	setCurrentData(m_playerData, Walk, movableAnimationSet
+	setCurrentData(m_playerData[MALE], Walk, movableAnimationSet
 	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.008f, false);
 
-	setCurrentData(m_playerData, Jump, movableAnimationSet
+	setCurrentData(m_playerData[MALE], Jump, movableAnimationSet
 	({ 118, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
 
-	setCurrentData(m_playerData, Hit, movableAnimationSet
+	setCurrentData(m_playerData[MALE], Hit, movableAnimationSet
 	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.06f, true);
 
-	setCurrentData(m_playerData, Hurt, movableAnimationSet
+	setCurrentData(m_playerData[MALE], Hurt, movableAnimationSet
 	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.008f, true);
 
-	setCurrentData(m_playerData, Climbe, movableAnimationSet
+	setCurrentData(m_playerData[MALE], Climbe, movableAnimationSet
 	({ 100, 115 }, { 26, 4 }, 0, 1, Climbe), 0.05f, false);
+
+
+	setCurrentData(m_playerData[FEMALE], Stay, movableAnimationSet
+	({ 95, 110 }, { 734, 127 }, 0, 1, Stay), 0.2f, false);
+
+	setCurrentData(m_playerData[FEMALE], Walk, movableAnimationSet
+	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.008f, false);
+
+	setCurrentData(m_playerData[FEMALE], Jump, movableAnimationSet
+	({ 100, 108 }, { 384, 130 }, 0, 1, Jump), 0.15f, true);
+
+	setCurrentData(m_playerData[FEMALE], Hit, movableAnimationSet
+	({ 90, 105 }, { 136, 127 }, 25, 2, Hit), 0.06f, true);
+
+	setCurrentData(m_playerData[FEMALE], Hurt, movableAnimationSet
+	({ 95, 110 }, { 734, 127 }, 0, 2, Hurt), 0.008f, true);
+
+	setCurrentData(m_playerData[FEMALE], Climbe, movableAnimationSet
+	({ 110, 105 }, { 18, 126 }, 0, 1, Climbe), 0.05f, false);
 	 
 }
 //--------------------------- monstersAnime ----------------------------

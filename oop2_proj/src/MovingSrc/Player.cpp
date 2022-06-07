@@ -4,9 +4,9 @@
 // Sets features using the base class constructor.
 // Also, sets it's unique size and events clock.
 //------------------------------------------------------------------------
-Player::Player( const sf::Vector2f& pos, levels level)
+Player::Player( const sf::Vector2f& pos, levels level, gender gen)
 	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
-	    m_animation(FileManager::instance().getPlayerData(),
+	    m_animation(FileManager::instance().getPlayerData(gen),
 		Operation::Stay, m_shape,
 		FileManager::instance().getPlayerTexture())
 {

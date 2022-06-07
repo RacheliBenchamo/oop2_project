@@ -9,6 +9,7 @@ public:
 	~Menu() {};
 
 	void activateMenuScreen(sf::RenderWindow&);
+	gender getSelectedPlayer()const { return m_selectedPlayer; };
 
 private:
 	void helpWindow(sf::RenderWindow&);

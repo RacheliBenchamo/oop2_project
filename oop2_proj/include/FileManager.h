@@ -35,7 +35,7 @@ public:
 	const sf::IntRect getPlayerRect(gender) const;
 	const AnimationData& getStaticData(icons);
 	const AnimationData& getMonstersData(levels,icons);
-	const AnimationData& getPlayerData();
+	const AnimationData& getPlayerData(gender);
 
 
 private:
@@ -84,7 +84,7 @@ private:
 	//sf::Sound m_sound;
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];
-	AnimationData m_playerData;
+	AnimationData m_playerData[2];
 	AnimationData m_monsterData[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 };
 

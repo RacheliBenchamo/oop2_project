@@ -15,8 +15,9 @@ Board::Board()
 //limited for the level.
 //return false in there is the end of the file
 
-bool Board::readLevelData(DataBase& dataBase)
+bool Board::readLevelData(DataBase& dataBase, gender g)
 {
+	dataBase.setGender(g);
 	if (m_input.eof())
 		return false;
 
