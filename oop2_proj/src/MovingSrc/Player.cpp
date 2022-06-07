@@ -264,7 +264,7 @@ void Player::handelHit(int force)
 	static int hitCounter = 0;
 	static sf::Sound effect;
 	effect.setBuffer(*FileManager::instance().getPlayerSound(HURT,levels(m_level)));
-	effect.play();
+	//effect.play();
 	effect.setVolume(VOLUME_COLLISION);
 
 

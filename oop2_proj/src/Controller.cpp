@@ -12,10 +12,11 @@ using std::cout;
 Controller::Controller()
 	:m_window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
 		"The Diamonds Fighter!", sf::Style::Titlebar | sf::Style::Close)
-	, m_playButton(true)
+	, m_playButton(true), m_levelNum(1)
 {
 	m_window.setFramerateLimit(60);
-	//m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(levels(0)));
+	//menu sound
+	//m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(levels(m_levelNum-1)));
 
 
 	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
@@ -67,12 +68,8 @@ void Controller::run() try
 
 void Controller::setNewGame()
 {
-	m_backGroundMusic.play();
-	m_backGroundMusic.setLoop(true);
-	m_backGroundMusic.setVolume(VOLUME_BG);
-
 	m_playButton = true;
-
+	startSound();
 	m_menu.activateMenuScreen(m_window);
 	m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer());
 	m_board.readLevel(m_dataBase);
@@ -145,8 +142,6 @@ void Controller::handelStopPlayButtonReleased()
 
 void Controller::startNewLevel()
 {
-	sf::Sound winSound;
-
 	m_dataBase.eraseObj();
 
 	//if there is no more levels
@@ -154,8 +149,8 @@ void Controller::startNewLevel()
 		startnewGame();
 	else
 	{
-		
 		m_levelNum++;
+		startSound();
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
 		winLevelScreen();
@@ -167,6 +162,13 @@ void Controller::startNewLevel()
 //------------------------------------------
 //starting new game
 
+void Controller::startSound()
+{
+	m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(levels(m_levelNum - 1)));
+	m_backGroundMusic.play();
+	m_backGroundMusic.setLoop(true);
+	m_backGroundMusic.setVolume(VOLUME_BG);
+}
 void Controller::startnewGame()
 {
 	m_gameClock.restart();

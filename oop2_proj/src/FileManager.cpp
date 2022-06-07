@@ -132,7 +132,7 @@ void FileManager::loadAudio()
 	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
 	m_playerAudio[LEVEL1][JUMP].loadFromFile("takeKeySound.wav");
 	m_playerAudio[LEVEL1][CLIME].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL1][HURT].loadFromFile("takeKeySound.wav");
+	m_playerAudio[LEVEL1][HURT].loadFromFile("pickUpDiamond.wav");
 
 	m_playerAudio[LEVEL2][WALK].loadFromFile("IceWalking.wav");
 	m_playerAudio[LEVEL2][JUMP].loadFromFile("takeKeySound.wav");
@@ -215,24 +215,24 @@ void FileManager::loadBackgrounds()
 //}
 sf::SoundBuffer* FileManager::getPlayerSound(playerSounds sound, levels currLevel)
 {
-	return &m_playerAudio[currLevel - 1][sound];
+	return &m_playerAudio[currLevel][sound];
 
 }
 
 sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel)
 {
-	return &m_monstersAudio[currLevel - 1][sound];
+	return &m_monstersAudio[currLevel][sound];
 }
 
 
 sf::SoundBuffer* FileManager::getBackgraundSaund(levels currLevel)
 {
-	return &this->m_backGroundAudio[currLevel -1];
+	return &this->m_backGroundAudio[currLevel ];
 }
 
 sf::SoundBuffer* FileManager::getShareSaund(sounds sound)
 {
-	return &this->m_backGroundAudio[sound - 1];
+	return &this->m_audio[sound];
 }
 
 
