@@ -5,12 +5,12 @@
 // Also, sets it's unique size and events clock.
 //------------------------------------------------------------------------
 Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon, 
-	sf::Vector2f size, int force, monster num)
+	sf::Vector2f size, int force)
 	:MovingObj(size, pos + sf::Vector2f(0, 22)),
 	m_animation(FileManager::instance().getMonstersData(lev, icon),
 		Operation::Stay, m_shape,
 		FileManager::instance().getMonstersTexture(icon,lev))
-	, m_monsterNum(num)
+	, m_monsterNum(icon)
 {
 	m_level= int(lev);
 	m_force = force;
@@ -285,19 +285,3 @@ void Monster::pushFrom()
 
 }
 
-void Monster::startSound() const
-{
-	static sf::Sound effect;
-	if (m_climbing)
-	{
-		effect.setBuffer(*FileManager::instance().getPlayerSound(CLIME, levels(m_level)));
-	}
-	else
-	{
-		effect.setBuffer(*FileManager::instance().getPlayerSound(WALK, levels(m_level)));
-	}
-
-
-	effect.play();
-	effect.setVolume(VOLUME_COLLISION);
-}
