@@ -2,12 +2,6 @@
 #include "FileManager.h"
 #include <iostream>
 
-/*5 5 2
-     
-     
- P   
-(===)
-     */
 //--------------------------------------------------
 //constructor
 
@@ -72,6 +66,8 @@ void FileManager::loadStaticObj()
 	m_sharedStaticIcon[POTION_L].loadFromFile("LifePotion.png");
 	m_sharedStaticIcon[POTION_P].loadFromFile("PowerPotion.png");
 	m_sharedStaticIcon[ROPE].loadFromFile("Rope.png");
+	m_sharedStaticIcon[GATE].loadFromFile("Gate.png");
+
 
 	m_dec.loadFromFile("staticDec.png");
 

@@ -20,6 +20,8 @@ configure_file ("staticObjPic/LifePotion.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/PowerPotion.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Teleport.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Rope.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/Gate.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

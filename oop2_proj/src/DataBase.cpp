@@ -65,10 +65,10 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 {
 	switch (c)
 	{
-	//case GATE_C:
-	//	m_staticsObj.push_back(std::make_unique<Gate>((GATE), i, j));
-	//	return true;
-	//	break;
+	case GATE_C:
+		m_staticsObj.push_back(std::make_unique<Gate>(pos + sf::Vector2f(0, 5)));
+		return true;
+		break;
 	case TELEPORT_C:
 		m_teleport.push_back(std::make_unique<Teleport>( pos+ HEIGHT));
 		return true;
@@ -227,6 +227,9 @@ void DataBase::handelMovingCollisions()
 			{
 				processCollision(*m, *s);
 			}
+		if (typeid(*s) == typeid(Gate)
+			&& m_player->getDiamondsCount() == m_currLevelMaxDiamonds)
+			static_cast<Gate&>(*s).open();
 	}
 	
 	// check collition between player and monsters
@@ -333,10 +336,13 @@ void  DataBase::grillPotion(sf::Vector2f pos)
 
 bool DataBase::winLevel()
 {
+	/*if (m_player)
+		if (m_player->getDiamondsCount() == m_currLevelMaxDiamonds)
+			return true;*/
 
 	if (m_player)
-		if (m_player->getDiamondsCount()== m_currLevelMaxDiamonds)
-			return true;
+		if (m_player->getGotToNextLev())
+			return true; 
 
 	return false;
 }

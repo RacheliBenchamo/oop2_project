@@ -14,7 +14,6 @@
                                               "StaticSrc/Teleport.cpp"
                                               "StaticSrc/Diamond.cpp"
                                                "StaticSrc/Rope.cpp"
-                                              "StaticSrc/Gate.cpp"
                                                "StaticSrc/StaticObj.cpp"
                                                "StaticSrc/Posion.cpp"
                                                 "StaticSrc/StageDec.cpp"

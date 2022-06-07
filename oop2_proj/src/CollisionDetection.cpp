@@ -26,27 +26,33 @@ namespace // anonymous namespace — the standard way to make function "static"
 //// Handle the event that the player collides with the floor.
 //// Push the player back to his previous position before the collision.
 ////------------------------------------------------------------------------
-    void PlayerFloor(GameObjBase& p, GameObjBase& f)
+void PlayerFloor(GameObjBase& p, GameObjBase& f)
+{
+    if (!static_cast<Player&>(p).getClimbing())
     {
-        if (!static_cast<Player&>(p).getClimbing())
+        static_cast<Player&>(p).startSound();
+        if (typeid(f) == typeid(RightFloor))
         {
-            static_cast<Player&>(p).startSound();
-            if (typeid(f) == typeid(RightFloor))
-            {
-                static_cast<Player&>(p).handleCollisionRightFloor(f);
-
-            }
-            else if (typeid(f) == typeid(LeftFloor))
-            {
-                static_cast<Player&>(p).handleCollisionLeftFloor(f);
-            }
-
-            else
-                static_cast<Player&>(p).handleCollisionFloor(f);
+            static_cast<Player&>(p).handleCollisionRightFloor(f);
 
         }
+        else if (typeid(f) == typeid(LeftFloor))
+        {
+            static_cast<Player&>(p).handleCollisionLeftFloor(f);
+        }
+
+        else
+            static_cast<Player&>(p).handleCollisionFloor(f);
 
     }
+
+}
+//------------------------------------------------------------------
+void playerGate(GameObjBase& p, GameObjBase& f)
+{
+    if (static_cast<Gate&>(f).getIsOpen())
+        static_cast<Player&>(p).setGotToNextLev();
+}
 //------------------------------------------------------------------
 void PlayerTeleport(GameObjBase& p, GameObjBase& f)
 {
@@ -62,9 +68,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
     {
         static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
     }
-
 }
-
 //---------------------------- playerGold --------------------------------
 // Handle the event that the player collides with gold.
 // 1. Update the amount of gold the player has accumulated so far.
@@ -142,7 +146,8 @@ void setPlayerCollisionHandling(HitMap& phm)
     phm[MapKey(typeid(Player), typeid(Diamond))] = &playerDiamond;
     // Player & Rope.
     phm[MapKey(typeid(Player), typeid(Rope))] = &playerRope;
-
+    // Player & Gate.
+    phm[MapKey(typeid(Player), typeid(Gate))] = &playerGate;
     //Player & Teleport
     phm[MapKey(typeid(Player), typeid(Teleport))] = &PlayerTeleport;
     // Player & Monster

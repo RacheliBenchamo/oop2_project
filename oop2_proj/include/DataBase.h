@@ -51,7 +51,9 @@ public:
     int getPlayerDiamonds()const { return m_player->getDiamondsCount(); }
     void setGender(const gender g) { m_gender = g; };
     void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
+   
 
+    
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
     void createMovingObj(const char , const sf::Vector2f&);

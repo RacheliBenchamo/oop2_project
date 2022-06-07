@@ -28,6 +28,8 @@ public:
 	bool getClimbing() { return m_climbing; }
 	bool m_wasClimbing = false;
 	void startSound()const;
+	void setGotToNextLev() { m_gotToNextLev = true; };
+	bool getGotToNextLev()const { return m_gotToNextLev; };
 
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
@@ -40,6 +42,7 @@ private:
 	bool m_levelFinishStatus = false;
 	int m_power=100;
 	Animation m_animation;
+	bool m_gotToNextLev = false;
 
 };
 
