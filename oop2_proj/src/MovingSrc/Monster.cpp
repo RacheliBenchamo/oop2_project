@@ -182,15 +182,6 @@ sf::Vector2f Monster::getMove()
 
 }
 
-////---------------------------- setEventsClock ----------------------------
-//// Sets the events clock of the current enemy.
-////------------------------------------------------------------------------
-//void Enemy::setEventsClock()
-//{
-//	MoveObject::setEventsClock(ENEMY_HIT_RATIO);
-//}
-
-
 //---------------------------- setOperation ------------------------------
 // sets the operation of the animation.
 //------------------------------------------------------------------------
@@ -232,26 +223,10 @@ void Monster::handleCollisionFloor(GameObjBase& floor)
 //------------------------------------------------------------------------
 void Monster::handleCollisionLeftFloor(GameObjBase& floor)
 {
-	std::cout << "kk\n";
-
-	if (CollisionFromAboveFloor(floor) && CollisionFromAboveLeftFloor(floor))
-	{
-		setPrevPos(m_shape.getPosition());
-		m_falling = false;
-		m_onFloor = true;
-	}
 }
 //------------------------------------------------------------------------
 void Monster::handleCollisionRightFloor(GameObjBase& floor)
 {
-	std::cout << "rr\n";
-
-	if (CollisionFromAboveFloor(floor) && CollisionFromAboveRightFloor(floor))
-	{
-		setPrevPos(m_shape.getPosition());
-		m_falling = false;
-		m_onFloor = true;
-	}
 }
 
 //------------------------------------------------------------------------
@@ -281,7 +256,5 @@ void Monster::pushFrom()
 		m_shape.move(-PUSH_FROM_MONSTER);
 	else
 		m_shape.move(PUSH_FROM_MONSTER);
-
-
 }
 
