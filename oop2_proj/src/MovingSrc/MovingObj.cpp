@@ -51,8 +51,7 @@ bool MovingObj::collisionFromLeft(GameObjBase& g) const
 //------------------------------------------------------------------------
 bool MovingObj::collisionFromRight(GameObjBase& g) const
 {
-	return m_shape.getPosition().x <=
-		(g.getPos().x  );
+	return m_shape.getPosition().x <=(g.getPos().x  );
 }
 
 //------------------------- collisionFromBelow ---------------------------
@@ -77,13 +76,13 @@ bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
 
 bool MovingObj::CollisionFromAboveLeftFloor(GameObjBase& floor) const
 {
-	return
-		m_shape.getPosition().x  >
-		(floor.getPos().x + floor.getShape().getSize().x / 2);
+	return m_shape.getPosition().x  >
+		(floor.getPos().x + floor.getShape().getSize().x / 8);
 }
 //------------------------------------------------------------------------
 
 bool MovingObj::CollisionFromAboveRightFloor(GameObjBase& floor) const
 {
-	return  m_shape.getPosition().x < (floor.getPos().x - floor.getShape().getSize().x / 2);
+	return m_shape.getPosition().x < 
+		(floor.getPos().x - floor.getShape().getSize().x / 8);
 }
