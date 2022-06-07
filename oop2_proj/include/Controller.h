@@ -29,6 +29,8 @@ private:
     void setWinScreen(backgroundsType, sounds);
     void setBackground();
     void setViewToCenter();
+    void setBigView();
+
     void startSound();
 
     sf::RenderWindow m_window;

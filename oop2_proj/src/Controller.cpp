@@ -18,7 +18,6 @@ Controller::Controller()
 	//menu sound
 	//m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(levels(m_levelNum-1)));
 
-
 	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
 }
 
@@ -70,6 +69,7 @@ void Controller::setNewGame()
 {
 	m_playButton = true;
 	startSound();
+	setBigView();
 	m_menu.activateMenuScreen(m_window);
 	m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer());
 	m_board.readLevel(m_dataBase);
@@ -153,6 +153,7 @@ void Controller::startNewLevel()
 		startSound();
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
+		setBigView();
 		winLevelScreen();
 		m_board.readLevel(m_dataBase);
 		m_statusBar.updateLevel( true);
@@ -169,6 +170,8 @@ void Controller::startSound()
 	m_backGroundMusic.setLoop(true);
 	m_backGroundMusic.setVolume(VOLUME_BG);
 }
+//------------------------------------
+
 void Controller::startnewGame()
 {
 	m_gameClock.restart();
@@ -293,8 +296,10 @@ void Controller::setViewToCenter()
 
 		m_view.setCenter(pos);
 	}
-
-
-
-	
+}
+void Controller::setBigView()
+{
+	m_view.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	m_view.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	m_window.setView(m_view);
 }
