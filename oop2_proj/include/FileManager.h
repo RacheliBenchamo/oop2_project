@@ -32,6 +32,7 @@ public:
 	const sf::Font* getFont()const;
 	const sf::Texture* getDec() const;
 	const sf::IntRect getCurrLevDecRect(levels, decoration) const;
+	const sf::IntRect getPlayerRect(gender) const;
 	const AnimationData& getStaticData(icons);
 	const AnimationData& getMonstersData(levels,icons);
 	const AnimationData& getPlayerData();
@@ -45,6 +46,8 @@ private:
 	void loadMovingObj();
 	void loadStaticObj();
 	void loadStaticObjRect();
+	void loadPlayerRect();
+
 	void loadAudio();
 	void loadMusicIcon();
 	void loadStopAndPlayIcon();
@@ -66,6 +69,7 @@ private:
 	sf::Texture m_sharedStaticIcon[NUM_OF_DEC];
 	sf::Texture m_dec;
 	sf::IntRect m_decRect[NUM_OF_LEVELS][NUM_OF_DEC];
+	sf::IntRect m_PlayerRect[2];
 	sf::Texture m_backgrounds[NUM_OF_BACKGROUNDS];
 	sf::Texture m_backgroundIcons[NUM_OF_BACKGROUNDSICONS];
 	sf::Texture m_musicTexture[2];

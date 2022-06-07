@@ -21,6 +21,7 @@ private:
 	void setStart();
 	void setHelp();
 	void setExit();
+	void setPlayer();
 
 	sf::Font m_font;
 	sf::Text m_header;
@@ -28,7 +29,10 @@ private:
 	sf::Text m_exit;
 	sf::Text m_help;
 	sf::RectangleShape m_background;
+	sf::RectangleShape m_boyplayer;
+	sf::RectangleShape m_girlplayer;
 	sf::RectangleShape m_helpBackground;
+	gender m_selectedPlayer=MALE;
 	bool m_pressStart;
 	bool m_pressHelp;
 

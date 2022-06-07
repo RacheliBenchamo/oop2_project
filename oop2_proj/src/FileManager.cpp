@@ -48,6 +48,7 @@ void FileManager::loadBackgroundIcons()
 void FileManager::loadMovingObj()
 {
 	m_player.loadFromFile("Player.png");
+	loadPlayerRect();
 
 	m_monstersIcon[LEVEL1][MONSTER1].loadFromFile("ForMonster1.png");
 	m_monstersIcon[LEVEL1][MONSTER2].loadFromFile("ForMonster2.png");
@@ -102,6 +103,13 @@ void FileManager::loadStaticObjRect()
 	m_decRect[LEVEL3][S_TREE] = SECOUND_TREE_L3;
 	m_decRect[LEVEL3][ROCK] = ROCK_L3;
 
+}
+//--------------------------------------------------
+// load all the rect of the static decoration un the game
+void FileManager::loadPlayerRect()
+{
+	m_PlayerRect[MALE] = MALE_RECT;
+	m_PlayerRect[FEMALE] = FEMALE_RECT;
 }
 //--------------------------------------------------
 // load all the audio
@@ -296,6 +304,13 @@ const sf::Texture* FileManager::getDec() const
 const sf::IntRect FileManager::getCurrLevDecRect(levels currLevel, decoration dec) const
 {
 	return this->m_decRect[currLevel - 1][dec];
+}
+//------------------------------------------------------------------
+
+//get the decoration of the level
+const sf::IntRect FileManager::getPlayerRect(gender g) const
+{
+	return this->m_PlayerRect[g];
 }
 //------------------------------------------------------------------
 

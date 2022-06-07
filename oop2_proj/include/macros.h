@@ -91,6 +91,11 @@ enum icons
 	EMPTY
 };
 
+enum gender
+{
+    MALE, FEMALE 
+};
+
 enum decoration
 {
     L_FLOOR, M_FLOOR, R_FLOOR, F_TREE, S_TREE, ROCK
@@ -227,4 +232,8 @@ ROCK_L2(209, 192, 40, 30),
 
 FIRST_TREE_L3(25, 279, 76, 111),
 SECOUND_TREE_L3(112, 297, 62, 90),
-ROCK_L3(195, 348, 80, 50);
+ROCK_L3(195, 348, 80, 50),
+
+MALE_RECT(736, 5, 95, 110), 
+FEMALE_RECT(734, 127, 95, 110);
+

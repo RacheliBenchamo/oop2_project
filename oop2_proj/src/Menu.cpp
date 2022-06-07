@@ -15,6 +15,7 @@ Menu::Menu()
 	setStart();
 	setExit();
 	setHelp();
+	setPlayer();
 
 	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 	this->m_background.setTexture(FileManager::instance().getBackGround(MENU_BACKGROUND));
@@ -73,6 +74,29 @@ void Menu::setExit()
 	m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 }
 //--------------------------------------------------
+//set the Players details
+
+void Menu::setPlayer()
+{
+	auto m_pTexture = FileManager::instance().getPlayerTexture();
+	m_boyplayer.setTexture(m_pTexture);
+	m_girlplayer.setTexture(m_pTexture);
+
+	m_boyplayer.setTextureRect(FileManager::instance().getPlayerRect(MALE));
+	m_girlplayer.setTextureRect(FileManager::instance().getPlayerRect(FEMALE));
+
+	m_boyplayer.setOutlineThickness(2);
+	m_girlplayer.setOutlineThickness(2);
+
+	m_boyplayer.setPosition({ SCREEN_CENTER.x -400 , SCREEN_CENTER.y -60 });
+	m_girlplayer.setPosition({ SCREEN_CENTER.x - 700 , SCREEN_CENTER.y - 60 });
+
+	m_boyplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4});
+	m_girlplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4 });
+
+
+}
+//--------------------------------------------------
 //start the menu screen
 
 void Menu::activateMenuScreen(sf::RenderWindow& window)
@@ -122,6 +146,8 @@ void Menu::draw(sf::RenderWindow& window)
 	window.draw(this->m_header);
 	window.draw(this->m_start);
 	window.draw(this->m_exit);
+	window.draw(this->m_boyplayer);
+	window.draw(this->m_girlplayer);
 	window.draw(this->m_help);
 	window.display();
 }
@@ -140,6 +166,16 @@ bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 	{
 	   m_pressHelp=true;
 		return true;
+	}
+	if (this->m_girlplayer.getGlobalBounds().contains(Location)) // pressed help
+	{
+		m_selectedPlayer = FEMALE;
+	
+	}
+	if (this->m_boyplayer.getGlobalBounds().contains(Location)) // pressed help
+	{
+		m_selectedPlayer = MALE;
+
 	}
 	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
 		window.close();
@@ -182,6 +218,30 @@ void Menu::handleMove(const sf::Vector2f& Location)
 	{
 		this->m_help.setOutlineColor(sf::Color(230, 230, 255, 255));
 		this->m_help.setOutlineThickness(OUTLINE_THICKNESS);
+	}
+
+	// mark/unmark help button
+	if (this->m_boyplayer.getGlobalBounds().contains(Location))
+	{
+		this->m_boyplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
+		this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
+	}
+	else
+	{
+		this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
+	}
+
+	// mark/unmark help button
+	if (this->m_girlplayer.getGlobalBounds().contains(Location))
+	{
+		this->m_girlplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
+		this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
+	}
+	else
+	{
+		this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 }
 //-----------------------------------------------------------------
