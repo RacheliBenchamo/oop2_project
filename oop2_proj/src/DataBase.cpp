@@ -44,8 +44,8 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 		m_player = std::make_unique<Player>(pos+sf::Vector2f(0,20), levels(m_currLevel));
 		break;
 	case  MONSTER1_C:
-		m_monsters.push_back(std::make_unique<Monster>(pos , levels(m_currLevel),
-			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 ),MON1_FORCE), M_FIRST);
+		m_monsters.push_back(std::make_unique<Monster>(pos ,
+			MONSTER1, sf::Vector2f(BLOCK_SIZE/1.2 , BLOCK_SIZE/1.2 ),MON1_FORCE), levels(m_currLevel), M_FIRST);
 		break;
 	case  MONSTER2_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos, levels(m_currLevel),
