@@ -113,18 +113,16 @@ void FileManager::loadPlayerRect()
 void FileManager::loadAudio()
 {
 	//m_audio[S_GIFT].loadFromFile("giftSound.wav");
-	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
+	m_audio[S_TAKE_DIAMOND].loadFromFile("button_clicked_sound.wav");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
 	m_audio[S_TAKE_POSION].loadFromFile("potionDrinking.wav");
+	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
+	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 
-	//configure_file("sounds/Player1.wav" ${ CMAKE_BINARY_DIR } COPYONLY)
-	//	configure_file("sounds/Player(male)_hit.ogg" ${ CMAKE_BINARY_DIR } COPYONLY)
-
-
-	m_backGroundAudio[LEVEL1].loadFromFile("Level1beckgraund.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("button_hover_sound.wav");
 	m_backGroundAudio[LEVEL2].loadFromFile("Level2beckgraund.wav");
 	m_backGroundAudio[LEVEL3].loadFromFile("Level3beckgraund.wav");
 

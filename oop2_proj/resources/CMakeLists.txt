@@ -73,10 +73,9 @@ configure_file ("sounds/forest/TreeDied.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/TreeHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/GrassWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
-configure_file ("sounds/Greemonapproaching24bit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/Murshiapproaching24bit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/Playermalehit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("sounds/Player.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/button_clicked_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/button_hover_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

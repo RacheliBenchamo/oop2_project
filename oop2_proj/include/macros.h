@@ -44,6 +44,7 @@ TELEPORT_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE);
 //volume data
 const unsigned int VOLUME_BG = 5;
 const unsigned int VOLUME_COLLISION = 6;
+const unsigned int BUTTON_VOLUME = 10; 
 
 // window data
 const int WINDOW_WIDTH = 1900,
@@ -125,7 +126,7 @@ enum sounds
 {
 	S_IN_TELEPORT,
 	S_WIN_LEVEL, S_WIN_GAME, S_BACKROUND,
-	 S_TAKE_KEY,S_TAKE_DIAMOND,S_TAKE_POSION
+	 S_TAKE_KEY,S_TAKE_DIAMOND,S_TAKE_POSION,S_ABOVE,S_CLICKED
 };
 enum monster 
 {

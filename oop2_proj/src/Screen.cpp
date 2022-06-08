@@ -7,7 +7,7 @@ Screen::Screen()
 	this->m_font = (*(FileManager::instance().getFont()));
 	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 }
-
+//----------------------------------------------------------------
 screensOption Screen::activateScreen(sf::RenderWindow& window)
 {
 	while (window.isOpen())
@@ -36,4 +36,20 @@ screensOption Screen::activateScreen(sf::RenderWindow& window)
 			}
 		}
 	}
+}
+//----------------------------------------------------------------
+void Screen::playMoveSound()
+{
+	static sf::Sound effect;
+	effect.setBuffer(*FileManager::instance().getShareSaund(S_ABOVE));
+	effect.play();
+	effect.setVolume(BUTTON_VOLUME);
+}
+//----------------------------------------------------------------
+void Screen::playSelectSound()
+{
+	static sf::Sound effect;
+	effect.setBuffer(*FileManager::instance().getShareSaund(S_CLICKED));
+	effect.play();
+	effect.setVolume(BUTTON_VOLUME);
 }
