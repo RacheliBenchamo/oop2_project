@@ -96,46 +96,6 @@ void Menu::setPlayer()
 
 
 }
-//--------------------------------------------------
-//start the menu screen
-
-void Menu::activateMenuScreen(sf::RenderWindow& window)
-{
-	m_pressStart = false;
-	m_pressHelp = false;
-
-	while (window.isOpen())
-	{
-		draw(window);
-		if (auto event = sf::Event{}; window.waitEvent(event))
-		{
-			sf::Vector2f Location;
-			switch (event.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-			case sf::Event::MouseButtonReleased:
-				Location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
-				if (handleClick(Location, window))
-				{
-					if(m_pressStart)
-					return;
-					if (m_pressHelp)
-					{
-						helpWindow(window);
-						return;
-					}
-				}
-				break;
-			case sf::Event::MouseMoved:
-				Location = (sf::Vector2f)sf::Mouse::getPosition(window);
-				handleMove(Location);
-				break;
-			}
-		}
-	}
-}
 //------------------------------------------------
 //draw all the buttons on the window
 
@@ -154,18 +114,16 @@ void Menu::draw(sf::RenderWindow& window)
 //--------------------------------------------------
 //handle click on the menu buttons
 
-bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window) 
+screensOption Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 {
 	if (this->m_start.getGlobalBounds().contains(Location)) // pressed start
 	{
-		m_pressStart=true;
-		return true;
+		return START;
 	}
 	
 	if (this->m_help.getGlobalBounds().contains(Location)) // pressed help
 	{
-	   m_pressHelp=true;
-		return true;
+		return HELP;
 	}
 	if (this->m_girlplayer.getGlobalBounds().contains(Location)) // pressed help
 	{
@@ -183,8 +141,10 @@ bool Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 	}
 	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
 		window.close();
-	return false;
+
+	return NONE;
 }
+
 //--------------------------------------------------
 //handle moving on the menu buttons
 
@@ -257,59 +217,4 @@ void Menu::handleMove(const sf::Vector2f& Location)
 
 		}
 	}
-}
-//-----------------------------------------------------------------
-
-void Menu::helpWindow(sf::RenderWindow& window)
-{
-	setHelpWindow(window);
-
-	while (window.isOpen())
-	{
-		drawHelp(window);
-		if (auto event = sf::Event{}; window.waitEvent(event))
-		{
-			sf::Vector2f Location;
-			switch (event.type)
-			{
-			case sf::Event::Closed:
-				window.close();
-				break;
-			case sf::Event::MouseButtonReleased:
-				Location = window.mapPixelToCoords({ event.mouseButton.x, event.mouseButton.y });
-				if (handleClick(Location, window))
-				{
-					m_start.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y - 70 });
-					m_exit.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y + 60 });
-					return;
-				}
-				break;
-			case sf::Event::MouseMoved:
-				Location = (sf::Vector2f)sf::Mouse::getPosition(window);
-				handleMove(Location);
-				break;
-			}
-		}
-	}
-}
-//------------------------------------------------
-void Menu::drawHelp(sf::RenderWindow& window)
-{
-	window.clear(sf::Color::White);
-	window.draw(this->m_helpBackground);
-	window.draw(this->m_header);
-	window.draw(this->m_start);
-	window.draw(this->m_exit);
-	window.display();
-}
-//------------------------------------------------
-
-void Menu::setHelpWindow(sf::RenderWindow& window)
-{
-
-	m_exit.setPosition({ WINDOW_WIDTH-155  , WINDOW_HEIGHT- BUFF_DISTANCE });
-	m_start.setPosition({ 20,  WINDOW_HEIGHT- BUFF_DISTANCE });
-
-	this->m_helpBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_helpBackground.setTexture(FileManager::instance().getBackGround(HELP_BACKGROUND));
 }

@@ -15,6 +15,7 @@ Controller::Controller()
 	, m_playButton(true), m_levelNum(1)
 {
 	m_window.setFramerateLimit(60);
+	setScreens();
 	//menu sound
 	//m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(levels(m_levelNum-1)));
 
@@ -70,8 +71,10 @@ void Controller::setNewGame()
 	m_playButton = true;
 	startSound();
 	setBigView();
-	m_menu.activateMenuScreen(m_window);
-	m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer());
+	currScreen = MENU;
+	handleScreens();
+	m_playerGender = static_cast<Menu&>(*m_screens[MENU]).getSelectedPlayer();
+	m_board.readLevelData(m_dataBase, m_playerGender);
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(true);
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
@@ -145,7 +148,7 @@ void Controller::startNewLevel()
 	m_dataBase.eraseObj();
 
 	//if there is no more levels
-	if (!m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer())) 
+	if (!m_board.readLevelData(m_dataBase, m_playerGender))
 		startnewGame();
 	else
 	{
@@ -153,19 +156,31 @@ void Controller::startNewLevel()
 		startSound();
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
-		setBigView();
-		winLevelScreen();
+		//winLevelScreen();
 		m_board.readLevel(m_dataBase);
 		m_statusBar.updateLevel( true);
 		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	}
+}
+//----------------------------------------------
+//starting the current level again 
+
+void Controller::resetLevel()
+{
+	m_dataBase.eraseObj();
+	m_board.TakeBackInputStreamToBegLevel();
+	m_board.readLevelData(m_dataBase, m_playerGender);
+	//read all the char from the text:
+	m_board.readLevel(m_dataBase);
+	this->m_statusBar.updateLevel( false);
 }
 //------------------------------------------
 //starting new game
 
 void Controller::startSound()
 {
-	m_backGroundMusic.setBuffer(*FileManager::instance().getBackgraundSaund(levels(m_levelNum - 1)));
+	m_backGroundMusic.setBuffer
+	(*FileManager::instance().getBackgraundSaund(levels(m_levelNum - 1)));
 	m_backGroundMusic.play();
 	m_backGroundMusic.setLoop(true);
 	m_backGroundMusic.setVolume(VOLUME_BG);
@@ -179,60 +194,57 @@ void Controller::startnewGame()
 	m_statusBar.resetNumOfLevel();
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 
-	winGameScreen();
+	currScreen = WIN;
+	setBigView();
+	handleScreens();
 	m_levelNum=1;
 	setBackground();
 	run();
 }
-//----------------------------------------------
-//starting the current level again 
+//-----------------------------------------------------------
 
-void Controller::resetLevel()
+void Controller::setScreens()
 {
-	m_dataBase.eraseObj();
-	m_board.TakeBackInputStreamToBegLevel();
-	//board size and time
-	m_board.readLevelData(m_dataBase, m_menu.getSelectedPlayer());
-	//read all the char from the text:
-	m_board.readLevel(m_dataBase);
-	this->m_statusBar.updateLevel( false);
+	m_screens.push_back(std::make_unique<HelpScreen>());
+	m_screens.push_back(std::make_unique<Menu>());
+	m_screens.push_back(std::make_unique<LoseScreen>());
+	m_screens.push_back(std::make_unique<WinScreen>());
 }
-
-//---------------------------------------------
-//set the win game screen
-
-void Controller::winGameScreen()
+//-----------------------------------------------------------
+void Controller::handleScreens()
 {
-	setWinScreen(WIN_GAME_BACKGROUND, S_WIN_GAME);
-}
-//---------------------------------------------
-//set the win level screen
-
-void Controller::winLevelScreen()
-{
-	setWinScreen(WIN_LEVEL_BACKGROUND, S_WIN_LEVEL);
-}
-//---------------------------------------------------------
-//set the relevant wining screen
-
-void Controller::setWinScreen(backgroundsType backgroundType, sounds soundType)
-{
-	/*sf::Sound effect;
-	effect.setBuffer(*FileManager::instance().getSound(soundType));
-	effect.setVolume(VOLUME_BG);
-	effect.play();*/
-
-	sf::RectangleShape background;
-	background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	background.setTexture(FileManager::instance().getBackGround(backgroundType));
-
-	for (int i = 0; i < WIN_WIAT && m_window.isOpen(); i++)
+	while (currScreen != NONE)
 	{
-		m_window.clear(sf::Color::White);
-		m_window.draw(background);
-		m_window.display();
+		screensOption scr = m_screens[currScreen]->activateScreen(m_window);
+		switch (scr)
+		{
+		case HELP:
+			currScreen = HELP;
+			break;
+		case MENU:
+			currScreen = MENU;
+			break;
+		case RESTART:
+			currScreen = NONE;
+			resetLevel();
+			break;
+		case START:
+			currScreen = NONE;
+			break;
+		default:
+			break;
+		}
 	}
 }
+//-----------------------------------------------------------
+
+void Controller::setBigView()
+{
+	m_view.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+	m_view.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	m_window.setView(m_view);
+}
+
 //---------------------------------------------------------
 
 void Controller::setBackground()
@@ -254,6 +266,7 @@ void Controller::setBackground()
 		break;
 	}
 }
+
 //-----------------------------------------------------------
 
 void Controller::setView()
@@ -266,6 +279,8 @@ void Controller::setView()
 	//m_currLevelBackground.setPosition(m_currLevelBackground.getPosition().x +400, 
 	//m_currLevelBackground.getPosition().y +200);
 }
+//-----------------------------------------------------------
+// 
 //set view center by player pos and level size.
 void Controller::setViewToCenter()
 {
@@ -286,8 +301,8 @@ void Controller::setViewToCenter()
 			pos.x = playerPos.x-(playerPos.x - (m_dataBase.getLevelSize().y * Y_SPACE
 				+ START_SPACE * 3.5 - CAMERA_WIDTH / 2));
 
-		else if(playerPos.x < START_SPACE*1.3 +CAMERA_WIDTH / 2)
-			pos.x= playerPos.x +( START_SPACE * 1.3 +CAMERA_WIDTH / 2- playerPos.x );
+		else if(playerPos.x < START_SPACE*1.6 +CAMERA_WIDTH / 2)
+			pos.x= playerPos.x +( START_SPACE * 1.6 +CAMERA_WIDTH / 2- playerPos.x );
 
 		if(playerPos.y > m_dataBase.getLevelSize().x * X_SPACE
 			+ START_SPACE/2  - CAMERA_HEIGHT / 2)
@@ -296,10 +311,4 @@ void Controller::setViewToCenter()
 
 		m_view.setCenter(pos);
 	}
-}
-void Controller::setBigView()
-{
-	m_view.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-	m_view.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	m_window.setView(m_view);
 }

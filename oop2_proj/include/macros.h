@@ -4,6 +4,7 @@
 // general data
 const unsigned int
 NUM_OF_LEVELS = 3,
+NUM_OF_SCREENS = 3,
 NUM_OF_STATIC_ICONS = 20, 
 NUM_OF_BACKGROUNDSICONS=6,
 NUM_OF_MONSTERS = 3,
@@ -94,6 +95,11 @@ enum icons
 enum gender
 {
     MALE, FEMALE 
+};
+
+enum screensOption
+{
+    HELP, MENU,LOSE,WIN, RESTART, EXIT,NONE,START
 };
 
 enum decoration

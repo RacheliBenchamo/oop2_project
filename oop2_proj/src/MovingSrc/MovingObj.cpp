@@ -18,7 +18,7 @@ void MovingObj::beHurt()
 
 bool MovingObj::outWindow(sf::Vector2f pos, sf::Vector2f levelSize) const
 {
-	if (pos.x <= START_SPACE*1.8 || pos.y <= -10||
+	if (pos.x <= START_SPACE*2 || pos.y <= -10||
 		pos.x >= (levelSize.y * Y_SPACE) + START_SPACE*3)
 			return true;
 	

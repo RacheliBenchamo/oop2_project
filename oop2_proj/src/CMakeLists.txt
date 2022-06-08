@@ -17,7 +17,10 @@
                                                "StaticSrc/StaticObj.cpp"
                                                "StaticSrc/Posion.cpp"
                                                 "StaticSrc/StageDec.cpp"
-
+                                                "WinScreen.cpp"
+                                                "LoseScreen.cpp"
+                                                "Screen.cpp"
+                                                "HelpScreen.cpp"
 
                                                
                                              )

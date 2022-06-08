@@ -1,6 +1,10 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "menu.h"
+#include "HelpScreen.h"
+#include "WinScreen.h"
+#include "LoseScreen.h"
+
 #include "Board.h"
 #include "DataBase.h"
 #include "StatusBar.h"
@@ -30,12 +34,14 @@ private:
     void setBackground();
     void setViewToCenter();
     void setBigView();
+    void setScreens();
+    void handleScreens();
+
 
     void startSound();
 
     sf::RenderWindow m_window;
     StatusBar m_statusBar;
-    Menu m_menu;
     Board m_board;
     DataBase  m_dataBase;
     sf::Clock m_gameClock;
@@ -44,6 +50,7 @@ private:
     sf::RectangleShape m_currLevelBackground;
     sf::View m_view;
     bool m_playButton;
-
-
+    std::vector<std::unique_ptr<Screen>> m_screens;
+    screensOption currScreen= NONE;
+    gender m_playerGender = MALE;
 };

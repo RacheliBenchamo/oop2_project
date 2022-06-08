@@ -50,6 +50,7 @@ public:
     int getPlayerLife()const { return m_player->getLife(); }
     int getPlayerDiamonds()const { return m_player->getDiamondsCount(); }
     void setGender(const gender g) { m_gender = g; };
+
     void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
    
 
