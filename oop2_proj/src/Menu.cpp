@@ -118,15 +118,18 @@ screensOption Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& 
 {
 	if (this->m_start.getGlobalBounds().contains(Location)) // pressed start
 	{
+		playSelectSound();
 		return START;
 	}
 	
 	if (this->m_help.getGlobalBounds().contains(Location)) // pressed help
 	{
+		playSelectSound();
 		return HELP;
 	}
 	if (this->m_girlplayer.getGlobalBounds().contains(Location)) // pressed help
 	{
+		playSelectSound();
 		m_selectedPlayer = FEMALE;
 		this->m_girlplayer.setOutlineColor(sf::Color::Yellow);
 		this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
@@ -134,13 +137,19 @@ screensOption Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& 
 	}
 	if (this->m_boyplayer.getGlobalBounds().contains(Location)) // pressed help
 	{
+		playSelectSound();
 		m_selectedPlayer = MALE;
 		this->m_boyplayer.setOutlineColor(sf::Color::Yellow);
 		this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
 		this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
 	}
-	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
+	if (this->m_exit.getGlobalBounds().contains(Location))
+	{
+		playSelectSound();
 		window.close();
+	}
+		// pressed exit
+		
 
 	return NONE;
 }
@@ -153,6 +162,7 @@ void Menu::handleMove(const sf::Vector2f& Location)
 	// mark/unmark start button
 	if (this->m_start.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_start.setOutlineColor(sf::Color(0, 0, 77, 255));
 		this->m_start.setOutlineThickness(BOLD_OUTLINE);
 	}
@@ -164,6 +174,7 @@ void Menu::handleMove(const sf::Vector2f& Location)
 	// mark/unmark exit button
 	if (this->m_exit.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_exit.setOutlineColor(sf::Color(0, 0, 77, 255));
 		this->m_exit.setOutlineThickness(BOLD_OUTLINE);
 	}
@@ -175,6 +186,7 @@ void Menu::handleMove(const sf::Vector2f& Location)
 	// mark/unmark help button
 	if (this->m_help.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_help.setOutlineColor(sf::Color(0, 0, 77, 255));
 		this->m_help.setOutlineThickness(BOLD_OUTLINE);
 	}
@@ -189,6 +201,7 @@ void Menu::handleMove(const sf::Vector2f& Location)
 		// mark/unmark help button
 		if (this->m_boyplayer.getGlobalBounds().contains(Location))
 		{
+			playMoveSound();
 			this->m_boyplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
 			this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
 		}
@@ -205,7 +218,7 @@ void Menu::handleMove(const sf::Vector2f& Location)
 		// mark/unmark help button
 		if (this->m_girlplayer.getGlobalBounds().contains(Location))
 		{
-
+			playMoveSound();
 			this->m_girlplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
 			this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
 		}
