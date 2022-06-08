@@ -51,11 +51,7 @@ void Controller::run() try
 					startNewLevel();
 				break;
 			}
-
-		if (m_playButton)
 			handelEvents();
-		else
-			m_statusBar.resetTimer();
 	}
 }
 
@@ -90,8 +86,6 @@ void Controller::handelEvents()
 	m_dataBase.move(m_gameClock.restart());
 	if (m_dataBase.winLevel())
 		startNewLevel();
-	/*if (m_statusBar.getTime() <= 0)
-		resetLevel();*/
 }
 //----------------------------------------------
 //handle the event that occurred when the MouseButtonReleased
@@ -100,12 +94,6 @@ void Controller::handelMouseButtonReleased(sf::Event event)
 {
 	if (m_statusBar.containsMusicIcon(event))
 		handelMusicButtonReleased();
-
-	if (m_statusBar.containsStopAndPlayIcon(event))
-		handelStopPlayButtonReleased();
-
-	if (m_statusBar.containsRestartIcon(event))
-		resetLevel();
 }
 //----------------------------------------------
 //stopping or playing background music
