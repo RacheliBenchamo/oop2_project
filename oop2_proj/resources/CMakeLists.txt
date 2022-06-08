@@ -65,7 +65,8 @@ configure_file ("sounds/desert/CactisDied.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/desert/CactisHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/desert/SandWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
-
+configure_file ("sounds/forest/GreemonHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/forest/GreemonHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/MushriHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/MushriHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/TreetHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
