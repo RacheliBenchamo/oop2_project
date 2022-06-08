@@ -9,7 +9,7 @@ class MovingObj : public GameObjBase
 {
 public:
 	using GameObjBase::GameObjBase;
-
+	MovingObj();
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }
 	sf::Vector2f getCurrDir()const { return m_currDirection; }
 	void backToPrevPos();
@@ -52,8 +52,7 @@ protected:
 		m_hitingStatus = false,
 		m_falling = false,
 		m_up = false,
-		m_own = false;
-	float m_deltaTime = 0;
+		m_down = false;
 
 private:
 	void updateSpriteCol();

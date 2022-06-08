@@ -109,10 +109,10 @@ void Monster::handleHit()
 	else
 		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT3, levels(m_level)));
 	
-	m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 
 		if (isAlive())
 		{
+			m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 			m_animation.operation(Operation::Hurt);
 			goAccordingToPlayerPos();
 			pushFrom();

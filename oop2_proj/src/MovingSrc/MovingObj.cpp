@@ -4,6 +4,19 @@
 //------------------------------------------
 //set the sprite pos to her prev pos
 
+MovingObj::MovingObj()
+	:m_life (300),
+	 m_force(0),
+	m_right(false),
+	m_onFloor(false),
+	m_inHnaldeJump(false),
+	m_inHandleFall(false),
+	m_hitingStatus(false),
+	m_falling(false),
+	m_up(false),
+	m_down(false),
+	m_deltaTime(0)
+//float m_deltaTime = 0;
 void MovingObj::backToPrevPos()
 {
 	setPos(m_prevPos);
