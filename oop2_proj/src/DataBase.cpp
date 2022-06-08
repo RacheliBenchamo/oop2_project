@@ -356,6 +356,11 @@ void DataBase::eraseObj()
 		auto staticPtr = m_staticsObj.begin();
 		m_staticsObj.erase(staticPtr);
 	}
+	while (!m_rope.empty())
+	{
+		auto ropePtr = m_rope.begin();
+		m_rope.erase(ropePtr);
+	}
 
 	while (!m_teleport.empty())
 	{
