@@ -73,6 +73,11 @@ configure_file ("sounds/forest/TreeDied.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/TreeHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/GrassWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("sounds/Murshiapproaching.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/Murshiapproaching24bit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/Murshiapproaching64bit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/Murshiapproachingogg.ogg" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 
 

@@ -113,14 +113,14 @@ void FileManager::loadPlayerRect()
 void FileManager::loadAudio()
 {
 	//m_audio[S_GIFT].loadFromFile("giftSound.wav");
-	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
+	m_audio[S_TAKE_DIAMOND].loadFromFile("Murshiapproachingogg.ogg");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
 	m_audio[S_TAKE_POSION].loadFromFile("potionDrinking.wav");
 
-	m_backGroundAudio[LEVEL1].loadFromFile("Level1beckgraund.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("Murshiapproaching.wav");
 	m_backGroundAudio[LEVEL2].loadFromFile("Level2beckgraund.wav");
 	m_backGroundAudio[LEVEL3].loadFromFile("Level3beckgraund.wav");
 
