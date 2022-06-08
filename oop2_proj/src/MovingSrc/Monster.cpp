@@ -14,6 +14,7 @@ Monster::Monster(const sf::Vector2f& pos, levels lev, icons icon,
 {
 	m_level= int(lev);
 	m_force = force;
+	m_life = 300;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 	grillDir();
 }
@@ -102,16 +103,17 @@ void Monster::handleHit()
 {
 	static bool dead = false;
 	static sf::Sound effect;
-	if (m_monsterNum == 0)
+	/*if (m_monsterNum == 0)
 		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT1, levels(m_level)));
 	else if(m_monsterNum = 1)
 		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT2, levels(m_level)));
 	else
-		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT3, levels(m_level)));
+		effect.setBuffer(*FileManager::instance().getMonsterSound(HURT3, levels(m_level)));*/
 	
 
 		if (isAlive())
 		{
+			//std::cout << "jhk";
 			m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 			m_animation.operation(Operation::Hurt);
 			goAccordingToPlayerPos();
@@ -133,8 +135,8 @@ void Monster::handleHit()
 				//dead = false;
 			}
 		}
-		effect.play();
-		effect.setVolume(VOLUME_COLLISION);
+		/*effect.play();
+		effect.setVolume(VOLUME_COLLISION);*/
 }
 //------------------------------- getMove --------------------------------
 // Return the next move of the Bear.

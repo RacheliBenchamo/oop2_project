@@ -4,18 +4,14 @@
 //------------------------------------------
 //set the sprite pos to her prev pos
 
-MovingObj::MovingObj()
-	:m_life (300),
-	 m_force(0),
-	m_right(false),
-	m_onFloor(false),
-	m_inHnaldeJump(false),
-	m_inHandleFall(false),
-	m_hitingStatus(false),
-	m_falling(false),
-	m_up(false),
-	m_down(false),
-	m_deltaTime(0)
+MovingObj::MovingObj(const sf::Vector2f& pos, const sf::Vector2f& size)
+	:m_life(300),m_force(0),
+	m_right(false),m_onFloor(false),
+	m_inHnaldeJump(false),m_inHandleFall(false),
+	m_hitingStatus(false),m_falling(false),
+	m_up(false),m_down(false),GameObjBase(pos, size)
+{
+}
 //float m_deltaTime = 0;
 void MovingObj::backToPrevPos()
 {
@@ -98,4 +94,11 @@ bool MovingObj::CollisionFromAboveRightFloor(GameObjBase& floor) const
 {
 	return m_shape.getPosition().x < 
 		(floor.getPos().x - floor.getShape().getSize().x / 10);
+}
+
+bool MovingObj::isAlive() const
+{ 
+	if (m_level == 3)
+		std::cout << m_life << "\n";
+	return m_life > int(0); 
 }

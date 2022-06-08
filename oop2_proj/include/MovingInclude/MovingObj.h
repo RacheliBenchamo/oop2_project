@@ -8,8 +8,8 @@ class Controller;
 class MovingObj : public GameObjBase
 {
 public:
-	using GameObjBase::GameObjBase;
-	MovingObj();
+	//using GameObjBase::GameObjBase;
+	MovingObj(const sf::Vector2f& , const sf::Vector2f& );
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }
 	sf::Vector2f getCurrDir()const { return m_currDirection; }
 	void backToPrevPos();
@@ -38,21 +38,16 @@ protected:
 	virtual void move(sf::Time& , sf::Vector2f ) {};
 	void setPrevPos(sf::Vector2f p) { m_prevPos = p; }
 	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
-	bool isAlive() const {return m_life> 0;}
+	bool isAlive() const ;
 
 
-	int m_life=300;
-	int m_force = 0;
+	int m_life;
+	int m_force;
 
-	bool m_right = false,
-		m_left = false,
-		m_onFloor = false,
-		m_inHnaldeJump = false,
-		m_inHandleFall = false,
-		m_hitingStatus = false,
-		m_falling = false,
-		m_up = false,
-		m_down = false;
+	bool m_right,m_left ,
+		m_onFloor ,m_inHnaldeJump ,
+		m_inHandleFall,m_hitingStatus,
+		m_falling ,m_up ,m_down;
 
 private:
 	void updateSpriteCol();

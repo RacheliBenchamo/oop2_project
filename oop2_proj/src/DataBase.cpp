@@ -367,7 +367,7 @@ void DataBase::eraseObj()
 		auto teleportPtr = m_teleport.begin();
 		m_teleport.erase(teleportPtr);
 	}
-	this->eraseAllMonsters();
+	eraseAllMonsters();
 }
 //----------------------------------------------
 void DataBase::eraseAllMonsters()
