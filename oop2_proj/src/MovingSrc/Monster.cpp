@@ -113,7 +113,6 @@ void Monster::handleHit()
 
 		if (isAlive())
 		{
-			//std::cout << "jhk";
 			m_life - PLAYER_DAMAGE <= 0 ? m_life = 0 : m_life -= PLAYER_DAMAGE;
 			m_animation.operation(Operation::Hurt);
 			goAccordingToPlayerPos();

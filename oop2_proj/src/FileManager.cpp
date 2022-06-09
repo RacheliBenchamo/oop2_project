@@ -145,7 +145,7 @@ void FileManager::loadAudio()
 	//for each monster in each level
 	m_monstersAudio[LEVEL1][HIT1].loadFromFile("MurshiHit.wav");
 	m_monstersAudio[LEVEL1][HURT1].loadFromFile("MurshiDied.wav");
-	m_monstersAudio[LEVEL1][HIT2].loadFromFile("TreeHit.wav");
+	m_monstersAudio[LEVEL1][HIT 2].loadFromFile("TreeHit.wav");
 	m_monstersAudio[LEVEL1][HURT2].loadFromFile("TreeDied.wav");
 	m_monstersAudio[LEVEL1][HIT3].loadFromFile("takeKeySound.wav");
 	m_monstersAudio[LEVEL1][HURT3].loadFromFile("takeKeySound.wav");

@@ -95,10 +95,3 @@ bool MovingObj::CollisionFromAboveRightFloor(GameObjBase& floor) const
 	return m_shape.getPosition().x < 
 		(floor.getPos().x - floor.getShape().getSize().x / 10);
 }
-
-bool MovingObj::isAlive() const
-{ 
-	if (m_level == 3)
-		std::cout << m_life << "\n";
-	return m_life > int(0); 
-}

@@ -38,7 +38,7 @@ protected:
 	virtual void move(sf::Time& , sf::Vector2f ) {};
 	void setPrevPos(sf::Vector2f p) { m_prevPos = p; }
 	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
-	bool isAlive() const ;
+	bool isAlive() const { return m_life > int(0); };
 
 
 	int m_life;
