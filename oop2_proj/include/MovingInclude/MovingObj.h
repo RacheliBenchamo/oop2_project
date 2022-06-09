@@ -9,7 +9,7 @@ class MovingObj : public GameObjBase
 {
 public:
 	//using GameObjBase::GameObjBase;
-	MovingObj(const sf::Vector2f& , const sf::Vector2f& );
+	MovingObj(const sf::Vector2f& , const sf::Vector2f& ,int);
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }
 	sf::Vector2f getCurrDir()const { return m_currDirection; }
 	void backToPrevPos();
@@ -18,9 +18,12 @@ public:
 	int getForce()const { return m_force; }
 	bool getHitingStatus() const { return m_hitingStatus; };
 	void beHurt() ;
+	bool onFloor() const{ return m_onFloor; };
 	virtual void handleCollisionFloor(GameObjBase& floor)=0;
 	virtual void handleCollisionLeftFloor(GameObjBase& floor) = 0;
 	virtual void handleCollisionRightFloor(GameObjBase& floor) = 0;
+	levels getCurrLevel() const { return levels(m_level); };
+	void setCurrLevel(const int level) { m_level = level; };
 
 protected:
 	bool collisionFromLeft(GameObjBase& g) const;
@@ -29,7 +32,7 @@ protected:
 	bool CollisionFromAboveFloor(GameObjBase& floor) const;
 	bool CollisionFromAboveLeftFloor(GameObjBase& floor) const;
 	bool CollisionFromAboveRightFloor(GameObjBase& floor) const;
-	int m_level;
+	
 
 
 	sf::Vector2f getDirection() const;
@@ -39,7 +42,6 @@ protected:
 	void setPrevPos(sf::Vector2f p) { m_prevPos = p; }
 	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
 	bool isAlive() const { return m_life > int(0); };
-
 
 	int m_life;
 	int m_force;
@@ -51,7 +53,7 @@ protected:
 
 private:
 	void updateSpriteCol();
-
+	int m_level;
 	sf::Vector2f m_prevPos;	
 	sf::Vector2f m_currDirection;
 

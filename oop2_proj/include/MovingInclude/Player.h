@@ -5,7 +5,7 @@
 class Player :public MovingObj
 {
 public:
-	Player( const sf::Vector2f& , levels,gender);
+	Player( const sf::Vector2f&,gender, int);
 	virtual void move(sf::Time& ,sf::Vector2f)override;
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
 	void draw(sf::RenderWindow&)override;
@@ -27,7 +27,6 @@ public:
 	void setClimbing(bool c) { m_climbing = c; }
 	bool getClimbing() { return m_climbing; }
 	bool m_wasClimbing = false;
-	void startSound()const;
 	void setGotToNextLev() { m_gotToNextLev = true; };
 	bool getGotToNextLev()const { return m_gotToNextLev; };
 
@@ -36,7 +35,7 @@ private:
 	void playMovementAnimations();
 	const sf::Vector2f getMovement(sf::Time& );
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
-
+	void startSound(sf::SoundBuffer* sound);
 	bool m_climbing = false;
 	int m_diamondsCount = 0;
 	bool m_levelFinishStatus = false;

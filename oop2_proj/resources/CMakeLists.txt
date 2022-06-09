@@ -55,6 +55,7 @@ configure_file ("sounds/InTeleportSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/takeKeySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/pickUpDiamond.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/potionDrinking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/jump_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("sounds/forest/GrassWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/GreemonHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)

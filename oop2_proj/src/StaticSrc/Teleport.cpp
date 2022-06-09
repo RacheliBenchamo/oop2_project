@@ -24,10 +24,6 @@ void Teleport::setPartnerPos(sf::Vector2f pos)
 void Teleport::toClose()
 {
 	m_isOpen = false;
-	static sf::Sound effect;
-	effect.setBuffer(*FileManager::instance().getShareSaund(S_IN_TELEPORT));
-	effect.play();
-	effect.setVolume(VOLUME_COLLISION);
 
 }
 //--------------------------------------------------

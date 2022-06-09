@@ -21,7 +21,7 @@ public:
 	sf::Texture* getPlayerTexture();
 	const sf::Texture* getPlayAndStopIcon(bool )const;
 	sf::SoundBuffer* getPlayerSound(playerSounds, levels);
-	sf::SoundBuffer* getMonsterSound(monsterSounds, levels);
+	sf::SoundBuffer* getMonsterSound(monsterSounds, levels, monster);
 	sf::SoundBuffer* getBackgraundSaund(levels);
 	sf::SoundBuffer* getShareSaund(sounds);
 	const sf::Texture* getMusicIcon(bool)const;
@@ -79,7 +79,7 @@ private:
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::SoundBuffer m_backGroundAudio[NUM_OF_LEVELS];
 	sf::SoundBuffer m_playerAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
-	sf::SoundBuffer m_monstersAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
+	sf::SoundBuffer m_monstersAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS][NUM_OF_MONSTERS];
 
 	//sf::Sound m_sound;
 	sf::Font m_font;

@@ -5,9 +5,9 @@
 const unsigned int
 NUM_OF_LEVELS = 3,
 NUM_OF_SCREENS = 3,
+NUM_OF_MONSTERS = 3,
 NUM_OF_STATIC_ICONS = 20, 
 NUM_OF_BACKGROUNDSICONS=6,
-NUM_OF_MONSTERS = 3,
 NUM_OF_DEC = 20,
  NUM_OF_SOUNDS = 14, 
 NUM_OF_BACKGROUNDS = 7,
@@ -153,18 +153,12 @@ enum playerSounds
     WALK,
     JUMP,
     CLIME,
-    HURT
 };
 
 enum monsterSounds
 {
-    HIT1,
-    HURT1,
-    HIT2,
-    HURT2,
-    HIT3,
-    HURT3,
-
+    HIT,
+    HURT,
 };
 const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
 

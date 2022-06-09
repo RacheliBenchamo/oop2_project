@@ -4,13 +4,12 @@
 // Sets features using the base class constructor.
 // Also, sets it's unique size and events clock.
 //------------------------------------------------------------------------
-Player::Player( const sf::Vector2f& pos, levels level, gender gen)
-	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos),
+Player::Player( const sf::Vector2f& pos, gender gen,int level)
+	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos,level),
 	    m_animation(FileManager::instance().getPlayerData(gen),
 		Operation::Stay, m_shape,
 		FileManager::instance().getPlayerTexture())
 {
-	m_level = int(level);
 	m_force = PAYER_FORCE;
 	m_life = 1000;
 	m_power = 1000;
@@ -88,6 +87,14 @@ void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
 	}
 }
 
+void Player::startSound(sf::SoundBuffer* sound)
+{
+	static sf::Sound effect;
+	effect.setBuffer(*sound);
+	effect.play();
+	effect.setVolume(VOLUME_COLLISION);
+}
+
 //----------------------- playMovementAnimations -------------------------
  //Plays the animation according to the situation in which the player is.
 //------------------------------------------------------------------------
@@ -100,6 +107,7 @@ void Player::playMovementAnimations()
 			if (m_animation.getOperation() != Operation::Hit 
 				&& m_animation.getOperation() != Operation::Hurt)
 			{
+				startSound(FileManager::instance().getPlayerSound(WALK,getCurrLevel()));
 				m_animation.operation(Operation::Walk);
 			}
 		}
@@ -162,8 +170,10 @@ const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
 
 	else if (m_inHnaldeJump)
 	{
+		startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()));
 		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}
+
 
 	return (getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));
 }
@@ -262,12 +272,7 @@ void Player::setHittingStatus(const bool status)
 void Player::handelHit(int force)
 {
 	static int hitCounter = 0;
-	static sf::Sound effect;
-	effect.setBuffer(*FileManager::instance().getPlayerSound(HURT,levels(m_level)));
-	//effect.play();
-	effect.setVolume(VOLUME_COLLISION);
-
-
+	
 	if (hitCounter == 0)
 	{
 		hitCounter = HIT_COUNTER;
@@ -346,26 +351,5 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 
 }
 //---------------------------------------
-
-void Player::startSound() const
-{
-	static sf::Sound effect;
-	if (m_climbing)
-	{
-		effect.setBuffer(*FileManager::instance().getPlayerSound
-		(CLIME, levels(m_level)));
-	}
-	else
-	{
-		effect.setBuffer(*FileManager::instance().getPlayerSound
-		(WALK, levels(m_level)));
-	}
-
-
-	effect.play();
-	effect.setVolume(VOLUME_COLLISION);
-}
-
-
 
 

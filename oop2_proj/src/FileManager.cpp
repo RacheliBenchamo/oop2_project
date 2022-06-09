@@ -122,47 +122,52 @@ void FileManager::loadAudio()
 	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 
-	m_backGroundAudio[LEVEL1].loadFromFile("SnowolfHurt.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("Level1backgraund.wav");
 	m_backGroundAudio[LEVEL2].loadFromFile("Level2backgraund.wav");
 	m_backGroundAudio[LEVEL3].loadFromFile("Level3backgraund.wav");
 
 	//for 3 levels
 	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
-	m_playerAudio[LEVEL1][JUMP].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL1][CLIME].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL1][HURT].loadFromFile("pickUpDiamond.wav");
+	m_playerAudio[LEVEL1][JUMP].loadFromFile("potionDrinking.wav");
+	m_playerAudio[LEVEL1][CLIME].loadFromFile("potionDrinking.wav");
+	//m_playerAudio[LEVEL1][HURT].loadFromFile("pickUpDiamond.wav");
 
 	m_playerAudio[LEVEL2][WALK].loadFromFile("IceWalking.wav");
-	m_playerAudio[LEVEL2][JUMP].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL2][CLIME].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL2][HURT].loadFromFile("takeKeySound.wav");
+	m_playerAudio[LEVEL2][JUMP].loadFromFile("potionDrinking.wav");
+	m_playerAudio[LEVEL2][CLIME].loadFromFile("potionDrinking.wav");
+	//m_playerAudio[LEVEL2][HURT].loadFromFile("takeKeySound.wav");
 
 	m_playerAudio[LEVEL3][WALK].loadFromFile("SandWalking.wav");
-	m_playerAudio[LEVEL3][JUMP].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL3][CLIME].loadFromFile("takeKeySound.wav");
-	m_playerAudio[LEVEL3][HURT].loadFromFile("takeKeySound.wav");
+	m_playerAudio[LEVEL3][JUMP].loadFromFile("potionDrinking.wav");
+	m_playerAudio[LEVEL3][CLIME].loadFromFile("potionDrinking.wav");
+	//m_playerAudio[LEVEL3][HURT].loadFromFile("takeKeySound.wav");
 
 	//for each monster in each level
-	m_monstersAudio[LEVEL1][HIT1].loadFromFile("MushriHit.wav");
-	m_monstersAudio[LEVEL1][HURT1].loadFromFile("MushriHurt.wav");
-	m_monstersAudio[LEVEL1][HIT2].loadFromFile("TreetHit.wav");
-	m_monstersAudio[LEVEL1][HURT2].loadFromFile("TreetHurt.wav");
-	m_monstersAudio[LEVEL1][HIT3].loadFromFile("GreemonHit.wav");
-	m_monstersAudio[LEVEL1][HURT3].loadFromFile("GreemonHurt.wav");
+	//M_FIRST,
+	//	M_SECOND,
+	//	M_THIRD
+	m_monstersAudio[LEVEL1][HIT][M_FIRST].loadFromFile("MushriHit.wav");
+	m_monstersAudio[LEVEL1][HURT][M_FIRST].loadFromFile("MushriHurt.wav");
+	m_monstersAudio[LEVEL1][HIT][M_SECOND].loadFromFile("TreetHit.wav");
+	m_monstersAudio[LEVEL1][HURT][M_SECOND].loadFromFile("TreetHurt.wav");
+	m_monstersAudio[LEVEL1][HIT][M_THIRD].loadFromFile("GreemonHit.wav");
+	m_monstersAudio[LEVEL1][HURT][M_THIRD].loadFromFile("GreemonHurt.wav");
 
-	m_monstersAudio[LEVEL2][HIT1].loadFromFile("PenguwulungHit.wav");
-	m_monstersAudio[LEVEL2][HURT1].loadFromFile("PenguwulungHurt.wav");
-	m_monstersAudio[LEVEL2][HIT2].loadFromFile("SnowolfHit.wav");
-	m_monstersAudio[LEVEL2][HURT2].loadFromFile("SnowolfHurt.wav");
-	m_monstersAudio[LEVEL2][HIT3].loadFromFile("YetteyeyHit.wav");
-	m_monstersAudio[LEVEL2][HURT3].loadFromFile("YetteyeyHurt.wav");
+	m_monstersAudio[LEVEL2][HIT][M_FIRST].loadFromFile("PenguwulungHit.wav");
+	m_monstersAudio[LEVEL2][HURT][M_FIRST].loadFromFile("PenguwulungHurt.wav");
+	m_monstersAudio[LEVEL2][HIT][M_SECOND].loadFromFile("SnowolfHit.wav");
+	m_monstersAudio[LEVEL2][HURT][M_SECOND].loadFromFile("SnowolfHurt.wav");
+	m_monstersAudio[LEVEL2][HIT][M_THIRD].loadFromFile("YetteyeyHit.wav");
+	m_monstersAudio[LEVEL2][HURT][M_THIRD].loadFromFile("YetteyeyHurt.wav");
 
-	m_monstersAudio[LEVEL3][HIT1].loadFromFile("CactisHit.wav");
-	m_monstersAudio[LEVEL3][HURT1].loadFromFile("CactisHurt.wav");
-	m_monstersAudio[LEVEL3][HIT2].loadFromFile("FroggoHit.wav");
-	m_monstersAudio[LEVEL3][HURT2].loadFromFile("FroggoHurt.wav");
-	m_monstersAudio[LEVEL3][HIT3].loadFromFile("SuricatiHit.wav");
-	m_monstersAudio[LEVEL3][HURT3].loadFromFile("SuricatiHurt.wav");
+	m_monstersAudio[LEVEL3][HIT][M_FIRST].loadFromFile("CactisHit.wav");
+	m_monstersAudio[LEVEL3][HURT][M_FIRST].loadFromFile("CactisHurt.wav");
+	m_monstersAudio[LEVEL3][HIT][M_SECOND].loadFromFile("SuricatiHit.wav");
+	m_monstersAudio[LEVEL3][HURT][M_SECOND].loadFromFile("SuricatiHurt.wav");
+	m_monstersAudio[LEVEL3][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
+	m_monstersAudio[LEVEL3][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
+
+
 
 }
 //--------------------------------------------------
@@ -212,19 +217,19 @@ void FileManager::loadBackgrounds()
 //}
 sf::SoundBuffer* FileManager::getPlayerSound(playerSounds sound, levels currLevel)
 {
-	return &m_playerAudio[currLevel][sound];
+	return &m_playerAudio[currLevel-1][sound];
 
 }
 
-sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel)
+sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel, monster currMonster)
 {
-	return &m_monstersAudio[currLevel][sound];
+	return &m_monstersAudio[currLevel-1][sound][currMonster];
 }
 
 
 sf::SoundBuffer* FileManager::getBackgraundSaund(levels currLevel)
 {
-	return &this->m_backGroundAudio[currLevel ];
+	return &this->m_backGroundAudio[currLevel];
 }
 
 sf::SoundBuffer* FileManager::getShareSaund(sounds sound)
@@ -282,7 +287,7 @@ sf::Texture* FileManager::getSharedStaticTexture(const icons place)
 
 sf::Texture* FileManager::getMonstersTexture(const icons place, const levels currLevel)
 {
-	return &this->m_monstersIcon[currLevel - 1][place];
+	return &this->m_monstersIcon[currLevel-1][place];
 }
 //--------------------------------------------------
 

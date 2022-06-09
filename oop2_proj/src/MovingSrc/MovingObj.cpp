@@ -4,8 +4,8 @@
 //------------------------------------------
 //set the sprite pos to her prev pos
 
-MovingObj::MovingObj(const sf::Vector2f& pos, const sf::Vector2f& size)
-	:m_life(300),m_force(0),
+MovingObj::MovingObj(const sf::Vector2f& pos, const sf::Vector2f& size,int level)
+	:m_life(300),m_force(0),m_level(level),
 	m_right(false),m_onFloor(false),
 	m_inHnaldeJump(false),m_inHandleFall(false),
 	m_hitingStatus(false),m_falling(false),
