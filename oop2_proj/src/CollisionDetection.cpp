@@ -19,6 +19,7 @@ namespace // anonymous namespace — the standard way to make function "static"
     using HitFunctionPtr = void (*)(GameObjBase&, GameObjBase&);
     using MapKey = std::pair<std::type_index, std::type_index>;
     using HitMap = std::map<MapKey, HitFunctionPtr>;
+    sf::Sound sound;
 
 
 
@@ -77,10 +78,11 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 //------------------------------------------------------------------------
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    static sf::Sound effect;
-    effect.setBuffer(*FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
-    effect.play();
-    effect.setVolume(VOLUME_COLLISION);
+    /*static sf::Sound effect;*/
+    sound.setBuffer
+    startSound(*FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
+    sound.play();
+    sound.setVolume(VOLUME_COLLISION);
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();
 }
@@ -198,6 +200,13 @@ HitMap initializeCollisionMap()
     return phm;
 }
 
+void startSound(sf::Sound sound)
+{
+    static sf::Sound effect;
+    effect.setBuffer(sound);
+    effect.play();
+    effect.setVolume(VOLUME_COLLISION);
+}
 
 //------------------------------ lookup ----------------------------------
 // Look up and find out if there is a suitable collision between the
