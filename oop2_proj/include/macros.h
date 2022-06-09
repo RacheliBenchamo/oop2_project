@@ -95,7 +95,7 @@ enum icons
 
 enum gender
 {
-    MALE, FEMALE 
+    MALE, FEMALE ,WAIT
 };
 
 enum screensOption

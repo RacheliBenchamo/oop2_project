@@ -19,15 +19,18 @@ private:
 	void setStart();
 	void setHelp();
 	void setExit();
+	void setPick();
 	void setPlayer();
 
 	sf::Text m_header;
 	sf::Text m_start;
 	sf::Text m_exit;
 	sf::Text m_help;
+	sf::Text m_pick;
+
 	sf::RectangleShape m_boyplayer;
 	sf::RectangleShape m_girlplayer;
-	gender m_selectedPlayer=MALE;
+	gender m_selectedPlayer= WAIT;
 	bool m_pressStart;
 	bool m_pressHelp;
 

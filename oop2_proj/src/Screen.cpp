@@ -43,7 +43,7 @@ void Screen::playMoveSound()
 	static sf::Sound effect;
 	effect.setBuffer(*FileManager::instance().getShareSaund(S_ABOVE));
 	effect.play();
-	effect.setVolume(BUTTON_VOLUME);
+	effect.setVolume(BUTTON_VOLUME*3);
 }
 //----------------------------------------------------------------
 void Screen::playSelectSound()
@@ -51,5 +51,5 @@ void Screen::playSelectSound()
 	static sf::Sound effect;
 	effect.setBuffer(*FileManager::instance().getShareSaund(S_CLICKED));
 	effect.play();
-	effect.setVolume(BUTTON_VOLUME);
+	effect.setVolume(BUTTON_VOLUME*2);
 }

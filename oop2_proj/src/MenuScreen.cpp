@@ -15,7 +15,9 @@ MenuScreen::MenuScreen()
 	setStart();
 	setExit();
 	setHelp();
+	setPick();
 	setPlayer();
+
 
 	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 	this->m_background.setTexture(FileManager::instance().getBackGround(MENU_BACKGROUND));
@@ -44,7 +46,7 @@ void MenuScreen::setStart()
 	m_start.setCharacterSize(REG_CHAR_SIZE);
 	m_start.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y - 70 });
 	m_start.setString("Start");
-	m_start.setOutlineColor(sf::Color(230, 230, 255, 255));
+	m_start.setOutlineColor(sf::Color::Black);
 	m_start.setOutlineThickness(OUTLINE_THICKNESS);
 }
 //--------------------------------------------------
@@ -57,7 +59,7 @@ void MenuScreen::setHelp()
 	m_help.setCharacterSize(REG_CHAR_SIZE);
 	m_help.setPosition({ SCREEN_CENTER.x - 40, SCREEN_CENTER.y + 190 });
 	m_help.setString("Help");
-	m_help.setOutlineColor(sf::Color(230, 230, 255, 255));
+	m_help.setOutlineColor(sf::Color::Black);
 	m_help.setOutlineThickness(OUTLINE_THICKNESS);
 }
 //--------------------------------------------------
@@ -70,8 +72,21 @@ void MenuScreen::setExit()
 	m_exit.setCharacterSize(REG_CHAR_SIZE);
 	m_exit.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y + 60 });
 	m_exit.setString("Exit");
-	m_exit.setOutlineColor(sf::Color(230, 230, 255, 255));
+	m_exit.setOutlineColor(sf::Color::Black);
 	m_exit.setOutlineThickness(OUTLINE_THICKNESS);
+}
+//---------------------------------
+
+void MenuScreen::setPick()
+{
+	m_pick.setFont(m_font);
+	m_pick.setColor(sf::Color(153, 153, 255, 255));
+	m_pick.setCharacterSize(REG_CHAR_SIZE);
+	m_pick.setPosition({ SCREEN_CENTER.x - 720 , SCREEN_CENTER.y - 200 });
+	m_pick.setString("Pick a Character:");
+	m_pick.setOutlineColor(sf::Color::Black);
+	m_pick.setOutlineThickness(OUTLINE_THICKNESS);
+	
 }
 //--------------------------------------------------
 //set the Players details
@@ -79,22 +94,20 @@ void MenuScreen::setExit()
 void MenuScreen::setPlayer()
 {
 	auto m_pTexture = FileManager::instance().getPlayerTexture();
+
 	m_boyplayer.setTexture(m_pTexture);
-	m_girlplayer.setTexture(m_pTexture);
-
 	m_boyplayer.setTextureRect(FileManager::instance().getPlayerRect(MALE));
+	m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
+	m_boyplayer.setOutlineColor(sf::Color::Black);
+	m_boyplayer.setPosition({ SCREEN_CENTER.x - 400 , SCREEN_CENTER.y - 60 });
+	m_boyplayer.setSize({ BLOCK_SIZE * 4, BLOCK_SIZE * 4 });
+
+	m_girlplayer.setTexture(m_pTexture);
 	m_girlplayer.setTextureRect(FileManager::instance().getPlayerRect(FEMALE));
-
-	m_boyplayer.setOutlineThickness(2);
-	m_girlplayer.setOutlineThickness(2);
-
-	m_boyplayer.setPosition({ SCREEN_CENTER.x -400 , SCREEN_CENTER.y -60 });
+	m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
+	m_girlplayer.setOutlineColor(sf::Color::Black);
 	m_girlplayer.setPosition({ SCREEN_CENTER.x - 700 , SCREEN_CENTER.y - 60 });
-
-	m_boyplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4});
 	m_girlplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4 });
-
-
 }
 //------------------------------------------------
 //draw all the buttons on the window
@@ -109,6 +122,8 @@ void MenuScreen::draw(sf::RenderWindow& window)
 	window.draw(this->m_boyplayer);
 	window.draw(this->m_girlplayer);
 	window.draw(this->m_help);
+	window.draw(this->m_pick);
+
 	window.display();
 }
 //--------------------------------------------------
@@ -116,10 +131,16 @@ void MenuScreen::draw(sf::RenderWindow& window)
 
 screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 {
+	//m_pick
 	if (this->m_start.getGlobalBounds().contains(Location)) // pressed start
 	{
-		playSelectSound();
-		return START;
+		if (m_selectedPlayer != WAIT)
+		{
+			playSelectSound();
+			return START;
+		}
+		this->m_pick.setOutlineColor(sf::Color::Red);
+		this->m_pick.setOutlineThickness(BOLD_OUTLINE);
 	}
 	
 	if (this->m_help.getGlobalBounds().contains(Location)) // pressed help
@@ -131,17 +152,21 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 	{
 		playSelectSound();
 		m_selectedPlayer = FEMALE;
-		this->m_girlplayer.setOutlineColor(sf::Color::Yellow);
+		this->m_girlplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
 		this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
-		this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_boyplayer.setOutlineColor(sf::Color::Black);
+		this->m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
+
 	}
 	if (this->m_boyplayer.getGlobalBounds().contains(Location)) // pressed help
 	{
 		playSelectSound();
 		m_selectedPlayer = MALE;
-		this->m_boyplayer.setOutlineColor(sf::Color::Yellow);
+		this->m_boyplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
 		this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
-		this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_girlplayer.setOutlineColor(sf::Color::Black);
+		this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
+
 	}
 	if (this->m_exit.getGlobalBounds().contains(Location))
 	{
@@ -149,8 +174,7 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 		window.close();
 	}
 		// pressed exit
-		
-
+	
 	return NONE;
 }
 
@@ -163,71 +187,73 @@ void MenuScreen::handleMove(const sf::Vector2f& Location)
 	if (this->m_start.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
-		this->m_start.setOutlineColor(sf::Color(0, 0, 77, 255));
+		this->m_start.setOutlineColor(sf::Color(230, 230, 255, 255));
 		this->m_start.setOutlineThickness(BOLD_OUTLINE);
 	}
 	else
 	{
-		this->m_start.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_start.setOutlineColor(sf::Color::Black);
 		this->m_start.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 	// mark/unmark exit button
 	if (this->m_exit.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
-		this->m_exit.setOutlineColor(sf::Color(0, 0, 77, 255));
+		this->m_exit.setOutlineColor(sf::Color(230, 230, 255, 255));
 		this->m_exit.setOutlineThickness(BOLD_OUTLINE);
 	}
 	else
 	{
-		this->m_exit.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_exit.setOutlineColor(sf::Color::Black);
 		this->m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 	// mark/unmark help button
 	if (this->m_help.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
-		this->m_help.setOutlineColor(sf::Color(0, 0, 77, 255));
+		this->m_help.setOutlineColor(sf::Color(230, 230, 255, 255));
 		this->m_help.setOutlineThickness(BOLD_OUTLINE);
 	}
 	else
 	{
-		this->m_help.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_help.setOutlineColor(sf::Color::Black);
 		this->m_help.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 
-	if (this->m_boyplayer.getOutlineColor() != sf::Color::Yellow)
+	if (this->m_boyplayer.getOutlineColor() != sf::Color(0, 0, 77, 255))
 	{
 		// mark/unmark help button
 		if (this->m_boyplayer.getGlobalBounds().contains(Location))
 		{
 			playMoveSound();
-			this->m_boyplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
+			this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
 			this->m_boyplayer.setOutlineThickness(BOLD_OUTLINE);
 		}
 		else
 		{
 
-			this->m_boyplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+			this->m_boyplayer.setOutlineColor(sf::Color::Black);
 			this->m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
 
 		}
 	}
-	if (this->m_girlplayer.getOutlineColor() != sf::Color::Yellow)
+	if (this->m_girlplayer.getOutlineColor() != sf::Color(0, 0, 77, 255))
 	{
 		// mark/unmark help button
 		if (this->m_girlplayer.getGlobalBounds().contains(Location))
 		{
 			playMoveSound();
-			this->m_girlplayer.setOutlineColor(sf::Color(0, 0, 77, 255));
+			this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
 			this->m_girlplayer.setOutlineThickness(BOLD_OUTLINE);
 		}
 		else
 		{
 
-			this->m_girlplayer.setOutlineColor(sf::Color(230, 230, 255, 255));
+			this->m_girlplayer.setOutlineColor(sf::Color::Black);
 			this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
 
 		}
 	}
+	this->m_pick.setOutlineColor(sf::Color::Black);
+	this->m_pick.setOutlineThickness(OUTLINE_THICKNESS);
 }
