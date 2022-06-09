@@ -68,6 +68,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
     {
         static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
     }
+
 }
 //---------------------------- playerGold --------------------------------
 // Handle the event that the player collides with gold.
@@ -129,7 +130,17 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
 ////------------------------------------------------------------------------
 void monsterFloor(GameObjBase& e, GameObjBase& f)
 {
-    if (typeid(f) == typeid(Floor))
+    if (typeid(f) == typeid(RightFloor))
+    {
+        static_cast<Monster&>(e).handleCollisionRightFloor(f);
+
+    }
+    else if (typeid(f) == typeid(LeftFloor))
+    {
+        static_cast<Monster&>(e).handleCollisionLeftFloor(f);
+    }
+
+    else
         static_cast<Monster&>(e).handleCollisionFloor(f);
 }
 
@@ -163,8 +174,11 @@ void setPlayerCollisionHandling(HitMap& phm)
 //------------------------------------------------------------------------
 void setMonsterCollisionHandling(HitMap& phm)
 {
-    //// Bear & Floor.
+    //// monster & Floor.
     phm[MapKey(typeid(Monster), typeid(Floor))] = &monsterFloor;
+    phm[MapKey(typeid(Monster), typeid(RightFloor))] = &monsterFloor;
+    phm[MapKey(typeid(Monster), typeid(LeftFloor))] = &monsterFloor;
+
 
 }
 

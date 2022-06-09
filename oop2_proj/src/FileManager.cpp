@@ -122,7 +122,7 @@ void FileManager::loadAudio()
 	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 
-	m_backGroundAudio[LEVEL1].loadFromFile("potionDrinking.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("Level1beckgraund.wav");
 	m_backGroundAudio[LEVEL2].loadFromFile("Level2beckgraund.wav");
 	m_backGroundAudio[LEVEL3].loadFromFile("Level3beckgraund.wav");
 

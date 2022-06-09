@@ -225,10 +225,24 @@ void Monster::handleCollisionFloor(GameObjBase& floor)
 //------------------------------------------------------------------------
 void Monster::handleCollisionLeftFloor(GameObjBase& floor)
 {
+	if (CollisionFromAboveLeftFloor(floor) ||
+		m_shape.getScale() != SCALE_LEFT)
+	{
+		setPrevPos(m_shape.getPosition());
+		m_falling = false;
+		m_onFloor = true;
+	}
 }
 //------------------------------------------------------------------------
 void Monster::handleCollisionRightFloor(GameObjBase& floor)
 {
+	if ( CollisionFromAboveRightFloor(floor) ||
+		m_shape.getScale() != SCALE_RIGHT)
+	{
+		setPrevPos(m_shape.getPosition());
+		m_falling = false;
+		m_onFloor = true;
+	}
 }
 
 //------------------------------------------------------------------------

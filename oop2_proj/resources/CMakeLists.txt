@@ -23,10 +23,6 @@ configure_file ("staticObjPic/Rope.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Gate.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
-
-
-
-
 configure_file ("backgrounds/menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/forestBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/snowBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
