@@ -69,6 +69,14 @@ configure_file ("sounds/forest/TreetHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/TreetHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/GrassWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("sounds/snow/IceWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/snow/PenguwulungHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/snow/PenguwulungHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/snow/SnowolfHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/snow/SnowolfHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/snow/YetteyeyHit.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/snow/YetteyeyHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+
 configure_file ("sounds/button_clicked_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/button_hover_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
