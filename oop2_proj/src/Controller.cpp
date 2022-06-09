@@ -55,9 +55,9 @@ void Controller::run() try
 	}
 }
 
- catch (const std::exception& e) {
+ catch (const std::exception& e) 
+ {
 	std::cout << e.what();
- 
 }
 //----------------------------------------------
 //set the menu, background and more for starting the game

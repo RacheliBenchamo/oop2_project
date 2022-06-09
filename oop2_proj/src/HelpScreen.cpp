@@ -53,7 +53,7 @@ void HelpScreen::setMenu()
 	m_menu.setFont(m_font);
 	m_menu.setColor(sf::Color(153, 153, 255, 255));
 	m_menu.setCharacterSize(REG_CHAR_SIZE);
-	m_menu.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y - 70 });
+	m_menu.setPosition({ SCREEN_CENTER.x - 900 , SCREEN_CENTER.y + 350 });
 	m_menu.setString("Menu");
 	m_menu.setOutlineColor(sf::Color(230, 230, 255, 255));
 	m_menu.setOutlineThickness(OUTLINE_THICKNESS);
