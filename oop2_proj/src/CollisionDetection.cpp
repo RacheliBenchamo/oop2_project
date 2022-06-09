@@ -21,10 +21,11 @@ namespace // anonymous namespace — the standard way to make function "static"
     using HitMap = std::map<MapKey, HitFunctionPtr>;
 
 
-    void startSound(sf::SoundBuffer sound)
+    void startSound(sf::SoundBuffer* sound)
     {
+        std::cout << "k\n";
         static sf::Sound effect;
-        effect.setBuffer(sound);
+        effect.setBuffer(*sound);
         effect.play();
         effect.setVolume(VOLUME_COLLISION);
     }
@@ -84,8 +85,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 //------------------------------------------------------------------------
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-   
-    startSound(*FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
+    startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
    
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();
