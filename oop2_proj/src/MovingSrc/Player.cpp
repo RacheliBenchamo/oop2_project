@@ -305,12 +305,14 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 	 else if (collisionFromBelow(floor))
 		 m_shape.move(FALL_PUSH);
 }
-//------------------------------------------------------------------------
+//-----------------------------------------------------
+
 void Player::handleCollisionLeftFloor(GameObjBase& floor)
 {
-	if (CollisionFromAboveFloor(floor) && CollisionFromAboveLeftFloor(floor))
+	if (CollisionFromAboveFloor(floor) &&(
+		CollisionFromAboveLeftFloor(floor) ||
+		m_shape.getScale() != SCALE_LEFT))
 	{
-
 		m_falling = false;
 		m_onFloor = true;
 	}
@@ -322,11 +324,14 @@ void Player::handleCollisionLeftFloor(GameObjBase& floor)
 	}
 	
 }
-//------------------------------------------------------------------------
+//----------------------------------------------------------
+
 void Player::handleCollisionRightFloor(GameObjBase& floor)
 {
 
-	 if (CollisionFromAboveFloor(floor)&&CollisionFromAboveRightFloor(floor))
+	 if (CollisionFromAboveFloor(floor)&&(
+		 CollisionFromAboveRightFloor(floor)||
+		 m_shape.getScale()!= SCALE_RIGHT))
 	{
 
 		m_falling = false;
@@ -340,17 +345,20 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 	}
 
 }
+//---------------------------------------
 
 void Player::startSound() const
 {
 	static sf::Sound effect;
 	if (m_climbing)
 	{
-		effect.setBuffer(*FileManager::instance().getPlayerSound(CLIME, levels(m_level)));
+		effect.setBuffer(*FileManager::instance().getPlayerSound
+		(CLIME, levels(m_level)));
 	}
 	else
 	{
-		effect.setBuffer(*FileManager::instance().getPlayerSound(WALK, levels(m_level)));
+		effect.setBuffer(*FileManager::instance().getPlayerSound
+		(WALK, levels(m_level)));
 	}
 
 
