@@ -113,7 +113,7 @@ void FileManager::loadPlayerRect()
 void FileManager::loadAudio()
 {
 	//m_audio[S_GIFT].loadFromFile("giftSound.wav");
-	m_audio[S_TAKE_DIAMOND].loadFromFile("button_clicked_sound.wav");
+	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
@@ -122,9 +122,9 @@ void FileManager::loadAudio()
 	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 
-	m_backGroundAudio[LEVEL1].loadFromFile("Level1beckgraund.wav");
-	m_backGroundAudio[LEVEL2].loadFromFile("Level2beckgraund.wav");
-	m_backGroundAudio[LEVEL3].loadFromFile("Level3beckgraund.wav");
+	m_backGroundAudio[LEVEL1].loadFromFile("SnowolfHurt.wav");
+	m_backGroundAudio[LEVEL2].loadFromFile("Level2backgraund.wav");
+	m_backGroundAudio[LEVEL3].loadFromFile("Level3backgraund.wav");
 
 	//for 3 levels
 	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
@@ -143,27 +143,26 @@ void FileManager::loadAudio()
 	m_playerAudio[LEVEL3][HURT].loadFromFile("takeKeySound.wav");
 
 	//for each monster in each level
-	m_monstersAudio[LEVEL1][HIT1].loadFromFile("MurshiHit.wav");
-	m_monstersAudio[LEVEL1][HURT1].loadFromFile("MurshiDied.wav");
-	m_monstersAudio[LEVEL1][HIT2].loadFromFile("TreeHit.wav");
-	m_monstersAudio[LEVEL1][HURT2].loadFromFile("TreeDied.wav");
-	m_monstersAudio[LEVEL1][HIT3].loadFromFile("takeKeySound.wav");
-	m_monstersAudio[LEVEL1][HURT3].loadFromFile("takeKeySound.wav");
+	m_monstersAudio[LEVEL1][HIT1].loadFromFile("MushriHit.wav");
+	m_monstersAudio[LEVEL1][HURT1].loadFromFile("MushriHurt.wav");
+	m_monstersAudio[LEVEL1][HIT2].loadFromFile("TreetHit.wav");
+	m_monstersAudio[LEVEL1][HURT2].loadFromFile("TreetHurt.wav");
+	m_monstersAudio[LEVEL1][HIT3].loadFromFile("GreemonHit.wav");
+	m_monstersAudio[LEVEL1][HURT3].loadFromFile("GreemonHurt.wav");
 
 	m_monstersAudio[LEVEL2][HIT1].loadFromFile("PenguwulungHit.wav");
-	m_monstersAudio[LEVEL2][HURT1].loadFromFile("PenguwulungDiad.wav");
-	m_monstersAudio[LEVEL2][HIT2].loadFromFile("WolfHit.wav");
-	m_monstersAudio[LEVEL2][HURT2].loadFromFile("WolfDied.wav");
+	m_monstersAudio[LEVEL2][HURT1].loadFromFile("PenguwulungHurt.wav");
+	m_monstersAudio[LEVEL2][HIT2].loadFromFile("SnowolfHit.wav");
+	m_monstersAudio[LEVEL2][HURT2].loadFromFile("SnowolfHurt.wav");
 	m_monstersAudio[LEVEL2][HIT3].loadFromFile("YetteyeyHit.wav");
-	m_monstersAudio[LEVEL2][HURT3].loadFromFile("YetteyeyDied.wav");
+	m_monstersAudio[LEVEL2][HURT3].loadFromFile("YetteyeyHurt.wav");
 
-	m_monstersAudio[LEVEL3][HIT1].loadFromFile("CactisDied.wav");
-	m_monstersAudio[LEVEL3][HURT1].loadFromFile("CactisDied.wav");
-	m_monstersAudio[LEVEL3][HIT2].loadFromFile("CactisDied.wav");
-	m_monstersAudio[LEVEL3][HURT2].loadFromFile("CactisDied.wav");
-	m_monstersAudio[LEVEL3][HIT3].loadFromFile("CactisDied.wav");
-	m_monstersAudio[LEVEL3][HURT3].loadFromFile("CactisDied.wav");
-
+	m_monstersAudio[LEVEL3][HIT1].loadFromFile("CactisHit.wav");
+	m_monstersAudio[LEVEL3][HURT1].loadFromFile("CactisHurt.wav");
+	m_monstersAudio[LEVEL3][HIT2].loadFromFile("FroggoHit.wav");
+	m_monstersAudio[LEVEL3][HURT2].loadFromFile("FroggoHurt.wav");
+	m_monstersAudio[LEVEL3][HIT3].loadFromFile("SuricatiHit.wav");
+	m_monstersAudio[LEVEL3][HURT3].loadFromFile("SuricatiHurt.wav");
 
 }
 //--------------------------------------------------

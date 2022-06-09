@@ -1,7 +1,7 @@
 #pragma once
 #include "StaticObj.h"
 
-class Posion : public StaticObj
+class Potion : public StaticObj
 {
 public:
 	using StaticObj::StaticObj;

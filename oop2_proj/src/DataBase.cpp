@@ -319,10 +319,10 @@ void  DataBase::grillPotion(sf::Vector2f pos)
 	switch ((posion)type)
 	{
 	case posion::POWERPOSION:
-		m_staticsObj.push_back(std::make_unique<PowerPosion>(pos));
+		m_staticsObj.push_back(std::make_unique<PowerPotion>(pos));
 		break;
 	case posion::LIFE_POSION:
-		m_staticsObj.push_back(std::make_unique<LifePosion>(pos));
+		m_staticsObj.push_back(std::make_unique<LifePotion>(pos));
 		break;
 	default:
 		break;//pos);

@@ -1,10 +1,10 @@
-#include "StaticInclude\Posion.h"
+#include "StaticInclude\Potion.h"
 
 
 //--------------------------------------------------
 //start took gift sound
 
-void Posion::startSound()
+void Potion::startSound()
 {
 
 }

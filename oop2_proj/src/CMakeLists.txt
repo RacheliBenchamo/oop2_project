@@ -15,7 +15,7 @@
                                               "StaticSrc/Diamond.cpp"
                                                "StaticSrc/Rope.cpp"
                                                "StaticSrc/StaticObj.cpp"
-                                               "StaticSrc/Posion.cpp"
+                                               "StaticSrc/Potion.cpp"
                                                 "StaticSrc/StageDec.cpp"
                                                 "WinScreen.cpp"
                                                 "LoseScreen.cpp"

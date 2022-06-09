@@ -14,7 +14,7 @@
 #include "StaticInclude\LeftFloor.h"
 #include "StaticInclude\RightFloor.h"
 #include "StaticInclude\Gate.h"
-#include "StaticInclude\Posion.h"
+#include "StaticInclude\Potion.h"
 #include "StaticInclude\LifePosion.h"
 #include "StaticInclude\PowerPosion.h"
 #include "StaticInclude\StageDec.h"

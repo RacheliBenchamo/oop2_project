@@ -6,9 +6,7 @@
 #include "MovingInclude/Monster.h"
 
 // Static Objects.
-//#include "StaticInclude/Block.h"
 #include "StaticInclude/Floor.h"
-//#include "StaticInclude/Rope.h"
 #include "StaticInclude/Teleport.h"
 #include "StaticInclude/Diamond.h"
 #include "StaticInclude/ExtraLife.h"
@@ -23,7 +21,6 @@ namespace // anonymous namespace — the standard way to make function "static"
 
     void startSound(sf::SoundBuffer* sound)
     {
-        std::cout << "k\n";
         static sf::Sound effect;
         effect.setBuffer(*sound);
         effect.play();
@@ -112,7 +109,7 @@ void playerLifePotion(GameObjBase& p, GameObjBase& g)
         effect.play();
         effect.setVolume(VOLUME_COLLISION);
         static_cast<Player&>(p).addLife();
-        static_cast<LifePosion&>(g).setToDelete();
+        static_cast<LifePotion&>(g).setToDelete();
     }
 }
 //------------------------------------------------
@@ -126,7 +123,7 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
         effect.play();
         effect.setVolume(VOLUME_COLLISION);
         static_cast<Player&>(p).addPower();
-        static_cast<PowerPosion&>(g).setToDelete();
+        static_cast<PowerPotion&>(g).setToDelete();
     }
 }
 
@@ -170,9 +167,9 @@ void setPlayerCollisionHandling(HitMap& phm)
     // Player & Monster
     phm[MapKey(typeid(Player), typeid(Monster))] = &playerMonster;
     //// Player & ExtraLife
-    phm[MapKey(typeid(Player), typeid(LifePosion))] = &playerLifePotion;
+    phm[MapKey(typeid(Player), typeid(LifePotion))] = &playerLifePotion;
     //// Player & ExtraPower
-    phm[MapKey(typeid(Player), typeid(PowerPosion))] = &playerPowerPotion;
+    phm[MapKey(typeid(Player), typeid(PowerPotion))] = &playerPowerPotion;
 }
 
 //---------------------- setEnemyCollisionHandling -----------------------
