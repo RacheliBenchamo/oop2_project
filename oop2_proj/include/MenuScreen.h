@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include "Screen.h"
 
-class Menu:public Screen
+class MenuScreen:public Screen
 {
 public:
-	Menu();
-	~Menu() {};
+	MenuScreen();
+	~MenuScreen() {};
 
 	gender getSelectedPlayer()const { return m_selectedPlayer; };
 

@@ -1,12 +1,12 @@
 #pragma warning (disable : 4996)
-#include "Menu.h"
+#include "MenuScreen.h"
 #include "Macros.h"
 #include <iostream>
 
 //--------------------------------------------------
 //constructor
 
-Menu::Menu()
+MenuScreen::MenuScreen()
 	:m_pressStart(false), m_pressHelp(false)
 {
 	this->m_font=(*(FileManager::instance().getFont()));
@@ -23,7 +23,7 @@ Menu::Menu()
 //--------------------------------------------------
 //set the header details
 
-void Menu::setHeader()
+void MenuScreen::setHeader()
 {
 	m_header.setFont(m_font);
 	m_header.setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
@@ -37,7 +37,7 @@ void Menu::setHeader()
 //--------------------------------------------------
 //set the start details
 
-void Menu::setStart()
+void MenuScreen::setStart()
 {
 	m_start.setFont(m_font);
 	m_start.setColor(sf::Color(153, 153, 255, 255));
@@ -50,7 +50,7 @@ void Menu::setStart()
 //--------------------------------------------------
 //set the help details
 
-void Menu::setHelp()
+void MenuScreen::setHelp()
 {
 	m_help.setFont(m_font);
 	m_help.setColor(sf::Color(153, 153, 255, 255));
@@ -63,7 +63,7 @@ void Menu::setHelp()
 //--------------------------------------------------
 //set the exit details
 
-void Menu::setExit()
+void MenuScreen::setExit()
 {
 	m_exit.setFont(m_font);
 	m_exit.setColor(sf::Color(153, 153, 255, 255));
@@ -76,7 +76,7 @@ void Menu::setExit()
 //--------------------------------------------------
 //set the Players details
 
-void Menu::setPlayer()
+void MenuScreen::setPlayer()
 {
 	auto m_pTexture = FileManager::instance().getPlayerTexture();
 	m_boyplayer.setTexture(m_pTexture);
@@ -99,7 +99,7 @@ void Menu::setPlayer()
 //------------------------------------------------
 //draw all the buttons on the window
 
-void Menu::draw(sf::RenderWindow& window)
+void MenuScreen::draw(sf::RenderWindow& window)
 {
 	window.clear(sf::Color::White);
 	window.draw(this->m_background);
@@ -114,7 +114,7 @@ void Menu::draw(sf::RenderWindow& window)
 //--------------------------------------------------
 //handle click on the menu buttons
 
-screensOption Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 {
 	if (this->m_start.getGlobalBounds().contains(Location)) // pressed start
 	{
@@ -157,7 +157,7 @@ screensOption Menu::handleClick(const sf::Vector2f& Location, sf::RenderWindow& 
 //--------------------------------------------------
 //handle moving on the menu buttons
 
-void Menu::handleMove(const sf::Vector2f& Location)
+void MenuScreen::handleMove(const sf::Vector2f& Location)
 {
 	// mark/unmark start button
 	if (this->m_start.getGlobalBounds().contains(Location))

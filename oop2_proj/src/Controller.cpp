@@ -69,7 +69,7 @@ void Controller::setNewGame()
 	setBigView();
 	currScreen = MENU;
 	handleScreens();
-	m_playerGender = static_cast<Menu&>(*m_screens[MENU]).getSelectedPlayer();
+	m_playerGender = static_cast<MenuScreen&>(*m_screens[MENU]).getSelectedPlayer();
 	m_board.readLevelData(m_dataBase, m_playerGender);
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(true);
@@ -194,7 +194,7 @@ void Controller::startnewGame()
 void Controller::setScreens()
 {
 	m_screens.push_back(std::make_unique<HelpScreen>());
-	m_screens.push_back(std::make_unique<Menu>());
+	m_screens.push_back(std::make_unique<MenuScreen>());
 	m_screens.push_back(std::make_unique<LoseScreen>());
 	m_screens.push_back(std::make_unique<WinScreen>());
 }

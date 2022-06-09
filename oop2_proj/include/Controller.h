@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "menu.h"
+#include "MenuScreen.h"
 #include "HelpScreen.h"
 #include "WinScreen.h"
 #include "LoseScreen.h"
