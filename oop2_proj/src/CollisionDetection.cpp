@@ -75,7 +75,6 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Player&>(p).getHitingStatus())
     {
-        std::cout << "r\n";
         static_cast<Monster&>(f).handleHit();
         startSound(FileManager::instance().getMonsterSound(HURT,
             static_cast<Monster&>(f).getCurrLevel(),static_cast<Monster&>(f).getMonNumber()));
@@ -83,7 +82,6 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
         
     else
     {
-        std::cout << "h\n";
         static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
         startSound(FileManager::instance().getMonsterSound(HIT,
             static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));

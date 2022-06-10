@@ -8,7 +8,10 @@ Board::Board()
 	: m_startOfPrevLevel(0), m_startOfTheLevel(0)
 {
 	this->m_input.open("Levels.txt", std::ios_base::in);
-
+	if (!(m_input.is_open()))
+	{
+		throw std::iostream::failure("File: Levels.txt doesnt exist\n");
+	}
 }
 //-------------------------------------------------
 //read the data of the level as size of the level and time
@@ -22,6 +25,7 @@ bool Board::readLevelData(DataBase& dataBase, gender g)
 		return false;
 
 	int maxDimonds = 0;
+	
 	if (m_input.is_open())
 	{
 	
