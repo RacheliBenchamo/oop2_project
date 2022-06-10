@@ -181,7 +181,7 @@ void Controller::startnewGame()
 	m_board.resetInputStream();
 	m_statusBar.resetNumOfLevel();
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
-
+	m_dataBase.setLevel();
 	currScreen = WIN;
 	setBigView();
 	handleScreens();
