@@ -42,6 +42,8 @@ configure_file ("resetButton.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Seagram tfb.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Tinos-BoldItalic.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 configure_file ("sounds/takeKeySound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/Level1backgraund.wav" ${CMAKE_BINARY_DIR} COPYONLY)

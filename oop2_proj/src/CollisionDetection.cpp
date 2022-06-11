@@ -84,7 +84,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
     {
         startSound(FileManager::instance().getMonsterSound(HIT,
             static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
-        static_cast<Player&>(p).handelHit(static_cast<Monster&>(f).getForce());
+        static_cast<Player&>(p).handleHit(static_cast<Monster&>(f).getForce());
     }
 
 }

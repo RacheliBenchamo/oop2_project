@@ -222,10 +222,11 @@ void StatusBar::setTimeText()
 void StatusBar::setDiamondCounter()
 {
 	this->m_diamondText.setFont(*FileManager::instance().getFont());
-	this->m_diamondText.setCharacterSize(STATUS_BAR_CHAR_SIZE-2);
-	this->m_diamondText.setColor(sf::Color(230, 230, 255, 255));
-	//this->m_diamondText.setOutlineColor(sf::Color(230, 230, 255, 255));
-	//this->m_diamondText.setOutlineThickness(STATUS_BAR_OUTLINE_THICKNESS);
+	this->m_diamondText.setCharacterSize(STATUS_BAR_CHAR_SIZE-1);
+	this->m_diamondText.setFillColor(sf::Color::White);
+	this->m_diamondText.setOutlineThickness(0.5);
+	this->m_diamondText.setOutlineColor(sf::Color::White);
+
 
 	m_diamondIcon.setTexture(*FileManager::instance().getBIcons(B_DIAMOND));
 	m_diamondIcon.scale(MUSIC_ICON_SCALE*3.f);

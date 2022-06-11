@@ -53,9 +53,8 @@ public:
     int getPlayerDiamonds()const { return m_player->getDiamondsCount(); }
     void setGender(const gender g) { m_gender = g; };
     void resetLevel() { m_currLevel = 1; };
-    void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
-   
-
+    void setCurrLevel(int currLevel) { m_currLevel = currLevel; };
+    void printDamage();
     
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
@@ -73,7 +72,7 @@ private:
     void AllowedToEnterTeleport(int, int);
    //void handelMonstersCollisions();
     void deleteRelevantObj();
-    void grillPotion(sf::Vector2f pos);
+    void randPotion(sf::Vector2f pos);
     void eraseAllMonsters();
 
     sf::Vector2f m_levelSize;

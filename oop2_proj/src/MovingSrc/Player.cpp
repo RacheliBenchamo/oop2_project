@@ -269,7 +269,7 @@ void Player::setHittingStatus(const bool status)
 }
 //---------------------------------------------------------
 
-void Player::handelHit(int force)
+void Player::handleHit(int force)
 {
 	static int hitCounter = 0;
 	
@@ -283,6 +283,8 @@ void Player::handelHit(int force)
 	{
 		m_animation.operation(Operation::Hurt);
 		hitCounter--;
+		setDamagePos(m_shape.getPosition() - m_shape.getSize());
+		setHurt(true);
 	}
 	else
 		hitCounter = 0;

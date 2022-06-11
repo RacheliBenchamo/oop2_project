@@ -37,7 +37,6 @@ public:
 	const AnimationData& getMonstersData(levels,icons);
 	const AnimationData& getPlayerData(gender);
 
-
 private:
 	FileManager();
 	FileManager(const FileManager&) = default;
@@ -54,7 +53,6 @@ private:
 	void loadResetIcon();
 	void loadBackgrounds();
 	void loadBackgroundIcons();
-
 	void setAnimationsData();
 	void createPlayerAnimeData();
 	void createDesertMonstersAnimeData();
@@ -75,7 +73,6 @@ private:
 	sf::Texture m_musicTexture[2];
 	sf::Texture m_playStopTexture[2];
 	sf::Texture m_restartIcon;
-
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::SoundBuffer m_backGroundAudio[NUM_OF_LEVELS];
 	sf::SoundBuffer m_playerAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];

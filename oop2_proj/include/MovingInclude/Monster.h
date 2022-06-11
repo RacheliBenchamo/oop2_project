@@ -19,7 +19,7 @@ public:
 private:
 	bool isPlayerClose();
 	sf::Vector2f getMove();
-	void grillDir();
+	void randDir();
 	void goAccordingToPlayerPos();
 
 	sf::Vector2f m_playerPos{ 0,0 };

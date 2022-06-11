@@ -17,7 +17,7 @@ FileManager::FileManager()
 	loadBackgrounds();
 	loadResetIcon();
 	setAnimationsData();
-	this->m_font.loadFromFile("Seagram tfb.ttf");
+	this->m_font.loadFromFile("Tinos-BoldItalic.ttf");
 
 }
 //--------------------------------------------------
@@ -549,4 +549,5 @@ void FileManager::createDesertMonstersAnimeData()
 	({ 60, 66 }, { 7, 290 }, 0, 5, Dead), 0.005f, true);
 
 }
+
 

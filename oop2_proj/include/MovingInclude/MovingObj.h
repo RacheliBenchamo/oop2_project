@@ -13,17 +13,21 @@ public:
 	sf::Vector2f getPrevPos() const{ return m_prevPos; }
 	sf::Vector2f getCurrDir()const { return m_currDirection; }
 	void backToPrevPos();
-	virtual void update(const sf::Time&) {};
+	virtual void update(const sf::Time&) {}
 	int getLife()  const { return m_life; }
 	int getForce()const { return m_force; }
-	bool getHitingStatus() const { return m_hitingStatus; };
+	bool getHitingStatus() const { return m_hitingStatus; }
 	void beHurt() ;
 	bool onFloor() const{ return m_onFloor; };
 	virtual void handleCollisionFloor(GameObjBase& floor)=0;
 
-	levels getCurrLevel() const { return levels(m_level); };
-	void setCurrLevel(const int level) { m_level = level; };
-
+	levels getCurrLevel() const { return levels(m_level); }
+	void setCurrLevel(const int level) { m_level = level; }
+	void setDamagePos(const sf::Vector2f pos);
+	void printDamage(sf::RenderWindow& window)const;
+	void setDamageString();
+	void setHurt(const bool isHurt) { m_hurt = isHurt; }
+	bool toPrintDamage() const { return m_hurt; }
 protected:
 	bool collisionFromLeft(GameObjBase& g) const;
 	bool collisionFromRight(GameObjBase& g) const;
@@ -51,8 +55,11 @@ protected:
 		m_falling ,m_up ,m_down;
 
 private:
+	bool m_hurt;
 	void updateSpriteCol();
+	void setDamage();
 	int m_level;
+	sf::Text m_damage;
 	sf::Vector2f m_prevPos;	
 	sf::Vector2f m_currDirection;
 

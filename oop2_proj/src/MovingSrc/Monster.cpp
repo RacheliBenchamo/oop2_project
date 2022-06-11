@@ -15,11 +15,11 @@ Monster::Monster(const sf::Vector2f& pos, icons icon,
 	m_force = force;
 	m_life = 300;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
-	grillDir();
+	randDir();
 }
 //------------------------------------------------------------------------
 
-void Monster::grillDir()
+void Monster::randDir()
 {
 	int dir = rand() % 2;
 
@@ -99,6 +99,9 @@ void Monster::handleHit()
 			m_animation.operation(Operation::Hurt);
 			goAccordingToPlayerPos();
 			pushFrom();
+			setDamagePos(m_shape.getPosition() - m_shape.getSize());
+			setHurt(true);
+
 		}
 		else
 		{

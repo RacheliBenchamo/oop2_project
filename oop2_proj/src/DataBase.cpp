@@ -16,8 +16,9 @@ DataBase::DataBase()
 	m_movingRec.setFillColor(sf::Color(255, 255, 0, 250));
 }
 
-//---------------------------------------------------
 
+
+//---------------------------------------------------
 void DataBase::setLevelSize(int x, int y)
 {
 	std::cout << m_currLevel << " lev \n";
@@ -124,22 +125,38 @@ void DataBase::draw(sf::RenderWindow& window)
 
 void DataBase::drawStaticObj(sf::RenderWindow& window)
 {
-	sf::Time delta_time = m_clock.restart();
+	sf::Time deltaTime = m_clock.restart();
 
 	for (auto& e : m_staticsObj)
 	{
-		e->update(delta_time);
+		e->update(deltaTime);
 		e->draw(window);
 	}
 	for (auto& e : m_teleport)
 	{
-		e->update(delta_time);
+		e->update(deltaTime);
 		e->draw(window);
 	}
 	for (auto& e : m_rope)
 	{
 		e->draw(window);
 	}
+
+	for (auto& m : m_monsters)
+	{
+		if (m->toPrintDamage())
+		{
+			m->printDamage(window);
+			m->setHurt(false);
+		}
+			
+	}
+	if (m_player->toPrintDamage())
+	{
+		m_player->printDamage(window);
+		m_player->setHurt(false);
+	}
+	
 }
 //---------------------------------------------------
 //draw all the moving object in the level on the window
@@ -152,6 +169,11 @@ void DataBase::drawMovingObj(sf::RenderWindow& window)
 	{
 		e->update(delta_time);
 		e->draw(window);
+	}
+	if (m_player)
+	{
+		m_player->update(delta_time);
+		m_player->draw(window);
 	}
 	if (m_player)
 	{
@@ -207,37 +229,29 @@ void DataBase::handelCollisions()
 void DataBase::handelMovingCollisions()
 {
 	for (auto& r : m_rope)
-	{
 		if (m_player->checkCollision(*r))
-		{
 			processCollision(*m_player, *r);
 
-		}
-	}
+
 	for (auto& s : m_staticsObj)
 	{
 		if (m_player->checkCollision(*s))
-		{
 			processCollision(*m_player, *s);
 
-		}
 		for (auto& m : m_monsters)
 			if (m->checkCollision(*s))
-			{
 				processCollision(*m, *s);
-			}
+
 		if (typeid(*s) == typeid(Gate)
 			&& m_player->getDiamondsCount() == m_currLevelMaxDiamonds)
 			static_cast<Gate&>(*s).open();
 	}
 	
-	// check collition between player and monsters
-	for (auto& p : m_monsters)
-		if (m_player->checkCollision(*p))
-		{
-			processCollision(*m_player, *p);
+	// check collision between player and monsters
+	for (auto& s : m_monsters)
+		if (m_player->checkCollision(*s))
+			processCollision(*m_player, *s);
 
-		}
 }
 //----------------------------------------------------
 //handle the teleports collisions in this moment
@@ -303,7 +317,7 @@ void DataBase::replaceMonsterWithPotion()
 	{
 		if (m_monsters[i]->getToDelete())
 		{
-			grillPotion(m_monsters[i]->getPos());
+			randPotion(m_monsters[i]->getPos());
 			m_monsters.erase(m_monsters.begin()+i);
 		}
 	}
@@ -311,7 +325,7 @@ void DataBase::replaceMonsterWithPotion()
 //-------------------------------------------------------------
 //gril curent poision  
 
-void  DataBase::grillPotion(sf::Vector2f pos)
+void  DataBase::randPotion(sf::Vector2f pos)
 {
 
 	int type = rand() % 3;
