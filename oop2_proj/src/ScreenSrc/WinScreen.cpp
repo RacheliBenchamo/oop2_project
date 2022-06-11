@@ -1,4 +1,4 @@
-#include "..\include\WinScreen.h"
+#include "ScreensInclude\WinScreen.h"
 
 WinScreen::WinScreen()
 {

@@ -1,4 +1,4 @@
-#include "..\include\LoseScreen.h"
+#include "ScreensInclude\LoseScreen.h"
 
 LoseScreen::LoseScreen()
 {

@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "MenuScreen.h"
-#include "HelpScreen.h"
-#include "WinScreen.h"
-#include "LoseScreen.h"
-#include "GameScreen.h"
+#include "ScreensInclude\MenuScreen.h"
+#include "ScreensInclude\HelpScreen.h"
+#include "ScreensInclude\WinScreen.h"
+#include "ScreensInclude\LoseScreen.h"
+#include "ScreensInclude\GameScreen.h"
 #include "FileManager.h"
 #include <array>
 

@@ -1,7 +1,7 @@
 ﻿target_sources (${CMAKE_PROJECT_NAME} PRIVATE "main.cpp"
                                               "Controller.cpp"
                                               "GameObjBase.cpp"
-                                              "MenuScreen.cpp"
+                                              "ScreenSrc/MenuScreen.cpp"
                                               "FileManager.cpp"
                                               "StatusBar.cpp"
                                               "Board.cpp"
@@ -17,11 +17,11 @@
                                                "StaticSrc/StaticObj.cpp"
                                                "StaticSrc/Potion.cpp"
                                                 "StaticSrc/StageDec.cpp"
-                                                "WinScreen.cpp"
-                                                "LoseScreen.cpp"
-                                                "Screen.cpp"
-                                                "HelpScreen.cpp"
-                                                "GameScreen.cpp"
+                                                "ScreenSrc/WinScreen.cpp"
+                                                "ScreenSrc/LoseScreen.cpp"
+                                                "ScreenSrc/Screen.cpp"
+                                                "ScreenSrc/HelpScreen.cpp"
+                                                "ScreenSrc/GameScreen.cpp"
 
                                                
                                              )
