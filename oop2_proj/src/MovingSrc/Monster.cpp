@@ -50,10 +50,12 @@ void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 
 	m_shape.move(movement);
 
-	//MoveObject::handleEvents();
 	if (outWindow(m_shape.getPosition(), levelSize)||!m_onFloor)
 	{
-		this->backToPrevPos();
+		m_shape.move(-m_lastDir);
+		m_shape.move(-m_lastDir);
+
+		//this->backToPrevPos();
 		m_lastDir = -m_lastDir;
 		m_shape.setScale(-m_shape.getScale().x , 1);
 	}
@@ -82,7 +84,8 @@ void Monster::hit()
 		{
 			m_hitingStatus = true;
 			//playAttackSound();
-			scaleAccordingToPlayerPos();
+			goAccordingToPlayerPos();
+			//scaleAccordingToPlayerPos();
 			//m_animation.operation(Operation::Hit);
 		}
 		else
@@ -166,10 +169,7 @@ sf::Vector2f Monster::getMove()
 	}
 
 	movementClock.restart();
-	m_shape.setScale(SCALE_LEFT);
-	return LEFT_MOVEMENT;
-
-
+	return m_lastDir;
 }
 
 //---------------------------- setOperation ------------------------------
@@ -204,28 +204,6 @@ void Monster::scaleAccordingToPlayerPos()
 void Monster::handleCollisionFloor(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
-	{
-		setPrevPos(m_shape.getPosition());
-		m_falling = false;
-		m_onFloor = true;
-	}
-}
-//------------------------------------------------------------------------
-void Monster::handleCollisionLeftFloor(GameObjBase& floor)
-{
-	if (CollisionFromAboveLeftFloor(floor) ||
-		m_shape.getScale() != SCALE_LEFT)
-	{
-		setPrevPos(m_shape.getPosition());
-		m_falling = false;
-		m_onFloor = true;
-	}
-}
-//------------------------------------------------------------------------
-void Monster::handleCollisionRightFloor(GameObjBase& floor)
-{
-	if ( CollisionFromAboveRightFloor(floor) ||
-		m_shape.getScale() != SCALE_RIGHT)
 	{
 		setPrevPos(m_shape.getPosition());
 		m_falling = false;

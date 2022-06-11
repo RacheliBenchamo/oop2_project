@@ -14,8 +14,6 @@ public:
 	void setOperation(const Operation );
 	void handleHit();
 	void handleCollisionFloor(GameObjBase& floor)override;
-	void handleCollisionLeftFloor(GameObjBase& floor) override;
-	void handleCollisionRightFloor(GameObjBase& floor) override;
 	void pushFrom();
 	monster getMonNumber() const {return monster(m_monsterNum);};
 

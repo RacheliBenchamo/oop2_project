@@ -138,18 +138,7 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
 ////------------------------------------------------------------------------
 void monsterFloor(GameObjBase& e, GameObjBase& f)
 {
-    if (typeid(f) == typeid(RightFloor))
-    {
-        static_cast<Monster&>(e).handleCollisionRightFloor(f);
-
-    }
-    else if (typeid(f) == typeid(LeftFloor))
-    {
-        static_cast<Monster&>(e).handleCollisionLeftFloor(f);
-    }
-
-    else
-        static_cast<Monster&>(e).handleCollisionFloor(f);
+   static_cast<Monster&>(e).handleCollisionFloor(f);
 }
 
 //---------------------- setPlayerCollisionHandling ----------------------
@@ -184,10 +173,6 @@ void setMonsterCollisionHandling(HitMap& phm)
 {
     //// monster & Floor.
     phm[MapKey(typeid(Monster), typeid(Floor))] = &monsterFloor;
-    phm[MapKey(typeid(Monster), typeid(RightFloor))] = &monsterFloor;
-    phm[MapKey(typeid(Monster), typeid(LeftFloor))] = &monsterFloor;
-
-
 }
 
 //------------------------ initializeCollisionMap ------------------------

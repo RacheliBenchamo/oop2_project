@@ -29,7 +29,6 @@ void DataBase::setLevelSize(int x, int y)
 void DataBase::setData(char c, int i, int j)
 {
 	sf::Vector2f pos(i, j);
-	//std::cout <<c <<" " <<pos.x << " " << pos.y << "\n";
 		if(!createStaticObj(c, pos))
 		createMovingObj(c, pos);
 }
@@ -41,7 +40,7 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	switch (c)
 	{
 	case PLAYER_C:
-		m_player = std::make_unique<Player>(pos+sf::Vector2f(0,20),m_gender,m_currLevel);
+		m_player = std::make_unique<Player>(pos+sf::Vector2f(7,20),m_gender,m_currLevel);
 		break;
 	case  MONSTER1_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos,MONSTER1, 

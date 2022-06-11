@@ -47,12 +47,16 @@ void Controller::run() try
 				handelMouseButtonReleased(event);
 				break;
 			case sf::Event::KeyPressed:
+				if (event.key.code == sf::Keyboard::R)
+					resetLevel();
+				//to delete
 				if (event.key.code == sf::Keyboard::P)
 					startNewLevel();
 				break;
 			}
 			handelEvents();
 	}
+
 }
 
  catch (const std::exception& e) 
@@ -144,7 +148,6 @@ void Controller::startNewLevel()
 		startSound();
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
-		//winLevelScreen();
 		m_board.readLevel(m_dataBase);
 		m_statusBar.updateLevel( true);
 		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
@@ -213,13 +216,9 @@ void Controller::handleScreens()
 			currScreen = MENU;
 			break;
 		case RESTART:
-			currScreen = NONE;
 			resetLevel();
-			break;
-		case START:
-			currScreen = NONE;
-			break;
 		default:
+			currScreen = NONE;
 			break;
 		}
 	}
@@ -239,15 +238,15 @@ void Controller::setBackground()
 {
 	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
 	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
-	switch (m_levelNum)
+	switch (m_levelNum-1)
 	{
-	case STAGE_ONE:
+	case LEVEL1:
 		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL1_BACKGROUND));
 		break;
-	case STAGE_TWO:
+	case LEVEL2:
 		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL2_BACKGROUND));
 		break;
-	case STAGE_THREE:
+	case LEVEL3:
 		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL3_BACKGROUND));
 		break;
 	default:

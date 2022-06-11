@@ -36,6 +36,7 @@ screensOption Screen::activateScreen(sf::RenderWindow& window)
 			}
 		}
 	}
+	return CLOSE;
 }
 //----------------------------------------------------------------
 void Screen::playMoveSound()

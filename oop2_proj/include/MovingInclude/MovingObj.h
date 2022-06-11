@@ -20,8 +20,7 @@ public:
 	void beHurt() ;
 	bool onFloor() const{ return m_onFloor; };
 	virtual void handleCollisionFloor(GameObjBase& floor)=0;
-	virtual void handleCollisionLeftFloor(GameObjBase& floor) = 0;
-	virtual void handleCollisionRightFloor(GameObjBase& floor) = 0;
+
 	levels getCurrLevel() const { return levels(m_level); };
 	void setCurrLevel(const int level) { m_level = level; };
 

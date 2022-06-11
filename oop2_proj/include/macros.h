@@ -47,8 +47,8 @@ const unsigned int VOLUME_COLLISION = 6;
 const unsigned int BUTTON_VOLUME = 10; 
 
 // window data
-const int WINDOW_WIDTH = 1900,
-WINDOW_HEIGHT = 900,
+const int WINDOW_WIDTH = 1950,
+WINDOW_HEIGHT = 950,
 CAMERA_WIDTH = 360,
 CAMERA_HEIGHT = 240;
 
@@ -100,7 +100,7 @@ enum gender
 
 enum screensOption
 {
-    HELP, MENU,LOSE,WIN, RESTART, EXIT,NONE,START
+    HELP, MENU,LOSE,WIN, RESTART, EXIT,NONE,START,CLOSE
 };
 
 enum decoration
@@ -119,27 +119,22 @@ enum levels
 
 enum posion
 {
-    POWERPOSION,
-    LIFE_POSION
+    POWERPOSION,  LIFE_POSION
 };
 enum sounds
 {
-	S_IN_TELEPORT,
-	S_WIN_LEVEL, S_WIN_GAME, S_BACKROUND,
+	S_IN_TELEPORT,	S_WIN_LEVEL, S_WIN_GAME, S_BACKROUND,
 	 S_TAKE_KEY,S_TAKE_DIAMOND,S_TAKE_POSION,S_ABOVE,S_CLICKED
 };
 enum monster 
 {
-    M_FIRST,
-    M_SECOND,
-    M_THIRD
+    M_FIRST,   M_SECOND, M_THIRD
 };
 
 enum backgroundsType
 {
 	MENU_BACKGROUND, LEVEL1_BACKGROUND, LEVEL2_BACKGROUND, LEVEL3_BACKGROUND,
-    HELP_BACKGROUND,WIN_LEVEL_BACKGROUND,
-	WIN_GAME_BACKGROUND
+    HELP_BACKGROUND,WIN_LEVEL_BACKGROUND,WIN_GAME_BACKGROUND
 };
 
 
@@ -150,17 +145,14 @@ enum direction
 
 enum playerSounds 
 {
-    WALK,
-    JUMP,
-    CLIME,
+    WALK,JUMP,CLIME,
 };
 
 enum monsterSounds
 {
-    HIT,
-    HURT,
+    HIT, HURT,
 };
-const int STAGE_ONE = 1, STAGE_TWO = 2, STAGE_THREE = 3;
+
 
 const sf::Vector2f SCALE_RIGHT{ -1,1 };
 const sf::Vector2f SCALE_LEFT{ 1,1 };
