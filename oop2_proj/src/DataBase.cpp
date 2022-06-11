@@ -20,6 +20,7 @@ DataBase::DataBase()
 
 void DataBase::setLevelSize(int x, int y)
 {
+	std::cout << m_currLevel << " lev \n";
 	m_levelSize.x = x;
 	m_levelSize.y = y;
 }

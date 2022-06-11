@@ -52,7 +52,7 @@ public:
     int getPlayerLife()const { return m_player->getLife(); }
     int getPlayerDiamonds()const { return m_player->getDiamondsCount(); }
     void setGender(const gender g) { m_gender = g; };
-    void setLevel() { m_currLevel = 1; };
+    void resetLevel() { m_currLevel = 1; };
     void setCurrLevel(int currLevel) { m_currLevel = currLevel;};
    
 
@@ -89,12 +89,10 @@ private:
     std::vector<std::unique_ptr<Monster>> m_monsters;
     std::vector<std::unique_ptr<Teleport>> m_teleport;
     std::vector<std::unique_ptr<Rope>> m_rope;
-    //std::vector<std::unique_ptr<Floor>> m_floor;
 
     int m_currLevelMaxDiamonds = 0;
     sf::Clock m_clock;
     int m_currLevel;
     gender m_gender = MALE;
-    //CollisionDetection m_co;
 };
 

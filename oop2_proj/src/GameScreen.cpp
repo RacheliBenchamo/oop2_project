@@ -85,6 +85,7 @@ void GameScreen::setNewGame()
 void GameScreen::handelEvents()
 {
 	m_dataBase.move(m_gameClock.restart());
+
 	if (m_dataBase.winLevel())
 		startNewLevel();
 	if (m_dataBase.loseLevel())
@@ -188,14 +189,9 @@ void GameScreen::startnewGame()
 	m_gameClock.restart();
 	m_board.resetInputStream();
 	m_statusBar.resetNumOfLevel();
-	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
-	m_dataBase.setLevel();
-	//currScreen = WIN;
+	m_dataBase.resetLevel();
 	setBigView();
-	//
 	m_levelNum = 1;
-	setBackground();
-	//
 	m_controller-> handleScreens(WIN);
 }
 

@@ -203,7 +203,7 @@ void FileManager::loadBackgrounds()
 	m_backgrounds[LEVEL2_BACKGROUND].loadFromFile("snowBackground.png");
 	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("desertBackground.png");
 	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
-	m_backgrounds[WIN_LEVEL_BACKGROUND].loadFromFile("winLevelBackground.png");
+	m_backgrounds[LOSE_LEVEL_BACKGROUND].loadFromFile("LoseGameBackground.png");
 	m_backgrounds[WIN_GAME_BACKGROUND].loadFromFile("winGameBackground.png");
 }
 //--------------------------------------------
