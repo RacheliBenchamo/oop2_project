@@ -14,11 +14,6 @@ Controller::Controller()
 {
 	m_window.setFramerateLimit(60);
 	setScreens();
-	//menu sound
-	//m_backGroundMusic.setBuffer(*FileManager::instance()
-	//.getBackgraundSaund(levels(m_levelNum-1)));
-
-	//m_currLevelBackground.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT});
 }
 
 
@@ -55,8 +50,6 @@ void Controller::handleScreens(screensOption currScreen)
 		case MENU:
 			currScreen = MENU;
 			break;
-		case RESTART:
-			m_toReset = true;
 		default:
 			currScreen = NONE;
 			break;

@@ -11,7 +11,7 @@ class Board
 {
 public:
 	Board();
-	~Board() {};
+	~Board() { };
 
 	bool readLevelData(DataBase&,gender);
 	void readLevel(DataBase &);

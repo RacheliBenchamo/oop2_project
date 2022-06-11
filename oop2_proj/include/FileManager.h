@@ -13,7 +13,7 @@
 class FileManager
 {
 public:
-	~FileManager() {};
+	~FileManager() =default;
 	static FileManager& instance();
 
     sf::Texture* getSharedStaticTexture(const icons);
@@ -81,7 +81,6 @@ private:
 	sf::SoundBuffer m_playerAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];
 	sf::SoundBuffer m_monstersAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS][NUM_OF_MONSTERS];
 
-	//sf::Sound m_sound;
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];
 	AnimationData m_playerData[2];

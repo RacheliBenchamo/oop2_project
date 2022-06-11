@@ -17,12 +17,10 @@ public:
     void run();
     void handleScreens(screensOption);
     gender getGenderFromMenu();
-    bool getResetLevelFromLoseScreen()const { return m_toReset; };
 
 private:
     void setScreens();
 
     sf::RenderWindow m_window;
     std::vector<std::unique_ptr<Screen>> m_screens;
-    bool m_toReset = false;
 };
