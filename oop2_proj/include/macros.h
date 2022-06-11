@@ -47,7 +47,7 @@ const unsigned int VOLUME_COLLISION = 6;
 const unsigned int BUTTON_VOLUME = 10; 
 
 // window data
-const int WINDOW_WIDTH = 1950,
+const int WINDOW_WIDTH = 1910,
 WINDOW_HEIGHT = 950,
 CAMERA_WIDTH = 360,
 CAMERA_HEIGHT = 240;
@@ -78,7 +78,37 @@ const sf::Vector2f MUSIC_ICON_SCALE = { 0.01f, 0.01f };
 
 //direction data
 const sf::Vector2f DVec[] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
+const sf::Vector2f SCALE_RIGHT{ -1,1 };
+const sf::Vector2f SCALE_LEFT{ 1,1 };
+const sf::Vector2f MOVE_DOUBLE{ 2,0 };
 
+
+
+// movement consts
+const sf::Vector2f UP_MOVEMENT(0, -1);
+const sf::Vector2f HEIGHT(0, 12);
+const sf::Vector2f LEFT_MOVEMENT(-1, 0);
+const sf::Vector2f RIGHT_MOVEMENT(1, 0);
+const sf::Vector2f DOWN_MOVEMENT(0, 1);
+const sf::Vector2f STAY_IN_PLACE(0, 0);
+const sf::Vector2f PUSH_FROM(10, 0);
+const sf::Vector2f PUSH_FROM_MONSTER(0.2, 0);
+const sf::Vector2f FALL_PUSH(0, 3);
+
+const float HANDLE_JUMP_SPEED = 80.f;
+const int JUMP_COUNTER = 22;
+const int HIT_COUNTER = 40;
+
+
+const int PLAYER_DAMAGE = 5;
+
+// scale consts
+const sf::Vector2f WALK_SCALE(0.9f, 1);
+const sf::Vector2f JUMP_SCALE(1.2f, 1);
+const sf::Vector2f HIT_SCALE(0.8f, 1);
+const sf::Vector2f HURT_SCALE(0.8f, 1);
+
+const float HALF_SIZE = 10.f;
 const char
 PLAYER_C='P', EMPTY_C = ' ',
 DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X',
@@ -152,38 +182,6 @@ enum monsterSounds
 {
     HIT, HURT,
 };
-
-
-const sf::Vector2f SCALE_RIGHT{ -1,1 };
-const sf::Vector2f SCALE_LEFT{ 1,1 };
-
-
-// movement consts
-const sf::Vector2f UP_MOVEMENT(0, -1);
-const sf::Vector2f HEIGHT(0, 12);
-const sf::Vector2f LEFT_MOVEMENT(-1, 0);
-const sf::Vector2f RIGHT_MOVEMENT(1, 0);
-const sf::Vector2f DOWN_MOVEMENT(0, 1);
-const sf::Vector2f STAY_IN_PLACE(0, 0);
-const sf::Vector2f PUSH_FROM(10, 0);
-const sf::Vector2f PUSH_FROM_MONSTER(0.2, 0);
-const sf::Vector2f FALL_PUSH(0, 3);
-
-const float HANDLE_JUMP_SPEED = 80.f;
-const int JUMP_COUNTER = 22;
-const int HIT_COUNTER = 40;
-
-
-const int PLAYER_DAMAGE = 5;
-
-// scale consts
-const sf::Vector2f WALK_SCALE(0.9f, 1);
-const sf::Vector2f JUMP_SCALE(1.2f, 1);
-const sf::Vector2f HIT_SCALE(0.8f, 1);
-const sf::Vector2f HURT_SCALE(0.8f, 1);
-
-const float HALF_SIZE = 10.f;
-
 
 enum Operation
 {

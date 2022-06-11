@@ -35,7 +35,6 @@ void Monster::grillDir()
 		break;
 	}
 }
-
 //-------------------------------- move ----------------------------------
 // Moves the enemy.
 // The function works as follows:
@@ -44,24 +43,18 @@ void Monster::grillDir()
 //------------------------------------------------------------------------
 void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
 {
-
-	setPrevPos(m_shape.getPosition());
 	auto movement = getMove();
 
 	m_shape.move(movement);
 
 	if (outWindow(m_shape.getPosition(), levelSize)||!m_onFloor)
 	{
-		m_shape.move(-m_lastDir);
-		m_shape.move(-m_lastDir);
-
-		//this->backToPrevPos();
 		m_lastDir = -m_lastDir;
+		m_shape.move(m_lastDir.x*2, 0);
 		m_shape.setScale(-m_shape.getScale().x , 1);
 	}
 	m_onFloor = false;
 }
-
 //---------------------------- isPlayerClose -----------------------------
 // Returns if the player is close.
 //------------------------------------------------------------------------
@@ -83,15 +76,10 @@ void Monster::hit()
 		if (m_animation.getOperation() != Operation::Hurt)
 		{
 			m_hitingStatus = true;
-			//playAttackSound();
 			goAccordingToPlayerPos();
-			//scaleAccordingToPlayerPos();
-			//m_animation.operation(Operation::Hit);
 		}
 		else
-		{
-			m_hitingStatus = false;
-		}
+		{m_hitingStatus = false;}
 	}
 }
 
@@ -119,15 +107,12 @@ void Monster::handleHit()
 				m_animation.operation(Operation::Dead);
 				dead = true;
 			}
-			else 
+			else
 			{
 				std::this_thread::sleep_for(std::chrono::milliseconds(200));
 				setToDelete();
-				//dead = false;
 			}
 		}
-		/*effect.play();
-		effect.setVolume(VOLUME_COLLISION);*/
 }
 //------------------------------- getMove --------------------------------
 // Return the next move of the Bear.
@@ -139,13 +124,11 @@ sf::Vector2f Monster::getMove()
 	// static timer to have the movement every X time
 	static sf::Clock movementClock;
 
-
 	if (m_animation.getOperation() == Operation::Hurt ||
 		m_animation.getOperation() == Operation::Hit)
 	{
 		return STAY_IN_PLACE;
 	}
-
 	if (movementClock.getElapsedTime().asSeconds() <= 2)
 	{
 		m_animation.operation(Operation::Walk);
@@ -171,31 +154,6 @@ sf::Vector2f Monster::getMove()
 	movementClock.restart();
 	return m_lastDir;
 }
-
-//---------------------------- setOperation ------------------------------
-// sets the operation of the animation.
-//------------------------------------------------------------------------
-void Monster::setOperation(const Operation op)
-{
-	m_animation.operation(op);
-}
-
-
-//----------------------- scaleAccordingToPlayerPos ----------------------
-// Scales the enemy according to the player position.
-//------------------------------------------------------------------------
-void Monster::scaleAccordingToPlayerPos()
-{
-	if (m_shape.getPosition().x < m_playerPos.x)
-	{
-		m_shape.setScale(SCALE_RIGHT);
-	}
-	else
-	{
-		m_shape.setScale(SCALE_LEFT);
-	}
-}
-
 //-------------------------- handleCollision -----------------------------
 // Handles collision with the floor.
 // Pushes the moving object off the floor depending on the location of the
@@ -205,7 +163,6 @@ void Monster::handleCollisionFloor(GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
-		setPrevPos(m_shape.getPosition());
 		m_falling = false;
 		m_onFloor = true;
 	}
@@ -226,10 +183,6 @@ void Monster::goAccordingToPlayerPos()
 	}
 }
 
-void Monster::getHurtSound() const
-{
-}
-
 //-----------------------------------
 
 void Monster::pushFrom()
@@ -239,4 +192,3 @@ void Monster::pushFrom()
 	else
 		m_shape.move(PUSH_FROM_MONSTER);
 }
-

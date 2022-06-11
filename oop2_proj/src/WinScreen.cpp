@@ -71,7 +71,7 @@ void WinScreen::setHeader()
 	m_header.setFont(m_font);
 	m_header.setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
 	m_header.setCharacterSize(HEADER_SIZE);
-	m_header.setPosition({ WINDOW_WIDTH / 2 - 370, 30 });
+	m_header.setPosition({ WINDOW_WIDTH / 2 - 330, 30 });
 	m_header.setString("YOU WON!!!");
 	m_header.setColor(sf::Color(204, 204, 255, 255));
 	m_header.setOutlineColor(sf::Color::Black);
@@ -83,7 +83,7 @@ void WinScreen::setMenu()
 	m_menu.setFont(m_font);
 	m_menu.setColor(sf::Color(153, 153, 255, 255));
 	m_menu.setCharacterSize(REG_CHAR_SIZE);
-	m_menu.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y - 70 });
+	m_menu.setPosition({ SCREEN_CENTER.x - 120 , SCREEN_CENTER.y - 70 });
 	m_menu.setString("Menu");
 	m_menu.setOutlineColor(sf::Color(230, 230, 255, 255));
 	m_menu.setOutlineThickness(OUTLINE_THICKNESS);
@@ -95,7 +95,7 @@ void WinScreen::setExit()
 	m_exit.setFont(m_font);
 	m_exit.setColor(sf::Color(153, 153, 255, 255));
 	m_exit.setCharacterSize(REG_CHAR_SIZE);
-	m_exit.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y + 60 });
+	m_exit.setPosition({ SCREEN_CENTER.x - 90 , SCREEN_CENTER.y + 60 });
 	m_exit.setString("Exit");
 	m_exit.setOutlineColor(sf::Color(230, 230, 255, 255));
 	m_exit.setOutlineThickness(OUTLINE_THICKNESS);

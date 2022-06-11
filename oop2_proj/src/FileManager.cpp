@@ -208,37 +208,31 @@ void FileManager::loadBackgrounds()
 }
 //--------------------------------------------
 
-//sf::SoundBuffer* FileManager::playSound(sounds sound)
-//{
-//	std::cout << "in playSound diamond\n";
-//
-//	return &m_audio[sound];
-//
-//}
 sf::SoundBuffer* FileManager::getPlayerSound(playerSounds sound, levels currLevel)
 {
 	return &m_playerAudio[currLevel-1][sound];
 
 }
+//--------------------------------------------
 
 sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel, monster currMonster)
 {
 	return &m_monstersAudio[currLevel-1][sound][currMonster];
 }
-
+//--------------------------------------------
 
 sf::SoundBuffer* FileManager::getBackgraundSaund(levels currLevel)
 {
 	return &this->m_backGroundAudio[currLevel];
 }
+//--------------------------------------------
 
 sf::SoundBuffer* FileManager::getShareSaund(sounds sound)
 {
 	return &this->m_audio[sound];
 }
-
-
 //--------------------------------------------------
+
 const sf::Texture* FileManager::getMusicIcon(bool musicOn)const
 {
 	if (musicOn)
@@ -424,7 +418,7 @@ void FileManager::createPlayerAnimeData()
 	({ 90, 105 }, { 136, 127 }, 25, 2, Hit), 0.06f, true);
 
 	setCurrentData(m_playerData[FEMALE], Hurt, movableAnimationSet
-	({ 95, 110 }, { 734, 127 }, 0, 2, Hurt), 0.008f, true);
+	({ 95, 105 }, { 734, 127 }, 0, 2, Hurt), 0.008f, true);
 
 	setCurrentData(m_playerData[FEMALE], Climbe, movableAnimationSet
 	({ 110, 105 }, { 18, 126 }, 0, 1, Climbe), 0.05f, false);

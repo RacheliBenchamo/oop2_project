@@ -11,7 +11,6 @@ public:
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
 	void hit();
 	void handleFall() {};
-	void setOperation(const Operation );
 	void handleHit();
 	void handleCollisionFloor(GameObjBase& floor)override;
 	void pushFrom();
@@ -19,15 +18,9 @@ public:
 
 private:
 	bool isPlayerClose();
-	void scaleAccordingToPlayerPos();
 	sf::Vector2f getMove();
 	void grillDir();
 	void goAccordingToPlayerPos();
-
-
-	void getDeathSound() const {};
-	void getHurtSound() const ;
-	void getAttackSound() const {};
 
 	sf::Vector2f m_playerPos{ 0,0 };
 	sf::Vector2f m_lastDir= RIGHT_MOVEMENT;
