@@ -49,7 +49,11 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 					resetLevel();
 				//to delete
 				if (event.key.code == sf::Keyboard::P)
+				{
+					if(m_levelNum ==3)
+						startNewLevel();
 					startNewLevel();
+				}
 				break;
 			}
 		handelEvents();
@@ -191,7 +195,7 @@ void GameScreen::startnewGame()
 	m_statusBar.resetNumOfLevel();
 	m_dataBase.resetLevel();
 	setBigView();
-	m_levelNum = 1;
+	m_levelNum = 0;
 	m_controller-> handleScreens(WIN);
 }
 
