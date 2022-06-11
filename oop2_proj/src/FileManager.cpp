@@ -33,7 +33,6 @@ void FileManager::loadBackgroundIcons()
 	m_backgroundIcons[B_POWER].loadFromFile("PowerIcon.png");
 	m_backgroundIcons[B_LIFE].loadFromFile("LifeIcon.png");
 	m_backgroundIcons[B_DIAMOND].loadFromFile("DiamondIcon.png");
-	//m_backgroundIcons[B_RESTART].loadFromFile("resetButton.png");
 }
 
 // //--------------------------------------------------
@@ -67,7 +66,6 @@ void FileManager::loadStaticObj()
 	m_sharedStaticIcon[POTION_P].loadFromFile("PowerPotion.png");
 	m_sharedStaticIcon[ROPE].loadFromFile("Rope.png");
 	m_sharedStaticIcon[GATE].loadFromFile("Gate.png");
-
 
 	m_dec.loadFromFile("staticDec.png");
 
@@ -112,7 +110,6 @@ void FileManager::loadPlayerRect()
 
 void FileManager::loadAudio()
 {
-	//m_audio[S_GIFT].loadFromFile("giftSound.wav");
 	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
@@ -125,7 +122,6 @@ void FileManager::loadAudio()
 	m_backGroundAudio[LEVEL1].loadFromFile("Level1backgraund.wav");
 	m_backGroundAudio[LEVEL2].loadFromFile("Level2backgraund.wav");
 	m_backGroundAudio[LEVEL3].loadFromFile("Level3backgraund.wav");
-
 	//for 3 levels
 	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
 	m_playerAudio[LEVEL1][JUMP].loadFromFile("potionDrinking.wav");
@@ -199,7 +195,7 @@ void FileManager::loadResetIcon()
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
-	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("gameBackground.png");
+	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("forestBackground.png");
 	m_backgrounds[LEVEL2_BACKGROUND].loadFromFile("snowBackground.png");
 	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("desertBackground.png");
 	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
