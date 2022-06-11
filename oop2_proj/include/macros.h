@@ -17,14 +17,14 @@ P_SIZE = 64; // pixel size
 
 const unsigned int
 HITTING_POWER = 1,
-LESS_LIFE = 1,
-PAYER_FORCE = 15;
+LESS_LIFE = 1;
 
 //monster force
-const unsigned int
-MON1_FORCE = 30,
-MON2_FORCE = 40,
-MON3_FORCE = 50;
+const  int
+MON1_FORCE = 95,
+MON2_FORCE = 45,
+MON3_FORCE = 65,
+PAYER_FORCE = 150;
 
 
 // sizes data

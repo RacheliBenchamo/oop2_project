@@ -11,6 +11,7 @@ MovingObj::MovingObj(const sf::Vector2f& pos, const sf::Vector2f& size,int level
 	m_hitingStatus(false),m_falling(false),
 	m_up(false),m_down(false),GameObjBase(pos, size)
 {
+	setDamage();
 }
 
 
@@ -18,9 +19,9 @@ void MovingObj::setDamage()
 {
 	this->m_damage.setFont(*FileManager::instance().getFont());
 	this->m_damage.setCharacterSize(STATUS_BAR_CHAR_SIZE - 1);
-	this->m_damage.setFillColor(sf::Color::White);
+	this->m_damage.setFillColor(sf::Color::Red);
 	this->m_damage.setOutlineThickness(0.5);
-	this->m_damage.setOutlineColor(sf::Color::White);
+	this->m_damage.setOutlineColor(sf::Color::Red);
 }
 
 //---------------------------------------------------
@@ -35,9 +36,9 @@ void MovingObj::printDamage(sf::RenderWindow& window)const
 }
 
 //---------------------------------------------------
-void MovingObj::setDamageString()
+void MovingObj::setDamageString(const int damage)
 {
-	this->m_damage.setString( " - " + std::to_string(m_force));
+	this->m_damage.setString( " - " + std::to_string(damage));
 }
 
 //---------------------------------------------------

@@ -269,7 +269,7 @@ void Player::setHittingStatus(const bool status)
 }
 //---------------------------------------------------------
 
-void Player::handleHit(int force)
+void Player::handleHit(const float_t damage)
 {
 	static int hitCounter = 0;
 	
@@ -277,13 +277,14 @@ void Player::handleHit(int force)
 	{
 		hitCounter = HIT_COUNTER;
 		// play sound
-		m_life - force <= 0 ? m_life = 0 : m_life -= force;
+		m_life - damage <= 0 ? m_life = 0 : m_life -= damage;
 	}
 	else if (hitCounter != 0)
 	{
 		m_animation.operation(Operation::Hurt);
 		hitCounter--;
 		setDamagePos(m_shape.getPosition() - m_shape.getSize());
+		setDamageString(damage);
 		setHurt(true);
 	}
 	else

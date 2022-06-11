@@ -89,7 +89,7 @@ void Monster::hit()
 // Uses polymorphic functions activates the appropriate animations and
 // sounds.
 //------------------------------------------------------------------------
-void Monster::handleHit()
+void Monster::handleHit(const float_t damage)
 {
 	static bool dead = false;
 
@@ -100,6 +100,7 @@ void Monster::handleHit()
 			goAccordingToPlayerPos();
 			pushFrom();
 			setDamagePos(m_shape.getPosition() - m_shape.getSize());
+			setDamageString(damage);
 			setHurt(true);
 
 		}

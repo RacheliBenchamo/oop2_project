@@ -77,14 +77,14 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
     {
         startSound(FileManager::instance().getMonsterSound(HURT,
             static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
-        static_cast<Monster&>(f).handleHit();
+        static_cast<Monster&>(f).handleHit(static_cast<Player&>(p).getDamage());
     }
         
     else
     {
         startSound(FileManager::instance().getMonsterSound(HIT,
             static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
-        static_cast<Player&>(p).handleHit(static_cast<Monster&>(f).getForce());
+        static_cast<Player&>(p).handleHit(static_cast<Monster&>(f).getDamage());
     }
 
 }

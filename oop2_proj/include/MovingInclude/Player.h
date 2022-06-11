@@ -17,7 +17,7 @@ public:
 	void addDiamond() { m_diamondsCount++; };
 	const int getDiamondsCount() const { return m_diamondsCount; }
 	int getPower()const { return m_power; }
-	void handleHit(int) ;
+	void handleHit(const float_t) ;
 	void incPower() {};
 	void addLife() { m_life + 100 > 1000 ? m_life = 1000 : m_life += 100 ;};
 	void addPower() { m_power+200>1000? m_power=1000:m_power += 200; };

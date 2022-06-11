@@ -15,7 +15,7 @@ public:
 	void backToPrevPos();
 	virtual void update(const sf::Time&) {}
 	int getLife()  const { return m_life; }
-	int getForce()const { return m_force; }
+	float getDamage()const { return m_force; }
 	bool getHitingStatus() const { return m_hitingStatus; }
 	void beHurt() ;
 	bool onFloor() const{ return m_onFloor; };
@@ -25,7 +25,7 @@ public:
 	void setCurrLevel(const int level) { m_level = level; }
 	void setDamagePos(const sf::Vector2f pos);
 	void printDamage(sf::RenderWindow& window)const;
-	void setDamageString();
+	void setDamageString(const int);
 	void setHurt(const bool isHurt) { m_hurt = isHurt; }
 	bool toPrintDamage() const { return m_hurt; }
 protected:
@@ -47,7 +47,7 @@ protected:
 	bool isAlive() const { return m_life > int(0); };
 
 	int m_life;
-	int m_force;
+	float m_force;
 
 	bool m_right,m_left ,
 		m_onFloor ,m_inHnaldeJump ,
@@ -55,7 +55,7 @@ protected:
 		m_falling ,m_up ,m_down;
 
 private:
-	bool m_hurt;
+	bool m_hurt = false;
 	void updateSpriteCol();
 	void setDamage();
 	int m_level;
