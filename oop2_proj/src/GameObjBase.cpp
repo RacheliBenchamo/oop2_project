@@ -60,18 +60,6 @@ void GameObjBase::setToReplace()
 }
 //--------------------------------------------------
 
-//bool GameObjBase::getToReplace()const
-//{
-//	return m_replace;
-//}
-////--------------------------------------------------
-//
-//void GameObjBase::setReplace()
-//{
-//	m_replace = true;
-//}
-//--------------------------------------------------
-
 bool GameObjBase::getToDelete()const
 {
 	return m_delete;
@@ -101,12 +89,4 @@ bool GameObjBase::checkCollision(const GameObjBase& obj)
 			
 
 	return false;
-}
-
-//---------------------------- setDisappear ------------------------------
-// Update that the object should disappear.
-//------------------------------------------------------------------------
-void GameObjBase::setDisappear(bool status)
-{
-	m_disappear = status;
 }
