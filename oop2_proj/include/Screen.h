@@ -8,7 +8,7 @@ public:
 	Screen();
 	~Screen() {};
 
-	screensOption activateScreen(sf::RenderWindow&);
+	virtual screensOption activateScreen(sf::RenderWindow&);
 	void playMoveSound();
 	void playSelectSound();
 	virtual void draw(sf::RenderWindow& window) =0;

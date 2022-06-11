@@ -22,9 +22,9 @@ PAYER_FORCE = 15;
 
 //monster force
 const unsigned int
-MON1_FORCE = 4,
-MON2_FORCE = 6,
-MON3_FORCE = 8;
+MON1_FORCE = 30,
+MON2_FORCE = 40,
+MON3_FORCE = 50;
 
 
 // sizes data
@@ -112,8 +112,9 @@ const float HALF_SIZE = 10.f;
 const char
 PLAYER_C='P', EMPTY_C = ' ',
 DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X',
-GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(', END_FLOOR_C = ')',
-F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R', BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2',
+GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(',
+END_FLOOR_C = ')',F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R',
+BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2',
 MONSTER3_C = '3',GATE_C='#';
 
 enum icons 
@@ -130,7 +131,7 @@ enum gender
 
 enum screensOption
 {
-    HELP, MENU,LOSE,WIN, RESTART, EXIT,NONE,START,CLOSE
+    START,HELP, MENU,LOSE,WIN, RESTART, EXIT,NONE,CLOSE
 };
 
 enum decoration

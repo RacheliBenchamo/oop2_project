@@ -21,6 +21,7 @@
                                                 "LoseScreen.cpp"
                                                 "Screen.cpp"
                                                 "HelpScreen.cpp"
+                                                "GameScreen.cpp"
 
                                                
                                              )

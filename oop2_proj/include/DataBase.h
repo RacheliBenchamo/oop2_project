@@ -43,7 +43,9 @@ public:
     void FindTeleportPartner() const;
     void move(sf::Time);
    // bool takeCurrGift(giftType g) { return m_takeGifts[g]; }
-    bool winLevel();
+    bool winLevel()const;
+    bool loseLevel() const{ return getPlayerLife() <= 0; };
+
     void eraseObj();
     sf::Vector2f getPlayerPos() const { return m_player->getPos(); }
     int getPlayerPower()const  { return m_player->getPower(); }
