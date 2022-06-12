@@ -148,13 +148,15 @@ void GameScreen::startNewLevel()
 
 	//if there is no more levels
 	if (!m_board.readLevelData(m_dataBase, m_playerGender))
+	{
 		startnewGame();
+	}
 	else
 	{
 		m_levelNum++;
 		startSound();
 		setBigView();
-		m_controller->handleScreens(WIN_LEVEL);
+		if (m_levelNum != 1) { m_controller->handleScreens(WIN_LEVEL); }
 		m_playerGender = m_controller->getGenderFromMenu();
 		m_dataBase.setGender(m_playerGender);
 		m_dataBase.setCurrLevel(m_levelNum);
@@ -163,6 +165,8 @@ void GameScreen::startNewLevel()
 		m_statusBar.updateLevel(true);
 		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	}
+	std::cout << "neither \n";
+
 }
 //----------------------------------------------
 //starting the current level again 

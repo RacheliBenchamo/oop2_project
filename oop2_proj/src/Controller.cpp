@@ -20,7 +20,6 @@ Controller::Controller()
 void Controller::run() try
 {
 	handleScreens(START);
-	std::cout << "run\n";
 }
 
  catch (const std::exception& e) 
