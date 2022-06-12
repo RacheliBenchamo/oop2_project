@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "Screen.h"
 
 class WinLevelScreen :public Screen
@@ -7,7 +6,6 @@ class WinLevelScreen :public Screen
 public:
 	WinLevelScreen();
 	~WinLevelScreen() {};
-
 
 private:
 	void draw(sf::RenderWindow& window) override;
@@ -22,5 +20,4 @@ private:
 	sf::Text m_nextLev;
 	sf::Text m_menu;
 	sf::Text m_exit;
-
 };

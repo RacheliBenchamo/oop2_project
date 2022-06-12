@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "Screen.h"
 
 class WinGameScreen :public Screen
@@ -7,7 +6,6 @@ class WinGameScreen :public Screen
 public:
 	WinGameScreen();
 	~WinGameScreen() {};
-
 
 private:
 	void draw(sf::RenderWindow& window) override;

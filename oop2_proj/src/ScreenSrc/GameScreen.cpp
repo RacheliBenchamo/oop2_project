@@ -13,7 +13,7 @@ GameScreen::GameScreen(sf::RenderWindow& window,Controller* controller)
 	:m_playButton(true), m_levelNum(1), m_controller(controller), m_window(&window)
 {
 }
-
+//--------------------------------------------------
 
 screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 {
@@ -100,7 +100,7 @@ void GameScreen::handelEvents()
 //----------------------------------------------
 //handle the event that occurred when the MouseButtonReleased
 
-void GameScreen::handelMouseButtonReleased(sf::Event event)
+void GameScreen::handelMouseButtonReleased(const sf::Event event)
 {
 	if (m_statusBar.containsMusicIcon(event))
 		handelMusicButtonReleased();

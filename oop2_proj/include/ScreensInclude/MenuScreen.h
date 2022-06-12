@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "Screen.h"
 
 class MenuScreen:public Screen
@@ -27,11 +26,7 @@ private:
 	sf::Text m_exit;
 	sf::Text m_help;
 	sf::Text m_pick;
-
 	sf::RectangleShape m_boyplayer;
 	sf::RectangleShape m_girlplayer;
 	gender m_selectedPlayer= WAIT;
-	bool m_pressStart;
-	bool m_pressHelp;
-
 };

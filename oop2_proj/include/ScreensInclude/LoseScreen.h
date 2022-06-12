@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "Screen.h"
 
 class LoseScreen :public Screen
@@ -7,7 +6,6 @@ class LoseScreen :public Screen
 public:
 	LoseScreen();
 	~LoseScreen() {};
-
 
 private:
 	void draw(sf::RenderWindow& window)override;
@@ -22,6 +20,4 @@ private:
 		m_header,
 		m_restart,
 		m_exit;
-
-	bool m_pressMenu;
 };

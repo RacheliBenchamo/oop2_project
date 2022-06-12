@@ -1,5 +1,4 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include "FileManager.h"
 
 class Screen
@@ -14,8 +13,8 @@ public:
 	virtual void draw(sf::RenderWindow& window) =0;
 	virtual screensOption handleClick(const sf::Vector2f&, sf::RenderWindow&) =0;
 	virtual void handleMove(const sf::Vector2f&)=0;
+
 protected:
 	sf::RectangleShape m_background;
 	sf::Font m_font;
-
 };

@@ -13,6 +13,7 @@ class GameScreen :public Screen
 public:
     GameScreen(sf::RenderWindow& ,Controller*);
     ~GameScreen() {};
+
     screensOption activateScreen(sf::RenderWindow&)override;
 
 private:
@@ -25,7 +26,7 @@ private:
     void handelEvents();
     void setView();
     void setNewGame();
-    void handelMouseButtonReleased(sf::Event);
+    void handelMouseButtonReleased(const sf::Event);
     void handelMusicButtonReleased();
     void handelStopPlayButtonReleased();
     void resetLevel();
@@ -46,7 +47,6 @@ private:
     sf::RectangleShape m_currLevelBackground;
     sf::View m_view;
     bool m_playButton;
-
     gender m_playerGender = MALE;
     Controller* m_controller;
 
