@@ -37,12 +37,12 @@ void HelpScreen::handleMove(const sf::Vector2f& Location)
 	// mark/unmark start button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
-		this->m_menu.setOutlineColor(sf::Color(0, 0, 77, 255));
+		this->m_menu.setOutlineColor(OUTLINE_MOVED_COLOR);
 		this->m_menu.setOutlineThickness(BOLD_OUTLINE);
 	}
 	else
 	{
-		this->m_menu.setOutlineColor(sf::Color(230, 230, 255, 255));
+		this->m_menu.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_menu.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 
@@ -51,10 +51,10 @@ void HelpScreen::handleMove(const sf::Vector2f& Location)
 void HelpScreen::setMenu()
 {
 	m_menu.setFont(m_font);
-	m_menu.setColor(sf::Color(153, 153, 255, 255));
+	m_menu.setColor(BASE_COLOR);
 	m_menu.setCharacterSize(REG_CHAR_SIZE);
 	m_menu.setPosition({ SCREEN_CENTER.x - 600 , SCREEN_CENTER.y + 350 });
 	m_menu.setString("Menu");
-	m_menu.setOutlineColor(sf::Color(230, 230, 255, 255));
+	m_menu.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_menu.setOutlineThickness(OUTLINE_THICKNESS);
 }
