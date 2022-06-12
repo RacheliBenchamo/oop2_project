@@ -309,7 +309,6 @@ void DataBase::deleteRelevantObj()
 
 void DataBase::replaceMonsterWithPotion()
 {
-
 	for (int i=0 ; i < m_monsters.size() ;i++)
 	{
 		if (m_monsters[i]->getToDelete())
@@ -324,7 +323,6 @@ void DataBase::replaceMonsterWithPotion()
 
 void  DataBase::randPotion(sf::Vector2f pos)
 {
-
 	int type = rand() % 3;
 	switch ((posion)type)
 	{
@@ -336,9 +334,7 @@ void  DataBase::randPotion(sf::Vector2f pos)
 		break;
 	default:
 		break;//pos);
-
 	}
-	
 }
 //---------------------------------------------
 //check if the player win the level means the 
@@ -346,14 +342,9 @@ void  DataBase::randPotion(sf::Vector2f pos)
 
 bool DataBase::winLevel()const
 {
-	/*if (m_player)
-		if (m_player->getDiamondsCount() == m_currLevelMaxDiamonds)
-			return true;*/
-
 	if (m_player)
 		if (m_player->getGotToNextLev())
 			return true; 
-
 	return false;
 }
 //-----------------------------------------------

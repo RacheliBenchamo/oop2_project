@@ -91,6 +91,7 @@ void GameScreen::handelEvents()
 	{
 		setBigView();
 		m_controller->handleScreens(LOSE);
+		m_playerGender = m_controller->getGenderFromMenu();
 		resetLevel();
 	}
 
@@ -154,6 +155,8 @@ void GameScreen::startNewLevel()
 		startSound();
 		setBigView();
 		m_controller->handleScreens(WIN_LEVEL);
+		m_playerGender = m_controller->getGenderFromMenu();
+		m_dataBase.setGender(m_playerGender);
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
 		m_board.readLevel(m_dataBase);
