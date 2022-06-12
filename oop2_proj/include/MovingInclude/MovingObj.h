@@ -9,8 +9,8 @@ class MovingObj : public GameObjBase
 public:
 	MovingObj(const sf::Vector2f& , const sf::Vector2f& ,int);
 
-	virtual void move(sf::Time&, sf::Vector2f) = 0;
-	virtual void handleCollisionFloor(GameObjBase& floor) = 0;
+	virtual void move(const sf::Time&,const sf::Vector2f) = 0;
+	virtual void handleCollisionFloor(const GameObjBase& floor) = 0;
 
 	int getLife()  const { return m_life; }
 	bool getHitingStatus() const { return m_hitingStatus; }
@@ -21,12 +21,12 @@ public:
 	void setHurt(const bool isHurt) { m_hurt = isHurt; }
 
 protected:
-	bool collisionFromLeft(GameObjBase& g) const;
-	bool collisionFromRight(GameObjBase& g) const;
-	bool collisionFromBelow(GameObjBase& g) const;
-	bool CollisionFromAboveFloor(GameObjBase& floor) const;
-	bool CollisionFromAboveLeftFloor(GameObjBase& floor) const;
-	bool CollisionFromAboveRightFloor(GameObjBase& floor) const;
+	bool collisionFromLeft(const GameObjBase& g) const;
+	bool collisionFromRight(const GameObjBase& g) const;
+	bool collisionFromBelow(const GameObjBase& g) const;
+	bool CollisionFromAboveFloor(const GameObjBase& floor) const;
+	bool CollisionFromAboveLeftFloor(const GameObjBase& floor) const;
+	bool CollisionFromAboveRightFloor(const GameObjBase& floor) const;
 
 	virtual void update(const sf::Time&) {}
 	sf::Vector2f getPrevPos() const { return m_prevPos; }

@@ -15,8 +15,6 @@ Player::Player( const sf::Vector2f& pos, gender gen,int level)
 	m_power = 1000;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 }
-
-
 //------------------------------- move -----------------------------------
 // Moves the player according to the players request.
 // The player moves only if he is alive. Otherwise, the death animation
@@ -28,7 +26,7 @@ Player::Player( const sf::Vector2f& pos, gender gen,int level)
 // 3. Moves the shape of the player.
 // 4. Handles all the possible events that can accure in the game.
 //------------------------------------------------------------------------
-void Player::move(sf::Time& deltaTime,sf::Vector2f levelSize)
+void Player::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 {
 	setPrevPos(m_shape.getPosition());
 	if (isAlive())
@@ -39,15 +37,9 @@ void Player::move(sf::Time& deltaTime,sf::Vector2f levelSize)
 		stayInPlaceAnimation(movement);
 
 	}
-	//else
-	//{
-	//	m_animation.operation(Operation::Dead);
-	//}
-
 	if (outWindow(m_shape.getPosition(), levelSize))
 		this->backToPrevPos();
 }
-
 //------------------------- setMovementStatus ----------------------------
 // Sets the movement status of the player and checks what is the new 
 // movement the player preformed.
@@ -68,7 +60,6 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 		setScale(SCALE_RIGHT);
 		m_right = true;
 	}
-
 	playMovementAnimations();
 }
 
@@ -76,6 +67,7 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 //// Checks if the player doesn't move. If he is not, plays the standing
 //// animation.
 ////------------------------------------------------------------------------
+
 void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
 {
 	if (movement == STAY_IN_PLACE &&
@@ -86,6 +78,7 @@ void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
 		m_animation.operation(Operation::Stay);
 	}
 }
+////------------------------------------------------------------------------
 
 void Player::startSound(sf::SoundBuffer* sound)
 {
@@ -94,10 +87,10 @@ void Player::startSound(sf::SoundBuffer* sound)
 	effect.play();
 	effect.setVolume(VOLUME_COLLISION);
 }
-
 //----------------------- playMovementAnimations -------------------------
  //Plays the animation according to the situation in which the player is.
 //------------------------------------------------------------------------
+
 void Player::playMovementAnimations()
 {
 	if (m_right || m_left)
@@ -121,7 +114,6 @@ void Player::playMovementAnimations()
 		m_animation.operation(Operation::Jump);
 	}
 }
-
 ////------------------------------ handleFall ------------------------------
 //// Handle the fall of the player.
 //// Assume that the player is falling.
@@ -130,7 +122,7 @@ void Player::playMovementAnimations()
 //// the air ==> don't fall and exit.
 //// If the player is falling ==> move the player downwards.
 ////------------------------------------------------------------------------
-void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
+void Player::handleFall(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 {
 	if (!m_inHnaldeJump && !m_onFloor && !m_climbing)
 	{
@@ -145,7 +137,6 @@ void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 		m_inHandleFall = false;
 	}
 }
-
 //----------------------------- getMovement ------------------------------
 // Returns the next move depending on the situation.
 // i.e. if the player is falling, return a downward movement, if the is
@@ -153,7 +144,8 @@ void Player::handleFall( sf::Time& deltaTime, sf::Vector2f levelSize)
 // wants. If the player is neither falling or jumping, return the next
 // movement the user wants to preform.
 ////------------------------------------------------------------------------
-const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
+
+const sf::Vector2f Player::getMovement(const sf::Time& deltaTime)
 {
 	if (m_inHandleFall)
 	{
@@ -167,20 +159,17 @@ const sf::Vector2f Player::getMovement(sf::Time& deltaTime)
 			return DOWN_MOVEMENT;
 		return STAY_IN_PLACE;
 	}
-
 	else if (m_inHnaldeJump)
 	{
 		startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()));
 		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}
-
-
 	return (getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));
 }
-
 ////------------------------------- draw -----------------------------------
 //// Prints the player upon the window.
 ////------------------------------------------------------------------------
+
 void Player::draw(sf::RenderWindow& window)
 {
 	auto temp_shape = m_shape;
@@ -199,7 +188,6 @@ void Player::draw(sf::RenderWindow& window)
 			temp_shape.getPosition().y +
 			temp_shape.getOrigin().y / HALF_SIZE);
 		break;
-
 	case Operation::Fall:
 	case Operation::Jump:
 		temp_shape.scale(JUMP_SCALE);
@@ -210,17 +198,14 @@ void Player::draw(sf::RenderWindow& window)
 	}
 	window.draw(temp_shape);
 }
-
 ////-------------------------------- hit -----------------------------------
 //// The player reguests to attack. Therefore, we needed to update the
 //// status of the hit and display the hiting animation.
 ////------------------------------------------------------------------------
 void Player::hit()
 {
-	//&& isEventDelayPassed(FIST_ATTACK)
 	if (m_power > 0 && m_onFloor )
 	{
-		//Resources::instance().playSound(PLAYER_ATTACK_SOUND);
 		m_power - HITTING_POWER<=0? m_power=0: m_power -= HITTING_POWER;
 		m_hitingStatus = true;
 		m_animation.operation(Operation::Hit);
@@ -235,9 +220,9 @@ void Player::hit()
 //// move function will be summoned more times to elevate the player
 //// further upwards.
 ////------------------------------------------------------------------------
-void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
+void Player::handleJump(const sf::Time& deltaTime, const bool jump,
+	const sf::Vector2f levelSize)
 {
-
 	static int jumpCounter = 0;
 
 	m_inHnaldeJump = true;
@@ -259,10 +244,10 @@ void Player::handleJump(sf::Time& deltaTime,bool jump, sf::Vector2f levelSize)
 		jumpCounter = 0;
 	}
 }
-
 ////-------------------------- setHittingStatus ----------------------------
 //// Sets the hitting status of the player.
 ////------------------------------------------------------------------------
+
 void Player::setHittingStatus(const bool status)
 {
 	m_hitingStatus = status;
@@ -290,8 +275,8 @@ void Player::handleHit(const float_t damage)
 	else
 		hitCounter = 0;
 }
-
 //---------------------------------------------------------
+
 void Player::handleClimbing()
 {
 	if (m_climbing)
@@ -303,7 +288,8 @@ void Player::handleClimbing()
 // Pushes the moving object off the floor depending on the location of the
 // collision.
 //------------------------------------------------------------------------
-void Player::handleCollisionFloor(GameObjBase& floor)
+
+void Player::handleCollisionFloor(const GameObjBase& floor)
 {
 	 if (CollisionFromAboveFloor(floor))
 	{
@@ -315,7 +301,7 @@ void Player::handleCollisionFloor(GameObjBase& floor)
 }
 //-----------------------------------------------------
 
-void Player::handleCollisionLeftFloor(GameObjBase& floor)
+void Player::handleCollisionLeftFloor(const GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor) &&(
 		CollisionFromAboveLeftFloor(floor) ||
@@ -330,13 +316,11 @@ void Player::handleCollisionLeftFloor(GameObjBase& floor)
 	{
 		m_shape.move(-PUSH_FROM);
 	}
-	
 }
 //----------------------------------------------------------
 
-void Player::handleCollisionRightFloor(GameObjBase& floor)
+void Player::handleCollisionRightFloor(const GameObjBase& floor)
 {
-
 	 if (CollisionFromAboveFloor(floor)&&(
 		 CollisionFromAboveRightFloor(floor)||
 		 m_shape.getScale()!= SCALE_RIGHT))
@@ -353,6 +337,6 @@ void Player::handleCollisionRightFloor(GameObjBase& floor)
 	}
 
 }
-//---------------------------------------
+
 
 

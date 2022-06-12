@@ -1,15 +1,8 @@
 #pragma once
-#include <SFML\Graphics.hpp>
-#include "StatusBar.h"
-#include "FileManager.h"
-#include <vector>
-#include <SFML\Graphics.hpp>
-#include <memory>
-#include <GameObjBase.h>
+#include "GameObjBase.h"
 #include "StaticInclude\Teleport.h"
 #include "StaticInclude\Diamond.h"
 #include "StaticInclude\Rope.h"
-
 #include "StaticInclude\Floor.h"
 #include "StaticInclude\LeftFloor.h"
 #include "StaticInclude\RightFloor.h"
@@ -22,10 +15,6 @@
 #include "MovingInclude\Monster.h"
 
 #include "CollisionDetection.h"
-
-
-
-#include <array>
 
 
 class DataBase
@@ -77,7 +66,6 @@ private:
 
     sf::Vector2f m_levelSize;
     sf::RenderWindow m_window;
-    StatusBar m_statusBar;
     bool m_takeGifts[NUM_OF_GIFT_TYPES];
     bool m_GiftsWithTime;
     int m_currTeleport;

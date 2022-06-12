@@ -19,6 +19,12 @@ const unsigned int
 HITTING_POWER = 1,
 LESS_LIFE = 1;
 
+const unsigned int
+MAX_LIFE = 1000,
+MAX_POWER = 1000,
+ADD_LIFE = 100,
+ADD_POWER = 200;
+
 //monster force
 const  int
 MON1_FORCE = 95,

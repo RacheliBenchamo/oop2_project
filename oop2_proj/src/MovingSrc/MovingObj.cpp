@@ -74,7 +74,7 @@ sf::Vector2f MovingObj::getDirection() const
 //--------------------------- collisionFromLeft --------------------------
 // Returns if there was a collision from left side with a static object.
 //------------------------------------------------------------------------
-bool MovingObj::collisionFromLeft(GameObjBase& g) const
+bool MovingObj::collisionFromLeft(const GameObjBase& g) const
 {
 	return m_shape.getPosition().x >=
 		(g.getPos().x );
@@ -83,7 +83,7 @@ bool MovingObj::collisionFromLeft(GameObjBase& g) const
 //-------------------------- collisionFromRight ---------------------------
 // Returns if there was a collision from right side with a static object.
 //------------------------------------------------------------------------
-bool MovingObj::collisionFromRight(GameObjBase& g) const
+bool MovingObj::collisionFromRight(const GameObjBase& g) const
 {
 	return m_shape.getPosition().x <=(g.getPos().x);
 }
@@ -92,14 +92,14 @@ bool MovingObj::collisionFromRight(GameObjBase& g) const
 // Returns if there was a collision from below with a static object.
 //------------------------------------------------------------------------
 
-bool MovingObj::collisionFromBelow(GameObjBase& g) const
+bool MovingObj::collisionFromBelow(const GameObjBase& g) const
 {
 	return m_shape.getPosition().y >(g.getPos().y - g.getShape().getSize().y / 2);
 }
 //----------------------- CollisionFromAboveFloor ------------------------
 // Returns if there is collision from above with the floor.
 //------------------------------------------------------------------------
-bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
+bool MovingObj::CollisionFromAboveFloor(const GameObjBase& floor) const
 {
 
 	return m_shape.getPosition().y <=
@@ -108,14 +108,14 @@ bool MovingObj::CollisionFromAboveFloor(GameObjBase& floor) const
 }
 //------------------------------------------------------------------------
 
-bool MovingObj::CollisionFromAboveLeftFloor(GameObjBase& floor) const
+bool MovingObj::CollisionFromAboveLeftFloor(const GameObjBase& floor) const
 {
 	return m_shape.getPosition().x  >
 		(floor.getPos().x + floor.getShape().getSize().x / 10);
 }
 //------------------------------------------------------------------------
 
-bool MovingObj::CollisionFromAboveRightFloor(GameObjBase& floor) const
+bool MovingObj::CollisionFromAboveRightFloor(const GameObjBase& floor) const
 {
 	return m_shape.getPosition().x < 
 		(floor.getPos().x - floor.getShape().getSize().x / 10);

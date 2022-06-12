@@ -41,7 +41,7 @@ void Monster::randDir()
 // 1. checks if the movement is legal.
 // 2. if the movement was legal, 
 //------------------------------------------------------------------------
-void Monster::move(sf::Time& deltaTime, sf::Vector2f levelSize)
+void Monster::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 {
 	auto movement = getMove();
 
@@ -163,7 +163,7 @@ sf::Vector2f Monster::getMove()
 // Pushes the moving object off the floor depending on the location of the
 // collision.
 //------------------------------------------------------------------------
-void Monster::handleCollisionFloor(GameObjBase& floor)
+void Monster::handleCollisionFloor(const GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
 	{
@@ -171,7 +171,6 @@ void Monster::handleCollisionFloor(GameObjBase& floor)
 		m_onFloor = true;
 	}
 }
-
 //------------------------------------------------------------------------
 void Monster::goAccordingToPlayerPos()
 {

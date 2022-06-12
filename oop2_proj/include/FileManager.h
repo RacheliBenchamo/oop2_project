@@ -7,6 +7,8 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <memory>
+#include <array>
 
 
 
@@ -21,7 +23,7 @@ public:
 	sf::Texture* getPlayerTexture();
 	const sf::Texture* getPlayAndStopIcon(bool )const;
 	sf::SoundBuffer* getPlayerSound(playerSounds, levels);
-	sf::SoundBuffer* getMonsterSound(monsterSounds, levels, monster);
+	sf::SoundBuffer* getMonsterSound(monsterSounds, levels, icons);
 	sf::SoundBuffer* getBackgraundSaund(levels);
 	sf::SoundBuffer* getShareSaund(sounds);
 	const sf::Texture* getMusicIcon(bool)const;

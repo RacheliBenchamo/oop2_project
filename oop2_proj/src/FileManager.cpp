@@ -211,7 +211,7 @@ sf::SoundBuffer* FileManager::getPlayerSound(playerSounds sound, levels currLeve
 }
 //--------------------------------------------
 
-sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel, monster currMonster)
+sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel, icons currMonster)
 {
 	return &m_monstersAudio[currLevel-1][sound][currMonster];
 }
