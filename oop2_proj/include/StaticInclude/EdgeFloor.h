@@ -1,6 +1,5 @@
-
 #pragma once
-#include "StageDec.h"
+#include "StaticInclude\Floor.h"
 
 using std::vector;
 
@@ -9,7 +8,5 @@ class EdgeFloor :public Floor
 {
 public:
 	using Floor::Floor;
-
-	virtual void startSound() {};
 private:
 };

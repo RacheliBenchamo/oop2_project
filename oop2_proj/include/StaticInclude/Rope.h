@@ -1,19 +1,12 @@
-
 #pragma once
-#include "StaticObj.h"
-#include "Animation.h"
-
-using std::vector;
-
+#include "StaticInclude\StaticObj.h"
 
 class Rope :public StaticObj
 {
 public:
 	Rope(sf::Vector2f pos);
-	virtual void startSound()override;
-
+	virtual void startSound();
 private:
-
 };
 
 

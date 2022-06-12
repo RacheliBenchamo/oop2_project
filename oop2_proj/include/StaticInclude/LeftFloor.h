@@ -1,15 +1,9 @@
-
 #pragma once
-#include "StageDec.h"
-
-using std::vector;
-
+#include "StaticInclude\Floor.h"
 
 class LeftFloor :public Floor
 {
 public:
 	using Floor::Floor;
-
-	virtual void startSound() {};
 private:
 };

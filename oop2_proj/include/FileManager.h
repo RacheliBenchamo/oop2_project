@@ -9,7 +9,8 @@
 #include <iostream>
 #include <memory>
 #include <array>
-
+#include<stdio.h>
+#include <fstream>
 
 
 class FileManager

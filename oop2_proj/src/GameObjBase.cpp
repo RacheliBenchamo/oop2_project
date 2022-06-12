@@ -40,7 +40,7 @@ void GameObjBase::setPos(const sf::Vector2f& position)
 {
 	m_shape.setPosition(position);
 }
-
+//--------------------------------------------------
 
 void GameObjBase::setToDelete()
 {
@@ -64,21 +64,6 @@ bool GameObjBase::getToDelete()const
 {
 	return m_delete;
 }
-
-//--------------------------------------------------
-//get the width of the sprite
-
-float GameObjBase::getIconWidth() const
-{
-	return m_shape.getGlobalBounds().width;
-}
-//--------------------------------------------------
-//get the height of the sprite
-
-float GameObjBase::getIconHeight() const
-{
-	return m_shape.getGlobalBounds().height;
-}
 //--------------------------------------------------
 
 bool GameObjBase::checkCollision(const GameObjBase& obj)
@@ -86,7 +71,5 @@ bool GameObjBase::checkCollision(const GameObjBase& obj)
 	if (&obj)
 		if (m_shape.getGlobalBounds().intersects(obj.m_shape.getGlobalBounds()))
 			return true;
-			
-
 	return false;
 }

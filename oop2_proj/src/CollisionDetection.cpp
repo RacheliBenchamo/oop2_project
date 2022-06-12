@@ -9,7 +9,6 @@
 #include "StaticInclude/Floor.h"
 #include "StaticInclude/Teleport.h"
 #include "StaticInclude/Diamond.h"
-#include "StaticInclude/ExtraLife.h"
 
 
 namespace // anonymous namespace — the standard way to make function "static"

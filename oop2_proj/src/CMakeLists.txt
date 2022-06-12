@@ -15,7 +15,6 @@
                                               "StaticSrc/Diamond.cpp"
                                                "StaticSrc/Rope.cpp"
                                                "StaticSrc/StaticObj.cpp"
-                                               "StaticSrc/Potion.cpp"
                                                 "StaticSrc/StageDec.cpp"
                                                 "ScreenSrc/WinGameScreen.cpp"
                                                 "ScreenSrc/WinLevelScreen.cpp"

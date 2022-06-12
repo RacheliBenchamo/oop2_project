@@ -52,12 +52,12 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 
 	if (movement.x < 0)
 	{
-		setScale(SCALE_LEFT);
+		m_shape.setScale(SCALE_LEFT);
 		m_left = true;
 	}
 	if (movement.x > 0)
 	{
-		setScale(SCALE_RIGHT);
+		m_shape.setScale(SCALE_RIGHT);
 		m_right = true;
 	}
 	playMovementAnimations();
