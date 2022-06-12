@@ -63,6 +63,8 @@ private:
 
 	sf::RectangleShape
 		m_currLife,
-		m_currPower;
+		m_currPower,
+		m_lifeFrame,
+		m_powerFrame;
 };
 

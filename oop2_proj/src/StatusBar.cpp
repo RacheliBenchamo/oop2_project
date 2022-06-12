@@ -99,14 +99,16 @@ void StatusBar::setTime(int time)
 
 void StatusBar::updatePos(sf::Vector2f center)
 {
+	m_lifeFrame.setPosition(center.x + 125, center.y - 115);
 	m_currLife.setPosition(center.x +125, center.y - 115);
-	m_lifeIcon.setPosition(center.x + 120, center.y - 114);
+	m_lifeIcon.setPosition(center.x + 110, center.y - 115);
 
-	m_currPower.setPosition(center.x + 125, center.y - 105);
-	m_powerIcon.setPosition(center.x + 120, center.y - 104);
+	m_powerFrame.setPosition(center.x + 125, center.y - 100);
+	m_currPower.setPosition(center.x + 125, center.y - 100);
+	m_powerIcon.setPosition(center.x + 112, center.y - 101);
 
-	m_diamondText.setPosition(center.x + 130, center.y - 95);
-	m_diamondIcon.setPosition(center.x + 120, center.y - 93);
+	m_diamondText.setPosition(center.x + 125, center.y - 88);
+	m_diamondIcon.setPosition(center.x + 110, center.y - 88);
 
 	this->m_levelText.setPosition(center.x-170, center.y - 110);
 	//this->m_timeText.setPosition(center.x - 170, center.y - 100);
@@ -126,7 +128,10 @@ void StatusBar::draw(sf::RenderWindow& window,const int power,
 	window.draw(this->m_diamondIcon);
 
 	window.draw(this->m_currLife);
-	window.draw(this->m_currPower);
+	window.draw(this->m_currPower); 
+	window.draw(this->m_powerFrame);
+	window.draw(this->m_lifeFrame);
+
 
 	window.draw(this->m_powerIcon);
 	window.draw(this->m_lifeIcon);
@@ -229,7 +234,7 @@ void StatusBar::setDiamondCounter()
 
 
 	m_diamondIcon.setTexture(*FileManager::instance().getBIcons(B_DIAMOND));
-	m_diamondIcon.scale(MUSIC_ICON_SCALE*3.f);
+	m_diamondIcon.scale(MUSIC_ICON_SCALE*6.f);
 }
 //--------------------------------------------
 
@@ -259,19 +264,29 @@ void StatusBar::setRestartIcon()
 
 void StatusBar::setCurrLifeRect()
 {
-	m_currLife.setFillColor(sf::Color::Green);
+	m_lifeFrame.setFillColor(sf::Color::Transparent);
+	m_lifeFrame.setOutlineColor(sf::Color::Black);
+	m_lifeFrame.setSize(sf::Vector2f(50.f, 8.f));
+	m_lifeFrame.setOutlineThickness(1.5);
+
+	m_currLife.setFillColor(sf::Color::Red);
 	m_currLife.setSize(sf::Vector2f(50.f, 8.f));
 
 	m_lifeIcon.setTexture(*FileManager::instance().getBIcons(B_LIFE));
-	m_lifeIcon.scale(MUSIC_ICON_SCALE* 2.f);
+	m_lifeIcon.scale(MUSIC_ICON_SCALE* 4.f);
 
 }
 //--------------------------------------------
 
 void StatusBar::setCurrPowerRect()
 {
+	m_powerFrame.setFillColor(sf::Color::Transparent);
+	m_powerFrame.setOutlineColor(sf::Color::Black);
+	m_powerFrame.setOutlineThickness(1.5);
+	m_powerFrame.setSize(sf::Vector2f(50.f, 8.f));
+
 	m_powerIcon.setTexture(*FileManager::instance().getBIcons(B_POWER));
-	m_powerIcon.scale(MUSIC_ICON_SCALE);
+	m_powerIcon.scale(MUSIC_ICON_SCALE*1.5f);
 
 	m_currPower.setFillColor(sf::Color::Yellow);
 	m_currPower.setSize(sf::Vector2f(50.f, 8.f));

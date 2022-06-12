@@ -15,13 +15,10 @@ DataBase::DataBase()
 	m_movingRec.setSize(sf::Vector2f((float)32, (float)32 / 15));
 	m_movingRec.setFillColor(sf::Color(255, 255, 0, 250));
 }
-
-
-
 //---------------------------------------------------
+
 void DataBase::setLevelSize(int x, int y)
 {
-	std::cout << m_currLevel << " lev \n";
 	m_levelSize.x = x;
 	m_levelSize.y = y;
 }
