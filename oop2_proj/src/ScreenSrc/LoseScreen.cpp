@@ -31,15 +31,20 @@ screensOption LoseScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 {
 	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed menu
 	{
+		playSelectSound();
 		return MENU;
 	}
 	if (this->m_restart.getGlobalBounds().contains(Location)) // pressed restart
 	{
+		playSelectSound();
 		return RESTART;
 	}
 
 	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
+	{
+		playSelectSound();
 		window.close();
+	}
 	return NONE;
 }
 //--------------------------------------------------
@@ -50,6 +55,7 @@ void LoseScreen::handleMove(const sf::Vector2f& Location)
 	// mark/unmark start button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_menu.setOutlineColor(OUTLINE_MOVED_COLOR);
 		this->m_menu.setOutlineThickness(BOLD_OUTLINE);
 	}
@@ -58,20 +64,10 @@ void LoseScreen::handleMove(const sf::Vector2f& Location)
 		this->m_menu.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_menu.setOutlineThickness(OUTLINE_THICKNESS);
 	}
-	// mark/unmark exit button
-	if (this->m_exit.getGlobalBounds().contains(Location))
-	{
-		this->m_exit.setOutlineColor(OUTLINE_MOVED_COLOR);
-		this->m_exit.setOutlineThickness(BOLD_OUTLINE);
-	}
-	else
-	{
-		this->m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
-		this->m_exit.setOutlineThickness(OUTLINE_THICKNESS);
-	}
 	// mark/unmark restart button
 	if (this->m_restart.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_restart.setOutlineColor(OUTLINE_MOVED_COLOR);
 		this->m_restart.setOutlineThickness(BOLD_OUTLINE);
 	}
@@ -80,6 +76,19 @@ void LoseScreen::handleMove(const sf::Vector2f& Location)
 		this->m_restart.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_restart.setOutlineThickness(OUTLINE_THICKNESS);
 	}
+	// mark/unmark exit button
+	if (this->m_exit.getGlobalBounds().contains(Location))
+	{
+		playMoveSound();
+		this->m_exit.setOutlineColor(OUTLINE_MOVED_COLOR);
+		this->m_exit.setOutlineThickness(BOLD_OUTLINE);
+	}
+	else
+	{
+		this->m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
+		this->m_exit.setOutlineThickness(OUTLINE_THICKNESS);
+	}
+
 }
 void LoseScreen::setHeader()
 {

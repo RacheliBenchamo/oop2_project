@@ -13,7 +13,7 @@ MovingObj::MovingObj(const sf::Vector2f& pos, const sf::Vector2f& size,int level
 {
 	setDamage();
 }
-
+//---------------------------------------------------
 
 void MovingObj::setDamage()
 {
@@ -23,41 +23,35 @@ void MovingObj::setDamage()
 	this->m_damage.setOutlineThickness(0.5);
 	this->m_damage.setOutlineColor(sf::Color::Red);
 }
-
 //---------------------------------------------------
+
 void MovingObj::setDamagePos(const sf::Vector2f pos)
 {
 	m_damage.setPosition(pos.x, pos.y - 2);
 }
 //---------------------------------------------------
+
 void MovingObj::printDamage(sf::RenderWindow& window)const
 {
 	window.draw(this->m_damage);
 }
-
 //---------------------------------------------------
+
 void MovingObj::setDamageString(const int damage)
 {
 	this->m_damage.setString( " - " + std::to_string(damage));
 }
-
 //---------------------------------------------------
-//float m_deltaTime = 0;
+
 void MovingObj::backToPrevPos()
 {
 	setPos(m_prevPos);
-}
-
-//---------------------------------------------------
-void MovingObj::beHurt()
-{
-	m_life -= LESS_LIFE;
 }
 //------------------------------------------
 //return true if the sprite pos is out od the window
 //else,return false
 
-bool MovingObj::outWindow(sf::Vector2f pos, sf::Vector2f levelSize) const
+bool MovingObj::outWindow(const sf::Vector2f pos, const sf::Vector2f levelSize) const
 {
 	if (pos.x <= START_SPACE*2 || pos.y <= -10||
 		pos.x >= (levelSize.y * Y_SPACE) + START_SPACE*2.8)
@@ -65,7 +59,6 @@ bool MovingObj::outWindow(sf::Vector2f pos, sf::Vector2f levelSize) const
 	
 	    return false;
 }
-
 //------------------------------------------
 //return the right direction by which key pressed
 

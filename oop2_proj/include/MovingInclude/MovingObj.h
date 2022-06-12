@@ -2,32 +2,24 @@
 #include "GameObjBase.h"
 #include "Animation.h"
 
-
 class Controller;
 
 class MovingObj : public GameObjBase
 {
 public:
-	//using GameObjBase::GameObjBase;
 	MovingObj(const sf::Vector2f& , const sf::Vector2f& ,int);
-	sf::Vector2f getPrevPos() const{ return m_prevPos; }
-	sf::Vector2f getCurrDir()const { return m_currDirection; }
-	void backToPrevPos();
-	virtual void update(const sf::Time&) {}
-	int getLife()  const { return m_life; }
-	float getDamage()const { return m_force; }
-	bool getHitingStatus() const { return m_hitingStatus; }
-	void beHurt() ;
-	bool onFloor() const{ return m_onFloor; };
-	virtual void handleCollisionFloor(GameObjBase& floor)=0;
 
+	virtual void move(sf::Time&, sf::Vector2f) = 0;
+	virtual void handleCollisionFloor(GameObjBase& floor) = 0;
+
+	int getLife()  const { return m_life; }
+	bool getHitingStatus() const { return m_hitingStatus; }
 	levels getCurrLevel() const { return levels(m_level); }
-	void setCurrLevel(const int level) { m_level = level; }
-	void setDamagePos(const sf::Vector2f pos);
-	void printDamage(sf::RenderWindow& window)const;
-	void setDamageString(const int);
-	void setHurt(const bool isHurt) { m_hurt = isHurt; }
+	float getDamage()const { return m_force; }
 	bool toPrintDamage() const { return m_hurt; }
+	void printDamage(sf::RenderWindow& window)const;
+	void setHurt(const bool isHurt) { m_hurt = isHurt; }
+
 protected:
 	bool collisionFromLeft(GameObjBase& g) const;
 	bool collisionFromRight(GameObjBase& g) const;
@@ -35,15 +27,19 @@ protected:
 	bool CollisionFromAboveFloor(GameObjBase& floor) const;
 	bool CollisionFromAboveLeftFloor(GameObjBase& floor) const;
 	bool CollisionFromAboveRightFloor(GameObjBase& floor) const;
-	
 
-
+	virtual void update(const sf::Time&) {}
+	sf::Vector2f getPrevPos() const { return m_prevPos; }
+	sf::Vector2f getCurrDir()const { return m_currDirection; }
+	void backToPrevPos();
+	bool onFloor() const { return m_onFloor; };
+	void setCurrLevel(const int level) { m_level = level; }
+	void setDamagePos(const sf::Vector2f pos);
+	void setDamageString(const int);
 	sf::Vector2f getDirection() const;
-	bool outWindow(sf::Vector2f, sf::Vector2f) const;
-	void updateAnimation();
-	virtual void move(sf::Time& , sf::Vector2f ) {};
-	void setPrevPos(sf::Vector2f p) { m_prevPos = p; }
-	void setCurrDir(sf::Vector2f d) { m_currDirection = d; }
+	bool outWindow(const sf::Vector2f, const sf::Vector2f) const;
+	void setPrevPos(const sf::Vector2f p) { m_prevPos = p; }
+	void setCurrDir(const sf::Vector2f d) { m_currDirection = d; }
 	bool isAlive() const { return m_life > int(0); };
 
 	int m_life;

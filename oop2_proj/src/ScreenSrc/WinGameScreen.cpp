@@ -28,11 +28,15 @@ screensOption WinGameScreen::handleClick(const sf::Vector2f& Location, sf::Rende
 {
 	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed start
 	{
+		playSelectSound();
 		return MENU;
 	}
 
 	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
+	{
+		playSelectSound();
 		window.close();
+	}
 
 	return NONE;
 }
@@ -44,6 +48,7 @@ void WinGameScreen::handleMove(const sf::Vector2f& Location)
 	// mark/unmark start button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_menu.setOutlineColor(OUTLINE_MOVED_COLOR);
 		this->m_menu.setOutlineThickness(BOLD_OUTLINE);
 	}
@@ -55,6 +60,7 @@ void WinGameScreen::handleMove(const sf::Vector2f& Location)
 	// mark/unmark exit button
 	if (this->m_exit.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_exit.setOutlineColor(OUTLINE_MOVED_COLOR);
 		this->m_exit.setOutlineThickness(BOLD_OUTLINE);
 	}

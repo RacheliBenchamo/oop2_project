@@ -292,7 +292,7 @@ void Player::handleHit(const float_t damage)
 }
 
 //---------------------------------------------------------
-void Player::handelClimbing()
+void Player::handleClimbing()
 {
 	if (m_climbing)
 		m_animation.operation(Operation::Climbe);

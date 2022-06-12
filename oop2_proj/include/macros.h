@@ -24,7 +24,9 @@ const  int
 MON1_FORCE = 95,
 MON2_FORCE = 45,
 MON3_FORCE = 65,
-PAYER_FORCE = 150;
+PAYER_FORCE = 150,
+PLAYER_DAMAGE = 5;
+
 
 // sizes data
 const int BLOCK_SIZE = 40;
@@ -91,10 +93,10 @@ PUSH_FROM_MONSTER(0.2, 0),
 FALL_PUSH(0, 3),
 MOVE_DOUBLE{ 2,0 };
 
+//action counters:
 const int
 JUMP_COUNTER = 22,
-HIT_COUNTER = 40,
-PLAYER_DAMAGE = 5;
+HIT_COUNTER = 40;
 
 // scale consts
 const sf::Vector2f 
