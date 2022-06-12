@@ -17,7 +17,7 @@ public:
 
     void run();
     void handleScreens(screensOption);
-    gender getGenderFromMenu();
+    gender getGenderFromMenu()const;
 
 private:
     void setScreens();

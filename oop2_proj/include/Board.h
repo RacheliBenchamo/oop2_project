@@ -1,8 +1,4 @@
 #pragma once
-#include <array>
-#include <fstream>
-#include<stdio.h>
-#include <iostream>
 #include "DataBase.h"
 
 class DataBase;
@@ -17,15 +13,10 @@ public:
 	void readLevel(DataBase &);
 	sf::Vector2f getBoardSize()const { return m_boardSize; }
 	void TakeBackInputStreamToBegLevel();
-	void TakeBackInputStreamToPrevLevel();
 	void resetInputStream();
 
 private:
-
 	sf::Vector2f m_boardSize;
 	std::ifstream m_input;
 	int m_startOfTheLevel;
-	int m_startOfPrevLevel;
-	//sf::RectangleShape m_currLevelBackground;
-
 };

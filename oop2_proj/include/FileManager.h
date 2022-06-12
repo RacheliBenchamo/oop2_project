@@ -12,7 +12,6 @@
 #include<stdio.h>
 #include <fstream>
 
-
 class FileManager
 {
 public:
@@ -22,23 +21,23 @@ public:
     sf::Texture* getSharedStaticTexture(const icons);
 	sf::Texture* getMonstersTexture(const icons,const levels);
 	sf::Texture* getPlayerTexture();
-	const sf::Texture* getPlayAndStopIcon(bool )const;
-	sf::SoundBuffer* getPlayerSound(playerSounds, levels);
-	sf::SoundBuffer* getMonsterSound(monsterSounds, levels, icons);
-	sf::SoundBuffer* getBackgraundSaund(levels);
-	sf::SoundBuffer* getShareSaund(sounds);
-	const sf::Texture* getMusicIcon(bool)const;
+	const sf::Texture* getPlayAndStopIcon(const bool )const;
+	sf::SoundBuffer* getPlayerSound(const playerSounds, const levels);
+	sf::SoundBuffer* getMonsterSound(const monsterSounds, const  levels, const icons);
+	sf::SoundBuffer* getBackgraundSaund(const levels);
+	sf::SoundBuffer* getShareSaund(const sounds);
+	const sf::Texture* getMusicIcon(const bool)const;
 	const sf::Texture* getRestartIcon()const;
-	const sf::Texture* getBackGround(backgroundsType)const;
-	const sf::Texture* getBIcons(bIcons)const;
+	const sf::Texture* getBackGround(const backgroundsType)const;
+	const sf::Texture* getBIcons(const bIcons)const;
 
 	const sf::Font* getFont()const;
 	const sf::Texture* getDec() const;
-	const sf::IntRect getCurrLevDecRect(levels, decoration) const;
-	const sf::IntRect getPlayerRect(gender) const;
-	const AnimationData& getStaticData(icons);
-	const AnimationData& getMonstersData(levels,icons);
-	const AnimationData& getPlayerData(gender);
+	const sf::IntRect getCurrLevDecRect(const levels, const decoration) const;
+	const sf::IntRect getPlayerRect(const gender) const;
+	const AnimationData& getStaticData(const icons)const;
+	const AnimationData& getMonstersData(const levels, const icons)const;
+	const AnimationData& getPlayerData(const gender)const;
 
 private:
 	FileManager();
@@ -49,7 +48,6 @@ private:
 	void loadStaticObj();
 	void loadStaticObjRect();
 	void loadPlayerRect();
-
 	void loadAudio();
 	void loadMusicIcon();
 	void loadStopAndPlayIcon();
@@ -62,8 +60,10 @@ private:
 	void createSnowMonstersAnimeData();
 	void createForestMonstersAnimeData();
 
-	void setCurrentData(AnimationData& , Operation ,std::vector<sf::IntRect> , float , bool );
-	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,const sf::Vector2i , const int ,const int , Operation);
+	void setCurrentData( AnimationData& , const Operation ,
+		const std::vector<sf::IntRect> , const float , const bool );
+	std::vector<sf::IntRect> movableAnimationSet(const sf::Vector2i ,const sf::Vector2i 
+		, const int ,const int , const Operation);
 
 	sf::Texture m_monstersIcon[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 	sf::Texture m_player;

@@ -5,7 +5,7 @@
 //constructor
 
 Board::Board()
-	: m_startOfPrevLevel(0), m_startOfTheLevel(0)
+	: m_startOfTheLevel(0)
 {
 	this->m_input.open("Levels.txt", std::ios_base::in);
 	if (!(m_input.is_open()))
@@ -28,11 +28,6 @@ bool Board::readLevelData(DataBase& dataBase, gender g)
 	
 	if (m_input.is_open())
 	{
-	
-
-		if (m_startOfPrevLevel != 0)
-			m_startOfPrevLevel = m_startOfTheLevel;
-
 		m_startOfTheLevel = m_input.tellg();
 
 		char c;
@@ -80,14 +75,6 @@ void Board::TakeBackInputStreamToBegLevel()
 {
 	this->m_input.clear();
 	m_input.seekg(m_startOfTheLevel);
-}
-//--------------------------------------------------
-//take the input stream to the begining of the prev level
-
-void Board::TakeBackInputStreamToPrevLevel()
-{
-	this->m_input.clear();
-	m_input.seekg(m_startOfPrevLevel);
 }
 //--------------------------------------------------
 //take the input stream to the begining of the text file

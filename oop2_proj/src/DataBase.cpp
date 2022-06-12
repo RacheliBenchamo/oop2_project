@@ -12,12 +12,10 @@ using std::cout;
 DataBase::DataBase()
 	: m_currTeleport(0), m_currLevel(1)
 {
-	m_movingRec.setSize(sf::Vector2f((float)32, (float)32 / 15));
-	m_movingRec.setFillColor(sf::Color(255, 255, 0, 250));
 }
 //---------------------------------------------------
 
-void DataBase::setLevelSize(int x, int y)
+void DataBase::setLevelSize(const int x, const int y)
 {
 	m_levelSize.x = x;
 	m_levelSize.y = y;
@@ -25,7 +23,7 @@ void DataBase::setLevelSize(int x, int y)
 //---------------------------------------------------
 //create all the object in the level
 
-void DataBase::setData(char c, int i, int j)
+void DataBase::setData(const char c, const int i, const int j)
 {
 	sf::Vector2f pos(i, j);
 		if(!createStaticObj(c, pos))
@@ -194,7 +192,7 @@ void DataBase::FindTeleportPartner() const
 //--------------------------------------------------
 //handle the moving in this moment
 
-void DataBase::move(sf::Time deltaTime)
+void DataBase::move(const sf::Time deltaTime)
 {
 	//move monsters
 	for (auto& f : m_monsters)
@@ -273,7 +271,7 @@ void DataBase::handelTeleportCollisions()
 
 //----------------------------------------------------
 
-void DataBase::handelPlayerStuff(sf::Time deltaTime)
+void DataBase::handelPlayerStuff(const sf::Time deltaTime)
 {
 	m_player->setHittingStatus(false);
 	m_player->handleJump(deltaTime,sf::Keyboard::isKeyPressed(sf::Keyboard::Space), m_levelSize);
@@ -287,7 +285,7 @@ void DataBase::handelPlayerStuff(sf::Time deltaTime)
 //-----------------------------------------------------
 //check if its allowed to enter the teleport
 
-void DataBase::AllowedToEnterTeleport(int place,int move)
+void DataBase::AllowedToEnterTeleport(const int place, const int move)
 {
 	if (m_teleport[place + move]->isOpen() && sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
@@ -321,7 +319,7 @@ void DataBase::replaceMonsterWithPotion()
 //-------------------------------------------------------------
 //gril curent poision  
 
-void  DataBase::randPotion(sf::Vector2f pos)
+void  DataBase::randPotion(const sf::Vector2f pos)
 {
 	int type = rand() % 3;
 	switch ((posion)type)

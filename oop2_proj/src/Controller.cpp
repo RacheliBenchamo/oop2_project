@@ -15,7 +15,7 @@ Controller::Controller()
 	m_window.setFramerateLimit(60);
 	setScreens();
 }
-
+//-----------------------------------------------------------
 
 void Controller::run() try
 {
@@ -39,6 +39,7 @@ void Controller::setScreens()
 
 }
 //-----------------------------------------------------------
+
 void Controller::handleScreens(screensOption currScreen)
 {
 	while (currScreen != NONE)
@@ -58,8 +59,9 @@ void Controller::handleScreens(screensOption currScreen)
 		}
 	}
 }
+//-----------------------------------------------------
 
-gender Controller::getGenderFromMenu()
+gender Controller::getGenderFromMenu()const
 {
 	return static_cast<MenuScreen&>(*m_screens[MENU]).getSelectedPlayer();
 }

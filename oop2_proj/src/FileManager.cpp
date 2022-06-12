@@ -139,9 +139,6 @@ void FileManager::loadAudio()
 	//m_playerAudio[LEVEL3][HURT].loadFromFile("takeKeySound.wav");
 
 	//for each monster in each level
-	//M_FIRST,
-	//	M_SECOND,
-	//	M_THIRD
 	m_monstersAudio[LEVEL1][HIT][M_FIRST].loadFromFile("MushriHit.wav");
 	m_monstersAudio[LEVEL1][HURT][M_FIRST].loadFromFile("MushriHurt.wav");
 	m_monstersAudio[LEVEL1][HIT][M_SECOND].loadFromFile("TreetHit.wav");
@@ -162,9 +159,6 @@ void FileManager::loadAudio()
 	m_monstersAudio[LEVEL3][HURT][M_SECOND].loadFromFile("SuricatiHurt.wav");
 	m_monstersAudio[LEVEL3][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
 	m_monstersAudio[LEVEL3][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
-
-
-
 }
 //--------------------------------------------------
 // load the music sprites
@@ -204,32 +198,34 @@ void FileManager::loadBackgrounds()
 }
 //--------------------------------------------
 
-sf::SoundBuffer* FileManager::getPlayerSound(playerSounds sound, levels currLevel)
+sf::SoundBuffer* FileManager::getPlayerSound(const playerSounds sound,
+	const levels currLevel)
 {
 	return &m_playerAudio[currLevel-1][sound];
 
 }
 //--------------------------------------------
 
-sf::SoundBuffer* FileManager::getMonsterSound(monsterSounds sound, levels currLevel, icons currMonster)
+sf::SoundBuffer* FileManager::getMonsterSound(const monsterSounds sound, 
+	const levels currLevel, const icons currMonster)
 {
 	return &m_monstersAudio[currLevel-1][sound][currMonster];
 }
 //--------------------------------------------
 
-sf::SoundBuffer* FileManager::getBackgraundSaund(levels currLevel)
+sf::SoundBuffer* FileManager::getBackgraundSaund(const levels currLevel)
 {
 	return &this->m_backGroundAudio[currLevel];
 }
 //--------------------------------------------
 
-sf::SoundBuffer* FileManager::getShareSaund(sounds sound)
+sf::SoundBuffer* FileManager::getShareSaund(const sounds sound)
 {
 	return &this->m_audio[sound];
 }
 //--------------------------------------------------
 
-const sf::Texture* FileManager::getMusicIcon(bool musicOn)const
+const sf::Texture* FileManager::getMusicIcon(const bool musicOn)const
 {
 	if (musicOn)
 		return &this->m_musicTexture[0];
@@ -238,14 +234,14 @@ const sf::Texture* FileManager::getMusicIcon(bool musicOn)const
 }
 //--------------------------------------------------
 
-const sf::Texture* FileManager::getPlayAndStopIcon(bool toPlay)const
+const sf::Texture* FileManager::getPlayAndStopIcon(const bool toPlay)const
 {
 	if (toPlay)
 		return &this->m_playStopTexture[1];
 	else
 		return &this->m_playStopTexture[0];
 }
-const sf::Texture* FileManager::getBIcons(bIcons place)const
+const sf::Texture* FileManager::getBIcons(const bIcons place)const
 {
 	return &this->m_backgroundIcons[place];
 }
@@ -257,7 +253,7 @@ const sf::Texture* FileManager::getRestartIcon()const
 }
 //--------------------------------------------------
 
-const sf::Texture* FileManager::getBackGround(backgroundsType place)const
+const sf::Texture* FileManager::getBackGround(const backgroundsType place)const
 {
 	return &this->m_backgrounds[place];
 }
@@ -293,32 +289,34 @@ const sf::Texture* FileManager::getDec() const
 //------------------------------------------------------------------
 
 //get the decoration of the level
-const sf::IntRect FileManager::getCurrLevDecRect(levels currLevel, decoration dec) const
+const sf::IntRect FileManager::getCurrLevDecRect(const levels currLevel,
+	const decoration dec) const
 {
 	return this->m_decRect[currLevel - 1][dec];
 }
 //------------------------------------------------------------------
 
 //get the decoration of the level
-const sf::IntRect FileManager::getPlayerRect(gender g) const
+const sf::IntRect FileManager::getPlayerRect(const gender g) const
 {
 	return this->m_PlayerRect[g];
 }
 //------------------------------------------------------------------
 
-const AnimationData& FileManager::getStaticData(icons object)
+const AnimationData& FileManager::getStaticData(const icons object)const
 {
 	return m_staticData[object];
 }
 //------------------------------------------------------------------
 
-const AnimationData& FileManager::getMonstersData(levels lev,icons object)
+const AnimationData& FileManager::getMonstersData(const levels lev, 
+	const icons object)const
 {
 	return m_monsterData[lev-1][object];
 }
 //------------------------------------------------------------------
 
-const AnimationData& FileManager::getPlayerData(gender g)
+const AnimationData& FileManager::getPlayerData(const gender g)const
 {
 	return m_playerData[g];
 }
@@ -329,7 +327,7 @@ std::vector<sf::IntRect> FileManager::movableAnimationSet(
 	const sf::Vector2i size,
 	const sf::Vector2i startPos,
 	const int space,
-	const int count, Operation typeOperation)
+	const int count, const Operation typeOperation)
 {
 	auto stand_anime = AnimationData{};
 	auto currentStart = startPos;
@@ -356,12 +354,12 @@ std::vector<sf::IntRect> FileManager::movableAnimationSet(
 //-------------------------- setCurrentData --------------------------
 //				Set animation the data,time and frequancy.
 
-void FileManager::setCurrentData(AnimationData& data, Operation op,
-	std::vector<sf::IntRect> inRect, float time, bool once)
+void FileManager::setCurrentData( AnimationData& data, const Operation op,
+	const std::vector<sf::IntRect> inRect, const float time, const bool once)
 {
 	data.m_data[op] = inRect;
 	data.m_time[op] = time;
-	data.playOnce[op] = once;
+	data.m_playOnce[op] = once;
 }
 //------------------------------------------------------------------------
 // Set all animation data used in the game.
