@@ -386,10 +386,10 @@ void FileManager::createPlayerAnimeData()
 	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[MALE], Walk, movableAnimationSet
-	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.008f, false);
+	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.02f, false);
 
 	setCurrentData(m_playerData[MALE], Jump, movableAnimationSet
-	({ 118, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
+	({ 120, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
 
 	setCurrentData(m_playerData[MALE], Hit, movableAnimationSet
 	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.06f, true);
@@ -405,10 +405,10 @@ void FileManager::createPlayerAnimeData()
 	({ 95, 110 }, { 734, 127 }, 0, 1, Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[FEMALE], Walk, movableAnimationSet
-	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.008f, false);
+	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.02f, false);
 
 	setCurrentData(m_playerData[FEMALE], Jump, movableAnimationSet
-	({ 100, 108 }, { 384, 130 }, 0, 1, Jump), 0.15f, true);
+	({ 110, 108 }, { 384, 130 }, 0, 1, Jump), 0.15f, true);
 
 	setCurrentData(m_playerData[FEMALE], Hit, movableAnimationSet
 	({ 90, 105 }, { 136, 127 }, 25, 2, Hit), 0.06f, true);

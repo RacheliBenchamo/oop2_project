@@ -2,7 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include "ScreensInclude\MenuScreen.h"
 #include "ScreensInclude\HelpScreen.h"
-#include "ScreensInclude\WinScreen.h"
+#include "ScreensInclude\WinGameScreen.h"
+#include "ScreensInclude\WinLevelScreen.h"
 #include "ScreensInclude\LoseScreen.h"
 #include "ScreensInclude\GameScreen.h"
 #include "FileManager.h"

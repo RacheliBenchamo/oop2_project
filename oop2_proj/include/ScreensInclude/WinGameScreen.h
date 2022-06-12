@@ -2,11 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include "Screen.h"
 
-class WinScreen :public Screen
+class WinGameScreen :public Screen
 {
 public:
-	WinScreen();
-	~WinScreen() {};
+	WinGameScreen();
+	~WinGameScreen() {};
 
 
 private:
@@ -20,7 +20,4 @@ private:
 	sf::Text m_header;
 	sf::Text m_menu;
 	sf::Text m_exit;
-	bool m_pressMenu;
-	bool m_pressExit;
-
 };

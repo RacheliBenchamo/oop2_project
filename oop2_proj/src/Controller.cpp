@@ -32,9 +32,11 @@ void Controller::setScreens()
 {
 	m_screens.push_back(std::make_unique<GameScreen>(m_window,this));
 	m_screens.push_back(std::make_unique<HelpScreen>());
-	m_screens.push_back(std::make_unique<MenuScreen>());
+	m_screens.push_back(std::make_unique<MenuScreen>()); 
 	m_screens.push_back(std::make_unique<LoseScreen>());
-	m_screens.push_back(std::make_unique<WinScreen>());
+	m_screens.push_back(std::make_unique<WinGameScreen>());
+	m_screens.push_back(std::make_unique<WinLevelScreen>());
+
 }
 //-----------------------------------------------------------
 void Controller::handleScreens(screensOption currScreen)

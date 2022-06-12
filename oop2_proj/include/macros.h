@@ -131,7 +131,7 @@ enum gender
 
 enum screensOption
 {
-    START,HELP, MENU,LOSE,WIN, RESTART, EXIT,NONE,CLOSE
+    START,HELP, MENU,LOSE,WIN_GAME,WIN_LEVEL, RESTART, EXIT,NONE,CLOSE
 };
 
 enum decoration

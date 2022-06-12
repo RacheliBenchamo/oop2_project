@@ -108,7 +108,7 @@ void StatusBar::updatePos(sf::Vector2f center)
 	m_powerIcon.setPosition(center.x + 112, center.y - 101);
 
 	m_diamondText.setPosition(center.x + 125, center.y - 88);
-	m_diamondIcon.setPosition(center.x + 110, center.y - 88);
+	m_diamondIcon.setPosition(center.x + 110, center.y - 85);
 
 	this->m_levelText.setPosition(center.x-170, center.y - 110);
 	//this->m_timeText.setPosition(center.x - 170, center.y - 100);

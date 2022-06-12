@@ -1,6 +1,6 @@
-#include "ScreensInclude\WinScreen.h"
+#include "ScreensInclude\WinGameScreen.h"
 
-WinScreen::WinScreen()
+WinGameScreen::WinGameScreen()
 {
 	this->m_font = (*(FileManager::instance().getFont()));
 
@@ -14,7 +14,7 @@ WinScreen::WinScreen()
 //--------------------------------------------------
 //handle click on the menu buttons
 
-void WinScreen::draw(sf::RenderWindow& window)
+void WinGameScreen::draw(sf::RenderWindow& window)
 {
 	window.clear(sf::Color::White);
 	window.draw(this->m_background);
@@ -24,7 +24,7 @@ void WinScreen::draw(sf::RenderWindow& window)
 	window.display();
 }
 
-screensOption WinScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption WinGameScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 {
 	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed start
 	{
@@ -39,7 +39,7 @@ screensOption WinScreen::handleClick(const sf::Vector2f& Location, sf::RenderWin
 //--------------------------------------------------
 //handle moving on the menu buttons
 
-void WinScreen::handleMove(const sf::Vector2f& Location)
+void WinGameScreen::handleMove(const sf::Vector2f& Location)
 {
 	// mark/unmark start button
 	if (this->m_menu.getGlobalBounds().contains(Location))
@@ -66,7 +66,7 @@ void WinScreen::handleMove(const sf::Vector2f& Location)
 
 }
 
-void WinScreen::setHeader()
+void WinGameScreen::setHeader()
 {
 	m_header.setFont(m_font);
 	m_header.setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
@@ -78,7 +78,7 @@ void WinScreen::setHeader()
 	m_header.setOutlineThickness(OUTLINE_THICKNESS);
 }
 
-void WinScreen::setMenu()
+void WinGameScreen::setMenu()
 {
 	m_menu.setFont(m_font);
 	m_menu.setColor(sf::Color(153, 153, 255, 255));
@@ -90,7 +90,7 @@ void WinScreen::setMenu()
 }
 
 
-void WinScreen::setExit()
+void WinGameScreen::setExit()
 {
 	m_exit.setFont(m_font);
 	m_exit.setColor(sf::Color(153, 153, 255, 255));
