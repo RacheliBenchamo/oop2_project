@@ -26,7 +26,6 @@ MON2_FORCE = 45,
 MON3_FORCE = 65,
 PAYER_FORCE = 150;
 
-
 // sizes data
 const int BLOCK_SIZE = 40;
 const int X_SPACE = 40;
@@ -52,15 +51,9 @@ WINDOW_HEIGHT = 950,
 CAMERA_WIDTH = 360,
 CAMERA_HEIGHT = 240;
 
-
-//time data
-const float GIFT_TIME = 30;
-const int WIN_WIAT = 70;
-
 //speed data
 const float PLAYER_SPEED = 100.;
-const float FAIRY_SPEED = 120;
-
+const float HANDLE_JUMP_SPEED = 80.f;
 
 // for the menu
 const sf::Vector2f SCREEN_CENTER = { WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 };
@@ -76,39 +69,44 @@ const float STATUS_BAR_OUTLINE_THICKNESS = 3.0;
 const int BUFF_DISTANCE = 40;
 const sf::Vector2f MUSIC_ICON_SCALE = { 0.01f, 0.01f };
 
-//direction data
-const sf::Vector2f DVec[] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1} };
-const sf::Vector2f SCALE_RIGHT{ -1,1 };
-const sf::Vector2f SCALE_LEFT{ 1,1 };
-const sf::Vector2f MOVE_DOUBLE{ 2,0 };
-
+//color consts
+const sf::Color
+BASE_COLOR = sf::Color(153, 153, 255, 255),
+OUTLINE_BASE_COLOR = sf::Color(0,0,0,255) ,
+OUTLINE_MOVED_COLOR = sf::Color(230, 230, 255, 255),
+OUTLINE_SELECTED_COLOR = sf::Color(0, 0, 77, 255),
+HEADER_COLOR = sf::Color(204, 204, 255, 255);
 
 
 // movement consts
-const sf::Vector2f UP_MOVEMENT(0, -1);
-const sf::Vector2f HEIGHT(0, 12);
-const sf::Vector2f LEFT_MOVEMENT(-1, 0);
-const sf::Vector2f RIGHT_MOVEMENT(1, 0);
-const sf::Vector2f DOWN_MOVEMENT(0, 1);
-const sf::Vector2f STAY_IN_PLACE(0, 0);
-const sf::Vector2f PUSH_FROM(10, 0);
-const sf::Vector2f PUSH_FROM_MONSTER(0.2, 0);
-const sf::Vector2f FALL_PUSH(0, 3);
+const sf::Vector2f
+UP_MOVEMENT(0, -1),
+HEIGHT(0, 12),
+LEFT_MOVEMENT(-1, 0),
+RIGHT_MOVEMENT(1, 0),
+DOWN_MOVEMENT(0, 1),
+STAY_IN_PLACE(0, 0),
+PUSH_FROM(10, 0),
+PUSH_FROM_MONSTER(0.2, 0),
+FALL_PUSH(0, 3),
+MOVE_DOUBLE{ 2,0 };
 
-const float HANDLE_JUMP_SPEED = 80.f;
-const int JUMP_COUNTER = 22;
-const int HIT_COUNTER = 40;
-
-
-const int PLAYER_DAMAGE = 5;
+const int
+JUMP_COUNTER = 22,
+HIT_COUNTER = 40,
+PLAYER_DAMAGE = 5;
 
 // scale consts
-const sf::Vector2f WALK_SCALE(0.9f, 1);
-const sf::Vector2f JUMP_SCALE(1.2f, 1);
-const sf::Vector2f HIT_SCALE(0.8f, 1);
-const sf::Vector2f HURT_SCALE(0.8f, 1);
+const sf::Vector2f 
+WALK_SCALE(0.9f, 1),
+JUMP_SCALE(1.2f, 1),
+HIT_SCALE(0.8f, 1),
+HURT_SCALE(0.8f, 1),
+SCALE_RIGHT{ -1,1 },
+SCALE_LEFT{ 1,1 };
 
 const float HALF_SIZE = 10.f;
+
 const char
 PLAYER_C='P', EMPTY_C = ' ',
 DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X',
@@ -119,87 +117,46 @@ MONSTER3_C = '3',GATE_C='#';
 
 enum icons 
 {
-    MONSTER1, MONSTER2, MONSTER3, DIAMOND,
-	WALL, FIRE, GATE, ORK, KEY, THRONE, TELEPORT, GIFT, FAIRY,POWER, LIFE,POTION_L,POTION_P,ROPE,
-	EMPTY
+    MONSTER1, MONSTER2, MONSTER3, DIAMOND, GATE, TELEPORT,POWER, LIFE,POTION_L,
+	POTION_P,ROPE,EMPTY
 };
 
-enum gender
+enum Operation
 {
-    MALE, FEMALE ,WAIT
-};
-
-enum screensOption
-{
-    START,HELP, MENU,LOSE,WIN_GAME,WIN_LEVEL, RESTART, EXIT,NONE,CLOSE
-};
-
-enum decoration
-{
-    L_FLOOR, M_FLOOR, R_FLOOR, F_TREE, S_TREE, ROCK
-};
-enum bIcons
-{
-    B_DIAMOND, B_POWER, B_LIFE,
-};
-
-enum levels
-{
-    LEVEL1,LEVEL2,LEVEL3
-};
-
-enum posion
-{
-    POWERPOSION,  LIFE_POSION
-};
-enum sounds
-{
-	S_IN_TELEPORT,	S_WIN_LEVEL, S_WIN_GAME, S_BACKROUND,
-	 S_TAKE_KEY,S_TAKE_DIAMOND,S_TAKE_POSION,S_ABOVE,S_CLICKED
-};
-enum monster 
-{
-    M_FIRST,   M_SECOND, M_THIRD
+	Up, Down, Right, Left, Stay, Hit,
+	Jump, Fall, Walk, Hurt, Climbe, Dead,
 };
 
 enum backgroundsType
 {
 	MENU_BACKGROUND, LEVEL1_BACKGROUND, LEVEL2_BACKGROUND, LEVEL3_BACKGROUND,
-    HELP_BACKGROUND,LOSE_LEVEL_BACKGROUND,WIN_GAME_BACKGROUND
+	HELP_BACKGROUND, LOSE_LEVEL_BACKGROUND, WIN_GAME_BACKGROUND
 };
 
-
-enum direction
+enum sounds
 {
-	LEFT, RIGHT, UP, DOWN,
+	S_IN_TELEPORT, S_WIN_LEVEL, S_WIN_GAME, S_BACKROUND,
+	S_TAKE_KEY, S_TAKE_DIAMOND, S_TAKE_POSION, S_ABOVE, S_CLICKED
 };
+enum gender { MALE, FEMALE ,WAIT };
 
-enum playerSounds 
-{
-    WALK,JUMP,CLIME,
-};
+enum screensOption { START,HELP, MENU,LOSE,WIN_GAME,WIN_LEVEL, RESTART, EXIT,NONE,CLOSE };
 
-enum monsterSounds
-{
-    HIT, HURT,
-};
+enum decoration{ L_FLOOR, M_FLOOR, R_FLOOR, F_TREE, S_TREE, ROCK };
+   
+enum bIcons{ B_DIAMOND, B_POWER, B_LIFE,};
 
-enum Operation
-{
-    Up,
-    Down,
-    Right,
-    Left,
-    Stay,
-    Hit,
-    Jump,
-    Fall,
-    Walk,
-    Hurt,
-    Climbe,
-    Dead,
-    
-};
+enum levels{ LEVEL1,LEVEL2,LEVEL3};
+
+enum posion{ POWERPOSION,  LIFE_POSION};
+
+enum monster { M_FIRST,   M_SECOND, M_THIRD };
+
+enum direction { LEFT, RIGHT, UP, DOWN };
+
+enum playerSounds { WALK,JUMP,CLIME,};
+
+enum monsterSounds{ HIT, HURT,};
 
 const sf::IntRect
 LEFT_FLOOR_L1(342, 40, 59, 55),
