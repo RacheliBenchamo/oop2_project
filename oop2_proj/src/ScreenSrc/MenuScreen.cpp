@@ -1,13 +1,9 @@
-#pragma warning (disable : 4996)
 #include "ScreensInclude\MenuScreen.h"
-#include "Macros.h"
-#include <iostream>
 
 //--------------------------------------------------
 //constructor
 
 MenuScreen::MenuScreen()
-	:m_pressStart(false), m_pressHelp(false)
 {
 	this->m_font=(*(FileManager::instance().getFont()));
 
@@ -17,7 +13,6 @@ MenuScreen::MenuScreen()
 	setHelp();
 	setPick();
 	setPlayer();
-
 
 	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 	this->m_background.setTexture(FileManager::instance().getBackGround(MENU_BACKGROUND));
