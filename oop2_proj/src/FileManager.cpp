@@ -215,14 +215,14 @@ void FileManager::loadBackgrounds()
 sf::SoundBuffer* FileManager::getPlayerSound(const playerSounds sound,
 	const levels currLevel)
 {
-	return &m_playerAudio[currLevel-1][sound];
+	return &m_playerAudio[currLevel][sound];
 }
 //--------------------------------------------
 
 sf::SoundBuffer* FileManager::getMonsterSound(const monsterSounds sound, 
 	const levels currLevel, const icons currMonster)
 {
-	return &m_monstersAudio[currLevel-1][sound][currMonster];
+	return &m_monstersAudio[currLevel][sound][currMonster];
 }
 //--------------------------------------------
 
@@ -286,7 +286,7 @@ sf::Texture* FileManager::getSharedStaticTexture(const icons place)
 
 sf::Texture* FileManager::getMonstersTexture(const icons place, const levels currLevel)
 {
-	return &this->m_monstersIcon[currLevel-1][place];
+	return &this->m_monstersIcon[currLevel][place];
 }
 //--------------------------------------------------
 
@@ -305,7 +305,7 @@ const sf::Texture* FileManager::getDec(const int place) const
 const sf::IntRect FileManager::getCurrLevDecRect(const levels currLevel,
 	const decoration dec) const
 {
-	return this->m_decRect[currLevel - 1][dec];
+	return this->m_decRect[currLevel][dec];
 }
 //------------------------------------------------------------------
 
@@ -325,7 +325,7 @@ const AnimationData& FileManager::getStaticData(const icons object)const
 const AnimationData& FileManager::getMonstersData(const levels lev, 
 	const icons object)const
 {
-	return m_monsterData[lev-1][object];
+	return m_monsterData[lev][object];
 }
 //------------------------------------------------------------------
 

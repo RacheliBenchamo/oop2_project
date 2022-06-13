@@ -37,19 +37,19 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	switch (c)
 	{
 	case PLAYER_C:
-		m_player = std::make_unique<Player>(pos+sf::Vector2f(7,20),m_gender,m_currLevel);
+		m_player = std::make_unique<Player>(pos+sf::Vector2f(7,20),m_gender, m_stageType);
 		break;
 	case  MONSTER1_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos,MONSTER1, 
-			sf::Vector2f(BLOCK_SIZE / 1.2, BLOCK_SIZE / 1.2), MON1_FORCE, m_currLevel));
+			sf::Vector2f(BLOCK_SIZE / 1.2, BLOCK_SIZE / 1.2), MON1_FORCE, m_stageType));
 		break;
 	case  MONSTER2_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos,MONSTER2,
-			sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE, m_currLevel));
+			sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE, m_stageType));
 		break;
 	case  MONSTER3_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos ,MONSTER3, 
-			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE, m_currLevel));
+			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE, m_stageType));
 		break;
 	}
 }
@@ -67,33 +67,34 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		m_teleport.push_back(std::make_unique<Teleport>( pos+ HEIGHT));
 		return true;
 	case DIAMOND_C:
+		m_currLevelMaxDiamonds++;
 		setStaticObject<Diamond>(pos);
 		return true;
 	case  ROPE_C:
 		m_rope.push_back(std::make_unique<Rope>(pos + sf::Vector2f(0, -27)));
 		return true;
 	case  START_FLOOR_C:
-		setStaticObject<LeftFloor>(pos, levels(m_currLevel),
+		setStaticObject<LeftFloor>(pos, levels(m_stageType),
 			L_FLOOR, sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK);
 		return true;
 	case  FLOOR_C:
-		setStaticObject<Floor>(pos, levels(m_currLevel), M_FLOOR,
+		setStaticObject<Floor>(pos, levels(m_stageType), M_FLOOR,
 			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK);
 		return true;
 	case  END_FLOOR_C:
-		setStaticObject<RightFloor>(pos, levels(m_currLevel), R_FLOOR
+		setStaticObject<RightFloor>(pos, levels(m_stageType), R_FLOOR
 			, sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK);
 		return true;
 	case  F_TREE_C:
-		setStaticObject<StageDec>(pos, levels(m_currLevel),
+		setStaticObject<StageDec>(pos, levels(m_stageType),
 			F_TREE, sf::Vector2f(BLOCK_SIZE * 1.5, BLOCK_SIZE * 1.5), TREE);
 		return true;
 	case  S_TREE_C:
-		setStaticObject<StageDec>(pos, levels(m_currLevel), S_TREE,
+		setStaticObject<StageDec>(pos, levels(m_stageType), S_TREE,
 			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE * 1.5), TREE);
 		return true;
 	case  ROCK_C:
-		setStaticObject<StageDec>(pos + sf::Vector2f(0, 25), levels(m_currLevel),
+		setStaticObject<StageDec>(pos + sf::Vector2f(0, 25), levels(m_stageType),
 			ROCK, sf::Vector2f(BLOCK_SIZE / 3, BLOCK_SIZE / 3), FLOOR_ROCK);
 		return true;
 	default:

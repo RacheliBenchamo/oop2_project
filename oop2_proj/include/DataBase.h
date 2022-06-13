@@ -43,7 +43,10 @@ public:
     void resetLevel() { m_currLevel = 1; };
     void setCurrLevel(const int currLevel) { m_currLevel = currLevel; };
     void printDamage();
+    void setStageType(const levels lev) { m_stageType = lev; }
+    levels getStageType() const{ return m_stageType; }
 
+    
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
     void createMovingObj(const char , const sf::Vector2f&);
@@ -78,6 +81,7 @@ private:
     sf::Clock m_clock;
     int m_currLevel;
     gender m_gender = MALE;
+    levels m_stageType = FOREST;
 };
 
 template<class OBJ>

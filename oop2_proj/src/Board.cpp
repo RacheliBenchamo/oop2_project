@@ -26,15 +26,17 @@ bool Board::readLevelData(DataBase& dataBase, gender g)
 
 	int maxDimonds = 0;
 	
+	char c = 'F';
 	if (m_input.is_open())
 	{
 		m_startOfTheLevel = m_input.tellg();
 
 		char c;
-		m_input >> m_boardSize.x >> m_boardSize.y>> maxDimonds;
+		m_input >> m_boardSize.x >> m_boardSize.y>> c;
 		m_input.get();
 		dataBase.setLevelSize(m_boardSize.x, m_boardSize.y);
-		dataBase.setLevelMaxDiamonds(maxDimonds);
+		checkStageType(c, dataBase);
+		//dataBase.setLevelMaxDiamonds(maxDimonds);
 	}
 
 	return true;
@@ -83,4 +85,22 @@ void Board::resetInputStream()
 {
 	this->m_input.clear();
 	this->m_input.seekg(std::ios_base::beg);
+}
+
+void Board::checkStageType(const char c, DataBase& dataBase)
+{
+	switch (c)
+	{
+	case 'F':
+		dataBase.setStageType(FOREST);
+		break;
+	case 'S':
+		dataBase.setStageType(SNOW);
+		break;
+	case 'D':
+	default:
+		dataBase.setStageType(DESERT);
+		break;
+
+	}
 }
