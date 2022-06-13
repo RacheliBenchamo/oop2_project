@@ -84,6 +84,7 @@ void GameScreen::handelEvents()
 		m_controller->handleScreens(LOSE);
 		m_playerGender = m_controller->getGenderFromMenu();
 		resetLevel();
+		playBackgroundSound();
 	}
 }
 //----------------------------------------------
@@ -192,8 +193,7 @@ void GameScreen::setBigView()
 
 void GameScreen::playBackgroundSound()
 {
-	FileManager::instance().startBackgraundSound
-	(FileManager::instance().
+	FileManager::instance().startBackgraundSound(FileManager::instance().
 		getBackgraundSaund(levels(m_levelNum - 1)), VOLUME_BG);
 	FileManager::instance().setIsMenuAudioPlaying(false);
 }

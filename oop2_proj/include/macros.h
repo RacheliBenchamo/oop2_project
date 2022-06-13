@@ -49,7 +49,7 @@ TELEPORT_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE);
 const unsigned int
 VOLUME_BG = 20,
 VOLUME_COLLISION = 40,
-BUTTON_VOLUME = 40; 
+BUTTON_VOLUME = 50; 
 
 // window data
 const int WINDOW_WIDTH = 1910,

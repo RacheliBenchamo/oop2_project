@@ -50,6 +50,7 @@ void Screen::playSelectSound()
 {
 	FileManager::instance().startSound(FileManager::instance().
 		getShareSaund(S_CLICKED), BUTTON_VOLUME);
+
 }
 //----------------------------------------------------------------
 

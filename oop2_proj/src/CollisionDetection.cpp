@@ -98,7 +98,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 //------------------------------------------------------------------------
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND), 5*VOLUME_COLLISION);
+    startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND), VOLUME_COLLISION);
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();
 }
