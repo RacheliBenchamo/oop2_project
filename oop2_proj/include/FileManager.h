@@ -31,7 +31,7 @@ public:
 	const sf::Texture* getBIcons(const bIcons)const;
 
 	const sf::Font* getFont()const;
-	const sf::Texture* getDec() const;
+	const sf::Texture* getDec(const int) const;
 	const sf::IntRect getCurrLevDecRect(const levels, const decoration) const;
 	const sf::IntRect getPlayerRect(const gender) const;
 	const AnimationData& getStaticData(const icons)const;
@@ -67,7 +67,7 @@ private:
 	sf::Texture m_monstersIcon[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 	sf::Texture m_player;
 	sf::Texture m_sharedStaticIcon[NUM_OF_DEC];
-	sf::Texture m_dec;
+	sf::Texture m_dec[2];
 	sf::IntRect m_decRect[NUM_OF_LEVELS][NUM_OF_DEC];
 	sf::IntRect m_PlayerRect[2];
 	sf::Texture m_backgrounds[NUM_OF_BACKGROUNDS];

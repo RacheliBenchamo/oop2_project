@@ -67,7 +67,8 @@ void FileManager::loadStaticObj()
 	m_sharedStaticIcon[ROPE].loadFromFile("Rope.png");
 	m_sharedStaticIcon[GATE].loadFromFile("Gate.png");
 
-	m_dec.loadFromFile("staticDec.png");
+	m_dec[0].loadFromFile("staticDec.png");
+	m_dec[1].loadFromFile("trees.png");
 
 	loadStaticObjRect();
 }
@@ -282,9 +283,9 @@ sf::Texture* FileManager::getPlayerTexture()
 	return &this->m_player;
 }
 //------------------------------------------------------------------
-const sf::Texture* FileManager::getDec() const
+const sf::Texture* FileManager::getDec(const int place) const
 {
-	return &this->m_dec;
+	return &this->m_dec[place];
 }
 //------------------------------------------------------------------
 
