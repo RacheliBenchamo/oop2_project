@@ -49,7 +49,7 @@ void playerGate(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Gate&>(f).getIsOpen())
     {
-        FileManager::instance().startSound(FileManager::instance().getShareSaund(S_WIN_LEVEL));
+        FileManager::instance().startSound(FileManager::instance().getShareSaund(S_WIN_LEVEL), VOLUME_COLLISION);
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
         static_cast<Player&>(p).setGotToNextLev();
     }
@@ -59,7 +59,7 @@ void playerGate(GameObjBase& p, GameObjBase& f)
 void PlayerTeleport(GameObjBase& p, GameObjBase& f)
 {
     static_cast<Player&>(p).setPos(static_cast<Teleport&>(f).getPertnetPos());
-    FileManager::instance().startSound(FileManager::instance().getShareSaund(S_IN_TELEPORT));
+    FileManager::instance().startSound(FileManager::instance().getShareSaund(S_IN_TELEPORT), VOLUME_COLLISION);
 }
 //------------------------------------------------------------------
 
@@ -68,14 +68,14 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
     if (static_cast<Player&>(p).getHitingStatus())
     {
         FileManager::instance().startSound(FileManager::instance().getMonsterSound(HURT,
-            static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
+            static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()), VOLUME_COLLISION);
         static_cast<Monster&>(f).handleHit(static_cast<Player&>(p).getDamage());
     }
         
     else
     {
         FileManager::instance().startSound(FileManager::instance().getMonsterSound(HIT,
-            static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
+            static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()), VOLUME_COLLISION);
         static_cast<Player&>(p).handleHit(static_cast<Monster&>(f).getDamage());
     }
 
@@ -87,7 +87,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 //------------------------------------------------------------------------
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    FileManager::instance().startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
+    FileManager::instance().startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND), VOLUME_COLLISION);
    
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();

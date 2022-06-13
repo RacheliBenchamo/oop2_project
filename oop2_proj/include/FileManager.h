@@ -29,7 +29,8 @@ public:
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(const backgroundsType)const;
 	const sf::Texture* getBIcons(const bIcons)const;
-	void  startSound(sf::SoundBuffer* sound)const;
+	void  startSound(sf::SoundBuffer* sound,const int)const;
+	void startBackgraundSound(sf::SoundBuffer* sound, const int volum)const;
 	const sf::Font* getFont()const;
 	const sf::Texture* getDec(const int) const;
 	const sf::IntRect getCurrLevDecRect(const levels, const decoration) const;
@@ -37,6 +38,7 @@ public:
 	const AnimationData& getStaticData(const icons)const;
 	const AnimationData& getMonstersData(const levels, const icons)const;
 	const AnimationData& getPlayerData(const gender)const;
+
 
 private:
 	FileManager();

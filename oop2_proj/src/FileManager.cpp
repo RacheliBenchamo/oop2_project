@@ -185,12 +185,20 @@ void FileManager::loadResetIcon()
 	m_restartIcon.loadFromFile("resetButton.png");
 }
 //--------------------------------------------------
-void FileManager::startSound(sf::SoundBuffer* sound)const
+void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 {
 	static sf::Sound effect;
 	effect.setBuffer(*sound);
 	effect.play();
-	effect.setVolume(VOLUME_COLLISION);
+	effect.setVolume(volum);
+}
+//--------------------------------------------------
+void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)const
+{
+	static sf::Sound effect;
+	effect.setBuffer(*sound);
+	effect.play();
+	effect.setVolume(volum);
 }
 // load the backgrounds sprites
 void FileManager::loadBackgrounds()

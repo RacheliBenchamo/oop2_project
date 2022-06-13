@@ -92,7 +92,7 @@ void Player::playMovementAnimations()
 			if (m_animation.getOperation() != Operation::Hit 
 				&& m_animation.getOperation() != Operation::Hurt)
 			{
-				FileManager::instance().startSound(FileManager::instance().getPlayerSound(WALK,getCurrLevel()));
+				FileManager::instance().startSound(FileManager::instance().getPlayerSound(WALK,getCurrLevel()), VOLUME_BG);
 				m_animation.operation(Operation::Walk);
 			}
 		}
@@ -153,7 +153,7 @@ const sf::Vector2f Player::getMovement(const sf::Time& deltaTime)
 	}
 	else if (m_inHnaldeJump)
 	{
-		FileManager::instance().startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()));
+		FileManager::instance().startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()), VOLUME_BG);
 		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}
 	return (getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));

@@ -46,9 +46,9 @@ DIAMOND_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE),
 TELEPORT_SIZE = sf::Vector2f(BLOCK_SIZE * 2, BLOCK_SIZE);
 
 //volume data
-const unsigned int VOLUME_BG = 5;
-const unsigned int VOLUME_COLLISION = 6;
-const unsigned int BUTTON_VOLUME = 10; 
+const unsigned int VOLUME_BG = 15;
+const unsigned int VOLUME_COLLISION = 10;
+const unsigned int BUTTON_VOLUME = 12; 
 
 // window data
 const int WINDOW_WIDTH = 1910,
