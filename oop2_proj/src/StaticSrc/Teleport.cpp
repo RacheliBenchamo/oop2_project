@@ -5,13 +5,6 @@ Teleport::Teleport(sf::Vector2f pos)
 	{
 	m_shape.setTexture(FileManager::instance().getSharedStaticTexture(TELEPORT));
 	}
-
-//--------------------------------------------------
-
-void Teleport::startSound()
-{
-
-}
 //--------------------------------------------------
 
 void Teleport::setPartnerPos(sf::Vector2f pos)

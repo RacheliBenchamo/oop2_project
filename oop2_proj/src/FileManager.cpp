@@ -192,9 +192,11 @@ void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 {
 	static sf::Sound effect;
 	effect.setBuffer(*sound);
-	effect.play();
 	effect.setVolume(volum);
+	effect.play();
 }
+	
+	
 //--------------------------------------------------
 
 void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)const

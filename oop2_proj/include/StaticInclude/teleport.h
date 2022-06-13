@@ -6,7 +6,6 @@ class Teleport :public StaticObj
 {
 public:
 	Teleport(sf::Vector2f pos);
-	virtual void startSound();
 	void setPartnerPos(sf::Vector2f);
 	void toClose();
 	bool isOpen()const;

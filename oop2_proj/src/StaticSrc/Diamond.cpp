@@ -15,8 +15,3 @@ Diamond::Diamond(sf::Vector2f pos)
 	m_shape.scale(1, 2.2f);
 }
 //--------------------------------------------------
-
-void Diamond::startSound()
-{
-	
-}

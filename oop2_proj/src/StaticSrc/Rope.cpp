@@ -7,8 +7,3 @@ Rope::Rope(sf::Vector2f pos)
 	m_shape.setTexture(FileManager::instance().getSharedStaticTexture(ROPE));
 }
 //--------------------------------------------------
-
-void Rope::startSound()
-{
-
-}
