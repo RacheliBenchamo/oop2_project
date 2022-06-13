@@ -134,3 +134,7 @@ void LoseScreen::setRestart()
 	m_restart.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_restart.setOutlineThickness(OUTLINE_THICKNESS);
 }
+
+void LoseScreen::playBackgroundSound()
+{
+}

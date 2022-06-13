@@ -20,6 +20,7 @@ private:
 	void setExit();
 	void setPick();
 	void setPlayer();
+	void playBackgroundSound();
 
 	sf::Text m_header;
 	sf::Text m_start;

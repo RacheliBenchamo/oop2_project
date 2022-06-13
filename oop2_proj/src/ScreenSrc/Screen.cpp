@@ -10,6 +10,7 @@ Screen::Screen()
 //----------------------------------------------------------------
 screensOption Screen::activateScreen(sf::RenderWindow& window)
 {
+	playBackgroundSound();
 	while (window.isOpen())
 	{
 		draw(window);
@@ -41,10 +42,12 @@ screensOption Screen::activateScreen(sf::RenderWindow& window)
 //----------------------------------------------------------------
 void Screen::playMoveSound()
 {
-	FileManager::instance().startSound(FileManager::instance().getShareSaund(S_ABOVE), BUTTON_VOLUME);
+	FileManager::instance().startSound(FileManager::instance().
+		getShareSaund(S_ABOVE), BUTTON_VOLUME);
 }
 //----------------------------------------------------------------
 void Screen::playSelectSound()
 {
-	FileManager::instance().startSound(FileManager::instance().getShareSaund(S_CLICKED), BUTTON_VOLUME);
+	FileManager::instance().startSound(FileManager::instance().
+		getShareSaund(S_CLICKED), BUTTON_VOLUME);
 }

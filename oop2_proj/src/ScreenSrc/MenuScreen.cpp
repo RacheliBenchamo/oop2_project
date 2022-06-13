@@ -105,6 +105,17 @@ void MenuScreen::setPlayer()
 	m_girlplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4 });
 }
 //------------------------------------------------
+
+void MenuScreen::playBackgroundSound()
+{
+	if (!FileManager::instance().getIsMenuAudioPlaying())
+	{
+		FileManager::instance().startBackgraundSound(FileManager::instance().
+			getShareSaund(S_MENU), VOLUME_BG);
+		FileManager::instance().setIsMenuAudioPlaying(true);
+	}
+}
+//------------------------------------------------
 //draw all the buttons on the window
 
 void MenuScreen::draw(sf::RenderWindow& window)
@@ -126,7 +137,6 @@ void MenuScreen::draw(sf::RenderWindow& window)
 
 screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
 {
-	//m_pick
 	if (this->m_start.getGlobalBounds().contains(Location)) // pressed start
 	{
 		if (m_selectedPlayer != WAIT)

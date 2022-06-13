@@ -51,6 +51,8 @@ configure_file ("sounds/Level1backgraund.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/Level2backgraund.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/Level3backgraund.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
+
+configure_file ("sounds/MenuBackground.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winLevelSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/winGameSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/InTeleportSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)

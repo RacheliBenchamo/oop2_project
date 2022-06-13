@@ -111,6 +111,7 @@ void FileManager::loadPlayerRect()
 
 void FileManager::loadAudio()
 {
+	m_audio[S_MENU].loadFromFile("MenuBackground.wav");
 	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
@@ -123,11 +124,11 @@ void FileManager::loadAudio()
 	m_backGroundAudio[LEVEL1].loadFromFile("Level1backgraund.wav");
 	m_backGroundAudio[LEVEL2].loadFromFile("Level2backgraund.wav");
 	m_backGroundAudio[LEVEL3].loadFromFile("Level3backgraund.wav");
+
 	//for 3 levels
 	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
 	m_playerAudio[LEVEL1][JUMP].loadFromFile("potionDrinking.wav");
 	m_playerAudio[LEVEL1][CLIME].loadFromFile("potionDrinking.wav");
-	//m_playerAudio[LEVEL1][HURT].loadFromFile("pickUpDiamond.wav");
 
 	m_playerAudio[LEVEL2][WALK].loadFromFile("IceWalking.wav");
 	m_playerAudio[LEVEL2][JUMP].loadFromFile("potionDrinking.wav");
@@ -137,7 +138,6 @@ void FileManager::loadAudio()
 	m_playerAudio[LEVEL3][WALK].loadFromFile("SandWalking.wav");
 	m_playerAudio[LEVEL3][JUMP].loadFromFile("potionDrinking.wav");
 	m_playerAudio[LEVEL3][CLIME].loadFromFile("potionDrinking.wav");
-	//m_playerAudio[LEVEL3][HURT].loadFromFile("takeKeySound.wav");
 
 	//for each monster in each level
 	m_monstersAudio[LEVEL1][HIT][M_FIRST].loadFromFile("MushriHit.wav");
@@ -221,7 +221,6 @@ sf::SoundBuffer* FileManager::getPlayerSound(const playerSounds sound,
 	const levels currLevel)
 {
 	return &m_playerAudio[currLevel-1][sound];
-
 }
 //--------------------------------------------
 

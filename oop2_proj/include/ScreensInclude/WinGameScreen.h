@@ -14,6 +14,7 @@ private:
 	void setHeader();
 	void setMenu();
 	void setExit();
+	void playBackgroundSound();
 
 	sf::Text m_header;
 	sf::Text m_menu;

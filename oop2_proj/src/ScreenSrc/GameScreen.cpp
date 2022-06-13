@@ -17,8 +17,8 @@ GameScreen::GameScreen(sf::RenderWindow& window,Controller* controller)
 
 screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 {
-	
 	setNewGame();
+	playBackgroundSound();
 
 	while (window.isOpen())
 	{
@@ -66,7 +66,6 @@ catch (const std::exception& e)
 void GameScreen::setNewGame()
 {
 	m_playButton = true;
-	startSound();
 	setBigView();
 	m_controller->handleScreens(MENU);
 	m_playerGender = m_controller->getGenderFromMenu();
@@ -154,7 +153,7 @@ void GameScreen::startNewLevel()
 	else
 	{
 		m_levelNum++;
-		startSound();
+		playBackgroundSound();
 		setBigView();
 		if (m_levelNum != 1) { m_controller->handleScreens(WIN_LEVEL); }
 		m_playerGender = m_controller->getGenderFromMenu();
@@ -178,14 +177,6 @@ void GameScreen::resetLevel()
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(false);
 }
-//------------------------------------------
-//starting new game
-
-void GameScreen::startSound()
-{
-	FileManager::instance().startBackgraundSound(FileManager::instance().getBackgraundSaund(levels(m_levelNum - 1)), VOLUME_BG);
-	
-}
 //------------------------------------
 
 void GameScreen::startnewGame()
@@ -207,7 +198,15 @@ void GameScreen::setBigView()
 	m_view.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	m_window->setView(m_view);
 }
+//-----------------------------------------------------------
 
+void GameScreen::playBackgroundSound()
+{
+	FileManager::instance().startBackgraundSound
+	(FileManager::instance().
+		getBackgraundSaund(levels(m_levelNum - 1)), VOLUME_BG);
+	FileManager::instance().setIsMenuAudioPlaying(false);
+}
 //---------------------------------------------------------
 
 void GameScreen::setBackground()
@@ -229,7 +228,6 @@ void GameScreen::setBackground()
 		break;
 	}
 }
-
 //-----------------------------------------------------------
 
 void GameScreen::setView()

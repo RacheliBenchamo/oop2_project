@@ -35,7 +35,8 @@ private:
     void setBackground();
     void setViewToCenter();
     void setBigView();
-    void startSound();
+    void playBackgroundSound();
+
 
     sf::RenderWindow* m_window;
     StatusBar m_statusBar;

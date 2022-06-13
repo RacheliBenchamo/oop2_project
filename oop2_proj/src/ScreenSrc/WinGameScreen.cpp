@@ -105,3 +105,7 @@ void WinGameScreen::setExit()
 	m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 }
+
+void WinGameScreen::playBackgroundSound()
+{
+}
