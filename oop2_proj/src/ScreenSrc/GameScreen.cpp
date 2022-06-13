@@ -165,8 +165,6 @@ void GameScreen::startNewLevel()
 		m_statusBar.updateLevel(true);
 		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	}
-	std::cout << "neither \n";
-
 }
 //----------------------------------------------
 //starting the current level again 
