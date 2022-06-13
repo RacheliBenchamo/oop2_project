@@ -18,13 +18,6 @@ namespace // anonymous namespace — the standard way to make function "static"
     using HitMap = std::map<MapKey, HitFunctionPtr>;
 
 
-    void startSound(sf::SoundBuffer* sound)
-    {
-        static sf::Sound effect;
-        effect.setBuffer(*sound);
-        effect.play();
-        effect.setVolume(VOLUME_COLLISION);
-    }
 
 ////----------------------------- PlayerFloor ------------------------------
 //// Handle the event that the player collides with the floor.
@@ -56,7 +49,7 @@ void playerGate(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Gate&>(f).getIsOpen())
     {
-        startSound(FileManager::instance().getShareSaund(S_WIN_LEVEL));
+        FileManager::instance().startSound(FileManager::instance().getShareSaund(S_WIN_LEVEL));
         std::this_thread::sleep_for(std::chrono::milliseconds(600));
         static_cast<Player&>(p).setGotToNextLev();
     }
@@ -66,7 +59,7 @@ void playerGate(GameObjBase& p, GameObjBase& f)
 void PlayerTeleport(GameObjBase& p, GameObjBase& f)
 {
     static_cast<Player&>(p).setPos(static_cast<Teleport&>(f).getPertnetPos());
-    startSound(FileManager::instance().getShareSaund(S_IN_TELEPORT));
+    FileManager::instance().startSound(FileManager::instance().getShareSaund(S_IN_TELEPORT));
 }
 //------------------------------------------------------------------
 
@@ -74,14 +67,14 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Player&>(p).getHitingStatus())
     {
-        startSound(FileManager::instance().getMonsterSound(HURT,
+        FileManager::instance().startSound(FileManager::instance().getMonsterSound(HURT,
             static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
         static_cast<Monster&>(f).handleHit(static_cast<Player&>(p).getDamage());
     }
         
     else
     {
-        startSound(FileManager::instance().getMonsterSound(HIT,
+        FileManager::instance().startSound(FileManager::instance().getMonsterSound(HIT,
             static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()));
         static_cast<Player&>(p).handleHit(static_cast<Monster&>(f).getDamage());
     }
@@ -94,7 +87,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 //------------------------------------------------------------------------
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
+    FileManager::instance().startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND));
    
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();

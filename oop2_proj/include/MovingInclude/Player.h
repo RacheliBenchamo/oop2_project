@@ -37,7 +37,6 @@ private:
 	void playMovementAnimations();
 	const sf::Vector2f getMovement(const sf::Time& );
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
-	void startSound(sf::SoundBuffer* sound);
 
 	bool m_climbing = false;
 	int m_diamondsCount = 0;

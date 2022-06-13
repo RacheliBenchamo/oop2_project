@@ -185,8 +185,14 @@ void FileManager::loadResetIcon()
 	m_restartIcon.loadFromFile("resetButton.png");
 }
 //--------------------------------------------------
+void FileManager::startSound(sf::SoundBuffer* sound)const
+{
+	static sf::Sound effect;
+	effect.setBuffer(*sound);
+	effect.play();
+	effect.setVolume(VOLUME_COLLISION);
+}
 // load the backgrounds sprites
-
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");

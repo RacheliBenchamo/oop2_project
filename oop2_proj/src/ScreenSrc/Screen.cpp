@@ -41,16 +41,10 @@ screensOption Screen::activateScreen(sf::RenderWindow& window)
 //----------------------------------------------------------------
 void Screen::playMoveSound()
 {
-	static sf::Sound effect;
-	effect.setBuffer(*FileManager::instance().getShareSaund(S_ABOVE));
-	effect.play();
-	effect.setVolume(BUTTON_VOLUME*3);
+	FileManager::instance().startSound(FileManager::instance().getShareSaund(S_ABOVE));
 }
 //----------------------------------------------------------------
 void Screen::playSelectSound()
 {
-	static sf::Sound effect;
-	effect.setBuffer(*FileManager::instance().getShareSaund(S_CLICKED));
-	effect.play();
-	effect.setVolume(BUTTON_VOLUME*2);
+	FileManager::instance().startSound(FileManager::instance().getShareSaund(S_CLICKED));
 }

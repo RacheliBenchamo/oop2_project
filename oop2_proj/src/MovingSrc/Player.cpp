@@ -78,15 +78,7 @@ void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
 		m_animation.operation(Operation::Stay);
 	}
 }
-////------------------------------------------------------------------------
 
-void Player::startSound(sf::SoundBuffer* sound)
-{
-	static sf::Sound effect;
-	effect.setBuffer(*sound);
-	effect.play();
-	effect.setVolume(VOLUME_COLLISION);
-}
 //----------------------- playMovementAnimations -------------------------
  //Plays the animation according to the situation in which the player is.
 //------------------------------------------------------------------------
@@ -100,7 +92,7 @@ void Player::playMovementAnimations()
 			if (m_animation.getOperation() != Operation::Hit 
 				&& m_animation.getOperation() != Operation::Hurt)
 			{
-				startSound(FileManager::instance().getPlayerSound(WALK,getCurrLevel()));
+				FileManager::instance().startSound(FileManager::instance().getPlayerSound(WALK,getCurrLevel()));
 				m_animation.operation(Operation::Walk);
 			}
 		}
@@ -161,7 +153,7 @@ const sf::Vector2f Player::getMovement(const sf::Time& deltaTime)
 	}
 	else if (m_inHnaldeJump)
 	{
-		startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()));
+		FileManager::instance().startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()));
 		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}
 	return (getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));
@@ -228,7 +220,6 @@ void Player::handleJump(const sf::Time& deltaTime, const bool jump,
 	m_inHnaldeJump = true;
 	if (jump && m_onFloor && jumpCounter == 0&& !m_climbing)
 	{
-		//Resources::instance().playSound(JUMP_SOUND);
 		m_falling = true;
 		m_onFloor = false;
 		jumpCounter = JUMP_COUNTER;
