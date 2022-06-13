@@ -116,11 +116,9 @@ const float HALF_SIZE = 10.f;
 
 const char
 PLAYER_C='P', EMPTY_C = ' ',
-DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X',
-GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(',
-END_FLOOR_C = ')',F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R',
-BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2',
-MONSTER3_C = '3',GATE_C='#';
+DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X', FLOOR_C = '=', START_FLOOR_C = '(',
+END_FLOOR_C = ')',F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R'
+, MONSTER1_C = '1', MONSTER2_C = '2',MONSTER3_C = '3',GATE_C='#';
 
 enum icons 
 {
