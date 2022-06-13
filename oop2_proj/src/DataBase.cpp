@@ -137,7 +137,6 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 //draw all the moving object in the level on the window
 
 void DataBase::drawMovingObj(sf::RenderWindow& window)
-
 {
 	sf::Time delta_time = m_clock.restart();
 
@@ -161,7 +160,6 @@ void DataBase::drawMovingObj(sf::RenderWindow& window)
 			m_player->setHurt(false);
 		}
 	}
-
 }
 //--------------------------------------------------------------
 //find the partner of the teleports
@@ -188,6 +186,7 @@ void DataBase::move(const sf::Time deltaTime)
 		f->move(deltaTime, m_levelSize);
 	}
 	//move current player
+	if(m_player)
 	m_player->move(deltaTime,m_levelSize);
 
 	handelCollisions();
@@ -212,26 +211,21 @@ void DataBase::handelMovingCollisions()
 		if (m_player->checkCollision(*r))
 			processCollision(*m_player, *r);
 
-
 	for (auto& s : m_staticsObj)
 	{
 		if (m_player->checkCollision(*s))
 			processCollision(*m_player, *s);
-
 		for (auto& m : m_monsters)
+		{
+			if (m_player->checkCollision(*m))
+				processCollision(*m_player, *m);
 			if (m->checkCollision(*s))
 				processCollision(*m, *s);
-
+		}
 		if (typeid(*s) == typeid(Gate)
 			&& m_player->getDiamondsCount() == m_currLevelMaxDiamonds)
 			static_cast<Gate&>(*s).open();
 	}
-	
-	// check collision between player and monsters
-	for (auto& s : m_monsters)
-		if (m_player->checkCollision(*s))
-			processCollision(*m_player, *s);
-
 }
 //----------------------------------------------------
 //handle the teleports collisions in this moment
@@ -253,7 +247,6 @@ void DataBase::handelTeleportCollisions()
 		}
 	}
 }
-
 //----------------------------------------------------
 
 void DataBase::handelPlayerStuff(const sf::Time deltaTime)
@@ -345,7 +338,6 @@ void DataBase::eraseObj()
 		auto ropePtr = m_rope.begin();
 		m_rope.erase(ropePtr);
 	}
-
 	while (!m_teleport.empty())
 	{
 		auto teleportPtr = m_teleport.begin();
