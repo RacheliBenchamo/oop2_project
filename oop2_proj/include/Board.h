@@ -14,7 +14,7 @@ public:
 	sf::Vector2f getBoardSize()const { return m_boardSize; }
 	void TakeBackInputStreamToBegLevel();
 	void resetInputStream();
-
+	void checkStageType(const char, DataBase&);
 private:
 	sf::Vector2f m_boardSize;
 	std::ifstream m_input;

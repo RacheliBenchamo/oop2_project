@@ -116,11 +116,9 @@ const float HALF_SIZE = 10.f;
 
 const char
 PLAYER_C='P', EMPTY_C = ' ',
-DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X',
-GIFT_C = '?', FAIRY_C = '^', FLOOR_C = '=', START_FLOOR_C = '(',
-END_FLOOR_C = ')',F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R',
-BIG_MONSTER = 'B', MONSTER1_C = '1', MONSTER2_C = '2',
-MONSTER3_C = '3',GATE_C='#';
+DIAMOND_C = 'D', ROPE_C = '|', TELEPORT_C = 'X', FLOOR_C = '=', START_FLOOR_C = '(',
+END_FLOOR_C = ')',F_TREE_C = 'T', S_TREE_C = 't',ROCK_C = 'R'
+, MONSTER1_C = '1', MONSTER2_C = '2',MONSTER3_C = '3',GATE_C='#';
 
 enum icons 
 {
@@ -142,7 +140,7 @@ enum Operation
 
 enum backgroundsType
 {
-	MENU_BACKGROUND, LEVEL1_BACKGROUND, LEVEL2_BACKGROUND, LEVEL3_BACKGROUND,
+	MENU_BACKGROUND, FOREST_BACKGROUND, SNOW_BACKGROUND, DESERT_BACKGROUND,
 	HELP_BACKGROUND, LOSE_LEVEL_BACKGROUND, WIN_GAME_BACKGROUND
 };
 
@@ -159,7 +157,7 @@ enum decoration{ L_FLOOR, M_FLOOR, R_FLOOR, F_TREE, S_TREE, ROCK };
    
 enum bIcons{ B_DIAMOND, B_POWER, B_LIFE,};
 
-enum levels{ LEVEL1,LEVEL2,LEVEL3};
+enum levels{ FOREST, SNOW,DESERT };
 
 enum posion{ POWERPOSION,  LIFE_POSION};
 

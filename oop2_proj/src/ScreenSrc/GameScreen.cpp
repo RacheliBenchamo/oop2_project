@@ -63,6 +63,7 @@ void GameScreen::setNewGame()
 	setBigView();
 	m_controller->handleScreens(MENU);
 	m_playerGender = m_controller->getGenderFromMenu();
+	m_dataBase.setLevelMaxDiamonds(0);
 	m_board.readLevelData(m_dataBase, m_playerGender);
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(true);
@@ -149,6 +150,7 @@ void GameScreen::startNewLevel()
 		if (m_levelNum != 1) { m_controller->handleScreens(WIN_LEVEL); }
 		m_playerGender = m_controller->getGenderFromMenu();
 		m_dataBase.setGender(m_playerGender);
+		m_dataBase.setLevelMaxDiamonds(0);
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
 		m_board.readLevel(m_dataBase);
@@ -194,7 +196,7 @@ void GameScreen::setBigView()
 void GameScreen::playBackgroundSound()
 {
 	FileManager::instance().startBackgraundSound(FileManager::instance().
-		getBackgraundSaund(levels(m_levelNum - 1)), VOLUME_BG);
+		getBackgraundSaund(m_dataBase.getStageType()), VOLUME_BG);
 	FileManager::instance().setIsMenuAudioPlaying(false);
 }
 //---------------------------------------------------------
@@ -203,16 +205,16 @@ void GameScreen::setBackground()
 {
 	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
 	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
-	switch (m_levelNum - 1)
+	switch (m_dataBase.getStageType())
 	{
-	case LEVEL1:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL1_BACKGROUND));
+	case FOREST:
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(FOREST_BACKGROUND));
 		break;
-	case LEVEL2:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL2_BACKGROUND));
+	case SNOW:
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(SNOW_BACKGROUND));
 		break;
-	case LEVEL3:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL3_BACKGROUND));
+	case DESERT:
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(DESERT_BACKGROUND));
 		break;
 	default:
 		break;
