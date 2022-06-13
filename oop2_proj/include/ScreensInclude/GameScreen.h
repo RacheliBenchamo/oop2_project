@@ -43,8 +43,7 @@ private:
     Board m_board;
     DataBase  m_dataBase;
     sf::Clock m_gameClock;
-    sf::Sound m_backGroundMusic;
-    int m_levelNum = 1;
+    int m_levelNum;
     sf::RectangleShape m_currLevelBackground;
     sf::View m_view;
     bool m_playButton;

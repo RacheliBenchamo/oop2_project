@@ -101,7 +101,7 @@ void GameScreen::handelMouseButtonReleased(const sf::Event event)
 void GameScreen::handelMusicButtonReleased()
 {
 
-	if (m_backGroundMusic.getStatus() == sf::SoundSource::Status::Playing)
+	/*if (m_backGroundMusic.getStatus() == sf::SoundSource::Status::Playing)
 	{
 		m_backGroundMusic.stop();
 		m_statusBar.setMusicIcon(false);
@@ -110,7 +110,7 @@ void GameScreen::handelMusicButtonReleased()
 	{
 		m_backGroundMusic.play();
 		m_statusBar.setMusicIcon(true);
-	}
+	}*/
 }
 //----------------------------------------------
 //pouse or keep going the level

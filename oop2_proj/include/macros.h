@@ -73,7 +73,8 @@ const int STATUS_BAR_HEIGHT = 50;
 const int STATUS_BAR_CHAR_SIZE = 15;
 const float STATUS_BAR_OUTLINE_THICKNESS = 3.0;
 const int BUFF_DISTANCE = 40;
-const sf::Vector2f MUSIC_ICON_SCALE = { 0.01f, 0.01f };
+const sf::Vector2f MUSIC_ICON_SCALE1 = { 0.08f, 0.08f };
+const sf::Vector2f MUSIC_ICON_SCALE = { 0.01f,0.01f };
 
 //color consts
 const sf::Color
