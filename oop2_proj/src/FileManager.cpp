@@ -43,17 +43,17 @@ void FileManager::loadMovingObj()
 	m_player.loadFromFile("Player.png");
 	loadPlayerRect();
 
-	m_monstersIcon[LEVEL1][MONSTER1].loadFromFile("ForMonster1.png");
-	m_monstersIcon[LEVEL1][MONSTER2].loadFromFile("ForMonster2.png");
-	m_monstersIcon[LEVEL1][MONSTER3].loadFromFile("ForMonster3.png");
+	m_monstersIcon[FOREST][MONSTER1].loadFromFile("ForMonster1.png");
+	m_monstersIcon[FOREST][MONSTER2].loadFromFile("ForMonster2.png");
+	m_monstersIcon[FOREST][MONSTER3].loadFromFile("ForMonster3.png");
 
-	m_monstersIcon[LEVEL2][MONSTER1].loadFromFile("SnoMonster1.png");
-	m_monstersIcon[LEVEL2][MONSTER2].loadFromFile("SnoMonster2.png");
-	m_monstersIcon[LEVEL2][MONSTER3].loadFromFile("SnoMonster3.png");
+	m_monstersIcon[SNOW][MONSTER1].loadFromFile("SnoMonster1.png");
+	m_monstersIcon[SNOW][MONSTER2].loadFromFile("SnoMonster2.png");
+	m_monstersIcon[SNOW][MONSTER3].loadFromFile("SnoMonster3.png");
 
-	m_monstersIcon[LEVEL3][MONSTER1].loadFromFile("DesMonster1.png");
-	m_monstersIcon[LEVEL3][MONSTER2].loadFromFile("DesMonster2.png");
-	m_monstersIcon[LEVEL3][MONSTER3].loadFromFile("DesMonster3.png");
+	m_monstersIcon[DESERT][MONSTER1].loadFromFile("DesMonster1.png");
+	m_monstersIcon[DESERT][MONSTER2].loadFromFile("DesMonster2.png");
+	m_monstersIcon[DESERT][MONSTER3].loadFromFile("DesMonster3.png");
 }
 //--------------------------------------------------
 // load all the object images
@@ -77,26 +77,26 @@ void FileManager::loadStaticObj()
 // load all the rect of the static decoration un the game
 void FileManager::loadStaticObjRect()
 {
-	m_decRect[LEVEL1][L_FLOOR] = LEFT_FLOOR_L1;
-	m_decRect[LEVEL1][M_FLOOR] = MIDDLE_FLOOR_L1;
-	m_decRect[LEVEL1][R_FLOOR] = RIGHT_FLOOR_L1;
-	m_decRect[LEVEL1][F_TREE] = FIRST_TREE_L1;
-	m_decRect[LEVEL1][S_TREE] = SECOUND_TREE_L1;
-	m_decRect[LEVEL1][ROCK] = ROCK_L1;
+	m_decRect[FOREST][L_FLOOR] = LEFT_FLOOR_L1;
+	m_decRect[FOREST][M_FLOOR] = MIDDLE_FLOOR_L1;
+	m_decRect[FOREST][R_FLOOR] = RIGHT_FLOOR_L1;
+	m_decRect[FOREST][F_TREE] = FIRST_TREE_L1;
+	m_decRect[FOREST][S_TREE] = SECOUND_TREE_L1;
+	m_decRect[FOREST][ROCK] = ROCK_L1;
 
-	m_decRect[LEVEL2][L_FLOOR] = LEFT_FLOOR_L2;
-	m_decRect[LEVEL2][M_FLOOR] = MIDDLE_FLOOR_L2;
-	m_decRect[LEVEL2][R_FLOOR] = RIGHT_FLOOR_L2;
-	m_decRect[LEVEL2][F_TREE] = FIRST_TREE_L2;
-	m_decRect[LEVEL2][S_TREE] = SECOUND_TREE_L2;
-	m_decRect[LEVEL2][ROCK] = ROCK_L2;
+	m_decRect[SNOW][L_FLOOR] = LEFT_FLOOR_L2;
+	m_decRect[SNOW][M_FLOOR] = MIDDLE_FLOOR_L2;
+	m_decRect[SNOW][R_FLOOR] = RIGHT_FLOOR_L2;
+	m_decRect[SNOW][F_TREE] = FIRST_TREE_L2;
+	m_decRect[SNOW][S_TREE] = SECOUND_TREE_L2;
+	m_decRect[SNOW][ROCK] = ROCK_L2;
 
-	m_decRect[LEVEL3][L_FLOOR] = LEFT_FLOOR_L3;
-	m_decRect[LEVEL3][M_FLOOR] = MIDDLE_FLOOR_L3;
-	m_decRect[LEVEL3][R_FLOOR] = RIGHT_FLOOR_L3;
-	m_decRect[LEVEL3][F_TREE] = FIRST_TREE_L3;
-	m_decRect[LEVEL3][S_TREE] = SECOUND_TREE_L3;
-	m_decRect[LEVEL3][ROCK] = ROCK_L3;
+	m_decRect[DESERT][L_FLOOR] = LEFT_FLOOR_L3;
+	m_decRect[DESERT][M_FLOOR] = MIDDLE_FLOOR_L3;
+	m_decRect[DESERT][R_FLOOR] = RIGHT_FLOOR_L3;
+	m_decRect[DESERT][F_TREE] = FIRST_TREE_L3;
+	m_decRect[DESERT][S_TREE] = SECOUND_TREE_L3;
+	m_decRect[DESERT][ROCK] = ROCK_L3;
 
 }
 //--------------------------------------------------
@@ -123,45 +123,36 @@ void FileManager::loadAudio()
 	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 
-	m_backGroundAudio[LEVEL1].loadFromFile("Level1backgraund.wav");
-	m_backGroundAudio[LEVEL2].loadFromFile("Level2backgraund.wav");
-	m_backGroundAudio[LEVEL3].loadFromFile("Level3backgraund.wav");
+	m_backGroundAudio[FOREST].loadFromFile("Level1backgraund.wav");
+	m_backGroundAudio[SNOW].loadFromFile("Level2backgraund.wav");
+	m_backGroundAudio[DESERT].loadFromFile("Level3backgraund.wav");
 
 	//for 3 levels
-	m_playerAudio[LEVEL1][WALK].loadFromFile("GrassWalking.wav");
-	m_playerAudio[LEVEL1][JUMP].loadFromFile("potionDrinking.wav");
-	m_playerAudio[LEVEL1][CLIME].loadFromFile("potionDrinking.wav");
-
-	m_playerAudio[LEVEL2][WALK].loadFromFile("IceWalking.wav");
-	m_playerAudio[LEVEL2][JUMP].loadFromFile("potionDrinking.wav");
-	m_playerAudio[LEVEL2][CLIME].loadFromFile("potionDrinking.wav");
-	//m_playerAudio[LEVEL2][HURT].loadFromFile("takeKeySound.wav");
-
-	m_playerAudio[LEVEL3][WALK].loadFromFile("SandWalking.wav");
-	m_playerAudio[LEVEL3][JUMP].loadFromFile("potionDrinking.wav");
-	m_playerAudio[LEVEL3][CLIME].loadFromFile("potionDrinking.wav");
+	m_playerAudio[FOREST][WALK].loadFromFile("GrassWalking.wav");
+	m_playerAudio[SNOW][WALK].loadFromFile("IceWalking.wav");
+	m_playerAudio[DESERT][WALK].loadFromFile("SandWalking.wav");
 
 	//for each monster in each level
-	m_monstersAudio[LEVEL1][HIT][M_FIRST].loadFromFile("MushriHit.wav");
-	m_monstersAudio[LEVEL1][HURT][M_FIRST].loadFromFile("MushriHurt.wav");
-	m_monstersAudio[LEVEL1][HIT][M_SECOND].loadFromFile("TreetHit.wav");
-	m_monstersAudio[LEVEL1][HURT][M_SECOND].loadFromFile("TreetHurt.wav");
-	m_monstersAudio[LEVEL1][HIT][M_THIRD].loadFromFile("GreemonHit.wav");
-	m_monstersAudio[LEVEL1][HURT][M_THIRD].loadFromFile("GreemonHurt.wav");
+	m_monstersAudio[FOREST][HIT][M_FIRST].loadFromFile("MushriHit.wav");
+	m_monstersAudio[FOREST][HURT][M_FIRST].loadFromFile("MushriHurt.wav");
+	m_monstersAudio[FOREST][HIT][M_SECOND].loadFromFile("TreetHit.wav");
+	m_monstersAudio[FOREST][HURT][M_SECOND].loadFromFile("TreetHurt.wav");
+	m_monstersAudio[FOREST][HIT][M_THIRD].loadFromFile("GreemonHit.wav");
+	m_monstersAudio[FOREST][HURT][M_THIRD].loadFromFile("GreemonHurt.wav");
 
-	m_monstersAudio[LEVEL2][HIT][M_FIRST].loadFromFile("PenguwulungHit.wav");
-	m_monstersAudio[LEVEL2][HURT][M_FIRST].loadFromFile("PenguwulungHurt.wav");
-	m_monstersAudio[LEVEL2][HIT][M_SECOND].loadFromFile("SnowolfHit.wav");
-	m_monstersAudio[LEVEL2][HURT][M_SECOND].loadFromFile("SnowolfHurt.wav");
-	m_monstersAudio[LEVEL2][HIT][M_THIRD].loadFromFile("YetteyeyHit.wav");
-	m_monstersAudio[LEVEL2][HURT][M_THIRD].loadFromFile("YetteyeyHurt.wav");
+	m_monstersAudio[SNOW][HIT][M_FIRST].loadFromFile("PenguwulungHit.wav");
+	m_monstersAudio[SNOW][HURT][M_FIRST].loadFromFile("PenguwulungHurt.wav");
+	m_monstersAudio[SNOW][HIT][M_SECOND].loadFromFile("SnowolfHit.wav");
+	m_monstersAudio[SNOW][HURT][M_SECOND].loadFromFile("SnowolfHurt.wav");
+	m_monstersAudio[SNOW][HIT][M_THIRD].loadFromFile("YetteyeyHit.wav");
+	m_monstersAudio[SNOW][HURT][M_THIRD].loadFromFile("YetteyeyHurt.wav");
 
-	m_monstersAudio[LEVEL3][HIT][M_FIRST].loadFromFile("CactisHit.wav");
-	m_monstersAudio[LEVEL3][HURT][M_FIRST].loadFromFile("CactisHurt.wav");
-	m_monstersAudio[LEVEL3][HIT][M_SECOND].loadFromFile("SuricatiHit.wav");
-	m_monstersAudio[LEVEL3][HURT][M_SECOND].loadFromFile("SuricatiHurt.wav");
-	m_monstersAudio[LEVEL3][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
-	m_monstersAudio[LEVEL3][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
+	m_monstersAudio[DESERT][HIT][M_FIRST].loadFromFile("CactisHit.wav");
+	m_monstersAudio[DESERT][HURT][M_FIRST].loadFromFile("CactisHurt.wav");
+	m_monstersAudio[DESERT][HIT][M_SECOND].loadFromFile("SuricatiHit.wav");
+	m_monstersAudio[DESERT][HURT][M_SECOND].loadFromFile("SuricatiHurt.wav");
+	m_monstersAudio[DESERT][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
+	m_monstersAudio[DESERT][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
 }
 //--------------------------------------------------
 // load the music sprites
@@ -212,9 +203,9 @@ void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)c
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
-	m_backgrounds[LEVEL1_BACKGROUND].loadFromFile("forestBackground.png");
-	m_backgrounds[LEVEL2_BACKGROUND].loadFromFile("snowBackground.png");
-	m_backgrounds[LEVEL3_BACKGROUND].loadFromFile("desertBackground.png");
+	m_backgrounds[FOREST_BACKGROUND].loadFromFile("forestBackground.png");
+	m_backgrounds[SNOW_BACKGROUND].loadFromFile("snowBackground.png");
+	m_backgrounds[DESERT_BACKGROUND].loadFromFile("desertBackground.png");
 	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
 	m_backgrounds[LOSE_LEVEL_BACKGROUND].loadFromFile("LoseGameBackground.png");
 	m_backgrounds[WIN_GAME_BACKGROUND].loadFromFile("winGameBackground.png");
@@ -445,84 +436,84 @@ void FileManager::createPlayerAnimeData()
 
 void FileManager::createForestMonstersAnimeData()
 {
-	setCurrentData(m_monsterData[LEVEL1][MONSTER1], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER1], Stay, movableAnimationSet
 	({ 60, 55 }, { 1, 1 }, 5, 3, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER1], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER1], Walk, movableAnimationSet
 	({ 60, 55 }, { 3, 60 }, 5, 4, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER1], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER1], Hurt, movableAnimationSet
 	({ 60, 55 }, { 4, 117 }, 0, 1, Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER1], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER1], Dead, movableAnimationSet
 	({ 60, 55 }, { 4, 182 }, 5, 4, Dead), 0.005f, true);
 	
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER2], Stay, movableAnimationSet
 	({ 82, 82 }, { 1, 1 }, 5, 4, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER2], Walk, movableAnimationSet
 	({ 82, 82 }, { 1, 90 }, 5, 4, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER2], Hurt, movableAnimationSet
 	({ 82, 82 }, { 1, 177 }, 0, 1, Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER2], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER2], Dead, movableAnimationSet
 	({ 80, 70 }, { 1, 269 }, 4, 5, Dead), 0.005f, true);
 
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER3], Stay, movableAnimationSet
 	({ 102, 65 }, { 9, 6 }, 3, 3, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER3], Walk, movableAnimationSet
 	({ 97, 60 }, { 1, 80 }, 3, 4, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER3], Hurt, movableAnimationSet
 	({ 90, 62 }, { 4, 222 }, 0, 1, Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL1][MONSTER3], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[FOREST][MONSTER3], Dead, movableAnimationSet
 	({ 130, 50 }, { 8, 296 }, 0, 3, Dead), 0.005f, true);
 }
 //----------------------------------------------------
 
 void FileManager::createSnowMonstersAnimeData()
 {
-	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER1], Stay, movableAnimationSet
 	({ 34, 35 }, { 1, 7 },11,5, Stay), 0.03f, false);
 	
-	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER1], Walk, movableAnimationSet
 	({ 37, 35 }, { 1, 53 }, 10, 6, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER1], Hurt, movableAnimationSet
 	({ 37, 35 }, { 1, 96 }, 0, 1,	Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER1], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER1], Dead, movableAnimationSet
 	({ 52, 30 }, { 1, 140 }, 0, 5, Dead), 0.005f, true);
 
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER2], Stay, movableAnimationSet
 	({ 112, 65 }, { 13, 36 },40,4, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER2], Walk, movableAnimationSet
 	({ 125, 65 }, { 13, 145 }, 40, 3, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER2], Hurt, movableAnimationSet
 	({ 110, 50 }, { 10, 260 }, 0, 1,	Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER2], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER2], Dead, movableAnimationSet
 	({ 125, 50 }, { 10, 352 }, 32, 4, Dead), 0.005f, true);
 
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER3], Stay, movableAnimationSet
 	({ 38, 40 }, { 1, 6 }, 8,3, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER3], Walk, movableAnimationSet
 	({ 45, 40 }, { 1, 56 }, 5, 4, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER3], Hurt, movableAnimationSet
 	({ 38, 40 }, { 2, 105 }, 3, 2,Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL2][MONSTER3], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[SNOW][MONSTER3], Dead, movableAnimationSet
 	({ 62, 40 }, { 4, 155 }, 0, 6, Dead), 0.005f, true);
 
 }
@@ -530,42 +521,42 @@ void FileManager::createSnowMonstersAnimeData()
 
 void FileManager::createDesertMonstersAnimeData()
 {
-	setCurrentData(m_monsterData[LEVEL3][MONSTER1], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER1], Stay, movableAnimationSet
 	({ 67, 76 }, { 1, 5 },9, 6, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER1], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER1], Walk, movableAnimationSet
 	({ 67, 80 }, { 1, 86 },9, 6, Walk), 0.04f, false);
 	 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER1], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER1], Hurt, movableAnimationSet
 	({ 67, 90 }, { 4, 166 }, 0, 1,	Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER1], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER1], Dead, movableAnimationSet
 	({ 75, 90 }, { 7, 255 }, 0, 8, Dead), 0.005f, true);
 
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER2], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER2], Stay, movableAnimationSet
 	({ 48, 94 }, { 1, 1 },11,9, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER2], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER2], Walk, movableAnimationSet
 	({ 49, 90 }, { 1, 92 }, 15, 4, Walk), 0.04f, false);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER2], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER2], Hurt, movableAnimationSet
 	({ 49, 90 }, { 15, 180 }, 0, 1,Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER2], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER2], Dead, movableAnimationSet
 	({ 60, 100 }, { 13, 273 }, 10, 7, Dead), 0.005f, true);
 	
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Stay, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER3], Stay, movableAnimationSet
 	({ 55, 42 }, { 8, 11 }, 6,11, Stay), 0.03f, false);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Walk, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER3], Walk, movableAnimationSet
 	({ 55, 42 }, { 6, 67 }, 3,12, Walk), 0.04f, false);
 	 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Hurt, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER3], Hurt, movableAnimationSet
 	({ 55, 42 }, { 4, 217 }, 0, 1,Hurt), 0.05f, true);
 
-	setCurrentData(m_monsterData[LEVEL3][MONSTER3], Dead, movableAnimationSet
+	setCurrentData(m_monsterData[DESERT][MONSTER3], Dead, movableAnimationSet
 	({ 60, 66 }, { 7, 290 }, 0, 5, Dead), 0.005f, true);
 
 }

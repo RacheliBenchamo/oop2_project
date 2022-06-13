@@ -209,14 +209,14 @@ void GameScreen::setBackground()
 	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
 	switch (m_levelNum - 1)
 	{
-	case LEVEL1:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL1_BACKGROUND));
+	case FOREST:
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(FOREST_BACKGROUND));
 		break;
-	case LEVEL2:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL2_BACKGROUND));
+	case SNOW:
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(SNOW_BACKGROUND));
 		break;
-	case LEVEL3:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(LEVEL3_BACKGROUND));
+	case DESERT:
+		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(DESERT_BACKGROUND));
 		break;
 	default:
 		break;
