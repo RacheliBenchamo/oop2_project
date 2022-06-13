@@ -25,7 +25,7 @@ ADD_POWER = 200;
 
 //monster force
 const  int
-MON1_FORCE = 95,
+MON1_FORCE = 30,
 MON2_FORCE = 45,
 MON3_FORCE = 65,
 PAYER_FORCE = 150,
@@ -99,7 +99,7 @@ MOVE_DOUBLE{ 2,0 };
 //action counters:
 const int
 JUMP_COUNTER = 22,
-HIT_COUNTER = 40;
+HIT_COUNTER = 60;
 
 // scale consts
 const sf::Vector2f 

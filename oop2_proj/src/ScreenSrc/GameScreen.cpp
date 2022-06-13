@@ -183,11 +183,8 @@ void GameScreen::resetLevel()
 
 void GameScreen::startSound()
 {
-	m_backGroundMusic.setBuffer
-	(*FileManager::instance().getBackgraundSaund(levels(m_levelNum - 1)));
-	m_backGroundMusic.play();
-	m_backGroundMusic.setLoop(true);
-	m_backGroundMusic.setVolume(VOLUME_BG);
+	FileManager::instance().startSound(FileManager::instance().getBackgraundSaund(levels(m_levelNum - 1)));
+	
 }
 //------------------------------------
 

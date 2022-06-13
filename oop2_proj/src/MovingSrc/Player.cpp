@@ -11,8 +11,8 @@ Player::Player( const sf::Vector2f& pos, gender gen,int level)
 		FileManager::instance().getPlayerTexture())
 {
 	m_force = PAYER_FORCE;
-	m_life = 1000;
-	m_power = 1000;
+	m_life = MAX_LIFE;
+	m_power = MAX_POWER;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 }
 //------------------------------- move -----------------------------------
@@ -248,14 +248,14 @@ void Player::setHittingStatus(const bool status)
 void Player::handleHit(const float_t damage)
 {
 	static int hitCounter = 0;
-	
+	std::cout << "m_life " << m_life << "damage " << damage << "\n";
 	if (hitCounter == 0)
 	{
 		hitCounter = HIT_COUNTER;
 		// play sound
 		m_life - damage <= 0 ? m_life = 0 : m_life -= damage;
 	}
-	else if (hitCounter != 0)
+	else if (hitCounter >= 1)
 	{
 		m_animation.operation(Operation::Hurt);
 		hitCounter--;

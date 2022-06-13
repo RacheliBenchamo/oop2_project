@@ -13,7 +13,7 @@ Monster::Monster(const sf::Vector2f& pos, icons icon,
 	, m_monsterNum(icon)
 {
 	m_force = force;
-	m_life = 300;
+	m_life = MAX_LIFE/3;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 	randDir();
 }

@@ -129,9 +129,6 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 	{
 		e->draw(window);
 	}
-
-	
-	
 }
 //---------------------------------------------------
 //draw all the moving object in the level on the window
@@ -217,14 +214,17 @@ void DataBase::handelMovingCollisions()
 			processCollision(*m_player, *s);
 		for (auto& m : m_monsters)
 		{
-			if (m_player->checkCollision(*m))
-				processCollision(*m_player, *m);
 			if (m->checkCollision(*s))
 				processCollision(*m, *s);
 		}
 		if (typeid(*s) == typeid(Gate)
 			&& m_player->getDiamondsCount() == m_currLevelMaxDiamonds)
 			static_cast<Gate&>(*s).open();
+	}
+	for (auto& m : m_monsters)
+	{
+		if (m_player->checkCollision(*m))
+			processCollision(*m_player, *m);
 	}
 }
 //----------------------------------------------------
