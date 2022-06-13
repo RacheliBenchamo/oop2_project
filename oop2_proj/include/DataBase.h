@@ -43,11 +43,17 @@ public:
     void resetLevel() { m_currLevel = 1; };
     void setCurrLevel(const int currLevel) { m_currLevel = currLevel; };
     void printDamage();
-    
+
 private:
     bool createStaticObj(const char , const sf::Vector2f&);
     void createMovingObj(const char , const sf::Vector2f&);
     void replaceMonsterWithPotion();
+    template <class OBJ>
+    void setStaticObject(const sf::Vector2f&);
+    template <class OBJ>
+    void setStaticObject(sf::Vector2f, levels, decoration, sf::Vector2f, const int);
+    template <class OBJ>
+    void drawAndUpdate(OBJ object);
 
     void drawStaticObj(sf::RenderWindow& );
     void drawMovingObj(sf::RenderWindow& );
@@ -74,3 +80,15 @@ private:
     gender m_gender = MALE;
 };
 
+template<class OBJ>
+inline void DataBase::setStaticObject(const sf::Vector2f& pos)
+{
+    m_staticsObj.push_back(std::make_unique<OBJ>(pos));
+}
+
+template<class OBJ>
+inline void DataBase::setStaticObject(sf::Vector2f pos, levels level_num, 
+    decoration dec, sf::Vector2f size, const int place)
+{
+    m_staticsObj.push_back(std::make_unique<OBJ>(pos, level_num, dec, size, place));
+}

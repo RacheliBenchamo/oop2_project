@@ -61,48 +61,43 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 	switch (c)
 	{
 	case GATE_C:
-		m_staticsObj.push_back(std::make_unique<Gate>(pos + sf::Vector2f(0, 5)));
+		setStaticObject<Gate>(pos + sf::Vector2f(0, 5));
 		return true;
-		break;
 	case TELEPORT_C:
 		m_teleport.push_back(std::make_unique<Teleport>( pos+ HEIGHT));
 		return true;
-		break;
 	case DIAMOND_C:
-		m_staticsObj.push_back(std::make_unique<Diamond>(pos));
+		setStaticObject<Diamond>(pos);
 		return true;
-		break;
 	case  ROPE_C:
 		m_rope.push_back(std::make_unique<Rope>(pos + sf::Vector2f(0, -27)));
-		break;
+		return true;
 	case  START_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<LeftFloor>(pos, levels(m_currLevel),
-			L_FLOOR,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK));
-		break;
+		setStaticObject<LeftFloor>(pos, levels(m_currLevel),
+			L_FLOOR, sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK);
+		return true;
 	case  FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<Floor>(pos, levels(m_currLevel), M_FLOOR,
-			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK));
-		break;
+		setStaticObject<Floor>(pos, levels(m_currLevel), M_FLOOR,
+			sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK);
+		return true;
 	case  END_FLOOR_C:
-		m_staticsObj.push_back(std::make_unique<RightFloor>(pos, levels(m_currLevel), R_FLOOR
-			,sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5),FLOOR_ROCK));
-		break;
+		setStaticObject<RightFloor>(pos, levels(m_currLevel), R_FLOOR
+			, sf::Vector2f(BLOCK_SIZE / 2, BLOCK_SIZE / 1.5), FLOOR_ROCK);
+		return true;
 	case  F_TREE_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel),
-			F_TREE,sf::Vector2f(BLOCK_SIZE*1.5, BLOCK_SIZE * 1.5), TREE));
-		break;
+		setStaticObject<StageDec>(pos, levels(m_currLevel),
+			F_TREE, sf::Vector2f(BLOCK_SIZE * 1.5, BLOCK_SIZE * 1.5), TREE);
+		return true;
 	case  S_TREE_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos, levels(m_currLevel), S_TREE,
-			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE * 1.5), TREE));
-		break;
+		setStaticObject<StageDec>(pos, levels(m_currLevel), S_TREE,
+			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE * 1.5), TREE);
+		return true;
 	case  ROCK_C:
-		m_staticsObj.push_back(std::make_unique<StageDec>(pos + sf::Vector2f(0, 25), levels(m_currLevel),
-			ROCK,sf::Vector2f(BLOCK_SIZE/3, BLOCK_SIZE/3), FLOOR_ROCK));
-		break;
-		
+		setStaticObject<StageDec>(pos + sf::Vector2f(0, 25), levels(m_currLevel),
+			ROCK, sf::Vector2f(BLOCK_SIZE / 3, BLOCK_SIZE / 3), FLOOR_ROCK);
+		return true;
 	default:
 		return false;
-		break;
 	}
 }
 //-----------------------------------------------
@@ -110,8 +105,6 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 
 void DataBase::draw(sf::RenderWindow& window)
 {
-	//drowObj<m_staticsObj>();
-
 	drawStaticObj(window);
 	drawMovingObj(window);
 }
@@ -137,20 +130,7 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 		e->draw(window);
 	}
 
-	for (auto& m : m_monsters)
-	{
-		if (m->toPrintDamage())
-		{
-			m->printDamage(window);
-			m->setHurt(false);
-		}
-			
-	}
-	if (m_player->toPrintDamage())
-	{
-		m_player->printDamage(window);
-		m_player->setHurt(false);
-	}
+	
 	
 }
 //---------------------------------------------------
@@ -160,21 +140,28 @@ void DataBase::drawMovingObj(sf::RenderWindow& window)
 
 {
 	sf::Time delta_time = m_clock.restart();
-	for (auto& e : m_monsters)
+
+	for (auto& m : m_monsters)
 	{
-		e->update(delta_time);
-		e->draw(window);
+		m->update(delta_time);
+		m->draw(window);
+		if (m->toPrintDamage())
+		{
+			m->printDamage(window);
+			m->setHurt(false);
+		}
 	}
-	if (m_player)
+	if(m_player)
 	{
 		m_player->update(delta_time);
 		m_player->draw(window);
+		if (m_player->toPrintDamage())
+		{
+			m_player->printDamage(window);
+			m_player->setHurt(false);
+		}
 	}
-	if (m_player)
-	{
-		m_player->update(delta_time);
-		m_player->draw(window);
-	}
+
 }
 //--------------------------------------------------------------
 //find the partner of the teleports
@@ -200,8 +187,6 @@ void DataBase::move(const sf::Time deltaTime)
 		f->setPlayerPos(m_player->getPos());
 		f->move(deltaTime, m_levelSize);
 	}
-
-	
 	//move current player
 	m_player->move(deltaTime,m_levelSize);
 
