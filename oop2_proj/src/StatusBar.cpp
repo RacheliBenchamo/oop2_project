@@ -115,11 +115,9 @@ void StatusBar::setStopAndPlayIcon(const bool ToPlay)
 }
 //------------------------------------------
 
-bool StatusBar::containsMusicIcon(const sf::Event& event) const
+bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
 {
-	std::cout << "me" << event.mouseButton.x << " " << event.mouseButton.y << "\n";
-	std::cout << "music" << m_musicIcon.getPosition().x << " " << m_musicIcon.getPosition().y << "\n";
-	if (this->m_musicIcon.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+	if (this->m_musicIcon.getGlobalBounds().contains(pos.x-10, pos.y))
 		return true;
 	return false;
 }

@@ -37,7 +37,8 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 				window.close();
 				break;
 			case sf::Event::MouseButtonReleased:
-				handelMouseButtonReleased(event);
+				handelMouseButtonReleased(window.mapPixelToCoords
+				({ event.mouseButton.x, event.mouseButton.y }));
 				break;
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::R)
@@ -90,27 +91,30 @@ void GameScreen::handelEvents()
 //----------------------------------------------
 //handle the event that occurred when the MouseButtonReleased
 
-void GameScreen::handelMouseButtonReleased(const sf::Event event)
+void GameScreen::handelMouseButtonReleased(const sf::Vector2f pos )
 {
-	if (m_statusBar.containsMusicIcon(event))
+	if (m_statusBar.containsMusicIcon(pos))
+	{
+		std::cout << "ff\n";
 		handelMusicButtonReleased();
+
+	}
 }
 //----------------------------------------------
 //stopping or playing background music
 
 void GameScreen::handelMusicButtonReleased()
 {
-
-	/*if (m_backGroundMusic.getStatus() == sf::SoundSource::Status::Playing)
-	{
-		m_backGroundMusic.stop();
-		m_statusBar.setMusicIcon(false);
-	}
-	else
-	{
-		m_backGroundMusic.play();
-		m_statusBar.setMusicIcon(true);
-	}*/
+	//if (m_backGroundMusic.getStatus() == sf::SoundSource::Status::Playing)
+	//{
+	//	m_backGroundMusic.stop();
+	//	m_statusBar.setMusicIcon(false);
+	//}
+	//else
+	//{
+	//	m_backGroundMusic.play();
+	//	m_statusBar.setMusicIcon(true);
+	//}
 }
 //----------------------------------------------
 //pouse or keep going the level

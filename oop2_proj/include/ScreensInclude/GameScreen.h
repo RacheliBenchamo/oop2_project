@@ -26,7 +26,7 @@ private:
     void handelEvents();
     void setView();
     void setNewGame();
-    void handelMouseButtonReleased(const sf::Event);
+    void handelMouseButtonReleased(const sf::Vector2f);
     void handelMusicButtonReleased();
     void handelStopPlayButtonReleased();
     void resetLevel();
