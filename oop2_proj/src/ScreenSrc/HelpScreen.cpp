@@ -25,6 +25,7 @@ screensOption HelpScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 {
 	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed start
 	{
+		playSelectSound();
 		return MENU;
 	}
 	return NONE;
@@ -37,6 +38,7 @@ void HelpScreen::handleMove(const sf::Vector2f& Location)
 	// mark/unmark start button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
+		playMoveSound();
 		this->m_menu.setOutlineColor(OUTLINE_MOVED_COLOR);
 		this->m_menu.setOutlineThickness(BOLD_OUTLINE);
 	}

@@ -108,4 +108,7 @@ void WinGameScreen::setExit()
 
 void WinGameScreen::playBackgroundSound()
 {
+	FileManager::instance().startSound(FileManager::instance().
+		getShareSaund(S_WIN_GAME), VOLUME_COLLISION*2);
+	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }

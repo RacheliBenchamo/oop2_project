@@ -137,4 +137,8 @@ void LoseScreen::setRestart()
 
 void LoseScreen::playBackgroundSound()
 {
+	FileManager::instance().startSound(FileManager::instance().
+		getShareSaund(S_LOSE_LEVEL), VOLUME_COLLISION);
+	std::this_thread::sleep_for(std::chrono::milliseconds(600));
+
 }

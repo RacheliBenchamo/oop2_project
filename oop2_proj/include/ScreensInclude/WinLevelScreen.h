@@ -15,7 +15,7 @@ private:
 	void setNextLev();
 	void setMenu();
 	void setExit();
-	void playBackgroundSound() {};
+	void playBackgroundSound();
 
 	sf::Text m_header;
 	sf::Text m_nextLev;

@@ -111,7 +111,9 @@ void FileManager::loadPlayerRect()
 
 void FileManager::loadAudio()
 {
+	
 	m_audio[S_MENU].loadFromFile("MenuBackground.wav");
+	m_audio[S_LOSE_LEVEL].loadFromFile("LoseLevelSound.wav");
 	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
 	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");

@@ -137,3 +137,10 @@ void WinLevelScreen::setExit()
 	m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 }
+
+void WinLevelScreen::playBackgroundSound()
+{
+	FileManager::instance().startSound(FileManager::instance().
+		getShareSaund(S_WIN_LEVEL), VOLUME_COLLISION);
+	std::this_thread::sleep_for(std::chrono::milliseconds(600));
+}

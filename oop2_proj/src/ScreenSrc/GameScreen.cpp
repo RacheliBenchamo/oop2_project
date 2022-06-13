@@ -42,13 +42,6 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::R)
 					resetLevel();
-				//to delete
-				if (event.key.code == sf::Keyboard::P)
-				{
-					if(m_levelNum ==3)
-						startNewLevel();
-					startNewLevel();
-				}
 				break;
 			}
 		handelEvents();
@@ -74,7 +67,6 @@ void GameScreen::setNewGame()
 	this->m_statusBar.updateLevel(true);
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	setBackground();
-
 }
 //----------------------------------------------
 //handle the event that occurred in the curent
@@ -93,8 +85,6 @@ void GameScreen::handelEvents()
 		m_playerGender = m_controller->getGenderFromMenu();
 		resetLevel();
 	}
-
-
 }
 //----------------------------------------------
 //handle the event that occurred when the MouseButtonReleased
