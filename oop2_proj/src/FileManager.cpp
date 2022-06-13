@@ -185,6 +185,7 @@ void FileManager::loadResetIcon()
 	m_restartIcon.loadFromFile("resetButton.png");
 }
 //--------------------------------------------------
+
 void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 {
 	static sf::Sound effect;
@@ -193,6 +194,7 @@ void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 	effect.setVolume(volum);
 }
 //--------------------------------------------------
+
 void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)const
 {
 	static sf::Sound effect;
@@ -200,7 +202,9 @@ void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)c
 	effect.play();
 	effect.setVolume(volum);
 }
+//--------------------------------------------------
 // load the backgrounds sprites
+
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
@@ -399,7 +403,7 @@ void FileManager::createPlayerAnimeData()
 	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[MALE], Walk, movableAnimationSet
-	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.04f, false);
+	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.02f, false);
 
 	setCurrentData(m_playerData[MALE], Jump, movableAnimationSet
 	({ 120, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
@@ -418,7 +422,7 @@ void FileManager::createPlayerAnimeData()
 	({ 95, 110 }, { 734, 127 }, 0, 1, Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[FEMALE], Walk, movableAnimationSet
-	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.04f, false);
+	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.02f, false);
 
 	setCurrentData(m_playerData[FEMALE], Jump, movableAnimationSet
 	({ 110, 108 }, { 384, 130 }, 0, 1, Jump), 0.15f, true);

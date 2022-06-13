@@ -248,11 +248,9 @@ void Player::setHittingStatus(const bool status)
 void Player::handleHit(const float_t damage)
 {
 	static int hitCounter = 0;
-	std::cout << "m_life " << m_life << "damage " << damage << "\n";
 	if (hitCounter == 0)
 	{
 		hitCounter = HIT_COUNTER;
-		// play sound
 		m_life - damage <= 0 ? m_life = 0 : m_life -= damage;
 	}
 	else if (hitCounter >= 1)
