@@ -18,93 +18,6 @@ MenuScreen::MenuScreen()
 	this->m_background.setTexture(FileManager::instance().getBackGround(MENU_BACKGROUND));
 }
 //--------------------------------------------------
-//set the header details
-
-void MenuScreen::setHeader()
-{
-	m_header.setFont(m_font);
-	m_header.setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
-	m_header.setCharacterSize(HEADER_SIZE);
-	m_header.setPosition({ WINDOW_WIDTH / 2 - 370, 30 });
-	m_header.setString("The Diamonds Fighter");
-	m_header.setColor(HEADER_COLOR);
-	m_header.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_header.setOutlineThickness(OUTLINE_THICKNESS);
-}
-//--------------------------------------------------
-//set the start details
-
-void MenuScreen::setStart()
-{
-	m_start.setFont(m_font);
-	m_start.setColor(BASE_COLOR);
-	m_start.setCharacterSize(REG_CHAR_SIZE);
-	m_start.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y - 70 });
-	m_start.setString("Start");
-	m_start.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_start.setOutlineThickness(OUTLINE_THICKNESS);
-}
-//--------------------------------------------------
-//set the help details
-
-void MenuScreen::setHelp()
-{
-	m_help.setFont(m_font);
-	m_help.setColor(BASE_COLOR);
-	m_help.setCharacterSize(REG_CHAR_SIZE);
-	m_help.setPosition({ SCREEN_CENTER.x - 40, SCREEN_CENTER.y + 190 });
-	m_help.setString("Help");
-	m_help.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_help.setOutlineThickness(OUTLINE_THICKNESS);
-}
-//--------------------------------------------------
-//set the exit details
-
-void MenuScreen::setExit()
-{
-	m_exit.setFont(m_font);
-	m_exit.setColor(BASE_COLOR);
-	m_exit.setCharacterSize(REG_CHAR_SIZE);
-	m_exit.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y + 60 });
-	m_exit.setString("Exit");
-	m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_exit.setOutlineThickness(OUTLINE_THICKNESS);
-}
-//---------------------------------
-
-void MenuScreen::setPick()
-{
-	m_pick.setFont(m_font);
-	m_pick.setColor(BASE_COLOR);
-	m_pick.setCharacterSize(REG_CHAR_SIZE);
-	m_pick.setPosition({ SCREEN_CENTER.x - 720 , SCREEN_CENTER.y - 200 });
-	m_pick.setString("Pick a Character:");
-	m_pick.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_pick.setOutlineThickness(OUTLINE_THICKNESS);
-	
-}
-//--------------------------------------------------
-//set the Players details
-
-void MenuScreen::setPlayer()
-{
-	auto m_pTexture = FileManager::instance().getPlayerTexture();
-
-	m_boyplayer.setTexture(m_pTexture);
-	m_boyplayer.setTextureRect(FileManager::instance().getPlayerRect(MALE));
-	m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
-	m_boyplayer.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_boyplayer.setPosition({ SCREEN_CENTER.x - 400 , SCREEN_CENTER.y - 60 });
-	m_boyplayer.setSize({ BLOCK_SIZE * 4, BLOCK_SIZE * 4 });
-
-	m_girlplayer.setTexture(m_pTexture);
-	m_girlplayer.setTextureRect(FileManager::instance().getPlayerRect(FEMALE));
-	m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
-	m_girlplayer.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_girlplayer.setPosition({ SCREEN_CENTER.x - 700 , SCREEN_CENTER.y - 60 });
-	m_girlplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4 });
-}
-//------------------------------------------------
 
 void MenuScreen::playBackgroundSound()
 {
@@ -147,7 +60,7 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 		this->m_pick.setOutlineColor(sf::Color::Red);
 		this->m_pick.setOutlineThickness(BOLD_OUTLINE);
 	}
-	
+
 	if (this->m_help.getGlobalBounds().contains(Location)) // pressed help
 	{
 		playSelectSound();
@@ -173,16 +86,13 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 		this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
 
 	}
-	if (this->m_exit.getGlobalBounds().contains(Location))
+	if (this->m_exit.getGlobalBounds().contains(Location))	// pressed exit
 	{
 		playSelectSound();
 		window.close();
 	}
-		// pressed exit
-	
 	return NONE;
 }
-
 //--------------------------------------------------
 //handle moving on the menu buttons
 
@@ -258,3 +168,71 @@ void MenuScreen::handleMove(const sf::Vector2f& Location)
 	this->m_pick.setOutlineColor(OUTLINE_BASE_COLOR);
 	this->m_pick.setOutlineThickness(OUTLINE_THICKNESS);
 }
+//--------------------------------------------------
+//set the header details
+
+void MenuScreen::setHeader()
+{
+	setBasicHeader(&m_header);
+	m_header.setPosition({ WINDOW_WIDTH / 2 - 370, 30 });
+	m_header.setString("The Diamonds Fighter");
+}
+//--------------------------------------------------
+//set the start details
+
+void MenuScreen::setStart()
+{
+	setBasicButton(&m_start);
+	m_start.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y - 70 });
+	m_start.setString("Start");
+
+}
+//--------------------------------------------------
+//set the help details
+
+void MenuScreen::setHelp()
+{
+	setBasicButton(&m_help);
+	m_help.setPosition({ SCREEN_CENTER.x - 40, SCREEN_CENTER.y + 190 });
+	m_help.setString("Help");
+}
+//--------------------------------------------------
+//set the exit details
+
+void MenuScreen::setExit()
+{
+	setBasicButton(&m_exit);
+	m_exit.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y + 60 });
+	m_exit.setString("Exit");
+}
+//---------------------------------
+
+void MenuScreen::setPick()
+{
+	setBasicButton(&m_pick);
+	m_pick.setPosition({ SCREEN_CENTER.x - 720 , SCREEN_CENTER.y - 200 });
+	m_pick.setString("Pick a Character:");	
+}
+//--------------------------------------------------
+//set the Players details
+
+void MenuScreen::setPlayer()
+{
+	auto m_pTexture = FileManager::instance().getPlayerTexture();
+
+	m_boyplayer.setTexture(m_pTexture);
+	m_boyplayer.setTextureRect(FileManager::instance().getPlayerRect(MALE));
+	m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
+	m_boyplayer.setOutlineColor(OUTLINE_BASE_COLOR);
+	m_boyplayer.setPosition({ SCREEN_CENTER.x - 400 , SCREEN_CENTER.y - 60 });
+	m_boyplayer.setSize({ BLOCK_SIZE * 4, BLOCK_SIZE * 4 });
+
+	m_girlplayer.setTexture(m_pTexture);
+	m_girlplayer.setTextureRect(FileManager::instance().getPlayerRect(FEMALE));
+	m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
+	m_girlplayer.setOutlineColor(OUTLINE_BASE_COLOR);
+	m_girlplayer.setPosition({ SCREEN_CENTER.x - 700 , SCREEN_CENTER.y - 60 });
+	m_girlplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4 });
+}
+
+

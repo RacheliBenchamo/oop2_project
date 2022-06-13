@@ -51,3 +51,24 @@ void Screen::playSelectSound()
 	FileManager::instance().startSound(FileManager::instance().
 		getShareSaund(S_CLICKED), BUTTON_VOLUME);
 }
+//----------------------------------------------------------------
+
+void Screen::setBasicButton(sf::Text* button)
+{
+	button->setFont(m_font);
+	button->setColor(BASE_COLOR);
+	button->setCharacterSize(REG_CHAR_SIZE);
+	button->setOutlineColor(OUTLINE_BASE_COLOR);
+	button->setOutlineThickness(OUTLINE_THICKNESS);
+}
+//----------------------------------------------------------------
+
+void Screen::setBasicHeader(sf::Text* header)
+{
+	header->setFont(m_font);
+	header->setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
+	header->setCharacterSize(HEADER_SIZE);
+	header->setColor(HEADER_COLOR);
+	header->setOutlineColor(OUTLINE_BASE_COLOR);
+	header->setOutlineThickness(OUTLINE_THICKNESS);
+}

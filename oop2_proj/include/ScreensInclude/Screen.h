@@ -16,6 +16,9 @@ public:
 	virtual void handleMove(const sf::Vector2f&)=0;
 
 protected:
+	void setBasicButton(sf::Text*);
+	void setBasicHeader(sf::Text* m_button);
 	sf::RectangleShape m_background;
 	sf::Font m_font;
+
 };

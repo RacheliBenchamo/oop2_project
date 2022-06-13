@@ -73,42 +73,29 @@ void WinGameScreen::handleMove(const sf::Vector2f& Location)
 
 void WinGameScreen::setHeader()
 {
-	m_header.setFont(m_font);
-	m_header.setStyle(sf::Text::Style::Bold | sf::Text::Style::Italic);
-	m_header.setCharacterSize(HEADER_SIZE);
-	m_header.setPosition({ WINDOW_WIDTH / 2 - 330, 30 });
+	setBasicHeader(&m_header);
+	m_header.setPosition({ WINDOW_WIDTH / 2 - 270, 30 });
 	m_header.setString("YOU WON!!!");
-	m_header.setColor(HEADER_COLOR);
-	m_header.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_header.setOutlineThickness(OUTLINE_THICKNESS);
 }
 
 void WinGameScreen::setMenu()
 {
-	m_menu.setFont(m_font);
-	m_menu.setColor(BASE_COLOR);
-	m_menu.setCharacterSize(REG_CHAR_SIZE);
+	setBasicButton(&m_menu);
 	m_menu.setPosition({ SCREEN_CENTER.x - 120 , SCREEN_CENTER.y - 70 });
 	m_menu.setString("Menu");
-	m_menu.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_menu.setOutlineThickness(OUTLINE_THICKNESS);
 }
 
 
 void WinGameScreen::setExit()
 {
-	m_exit.setFont(m_font);
-	m_exit.setColor(BASE_COLOR);
-	m_exit.setCharacterSize(REG_CHAR_SIZE);
+	setBasicButton(&m_exit);
 	m_exit.setPosition({ SCREEN_CENTER.x - 90 , SCREEN_CENTER.y + 60 });
 	m_exit.setString("Exit");
-	m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 }
 
 void WinGameScreen::playBackgroundSound()
 {
 	FileManager::instance().startSound(FileManager::instance().
 		getShareSaund(S_WIN_GAME), VOLUME_COLLISION*2);
-	std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 }
