@@ -112,6 +112,8 @@ void GameScreen::handelMusicButtonReleased()
 	//	m_backGroundMusic.play();
 	//	m_statusBar.setMusicIcon(true);
 	//}
+	FileManager::instance().setBackgroundMusic();
+	playBackgroundSound();
 }
 //----------------------------------------------
 //pouse or keep going the level
@@ -197,7 +199,7 @@ void GameScreen::playBackgroundSound()
 {
 	FileManager::instance().startBackgraundSound(FileManager::instance().
 		getBackgraundSaund(m_dataBase.getStageType()), VOLUME_BG);
-	FileManager::instance().setIsMenuAudioPlaying(false);
+	//FileManager::instance().setIsMenuAudioPlaying(false);
 }
 //---------------------------------------------------------
 

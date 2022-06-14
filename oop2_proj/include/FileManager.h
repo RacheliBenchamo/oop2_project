@@ -40,7 +40,8 @@ public:
 	const AnimationData& getPlayerData(const gender)const;
 	bool getIsMenuAudioPlaying()const { return m_isMenuAudioPlaying; }
 	void setIsMenuAudioPlaying(const bool is) { m_isMenuAudioPlaying = is; }
-
+	void setBackgroundMusic();
+	void setAudiodMusic();
 
 private:
 	FileManager();
@@ -88,7 +89,7 @@ private:
 	AnimationData m_staticData[NUM_OF_DEC];
 	AnimationData m_playerData[2];
 	AnimationData m_monsterData[NUM_OF_LEVELS][NUM_OF_MONSTERS];
-	bool m_isMenuAudioPlaying = false;
+	bool m_isMenuAudioPlaying, m_playBackground, m_playAudio;
 };
 
 

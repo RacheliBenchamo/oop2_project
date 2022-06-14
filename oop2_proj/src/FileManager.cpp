@@ -6,6 +6,7 @@
 //constructor
 
 FileManager::FileManager()
+	:m_playBackground(true), m_playAudio(true), m_isMenuAudioPlaying(true)
 {
 	//loads from all the files:
 	loadBackgroundIcons();
@@ -182,20 +183,29 @@ void FileManager::loadResetIcon()
 void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 {
 	static sf::Sound effect;
-	effect.setBuffer(*sound);
-	effect.setVolume(volum);
-	effect.play();
+
+	if (m_playAudio)
+	{
+		effect.setBuffer(*sound);
+		effect.setVolume(volum);
+		effect.play();
+	}
 }
-	
 	
 //--------------------------------------------------
 
 void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)const
 {
 	static sf::Sound effect;
-	effect.setBuffer(*sound);
-	effect.play();
-	effect.setVolume(volum);
+
+	if (m_playBackground)
+	{
+		effect.setBuffer(*sound);
+		effect.play();
+		effect.setVolume(volum);
+	}
+	else
+		effect.stop();
 }
 //--------------------------------------------------
 // load the backgrounds sprites
@@ -388,6 +398,15 @@ void FileManager::setAnimationsData()
 	createDesertMonstersAnimeData();
 }
 
+void FileManager::setBackgroundMusic()
+{
+	m_playBackground ? m_playBackground = false : m_playBackground = true;
+}
+
+void FileManager::setAudiodMusic()
+{
+	m_playAudio ? m_playAudio = false : m_playAudio = true;
+}
 //--------------------------- playerAnime ----------------------------
 //Set the player animations.
 
