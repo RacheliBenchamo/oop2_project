@@ -246,7 +246,7 @@ void GameScreen::setViewToCenter()
 
 	if ((playerPos.x < m_dataBase.getLevelSize().y * Y_SPACE
 		+ START_SPACE * 3.5 - CAMERA_WIDTH / 2) &&
-		(playerPos.x >= START_SPACE * 2 + CAMERA_WIDTH / 2)
+		(playerPos.x >= START_SPACE * 2.5 + CAMERA_WIDTH / 2)
 		&& (playerPos.y < m_dataBase.getLevelSize().x * X_SPACE
 			+ START_SPACE / 2 - CAMERA_HEIGHT / 2))
 		m_view.setCenter(playerPos.x, playerPos.y);
@@ -254,10 +254,10 @@ void GameScreen::setViewToCenter()
 	else
 	{
 		if ((playerPos.x >= m_dataBase.getLevelSize().y * Y_SPACE
-			+ START_SPACE * 2 - CAMERA_WIDTH / 2))
+			+ START_SPACE * 2.5 - CAMERA_WIDTH / 2))
 			pos.x = playerPos.x - (playerPos.x -
 				(m_dataBase.getLevelSize().y * Y_SPACE
-				+ START_SPACE * 2 - CAMERA_WIDTH / 2));
+				+ START_SPACE * 2.5 - CAMERA_WIDTH / 2));
 
 		else if (playerPos.x < START_SPACE * 1.6 + CAMERA_WIDTH / 2)
 			pos.x = playerPos.x + (START_SPACE * 1.6 + CAMERA_WIDTH / 2 
