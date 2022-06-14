@@ -14,7 +14,7 @@ NUM_OF_BACKGROUNDS = 7,
 NUM_OF_DIRECTION = 4;
 
 const unsigned int
-HITTING_POWER = 1.5,
+HITTING_POWER = 1,
 LESS_LIFE = 1;
 
 const unsigned int
@@ -26,8 +26,8 @@ ADD_POWER = 200;
 //monster force
 const  int
 MON1_FORCE = 45,
-MON2_FORCE = 65,
-MON3_FORCE = 85,
+MON2_FORCE = 60,
+MON3_FORCE = 75,
 PAYER_FORCE = 150,
 PLAYER_DAMAGE = 5;
 
