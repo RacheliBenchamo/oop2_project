@@ -6,7 +6,7 @@
 //constructor
 
 FileManager::FileManager()
-	:m_playBackground(true), m_playAudio(true), m_isMenuAudioPlaying(true)
+	:m_playBackground(true), m_playAudio(true), m_isMenuAudioPlaying(false)
 {
 	//loads from all the files:
 	loadBackgroundIcons();

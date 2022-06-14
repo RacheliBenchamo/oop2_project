@@ -16,8 +16,6 @@ StatusBar::StatusBar() : m_level(0)
 	setDiamondCounter();
 	setLevelText();
 	setIcons();
-
-	//setRestartIcon();
 }
 //------------------------------------------
 
@@ -127,21 +125,7 @@ void StatusBar::resetNumOfLevel()
 {
 	m_level = 0;
 }
-//------------------------------------------
 
-bool StatusBar::containsStopAndPlayIcon(const sf::Vector2f pos) const
-{
-	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
-		return true;
-	return false;
-}
-//------------------------------------------
-bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
-{
-	if (this->m_musicIcon.getGlobalBounds().contains(pos.x-10, pos.y))
-		return true;
-	return false;
-}
 //------------------------------------------
 void StatusBar::setIcons()
 {
@@ -161,17 +145,32 @@ void StatusBar::setIcons()
 	this->m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE * 10.f);
 	this->m_soundIcon.scale(MUSIC_ICON_SCALE * 10.f);
 }
+//------------------------------------------
+
+bool StatusBar::containsStopAndPlayIcon(const sf::Vector2f pos) const
+{
+	if (this->m_stopAndPlayIcon.getGlobalBounds().contains(pos.x, pos.y))
+		return true;
+	return false;
+}
+//------------------------------------------
+bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
+{
+	if (this->m_musicIcon.getGlobalBounds().contains(pos.x, pos.y))
+		return true;
+	return false;
+}
 //-----------------------------------------
 bool StatusBar::containsRestartIcon(const sf::Vector2f pos) const
 {
-	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
+	if (this->m_resetIcon.getGlobalBounds().contains(pos.x , pos.y))
 		return true;
 	return false;
 }
 //-----------------------------------------
 bool StatusBar::containsSoundIcon(const sf::Vector2f pos) const
 {
-	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
+	if (this->m_soundIcon.getGlobalBounds().contains(pos.x , pos.y))
 		return true;
 	return false;
 }
@@ -180,9 +179,9 @@ void StatusBar::setLevelText()
 {
 	this->m_levelText.setFont(*FileManager::instance().getFont());
 	this->m_levelText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
-	this->m_levelText.setColor(sf::Color(153, 153, 255, 255));
-	this->m_levelText.setOutlineColor(sf::Color(230, 230, 255, 255));
-	this->m_levelText.setOutlineThickness(STATUS_BAR_OUTLINE_THICKNESS);
+	this->m_levelText.setColor(sf::Color::White);
+	this->m_levelText.setOutlineColor(sf::Color::White);
+	this->m_levelText.setOutlineThickness(0.5);
 }
 //--------------------------------------------
 

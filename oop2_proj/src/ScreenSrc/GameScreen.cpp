@@ -40,12 +40,8 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 				handelMouseButtonReleased(window.mapPixelToCoords
 				({ event.mouseButton.x, event.mouseButton.y }));
 				break;
-			case sf::Event::KeyPressed:
-				if (event.key.code == sf::Keyboard::R)
-					resetLevel();
-				break;
 			}
-		if(m_playButton)
+		if (m_playButton)
 			handelEvents();
 	}
 	return CLOSE;
@@ -115,8 +111,6 @@ void GameScreen::handelMusicButtonReleased()
 	FileManager::instance().setBackgroundMusic();
 	playBackgroundSound();
 	m_statusBar.changeMusicIcon();
-
-
 }
 //----------------------------------------------
 //pouse or keep going the level

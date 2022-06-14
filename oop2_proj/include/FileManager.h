@@ -83,7 +83,8 @@ private:
 	AnimationData m_staticData[NUM_OF_DEC];
 	AnimationData m_playerData[2];
 	AnimationData m_monsterData[NUM_OF_LEVELS][NUM_OF_MONSTERS];
-	bool m_isMenuAudioPlaying, m_playBackground, m_playAudio;
+	bool m_isMenuAudioPlaying
+		, m_playBackground, m_playAudio;
 };
 
 
