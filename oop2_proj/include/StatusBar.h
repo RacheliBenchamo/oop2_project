@@ -13,7 +13,6 @@ public:
 	void setIcons();
 	void setMaxDiamonds(const int max) { m_maxDiamonds=max; }
 	void draw(sf::RenderWindow&,const int ,const int,const int);
-	void resetNumOfLevel();
 	bool containsMusicIcon(const sf::Vector2f ) const;
 	void setMusicIcon();
 	bool containsStopAndPlayIcon(const sf::Vector2f ) const;
