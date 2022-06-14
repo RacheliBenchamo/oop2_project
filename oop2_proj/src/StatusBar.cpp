@@ -190,7 +190,7 @@ bool StatusBar::containsSoundIcon(const sf::Vector2f pos) const
 	if (m_soundIcon.getGlobalBounds().contains(pos.x , pos.y))
 		return true;
 	return false;
-}
+}  
 //--------------------------------------------------
 //set level text
 
