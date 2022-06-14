@@ -54,10 +54,10 @@ void StatusBar::updatePos(const sf::Vector2f center)
 	m_diamondIcon.setPosition(center.x + 110, center.y - 85);
 
 	this->m_levelText.setPosition(center.x-170, center.y - 110);
-	this->m_musicIcon.setPosition(center.x - 170, center.y - 90);
-	this->m_stopAndPlayIcon.setPosition(center.x -160, center.y - 90);
-	this->m_resetIcon.setPosition(center.x -150, center.y - 90);
-	this->m_soundIcon.setPosition(center.x - 140, center.y - 90);
+	this->m_musicIcon.setPosition(center.x - 170, center.y - 117);
+	this->m_stopAndPlayIcon.setPosition(center.x -160, center.y - 117);
+	this->m_resetIcon.setPosition(center.x -150, center.y - 117);
+	this->m_soundIcon.setPosition(center.x - 140, center.y - 117);
 }
 //--------------------------------------------------
 //change music icon

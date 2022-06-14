@@ -22,7 +22,7 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 	{
 		window.clear();
 		window.draw(m_currLevelBackground);
-		m_dataBase.draw(window);
+		m_dataBase.draw(window, m_playButton);
 		m_statusBar.draw(window, m_dataBase.getPlayerPower(),
 			m_dataBase.getPlayerLife(), m_dataBase.getPlayerDiamonds());
 		setView();

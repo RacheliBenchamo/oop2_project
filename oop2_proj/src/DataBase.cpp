@@ -109,21 +109,22 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 //---------------------------------------------------
 //draw all the object in the level on the window
 
-void DataBase::draw(sf::RenderWindow& window)
+void DataBase::draw(sf::RenderWindow& window,const bool playButton)
 {
-	drawStaticObj(window);
-	drawMovingObj(window);
+	drawStaticObj(window, playButton);
+	drawMovingObj(window, playButton);
 }
 //---------------------------------------------------
 //draw all the static object in the level on the window
 
-void DataBase::drawStaticObj(sf::RenderWindow& window)
+void DataBase::drawStaticObj(sf::RenderWindow& window, const bool playButton)
 {
 	sf::Time deltaTime = m_clock.restart();
 
 	for (auto& e : m_staticsObj)
 	{
-		e->update(deltaTime);
+		if(playButton)
+			e->update(deltaTime);
 		e->draw(window);
 	}
 	for (auto& e : m_teleport)
@@ -139,13 +140,14 @@ void DataBase::drawStaticObj(sf::RenderWindow& window)
 //---------------------------------------------------
 //draw all the moving object in the level on the window
 
-void DataBase::drawMovingObj(sf::RenderWindow& window)
+void DataBase::drawMovingObj(sf::RenderWindow& window, const bool playButton)
 {
 	sf::Time delta_time = m_clock.restart();
 
 	for (auto& m : m_monsters)
 	{
-		m->update(delta_time);
+		if(playButton)
+			m->update(delta_time);
 		m->draw(window);
 		if (m->toPrintDamage())
 		{

@@ -111,40 +111,57 @@ void FileManager::loadPlayerRect()
 
 void FileManager::loadAudio()
 {
+	loadStaticdAudio();
+	loadBackgroundAudio();
+	loadforestAudio();
+	loadSnowdAudio();
+	loadDesertdAudio();
+	loadPlayerAudio();
+}
+//---------------------------------------------------
+void FileManager::loadStaticdAudio()
+{
 	m_audio[S_MENU].loadFromFile("MenuBackground.wav");
 	m_audio[S_LOSE_LEVEL].loadFromFile("LoseLevelSound.wav");
 	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
 	m_audio[S_IN_TELEPORT].loadFromFile("InTeleportSound.wav");
-	m_audio[S_TAKE_KEY].loadFromFile("takeKeySound.wav");
 	m_audio[S_WIN_LEVEL].loadFromFile("winLevelSound.wav");
 	m_audio[S_WIN_GAME].loadFromFile("winGameSound.wav");
-	m_audio[S_TAKE_POSION].loadFromFile("potionDrinking.wav");
+	m_audio[S_TAKE_POSION].loadFromFile("potionDrink.wav");
 	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
-
+	m_audio[S_FIGHT].loadFromFile("fight.wav");
+}
+//---------------------------------------------------
+void FileManager::loadBackgroundAudio()
+{
 	m_backGroundAudio[FOREST].loadFromFile("Level1backgraund.wav");
 	m_backGroundAudio[SNOW].loadFromFile("Level2backgraund.wav");
 	m_backGroundAudio[DESERT].loadFromFile("Level3backgraund.wav");
-
-	//for 3 levels
-	m_playerAudio[FOREST][WALK].loadFromFile("GrassWalking.wav");
-	m_playerAudio[SNOW][WALK].loadFromFile("IceWalking.wav");
-	m_playerAudio[DESERT][WALK].loadFromFile("SandWalking.wav");
-
-	//for each monster in each level
+}
+//---------------------------------------------------
+void FileManager::loadforestAudio()
+{
 	m_monstersAudio[FOREST][HIT][M_FIRST].loadFromFile("MushriHit.wav");
 	m_monstersAudio[FOREST][HURT][M_FIRST].loadFromFile("MushriHurt.wav");
 	m_monstersAudio[FOREST][HIT][M_SECOND].loadFromFile("TreetHit.wav");
 	m_monstersAudio[FOREST][HURT][M_SECOND].loadFromFile("TreetHurt.wav");
 	m_monstersAudio[FOREST][HIT][M_THIRD].loadFromFile("GreemonHit.wav");
 	m_monstersAudio[FOREST][HURT][M_THIRD].loadFromFile("GreemonHurt.wav");
-
+}
+//---------------------------------------------------
+void FileManager::loadSnowdAudio()
+{
 	m_monstersAudio[SNOW][HIT][M_FIRST].loadFromFile("PenguwulungHit.wav");
 	m_monstersAudio[SNOW][HURT][M_FIRST].loadFromFile("PenguwulungHurt.wav");
 	m_monstersAudio[SNOW][HIT][M_SECOND].loadFromFile("SnowolfHit.wav");
 	m_monstersAudio[SNOW][HURT][M_SECOND].loadFromFile("SnowolfHurt.wav");
 	m_monstersAudio[SNOW][HIT][M_THIRD].loadFromFile("YetteyeyHit.wav");
 	m_monstersAudio[SNOW][HURT][M_THIRD].loadFromFile("YetteyeyHurt.wav");
+}
+//---------------------------------------------------
+void FileManager::loadDesertdAudio()
+{
 
 	m_monstersAudio[DESERT][HIT][M_FIRST].loadFromFile("CactisHit.wav");
 	m_monstersAudio[DESERT][HURT][M_FIRST].loadFromFile("CactisHurt.wav");
@@ -152,6 +169,13 @@ void FileManager::loadAudio()
 	m_monstersAudio[DESERT][HURT][M_SECOND].loadFromFile("SuricatiHurt.wav");
 	m_monstersAudio[DESERT][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
 	m_monstersAudio[DESERT][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
+}
+
+void FileManager::loadPlayerAudio()
+{
+	m_playerAudio[FOREST][WALK].loadFromFile("GrassWalking.wav");
+	m_playerAudio[SNOW][WALK].loadFromFile("IceWalking.wav");
+	m_playerAudio[DESERT][WALK].loadFromFile("SandWalking.wav");
 }
 //---------------------------------------------------
 //start the wanted sound

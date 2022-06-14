@@ -52,6 +52,12 @@ private:
 	void loadStaticObjRect();
 	void loadPlayerRect();
 	void loadAudio();
+	void loadStaticdAudio();
+	void loadBackgroundAudio();
+	void loadforestAudio();
+	void loadSnowdAudio();
+	void loadDesertdAudio();
+	void loadPlayerAudio();
 	void loadBackgrounds();
 	void loadBackgroundIcons();
 	void setAnimationsData();

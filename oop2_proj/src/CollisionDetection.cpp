@@ -26,6 +26,17 @@ void startSound(sf::SoundBuffer* sound, const int volum)
     }
 }
 //------------------------------------------
+void playerSound(sf::SoundBuffer* sound, const int volum)
+{
+    static sf::Sound effect;
+    if (FileManager::instance().getToPlayAudio())
+    {
+        effect.setBuffer(*sound);
+        effect.setVolume(volum);
+        effect.play();
+    }
+}
+//------------------------------------------
 // Handle the event that the player collides with the floor.
 // Push the player back to his previous position before the collision.
 
@@ -72,7 +83,7 @@ void playerGate(GameObjBase& p, GameObjBase& f)
 void PlayerTeleport(GameObjBase& p, GameObjBase& f)
 {
     static_cast<Player&>(p).setPos(static_cast<Teleport&>(f).getPertnetPos());
-    startSound(FileManager::instance().getShareSaund(S_IN_TELEPORT),
+    playerSound(FileManager::instance().getShareSaund(S_IN_TELEPORT),
         VOLUME_COLLISION);
 }
 //------------------------------------------
@@ -82,7 +93,8 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Player&>(p).getHitingStatus())
     {
-        startSound(FileManager::instance().getMonsterSound(HURT,
+        playerSound(FileManager::instance().getShareSaund(S_FIGHT),VOLUME_COLLISION);
+        FileManager::instance().startSound(FileManager::instance().getMonsterSound(HURT,
             static_cast<Monster&>(f).getCurrLevel(), 
             static_cast<Monster&>(f).getMonNumber()),
             VOLUME_COLLISION);
@@ -106,7 +118,7 @@ void playerMonster(GameObjBase& p, GameObjBase& f)
 
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    startSound(FileManager::instance().getShareSaund
+    playerSound(FileManager::instance().getShareSaund
     (S_TAKE_DIAMOND), VOLUME_COLLISION);
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();
@@ -128,8 +140,10 @@ void playerLifePotion(GameObjBase& p, GameObjBase& g)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
+        playerSound(FileManager::instance().getShareSaund
+        (S_TAKE_POSION), VOLUME_COLLISION);
         static_cast<Player&>(p).addLife();
-        static_cast<LifePotion&>(g).setToDelete();
+        static_cast<LifePotion&>(g).setToDelete(); 
     }
 }
 //------------------------------------------
@@ -139,6 +153,8 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
     {
+        playerSound(FileManager::instance().getShareSaund
+        (S_TAKE_POSION), VOLUME_COLLISION);
         static_cast<Player&>(p).addPower();
         static_cast<PowerPotion&>(g).setToDelete();
     }

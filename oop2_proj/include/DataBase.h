@@ -23,7 +23,7 @@ public:
     DataBase();
     ~DataBase() {};
 
-    void draw(sf::RenderWindow&);
+    void draw(sf::RenderWindow&,const bool);
     void move(const sf::Time);
     void eraseObj();
 
@@ -58,8 +58,8 @@ private:
     template <class OBJ>
     void drawAndUpdate(OBJ object);
 
-    void drawStaticObj(sf::RenderWindow& );
-    void drawMovingObj(sf::RenderWindow& );
+    void drawStaticObj(sf::RenderWindow& , const bool playButton);
+    void drawMovingObj(sf::RenderWindow& , const bool playButton);
     void handelCollisions();
     void handelMovingCollisions();
     void handelTeleportCollisions();
