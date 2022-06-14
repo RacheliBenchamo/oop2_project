@@ -1,9 +1,6 @@
 #include "MovingInclude\Player.h"
 
-//------------------------------- C-tor ----------------------------------
-// Sets features using the base class constructor.
-// Also, sets it's unique size and events clock.
-//------------------------------------------------------------------------
+
 Player::Player( const sf::Vector2f& pos, gender gen,int level)
 	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos,level),
 	    m_animation(FileManager::instance().getPlayerData(gen),
@@ -15,17 +12,15 @@ Player::Player( const sf::Vector2f& pos, gender gen,int level)
 	m_power = MAX_POWER;
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 }
-//------------------------------- move -----------------------------------
+//------------------------------------------
 // Moves the player according to the players request.
-// The player moves only if he is alive. Otherwise, the death animation
-// is played.
-// 
+// The player moves only if he is alive.
 // the function works as follows:
 // 1. Gets the next requested action(movement).
 // 2. sets all the movement stats back to false.
 // 3. Moves the shape of the player.
 // 4. Handles all the possible events that can accure in the game.
-//------------------------------------------------------------------------
+
 void Player::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 {
 	setPrevPos(m_shape.getPosition());
@@ -35,17 +30,18 @@ void Player::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 		m_shape.move(movement);
 		setMovementStatus(movement);
 		stayInPlaceAnimation(movement);
-
 	}
 	if (outWindow(m_shape.getPosition(), levelSize))
 		this->backToPrevPos();
 }
-//------------------------- setMovementStatus ----------------------------
-// Sets the movement status of the player and checks what is the new 
+//------------------------------------------
+//Sets the movement status of the player and 
+// checks what is the new 
 // movement the player preformed.
-// Depending on the movement of the player, the function updates the
+// Depending on the movement of the player,
+// the function updates the
 // data and presents the appropriate animation.
-//------------------------------------------------------------------------
+
 void Player::setMovementStatus(const sf::Vector2f& movement)
 {
 	m_climbing=m_onFloor=m_right = m_left = false;
@@ -62,26 +58,23 @@ void Player::setMovementStatus(const sf::Vector2f& movement)
 	}
 	playMovementAnimations();
 }
-
-////------------------------------------------------------------------------
-//// Checks if the player doesn't move. If he is not, plays the standing
-//// animation.
-////------------------------------------------------------------------------
+//------------------------------------------
+// Checks if the player doesn't move. 
+// If he is not, plays the standing animation.
 
 void Player::stayInPlaceAnimation(const sf::Vector2f& movement)
 {
 	if (movement == STAY_IN_PLACE &&
-		m_animation.getOperation() != Operation::Hit &&
-		m_animation.getOperation() != Operation::Hurt &&
+		m_animation.getOperation() != Hit &&
+		m_animation.getOperation() != Hurt &&
 		!m_inHnaldeJump)
 	{
-		m_animation.operation(Operation::Stay);
+		m_animation.operation(Stay);
 	}
 }
-
-//----------------------- playMovementAnimations -------------------------
- //Plays the animation according to the situation in which the player is.
-//------------------------------------------------------------------------
+//------------------------------------------
+//Plays the animation according to the
+//situation in which the player is.
 
 void Player::playMovementAnimations()
 {
@@ -92,7 +85,8 @@ void Player::playMovementAnimations()
 			if (m_animation.getOperation() != Operation::Hit 
 				&& m_animation.getOperation() != Operation::Hurt)
 			{
-				FileManager::instance().startSound(FileManager::instance().getPlayerSound(WALK,getCurrLevel()), VOLUME_BG);
+				FileManager::instance().startSound(FileManager::instance()
+					.getPlayerSound(WALK,getCurrLevel()), VOLUME_BG);
 				m_animation.operation(Operation::Walk);
 			}
 		}
@@ -106,36 +100,34 @@ void Player::playMovementAnimations()
 		m_animation.operation(Operation::Jump);
 	}
 }
-////------------------------------ handleFall ------------------------------
-//// Handle the fall of the player.
-//// Assume that the player is falling.
-//// Check what is the current position of the player.
-//// If the current position of the player is not in 
-//// the air ==> don't fall and exit.
-//// If the player is falling ==> move the player downwards.
-////------------------------------------------------------------------------
+//------------------------------------------
+//Handle the fall of the player.
+//Assume that the player is falling.
+//Check what is the current position of the player.
+//If the current position of the player is not in 
+//the air => don't fall and exit.
+//If the player is falling => move the player downwards.
+
 void Player::handleFall(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 {
 	if (!m_inHnaldeJump && !m_onFloor && !m_climbing)
 	{
 		m_inHandleFall = true;
 		m_falling = true;
-
 		move(deltaTime,levelSize);
 
 		if (!m_onFloor)
 			m_animation.operation(Operation::Jump);
-
 		m_inHandleFall = false;
 	}
 }
-//----------------------------- getMovement ------------------------------
+//------------------------------------------
 // Returns the next move depending on the situation.
 // i.e. if the player is falling, return a downward movement, if the is
 // jumping, return a movement upwards + the wanted direction the user 
-// wants. If the player is neither falling or jumping, return the next
+// wants.if the player climbing check if hr press up or down
+// If the player is neither falling, climbing or jumping, return the next
 // movement the user wants to preform.
-////------------------------------------------------------------------------
 
 const sf::Vector2f Player::getMovement(const sf::Time& deltaTime)
 {
@@ -153,14 +145,15 @@ const sf::Vector2f Player::getMovement(const sf::Time& deltaTime)
 	}
 	else if (m_inHnaldeJump)
 	{
-		FileManager::instance().startSound(FileManager::instance().getPlayerSound(JUMP,getCurrLevel()), VOLUME_BG);
-		return ((getDirection() + UP_MOVEMENT) * deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
+		FileManager::instance().startSound(FileManager::instance()
+			.getPlayerSound(JUMP,getCurrLevel()), VOLUME_BG);
+		return ((getDirection() + UP_MOVEMENT) * 
+			deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}
 	return (getDirection() * deltaTime.asSeconds() * (PLAYER_SPEED));
 }
-////------------------------------- draw -----------------------------------
-//// Prints the player upon the window.
-////------------------------------------------------------------------------
+//------------------------------------------
+//Prints the player upon the window.
 
 void Player::draw(sf::RenderWindow& window)
 {
@@ -168,50 +161,48 @@ void Player::draw(sf::RenderWindow& window)
 
 	switch (m_animation.getOperation())
 	{
-	case Operation::Stay:
+	case Stay:
 		temp_shape.setPosition(temp_shape.getPosition().x,
 			temp_shape.getPosition().y +
 			temp_shape.getOrigin().y / HALF_SIZE);
 		break;
 
-	case Operation::Walk:
+	case Walk:
 		temp_shape.scale(WALK_SCALE);
 		temp_shape.setPosition(temp_shape.getPosition().x,
 			temp_shape.getPosition().y +
 			temp_shape.getOrigin().y / HALF_SIZE);
 		break;
-	case Operation::Fall:
-	case Operation::Jump:
+	case Fall:
+	case Jump:
 		temp_shape.scale(JUMP_SCALE);
 		break;
-	case Operation::Hit:
+	case Hit:
 		temp_shape.scale(HIT_SCALE);
 		break;
 	}
 	window.draw(temp_shape);
 }
-////-------------------------------- hit -----------------------------------
-//// The player reguests to attack. Therefore, we needed to update the
-//// status of the hit and display the hiting animation.
-////------------------------------------------------------------------------
+//------------------------------------------
+// The player reguests to attack.Therefore, 
+// we needed to update the
+//status of the hit and display the hiting animation.
+
 void Player::hit()
 {
 	if (m_power > 0 && m_onFloor )
 	{
 		m_power - HITTING_POWER<=0? m_power=0: m_power -= HITTING_POWER;
 		m_hitingStatus = true;
-		m_animation.operation(Operation::Hit);
+		m_animation.operation(Hit);
 	}
 }
-////----------------------------- handleJump -------------------------------
-//// handles the jump event.
-//// The player is shifted upwards with calling the function move that knows
-//// how to handle the various events that can happen during the jump and
-//// act accordingly.
-//// If the player has collected the jump bonus, the loop that calls the 
-//// move function will be summoned more times to elevate the player
-//// further upwards.
-////------------------------------------------------------------------------
+//------------------------------------------
+// handles the jump event.
+// The player is shifted upwards with calling the function move that knows
+// how to handle the various events that can happen during the jump and
+// act accordingly.
+
 void Player::handleJump(const sf::Time& deltaTime, const bool jump,
 	const sf::Vector2f levelSize)
 {
@@ -235,15 +226,15 @@ void Player::handleJump(const sf::Time& deltaTime, const bool jump,
 		jumpCounter = 0;
 	}
 }
-////-------------------------- setHittingStatus ----------------------------
-//// Sets the hitting status of the player.
-////------------------------------------------------------------------------
+//------------------------------------------
+// Sets the hitting status of the player.
 
 void Player::setHittingStatus(const bool status)
 {
 	m_hitingStatus = status;
 }
-//---------------------------------------------------------
+//------------------------------------------
+// handles the hiting by monsters event.
 
 void Player::handleHit(const float_t damage)
 {
@@ -264,7 +255,8 @@ void Player::handleHit(const float_t damage)
 	else
 		hitCounter = 0;
 }
-//---------------------------------------------------------
+//------------------------------------------
+// handles the climbing event.
 
 void Player::handleClimbing()
 {
@@ -272,11 +264,10 @@ void Player::handleClimbing()
 		m_animation.operation(Operation::Climbe);
 }
 
-//-------------------------- handleCollision -----------------------------
+//------------------------------------------
 // Handles collision with the floor.
-// Pushes the moving object off the floor depending on the location of the
-// collision.
-//------------------------------------------------------------------------
+// Pushes the moving object off the floor depending 
+// on the location of the collision.
 
 void Player::handleCollisionFloor(const GameObjBase& floor)
 {
@@ -288,7 +279,10 @@ void Player::handleCollisionFloor(const GameObjBase& floor)
 	 else if (collisionFromBelow(floor))
 		 m_shape.move(FALL_PUSH);
 }
-//-----------------------------------------------------
+//------------------------------------------
+// Handles collision with the left edge of the floor.
+// Pushes the moving object off the floor depending 
+// on the location of the collision.
 
 void Player::handleCollisionLeftFloor(const GameObjBase& floor)
 {
@@ -306,7 +300,10 @@ void Player::handleCollisionLeftFloor(const GameObjBase& floor)
 		m_shape.move(-PUSH_FROM);
 	}
 }
-//----------------------------------------------------------
+//------------------------------------------
+// Handles collision with the right edge of the floor.
+// Pushes the moving object off the floor depending 
+// on the location of the collision.
 
 void Player::handleCollisionRightFloor(const GameObjBase& floor)
 {
@@ -324,8 +321,4 @@ void Player::handleCollisionRightFloor(const GameObjBase& floor)
 	{
 	m_shape.move(PUSH_FROM);
 	}
-
 }
-
-
-
