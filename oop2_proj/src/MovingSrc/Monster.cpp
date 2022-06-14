@@ -4,7 +4,7 @@
 // Sets features using the base class constructor.
 // Also, sets it's unique size and events clock.
 //------------------------------------------------------------------------
-Monster::Monster(const sf::Vector2f& pos, icons icon, 
+Monster::Monster(const sf::Vector2f& pos, objects icon,
 	sf::Vector2f size, int force,int level)
 	:MovingObj(size, pos + sf::Vector2f(0, 22), level),
 	m_animation(FileManager::instance().getMonstersData(getCurrLevel(), icon),

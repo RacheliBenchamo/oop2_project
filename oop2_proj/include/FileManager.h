@@ -17,31 +17,30 @@ public:
 	~FileManager() =default;
 	static FileManager& instance();
 
-    sf::Texture* getSharedStaticTexture(const icons);
-	sf::Texture* getMonstersTexture(const icons,const levels);
+    sf::Texture* getSharedStaticTexture(const objects);
+	sf::Texture* getMonstersTexture(const objects,const levels);
 	sf::Texture* getPlayerTexture();
-	const sf::Texture* getPlayAndStopIcon(const bool )const;
 	sf::SoundBuffer* getPlayerSound(const playerSounds, const levels);
-	sf::SoundBuffer* getMonsterSound(const monsterSounds, const  levels, const icons);
+	sf::SoundBuffer* getMonsterSound(const monsterSounds, const  levels, const objects);
 	sf::SoundBuffer* getBackgraundSaund(const levels);
 	sf::SoundBuffer* getShareSaund(const sounds);
-	const sf::Texture* getIcon(const bool)const;
-	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(const backgroundsType)const;
 	const sf::Texture* getBIcons(const bIcons)const;
+	sf::Texture* getIconsTexture();
 	void  startSound(sf::SoundBuffer* sound,const int)const;
 	void startBackgraundSound(sf::SoundBuffer* sound, const int volum)const;
 	const sf::Font* getFont()const;
 	const sf::Texture* getDec(const int) const;
 	const sf::IntRect getCurrLevDecRect(const levels, const decoration) const;
 	const sf::IntRect getPlayerRect(const gender) const;
-	const AnimationData& getStaticData(const icons)const;
-	const AnimationData& getMonstersData(const levels, const icons)const;
+	const AnimationData& getStaticData(const objects)const;
+	const AnimationData& getMonstersData(const levels, const objects)const;
 	const AnimationData& getPlayerData(const gender)const;
 	bool getIsMenuAudioPlaying()const { return m_isMenuAudioPlaying; }
 	void setIsMenuAudioPlaying(const bool is) { m_isMenuAudioPlaying = is; }
 	void setBackgroundMusic();
 	void setAudiodMusic();
+	bool getToPlayAudio()const { return m_playAudio; }
 
 private:
 	FileManager();
@@ -53,9 +52,6 @@ private:
 	void loadStaticObjRect();
 	void loadPlayerRect();
 	void loadAudio();
-	void loadMusicIcon();
-	void loadStopAndPlayIcon();
-	void loadResetIcon();
 	void loadBackgrounds();
 	void loadBackgroundIcons();
 	void setAnimationsData();
@@ -77,9 +73,7 @@ private:
 	sf::IntRect m_PlayerRect[2];
 	sf::Texture m_backgrounds[NUM_OF_BACKGROUNDS];
 	sf::Texture m_backgroundIcons[NUM_OF_BACKGROUNDSICONS];
-	sf::Texture m_musicTexture[2];
-	sf::Texture m_playStopTexture[2];
-	sf::Texture m_restartIcon;
+	sf::Texture m_icons;
 	sf::SoundBuffer m_audio[NUM_OF_SOUNDS];
 	sf::SoundBuffer m_backGroundAudio[NUM_OF_LEVELS];
 	sf::SoundBuffer m_playerAudio[NUM_OF_LEVELS][NUM_OF_SOUNDS];

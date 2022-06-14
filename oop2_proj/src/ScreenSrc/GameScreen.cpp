@@ -45,7 +45,8 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 					resetLevel();
 				break;
 			}
-		handelEvents();
+		if(m_playButton)
+			handelEvents();
 	}
 	return CLOSE;
 }
@@ -97,48 +98,39 @@ void GameScreen::handelMouseButtonReleased(const sf::Vector2f pos )
 	if (m_statusBar.containsMusicIcon(pos))
 		handelMusicButtonReleased();
 
-	if (m_statusBar.containsMusicIcon(pos))
-		handelMusicButtonReleased();
+	if (m_statusBar.containsSoundIcon(pos))
+		handelSoundButtonReleased();
 
-	if (m_statusBar.containsMusicIcon(pos))
-		handelMusicButtonReleased();
+	if (m_statusBar.containsRestartIcon(pos))
+		this->resetLevel();
 
-	if (m_statusBar.containsMusicIcon(pos))
-		handelMusicButtonReleased();
+	if (m_statusBar.containsStopAndPlayIcon(pos))
+		handelStopPlayButtonReleased();
 }
 //----------------------------------------------
 //stopping or playing background music
 
 void GameScreen::handelMusicButtonReleased()
 {
-	//if (m_backGroundMusic.getStatus() == sf::SoundSource::Status::Playing)
-	//{
-	//	m_backGroundMusic.stop();
-	//	m_statusBar.setMusicIcon(false);
-	//}
-	//else
-	//{
-	//	m_backGroundMusic.play();
-	//	m_statusBar.setMusicIcon(true);
-	//}
 	FileManager::instance().setBackgroundMusic();
 	playBackgroundSound();
+	m_statusBar.changeMusicIcon();
+
+
 }
 //----------------------------------------------
 //pouse or keep going the level
 
 void GameScreen::handelStopPlayButtonReleased()
 {
-	if (m_playButton)
-	{
-		m_playButton = false;
-		m_statusBar.setStopAndPlayIcon(false);
-	}
-	else
-	{
-		m_playButton = true;
-		m_statusBar.setStopAndPlayIcon(true);
-	}
+	m_playButton ? m_playButton = false : m_playButton = true;
+	m_statusBar.changePlayIcon();
+}
+//----------------------------------------------
+void GameScreen::handelSoundButtonReleased()
+{
+	FileManager::instance().setAudiodMusic();
+	m_statusBar.changeSoundIcon();
 }
 //----------------------------------------------
 //starting new level

@@ -15,8 +15,8 @@ StatusBar::StatusBar() : m_level(0)
 	setCurrLifeRect();
 	setDiamondCounter();
 	setLevelText();
-	setMusicIcon();
-	setStopIcon();
+	setIcons();
+
 	//setRestartIcon();
 }
 //------------------------------------------
@@ -58,6 +58,28 @@ void StatusBar::updatePos(const sf::Vector2f center)
 	this->m_levelText.setPosition(center.x-170, center.y - 110);
 	this->m_musicIcon.setPosition(center.x - 170, center.y - 90);
 	this->m_stopAndPlayIcon.setPosition(center.x -160, center.y - 90);
+	this->m_resetIcon.setPosition(center.x -150, center.y - 90);
+	this->m_soundIcon.setPosition(center.x - 140, center.y - 90);
+}
+//------------------------------------------
+
+void StatusBar::changeMusicIcon()
+{
+	m_musicIcon.getTextureRect() == P_MUSIC_ON ? m_musicIcon.setTextureRect(P_MUSIC_OFF) :
+		m_musicIcon.setTextureRect(P_MUSIC_ON);
+}
+//------------------------------------------
+void StatusBar::changePlayIcon()
+{
+	m_stopAndPlayIcon.getTextureRect() == P_PLAY_ICON ? m_stopAndPlayIcon.setTextureRect(P_STOP_ICON) :
+		m_stopAndPlayIcon.setTextureRect(P_PLAY_ICON);
+}
+//------------------------------------------
+
+void StatusBar::changeSoundIcon()
+{
+	m_soundIcon.getTextureRect() == P_SOUND_ON ? m_soundIcon.setTextureRect(P_SOUND_OFF) :
+		m_soundIcon.setTextureRect(P_SOUND_ON);
 }
 //------------------------------------------
 
@@ -76,9 +98,7 @@ void StatusBar::draw(sf::RenderWindow& window,const int power,
 	window.draw(this->m_powerIcon);
 	window.draw(this->m_lifeIcon);
 	window.draw(this->m_levelText);
-	window.draw(this->m_musicIcon);
-	window.draw(this->m_stopAndPlayIcon);
-	//window.draw(this->m_resetIcon);
+	drawIcons(window);
 }
 //------------------------------------------
 
@@ -86,6 +106,14 @@ void StatusBar::updateLifeAndPower(const int power, const int life)
 {
 	m_currPower.setSize(sf::Vector2f(power * 0.05, m_currPower.getSize().y));
 	m_currLife.setSize(sf::Vector2f(life * 0.05, m_currLife.getSize().y));
+}
+//------------------------------------------
+void StatusBar::drawIcons(sf::RenderWindow& window)
+{
+	window.draw(this->m_musicIcon);
+	window.draw(this->m_stopAndPlayIcon);
+	window.draw(this->m_resetIcon);
+	window.draw(this->m_soundIcon);
 }
 //------------------------------------------
 
@@ -108,13 +136,6 @@ bool StatusBar::containsStopAndPlayIcon(const sf::Vector2f pos) const
 	return false;
 }
 //------------------------------------------
-
-void StatusBar::setStopAndPlayIcon(const bool ToPlay)
-{
-	this->m_stopAndPlayIcon.setTexture(*FileManager::instance().getPlayAndStopIcon(ToPlay));
-}
-//------------------------------------------
-
 bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
 {
 	if (this->m_musicIcon.getGlobalBounds().contains(pos.x-10, pos.y))
@@ -122,9 +143,23 @@ bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
 	return false;
 }
 //------------------------------------------
-void StatusBar::setMusicIcon(const bool isSoundOn)
+void StatusBar::setIcons()
 {
-	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
+	auto m_pTexture = FileManager::instance().getIconsTexture();
+	m_musicIcon.setTexture(*m_pTexture);
+	m_resetIcon.setTexture(*m_pTexture);
+	m_stopAndPlayIcon.setTexture(*m_pTexture);
+	m_soundIcon.setTexture(*m_pTexture);
+
+	m_musicIcon.setTextureRect(P_MUSIC_ON);
+	m_resetIcon.setTextureRect(P_RESTART_ICON);
+	m_stopAndPlayIcon.setTextureRect(P_STOP_ICON);
+	m_soundIcon.setTextureRect(P_SOUND_ON);
+
+	this->m_musicIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	this->m_resetIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	this->m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	this->m_soundIcon.scale(MUSIC_ICON_SCALE * 10.f);
 }
 //-----------------------------------------
 bool StatusBar::containsRestartIcon(const sf::Vector2f pos) const
@@ -133,22 +168,12 @@ bool StatusBar::containsRestartIcon(const sf::Vector2f pos) const
 		return true;
 	return false;
 }
-//--------------------------------------------
-void StatusBar::setRestartIcon(const bool isSoundOn)
-{
-	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
-}
 //-----------------------------------------
 bool StatusBar::containsSoundIcon(const sf::Vector2f pos) const
 {
 	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
 		return true;
 	return false;
-}
-//------------------------------------------
-void StatusBar::setSoundIcon(const bool isSoundOn)
-{
-	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
 }
 //-----------------------------------------
 void StatusBar::setLevelText()
@@ -171,27 +196,6 @@ void StatusBar::setDiamondCounter()
 
 	m_diamondIcon.setTexture(*FileManager::instance().getBIcons(B_DIAMOND));
 	m_diamondIcon.scale(MUSIC_ICON_SCALE*6.f);
-}
-//--------------------------------------------
-
-void StatusBar::setMusicIcon()
-{
-	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(true));
-	this->m_musicIcon.scale(MUSIC_ICON_SCALE);
-}
-//--------------------------------------------
-
-void StatusBar::setStopIcon()
-{
-	this->m_stopAndPlayIcon.setTexture(*FileManager::instance().getPlayAndStopIcon(true));
-	this->m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE);
-}
-//--------------------------------------------
-
-void StatusBar::setRestartIcon()
-{
-	this->m_resetIcon.setTexture(*FileManager::instance().getRestartIcon());
-	this->m_resetIcon.scale(MUSIC_ICON_SCALE);
 }
 //--------------------------------------------
 

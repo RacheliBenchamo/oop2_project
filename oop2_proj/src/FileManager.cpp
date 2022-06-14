@@ -13,10 +13,7 @@ FileManager::FileManager()
 	loadMovingObj();
 	loadStaticObj();
 	loadAudio();
-	loadMusicIcon();
-	loadStopAndPlayIcon();
 	loadBackgrounds();
-	loadResetIcon();
 	setAnimationsData();
 	this->m_font.loadFromFile("Tinos-BoldItalic.ttf");
 
@@ -70,6 +67,8 @@ void FileManager::loadStaticObj()
 
 	m_dec[0].loadFromFile("staticDec.png");
 	m_dec[1].loadFromFile("trees.png");
+
+	m_icons.loadFromFile("Buttons.png");
 
 	loadStaticObjRect();
 }
@@ -156,29 +155,6 @@ void FileManager::loadAudio()
 	m_monstersAudio[DESERT][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
 }
 //--------------------------------------------------
-// load the music sprites
-
-void FileManager::loadMusicIcon()
-{
-	m_musicTexture[0].loadFromFile("musicOn.png");
-	m_musicTexture[1].loadFromFile("musicOff.png");
-}
-//--------------------------------------------------
-// load the stop and play sprites
-
-void FileManager::loadStopAndPlayIcon()
-{
-	m_playStopTexture[0].loadFromFile("playButton.png");
-	m_playStopTexture[1].loadFromFile("stopButton.png");
-}
-//--------------------------------------------------
-// load the restart sprite
-
-void FileManager::loadResetIcon()
-{
-	m_restartIcon.loadFromFile("resetButton.png");
-}
-//--------------------------------------------------
 
 void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 {
@@ -230,7 +206,7 @@ sf::SoundBuffer* FileManager::getPlayerSound(const playerSounds sound,
 //--------------------------------------------
 
 sf::SoundBuffer* FileManager::getMonsterSound(const monsterSounds sound, 
-	const levels currLevel, const icons currMonster)
+	const levels currLevel, const objects currMonster)
 {
 	return &m_monstersAudio[currLevel][sound][currMonster];
 }
@@ -248,31 +224,14 @@ sf::SoundBuffer* FileManager::getShareSaund(const sounds sound)
 }
 //--------------------------------------------------
 
-const sf::Texture* FileManager::getIcon(const bool musicOn)const
-{
-	if (musicOn)
-		return &this->m_musicTexture[0];
-	else
-		return &this->m_musicTexture[1];
-}
-//--------------------------------------------------
-
-const sf::Texture* FileManager::getPlayAndStopIcon(const bool toPlay)const
-{
-	if (toPlay)
-		return &this->m_playStopTexture[1];
-	else
-		return &this->m_playStopTexture[0];
-}
 const sf::Texture* FileManager::getBIcons(const bIcons place)const
 {
 	return &this->m_backgroundIcons[place];
 }
 //--------------------------------------------------
-
-const sf::Texture* FileManager::getRestartIcon()const
+sf::Texture* FileManager::getIconsTexture()
 {
-		return &this->m_restartIcon;
+	return &this->m_icons;
 }
 //--------------------------------------------------
 
@@ -288,13 +247,13 @@ const sf::Font* FileManager::getFont()const
 }
 //--------------------------------------------------
 
-sf::Texture* FileManager::getSharedStaticTexture(const icons place)
+sf::Texture* FileManager::getSharedStaticTexture(const objects place)
 {
 	return &this->m_sharedStaticIcon[place];
 }
 //--------------------------------------------------
 
-sf::Texture* FileManager::getMonstersTexture(const icons place, const levels currLevel)
+sf::Texture* FileManager::getMonstersTexture(const objects place, const levels currLevel)
 {
 	return &this->m_monstersIcon[currLevel][place];
 }
@@ -307,6 +266,7 @@ sf::Texture* FileManager::getPlayerTexture()
 //------------------------------------------------------------------
 const sf::Texture* FileManager::getDec(const int place) const
 {
+	return &this->m_dec[place];
 	return &this->m_dec[place];
 }
 //------------------------------------------------------------------
@@ -326,14 +286,14 @@ const sf::IntRect FileManager::getPlayerRect(const gender g) const
 }
 //------------------------------------------------------------------
 
-const AnimationData& FileManager::getStaticData(const icons object)const
+const AnimationData& FileManager::getStaticData(const objects object)const
 {
 	return m_staticData[object];
 }
 //------------------------------------------------------------------
 
 const AnimationData& FileManager::getMonstersData(const levels lev, 
-	const icons object)const
+	const objects object)const
 {
 	return m_monsterData[lev][object];
 }

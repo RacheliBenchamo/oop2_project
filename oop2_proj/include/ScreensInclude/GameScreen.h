@@ -29,6 +29,7 @@ private:
     void handelMouseButtonReleased(const sf::Vector2f);
     void handelMusicButtonReleased();
     void handelStopPlayButtonReleased();
+    void handelSoundButtonReleased();
     void resetLevel();
     void startNewLevel();
     void startnewGame();

@@ -21,9 +21,12 @@ namespace // anonymous namespace — the standard way to make function "static"
     void startSound(sf::SoundBuffer* sound, const int volum)
     {
         static sf::Sound effect;
-        effect.setBuffer(*sound);
-        effect.setVolume(volum);
-        effect.play();
+        if (FileManager::instance().getToPlayAudio())
+        {
+            effect.setBuffer(*sound);
+                effect.setVolume(volum);
+                effect.play();
+        }
     }
 
 ////----------------------------- PlayerFloor ------------------------------

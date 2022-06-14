@@ -5,8 +5,6 @@ class StageDec :public StaticObj
 {
 public:
 	StageDec(sf::Vector2f , levels, decoration,sf::Vector2f,const int );
-private:
-	sf::IntRect m_rect;
 };
 
 

@@ -22,6 +22,7 @@ configure_file ("staticObjPic/PowerPotion.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Teleport.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Rope.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("staticObjPic/Gate.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("staticObjPic/Buttons.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("backgrounds/forestBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)

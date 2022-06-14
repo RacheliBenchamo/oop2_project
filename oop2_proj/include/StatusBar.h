@@ -13,29 +13,30 @@ public:
 	void updateLevel(const bool);
 	int getLevel() const;
 	void setLevel(const int);
+	void setIcons();
 	void setMaxDiamonds(const int max) { m_maxDiamonds=max; }
 	void draw(sf::RenderWindow&,const int ,const int,const int);
 	void resetNumOfLevel();
 	bool containsMusicIcon(const sf::Vector2f ) const;
-	void setMusicIcon(const bool);
+	void setMusicIcon();
 	bool containsStopAndPlayIcon(const sf::Vector2f ) const;
-	void setStopAndPlayIcon(const bool);
+	void setStopAndPlayIcon();
 	bool containsRestartIcon(const sf::Vector2f) const;
-	void setRestartIcon(const bool);
+	void setRestartIcon();
 	bool containsSoundIcon(const sf::Vector2f) const;
-	void setSoundIcon(const bool);
+	void setSoundIcon();
 	void updatePos(const sf::Vector2f);
-
+	void changeMusicIcon();
+	void changePlayIcon();
+	void changeSoundIcon();
 private:
 	void setLevelText();
 	void setDiamondCounter();
-	void setMusicIcon();
-	void setStopIcon();
-	void setRestartIcon();
 	void updateDiamondText(const int);
 	void setCurrLifeRect();
 	void setCurrPowerRect();
-	void updateLifeAndPower(const int power, const int life);
+	void updateLifeAndPower(const int , const int );
+	void drawIcons(sf::RenderWindow&);
 
 
 	int m_level;
@@ -43,16 +44,18 @@ private:
 	sf::Text m_levelText;
 	sf::Text m_diamondText;
 	sf::Font m_font;
-	sf::Sprite m_stopAndPlayIcon;
-	sf::Sprite m_musicIcon;
-	sf::Sprite m_resetIcon;
-	sf::Sprite m_lifeIcon;
-	sf::Sprite m_powerIcon;
-	sf::Sprite m_diamondIcon;
+	sf::Sprite m_lifeIcon,
+		m_powerIcon,
+		m_diamondIcon,
+		m_stopAndPlayIcon,
+		m_musicIcon,
+		m_resetIcon,
+		m_soundIcon;
 	sf::RectangleShape
 		m_currLife,
 		m_currPower,
 		m_lifeFrame,
 		m_powerFrame;
+	
 };
 
