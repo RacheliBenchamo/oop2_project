@@ -10,9 +10,6 @@ public:
 	StatusBar();
 	~StatusBar() {};
 
-	void updateLevel(const bool);
-	int getLevel() const;
-	void setLevel(const int);
 	void setIcons();
 	void setMaxDiamonds(const int max) { m_maxDiamonds=max; }
 	void draw(sf::RenderWindow&,const int ,const int,const int);
@@ -30,7 +27,6 @@ public:
 	void changePlayIcon();
 	void changeSoundIcon();
 private:
-	void setLevelText();
 	void setDiamondCounter();
 	void updateDiamondText(const int);
 	void setCurrLifeRect();
@@ -38,10 +34,7 @@ private:
 	void updateLifeAndPower(const int , const int );
 	void drawIcons(sf::RenderWindow&);
 
-
-	int m_level;
 	int m_maxDiamonds = 0;
-	sf::Text m_levelText;
 	sf::Text m_diamondText;
 	sf::Font m_font;
 	sf::Sprite m_lifeIcon,

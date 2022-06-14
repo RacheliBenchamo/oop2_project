@@ -62,7 +62,6 @@ void GameScreen::setNewGame()
 	m_dataBase.setLevelMaxDiamonds(0);
 	m_board.readLevelData(m_dataBase, m_playerGender);
 	m_board.readLevel(m_dataBase);
-	this->m_statusBar.updateLevel(true);
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	setBackground();
 }
@@ -152,7 +151,6 @@ void GameScreen::startNewLevel()
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
 		m_board.readLevel(m_dataBase);
-		m_statusBar.updateLevel(true);
 		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	}
 }
@@ -166,7 +164,6 @@ void GameScreen::resetLevel()
 	m_board.readLevelData(m_dataBase, m_playerGender);
 	//read all the char from the text:
 	m_board.readLevel(m_dataBase);
-	this->m_statusBar.updateLevel(false);
 }
 //------------------------------------------
 //Starting new game
@@ -175,7 +172,6 @@ void GameScreen::startnewGame()
 {
 	m_gameClock.restart();
 	m_board.resetInputStream();
-	m_statusBar.resetNumOfLevel();
 	m_dataBase.resetLevel();
 	setBigView();
 	m_levelNum = 0;

@@ -7,36 +7,14 @@
 //--------------------------------------------------
 //constructor
 
-StatusBar::StatusBar() : m_level(0)
+StatusBar::StatusBar()
 {
-	this->m_font = (*(FileManager::instance().getFont()));
+	m_font = (*(FileManager::instance().getFont()));
 
 	setCurrPowerRect();
 	setCurrLifeRect();
 	setDiamondCounter();
-	setLevelText();
 	setIcons();
-}
-//--------------------------------------------------
-
-void StatusBar::updateLevel(const bool isLevelUp)
-{	
-	if (isLevelUp)
-		this->m_level++;
-
-	this->m_levelText.setString("Level :" + std::to_string(this->m_level));
-}
-//--------------------------------------------------
-
-int StatusBar::getLevel() const
-{
-	return this->m_level;
-}
-//--------------------------------------------------
-
-void StatusBar::setLevel(const int lev)
-{
-	 this->m_level= lev;
 }
 //--------------------------------------------------
 
@@ -53,11 +31,10 @@ void StatusBar::updatePos(const sf::Vector2f center)
 	m_diamondText.setPosition(center.x + 125, center.y - 88);
 	m_diamondIcon.setPosition(center.x + 110, center.y - 85);
 
-	this->m_levelText.setPosition(center.x-170, center.y - 110);
-	this->m_musicIcon.setPosition(center.x - 170, center.y - 117);
-	this->m_stopAndPlayIcon.setPosition(center.x -160, center.y - 117);
-	this->m_resetIcon.setPosition(center.x -150, center.y - 117);
-	this->m_soundIcon.setPosition(center.x - 140, center.y - 117);
+	m_musicIcon.setPosition(center.x - 170, center.y - 117);
+	m_stopAndPlayIcon.setPosition(center.x -160, center.y - 117);
+	m_resetIcon.setPosition(center.x -150, center.y - 117);
+	m_soundIcon.setPosition(center.x - 140, center.y - 117);
 }
 //--------------------------------------------------
 //change music icon
@@ -103,7 +80,6 @@ void StatusBar::draw(sf::RenderWindow& window,const int power,
 	window.draw(this->m_lifeFrame);
 	window.draw(this->m_powerIcon);
 	window.draw(this->m_lifeIcon);
-	window.draw(this->m_levelText);
 	drawIcons(window);
 }
 //--------------------------------------------------
@@ -131,13 +107,6 @@ void StatusBar::updateDiamondText(const int currDiamonds)
 {
 	this->m_diamondText.setString(std::to_string(currDiamonds)+ " / " + std::to_string(m_maxDiamonds));
 }
-//--------------------------------------------------
-//reset num of level
-void StatusBar::resetNumOfLevel()
-{
-	m_level = 0;
-}
-
 //--------------------------------------------------
 //set icons
 
@@ -191,17 +160,6 @@ bool StatusBar::containsSoundIcon(const sf::Vector2f pos) const
 		return true;
 	return false;
 }  
-//--------------------------------------------------
-//set level text
-
-void StatusBar::setLevelText()
-{
-	m_levelText.setFont(*FileManager::instance().getFont());
-	m_levelText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
-	m_levelText.setColor(BASE_COLOR);
-	m_levelText.setOutlineColor(OUTLINE_BASE_COLOR);
-	m_levelText.setOutlineThickness(0.5);
-}
 //--------------------------------------------------
 //set diamond counter
 
