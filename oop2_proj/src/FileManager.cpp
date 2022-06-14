@@ -416,7 +416,7 @@ void FileManager::createPlayerAnimeData()
 	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.02f, true);
 
 	setCurrentData(m_playerData[MALE], Hurt, movableAnimationSet
-	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.03f, true);
+	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.009f, true);
 
 	setCurrentData(m_playerData[MALE], Climbe, movableAnimationSet
 	({ 100, 115 }, { 26, 4 }, 0, 1, Climbe), 0.05f, false);
@@ -435,7 +435,7 @@ void FileManager::createPlayerAnimeData()
 	({ 90, 105 }, { 136, 127 }, 25, 2, Hit), 0.02f, true);
 
 	setCurrentData(m_playerData[FEMALE], Hurt, movableAnimationSet
-	({ 95, 105 }, { 734, 127 }, 0, 2, Hurt), 0.03f, true);
+	({ 95, 105 }, { 734, 127 }, 0, 2, Hurt), 0.009f, true);
 
 	setCurrentData(m_playerData[FEMALE], Climbe, movableAnimationSet
 	({ 110, 105 }, { 18, 126 }, 0, 1, Climbe), 0.05f, false);
