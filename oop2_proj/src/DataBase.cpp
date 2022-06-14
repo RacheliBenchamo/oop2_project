@@ -308,17 +308,18 @@ void DataBase::replaceMonsterWithPotion()
 
 void  DataBase::randPotion(const sf::Vector2f pos)
 {
-	int type = rand() % 3;
+	int type = rand() %4;
 	switch ((posion)type)
 	{
 	case posion::POWERPOSION:
 		m_staticsObj.push_back(std::make_unique<PowerPotion>(pos));
 		break;
 	case posion::LIFE_POSION:
+	case 2:
 		m_staticsObj.push_back(std::make_unique<LifePotion>(pos));
 		break;
 	default:
-		break;//pos);
+		break;
 	}
 }
 //---------------------------------------------------
