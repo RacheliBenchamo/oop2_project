@@ -1,4 +1,3 @@
-
 #include "StaticInclude\Rope.h"
 
 Rope::Rope(sf::Vector2f pos)
@@ -6,4 +5,3 @@ Rope::Rope(sf::Vector2f pos)
 {
 	m_shape.setTexture(FileManager::instance().getSharedStaticTexture(ROPE));
 }
-//--------------------------------------------------

@@ -17,7 +17,7 @@ StatusBar::StatusBar() : m_level(0)
 	setLevelText();
 	setIcons();
 }
-//------------------------------------------
+//--------------------------------------------------
 
 void StatusBar::updateLevel(const bool isLevelUp)
 {	
@@ -26,19 +26,19 @@ void StatusBar::updateLevel(const bool isLevelUp)
 
 	this->m_levelText.setString("Level :" + std::to_string(this->m_level));
 }
-//------------------------------------------
+//--------------------------------------------------
 
 int StatusBar::getLevel() const
 {
 	return this->m_level;
 }
-//------------------------------------------
+//--------------------------------------------------
 
 void StatusBar::setLevel(const int lev)
 {
 	 this->m_level= lev;
 }
-//------------------------------------------
+//--------------------------------------------------
 
 void StatusBar::updatePos(const sf::Vector2f center)
 {
@@ -59,27 +59,35 @@ void StatusBar::updatePos(const sf::Vector2f center)
 	this->m_resetIcon.setPosition(center.x -150, center.y - 90);
 	this->m_soundIcon.setPosition(center.x - 140, center.y - 90);
 }
-//------------------------------------------
+//--------------------------------------------------
+//change music icon
 
 void StatusBar::changeMusicIcon()
 {
-	m_musicIcon.getTextureRect() == P_MUSIC_ON ? m_musicIcon.setTextureRect(P_MUSIC_OFF) :
+	m_musicIcon.getTextureRect() == P_MUSIC_ON ?
+		m_musicIcon.setTextureRect(P_MUSIC_OFF) :
 		m_musicIcon.setTextureRect(P_MUSIC_ON);
 }
-//------------------------------------------
+//--------------------------------------------------
+//change play icon
+
 void StatusBar::changePlayIcon()
 {
-	m_stopAndPlayIcon.getTextureRect() == P_PLAY_ICON ? m_stopAndPlayIcon.setTextureRect(P_STOP_ICON) :
+	m_stopAndPlayIcon.getTextureRect() == P_PLAY_ICON ?
+		m_stopAndPlayIcon.setTextureRect(P_STOP_ICON) :
 		m_stopAndPlayIcon.setTextureRect(P_PLAY_ICON);
 }
-//------------------------------------------
+//--------------------------------------------------
+//change sound icon
 
 void StatusBar::changeSoundIcon()
 {
-	m_soundIcon.getTextureRect() == P_SOUND_ON ? m_soundIcon.setTextureRect(P_SOUND_OFF) :
+	m_soundIcon.getTextureRect() == P_SOUND_ON ?
+		m_soundIcon.setTextureRect(P_SOUND_OFF) :
 		m_soundIcon.setTextureRect(P_SOUND_ON);
 }
-//------------------------------------------
+//--------------------------------------------------
+//draw 
 
 void StatusBar::draw(sf::RenderWindow& window,const int power,
 	const int life,const int currDiamonds)
@@ -98,14 +106,17 @@ void StatusBar::draw(sf::RenderWindow& window,const int power,
 	window.draw(this->m_levelText);
 	drawIcons(window);
 }
-//------------------------------------------
+//--------------------------------------------------
+//update Life And Power
 
 void StatusBar::updateLifeAndPower(const int power, const int life)
 {
 	m_currPower.setSize(sf::Vector2f(power * 0.05, m_currPower.getSize().y));
 	m_currLife.setSize(sf::Vector2f(life * 0.05, m_currLife.getSize().y));
 }
-//------------------------------------------
+//--------------------------------------------------
+//draw icons
+
 void StatusBar::drawIcons(sf::RenderWindow& window)
 {
 	window.draw(this->m_musicIcon);
@@ -113,20 +124,23 @@ void StatusBar::drawIcons(sf::RenderWindow& window)
 	window.draw(this->m_resetIcon);
 	window.draw(this->m_soundIcon);
 }
-//------------------------------------------
+//--------------------------------------------------
+//update diamond text
 
 void StatusBar::updateDiamondText(const int currDiamonds)
 {
 	this->m_diamondText.setString(std::to_string(currDiamonds)+ " / " + std::to_string(m_maxDiamonds));
 }
-//------------------------------------------
-
+//--------------------------------------------------
+//reset num of level
 void StatusBar::resetNumOfLevel()
 {
 	m_level = 0;
 }
 
-//------------------------------------------
+//--------------------------------------------------
+//set icons
+
 void StatusBar::setIcons()
 {
 	auto m_pTexture = FileManager::instance().getIconsTexture();
@@ -140,63 +154,69 @@ void StatusBar::setIcons()
 	m_stopAndPlayIcon.setTextureRect(P_STOP_ICON);
 	m_soundIcon.setTextureRect(P_SOUND_ON);
 
-	this->m_musicIcon.scale(MUSIC_ICON_SCALE * 10.f);
-	this->m_resetIcon.scale(MUSIC_ICON_SCALE * 10.f);
-	this->m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE * 10.f);
-	this->m_soundIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	m_musicIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	m_resetIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	m_soundIcon.scale(MUSIC_ICON_SCALE * 10.f);
 }
-//------------------------------------------
+//--------------------------------------------------
 
 bool StatusBar::containsStopAndPlayIcon(const sf::Vector2f pos) const
 {
-	if (this->m_stopAndPlayIcon.getGlobalBounds().contains(pos.x, pos.y))
+	if (m_stopAndPlayIcon.getGlobalBounds().contains(pos.x, pos.y))
 		return true;
 	return false;
 }
-//------------------------------------------
+//--------------------------------------------------
+
 bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
 {
-	if (this->m_musicIcon.getGlobalBounds().contains(pos.x, pos.y))
+	if (m_musicIcon.getGlobalBounds().contains(pos.x, pos.y))
 		return true;
 	return false;
 }
-//-----------------------------------------
+//--------------------------------------------------
+
 bool StatusBar::containsRestartIcon(const sf::Vector2f pos) const
 {
-	if (this->m_resetIcon.getGlobalBounds().contains(pos.x , pos.y))
+	if (m_resetIcon.getGlobalBounds().contains(pos.x , pos.y))
 		return true;
 	return false;
 }
-//-----------------------------------------
+//--------------------------------------------------
+
 bool StatusBar::containsSoundIcon(const sf::Vector2f pos) const
 {
-	if (this->m_soundIcon.getGlobalBounds().contains(pos.x , pos.y))
+	if (m_soundIcon.getGlobalBounds().contains(pos.x , pos.y))
 		return true;
 	return false;
 }
-//-----------------------------------------
+//--------------------------------------------------
+//set level text
+
 void StatusBar::setLevelText()
 {
-	this->m_levelText.setFont(*FileManager::instance().getFont());
-	this->m_levelText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
-	this->m_levelText.setColor(sf::Color::White);
-	this->m_levelText.setOutlineColor(sf::Color::White);
-	this->m_levelText.setOutlineThickness(0.5);
+	m_levelText.setFont(*FileManager::instance().getFont());
+	m_levelText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
+	m_levelText.setColor(sf::Color::White);
+	m_levelText.setOutlineColor(sf::Color::White);
+	m_levelText.setOutlineThickness(0.5);
 }
-//--------------------------------------------
+//--------------------------------------------------
+//set diamond counter
 
 void StatusBar::setDiamondCounter()
 {
-	this->m_diamondText.setFont(*FileManager::instance().getFont());
-	this->m_diamondText.setCharacterSize(STATUS_BAR_CHAR_SIZE-1);
-	this->m_diamondText.setFillColor(sf::Color::White);
-	this->m_diamondText.setOutlineThickness(0.5);
-	this->m_diamondText.setOutlineColor(sf::Color::White);
+	m_diamondText.setFont(*FileManager::instance().getFont());
+	m_diamondText.setCharacterSize(STATUS_BAR_CHAR_SIZE-1);
+	m_diamondText.setFillColor(sf::Color::White);
+	m_diamondText.setOutlineThickness(0.5);
+	m_diamondText.setOutlineColor(sf::Color::White);
 
 	m_diamondIcon.setTexture(*FileManager::instance().getBIcons(B_DIAMOND));
 	m_diamondIcon.scale(MUSIC_ICON_SCALE*6.f);
 }
-//--------------------------------------------
+//--------------------------------------------------
 
 void StatusBar::setCurrLifeRect()
 {
@@ -212,7 +232,7 @@ void StatusBar::setCurrLifeRect()
 	m_lifeIcon.scale(MUSIC_ICON_SCALE* 4.f);
 
 }
-//--------------------------------------------
+//--------------------------------------------------
 
 void StatusBar::setCurrPowerRect()
 {

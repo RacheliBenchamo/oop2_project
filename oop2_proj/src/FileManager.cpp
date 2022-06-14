@@ -2,7 +2,7 @@
 #include "FileManager.h"
 #include <iostream>
 
-//--------------------------------------------------
+//---------------------------------------------------
 //constructor
 
 FileManager::FileManager()
@@ -16,7 +16,6 @@ FileManager::FileManager()
 	loadBackgrounds();
 	setAnimationsData();
 	this->m_font.loadFromFile("Tinos-BoldItalic.ttf");
-
 }
 //--------------------------------------------------
 //return unic pointer to the object
@@ -25,15 +24,14 @@ FileManager& FileManager::instance()
 	static FileManager m_instance;
 	return m_instance;
 }
-//----------------------------------------------------
+//---------------------------------------------------
 void FileManager::loadBackgroundIcons()
 {
 	m_backgroundIcons[B_POWER].loadFromFile("PowerIcon.png");
 	m_backgroundIcons[B_LIFE].loadFromFile("LifeIcon.png");
 	m_backgroundIcons[B_DIAMOND].loadFromFile("DiamondIcon.png");
 }
-
-// //--------------------------------------------------
+//---------------------------------------------------
 // load all the object images
 
 void FileManager::loadMovingObj()
@@ -53,7 +51,7 @@ void FileManager::loadMovingObj()
 	m_monstersIcon[DESERT][MONSTER2].loadFromFile("DesMonster2.png");
 	m_monstersIcon[DESERT][MONSTER3].loadFromFile("DesMonster3.png");
 }
-//--------------------------------------------------
+//---------------------------------------------------
 // load all the object images
 
 void FileManager::loadStaticObj()
@@ -73,8 +71,9 @@ void FileManager::loadStaticObj()
 	loadStaticObjRect();
 }
 
-//--------------------------------------------------
+//---------------------------------------------------
 // load all the rect of the static decoration un the game
+
 void FileManager::loadStaticObjRect()
 {
 	m_decRect[FOREST][L_FLOOR] = LEFT_FLOOR_L1;
@@ -101,6 +100,7 @@ void FileManager::loadStaticObjRect()
 }
 //--------------------------------------------------
 // load all the rect of the static decoration un the game
+
 void FileManager::loadPlayerRect()
 {
 	m_PlayerRect[MALE] = MALE_RECT;
@@ -111,7 +111,6 @@ void FileManager::loadPlayerRect()
 
 void FileManager::loadAudio()
 {
-	
 	m_audio[S_MENU].loadFromFile("MenuBackground.wav");
 	m_audio[S_LOSE_LEVEL].loadFromFile("LoseLevelSound.wav");
 	m_audio[S_TAKE_DIAMOND].loadFromFile("pickUpDiamond.wav");
@@ -154,9 +153,11 @@ void FileManager::loadAudio()
 	m_monstersAudio[DESERT][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
 	m_monstersAudio[DESERT][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
 }
-//--------------------------------------------------
+//---------------------------------------------------
+//start the wanted sound
 
-void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
+void FileManager::startSound(sf::SoundBuffer* sound,
+	const int volum)const
 {
 	static sf::Sound effect;
 
@@ -167,10 +168,11 @@ void FileManager::startSound(sf::SoundBuffer* sound,const int volum)const
 		effect.play();
 	}
 }
-	
-//--------------------------------------------------
+//---------------------------------------------------
+//start the wanted background sound
 
-void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)const
+void FileManager::startBackgraundSound(sf::SoundBuffer* sound,
+	const int volum)const
 {
 	static sf::Sound effect;
 
@@ -183,7 +185,7 @@ void FileManager::startBackgraundSound(sf::SoundBuffer* sound, const int volum)c
 	else
 		effect.stop();
 }
-//--------------------------------------------------
+//---------------------------------------------------
 // load the backgrounds sprites
 
 void FileManager::loadBackgrounds()
@@ -196,115 +198,127 @@ void FileManager::loadBackgrounds()
 	m_backgrounds[LOSE_LEVEL_BACKGROUND].loadFromFile("LoseGameBackground.png");
 	m_backgrounds[WIN_GAME_BACKGROUND].loadFromFile("winGameBackground.png");
 }
-//--------------------------------------------
+//---------------------------------------------------
 
 sf::SoundBuffer* FileManager::getPlayerSound(const playerSounds sound,
 	const levels currLevel)
 {
 	return &m_playerAudio[currLevel][sound];
 }
-//--------------------------------------------
+//---------------------------------------------------
 
 sf::SoundBuffer* FileManager::getMonsterSound(const monsterSounds sound, 
 	const levels currLevel, const objects currMonster)
 {
 	return &m_monstersAudio[currLevel][sound][currMonster];
 }
-//--------------------------------------------
+//---------------------------------------------------
 
 sf::SoundBuffer* FileManager::getBackgraundSaund(const levels currLevel)
 {
 	return &this->m_backGroundAudio[currLevel];
 }
-//--------------------------------------------
+//---------------------------------------------------
 
 sf::SoundBuffer* FileManager::getShareSaund(const sounds sound)
 {
 	return &this->m_audio[sound];
 }
-//--------------------------------------------------
+//---------------------------------------------------
+
+void FileManager::setBackgroundMusic()
+{
+	m_playBackground ? m_playBackground = false : m_playBackground = true;
+}
+//---------------------------------------------------
+
+void FileManager::setAudiodMusic()
+{
+	m_playAudio ? m_playAudio = false : m_playAudio = true;
+}
+//---------------------------------------------------
 
 const sf::Texture* FileManager::getBIcons(const bIcons place)const
 {
 	return &this->m_backgroundIcons[place];
 }
-//--------------------------------------------------
+//---------------------------------------------------
 sf::Texture* FileManager::getIconsTexture()
 {
 	return &this->m_icons;
 }
-//--------------------------------------------------
+//---------------------------------------------------
 
 const sf::Texture* FileManager::getBackGround(const backgroundsType place)const
 {
 	return &this->m_backgrounds[place];
 }
-//--------------------------------------------------
+//---------------------------------------------------
 
 const sf::Font* FileManager::getFont()const
 {
 	return &this->m_font;
 }
-//--------------------------------------------------
+//---------------------------------------------------
 
 sf::Texture* FileManager::getSharedStaticTexture(const objects place)
 {
 	return &this->m_sharedStaticIcon[place];
 }
-//--------------------------------------------------
+//---------------------------------------------------
 
 sf::Texture* FileManager::getMonstersTexture(const objects place, const levels currLevel)
 {
 	return &this->m_monstersIcon[currLevel][place];
 }
-//--------------------------------------------------
+//---------------------------------------------------
 
 sf::Texture* FileManager::getPlayerTexture()
 {
 	return &this->m_player;
 }
-//------------------------------------------------------------------
+//---------------------------------------------------
 const sf::Texture* FileManager::getDec(const int place) const
 {
 	return &this->m_dec[place];
 	return &this->m_dec[place];
 }
-//------------------------------------------------------------------
-
+//---------------------------------------------------
 //get the decoration of the level
+
 const sf::IntRect FileManager::getCurrLevDecRect(const levels currLevel,
 	const decoration dec) const
 {
 	return this->m_decRect[currLevel][dec];
 }
-//------------------------------------------------------------------
-
+//---------------------------------------------------
 //get the decoration of the level
+
 const sf::IntRect FileManager::getPlayerRect(const gender g) const
 {
 	return this->m_PlayerRect[g];
 }
-//------------------------------------------------------------------
+//---------------------------------------------------
 
 const AnimationData& FileManager::getStaticData(const objects object)const
 {
 	return m_staticData[object];
 }
-//------------------------------------------------------------------
+//---------------------------------------------------
 
 const AnimationData& FileManager::getMonstersData(const levels lev, 
 	const objects object)const
 {
 	return m_monsterData[lev][object];
 }
-//------------------------------------------------------------------
+//---------------------------------------------------
 
 const AnimationData& FileManager::getPlayerData(const gender g)const
 {
 	return m_playerData[g];
 }
-//----------------------- movableAnimationSet ------------------------
-//		Set the Movable objects animations data, time and frequancy.
+//---------------------------------------------------
+//Set the objects animations data, time and frequancy.
 
 std::vector<sf::IntRect> FileManager::movableAnimationSet(
 	const sf::Vector2i size,
@@ -328,14 +342,12 @@ std::vector<sf::IntRect> FileManager::movableAnimationSet(
 	stand_anime.m_data[typeOperation].emplace_back(currentStart, currSize);
 
 	for (int i = 1; i < count; i++)
-	{
 		stand_anime.m_data[typeOperation].emplace_back(nextStart(), currSize);
-	}
 
 	return stand_anime.m_data[typeOperation];
 }
-//-------------------------- setCurrentData --------------------------
-//				Set animation the data,time and frequancy.
+//---------------------------------------------------
+//Set animation the data,time and frequancy.
 
 void FileManager::setCurrentData( AnimationData& data, const Operation op,
 	const std::vector<sf::IntRect> inRect, const float time, const bool once)
@@ -344,7 +356,7 @@ void FileManager::setCurrentData( AnimationData& data, const Operation op,
 	data.m_time[op] = time;
 	data.m_playOnce[op] = once;
 }
-//------------------------------------------------------------------------
+//---------------------------------------------------
 // Set all animation data used in the game.
 
 void FileManager::setAnimationsData()
@@ -357,17 +369,7 @@ void FileManager::setAnimationsData()
 	createSnowMonstersAnimeData();
 	createDesertMonstersAnimeData();
 }
-
-void FileManager::setBackgroundMusic()
-{
-	m_playBackground ? m_playBackground = false : m_playBackground = true;
-}
-
-void FileManager::setAudiodMusic()
-{
-	m_playAudio ? m_playAudio = false : m_playAudio = true;
-}
-//--------------------------- playerAnime ----------------------------
+//---------------------------------------------------
 //Set the player animations.
 
 void FileManager::createPlayerAnimeData()
@@ -376,13 +378,13 @@ void FileManager::createPlayerAnimeData()
 	({ 112, 110 }, { 736, 5 },0, 1,Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[MALE], Walk, movableAnimationSet
-	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.02f, false);
+	({ 118, 108 }, { 482, 5 }, 5,2, Walk), 0.01f, false);
 
 	setCurrentData(m_playerData[MALE], Jump, movableAnimationSet
 	({ 120, 115 }, { 365, 6 },0, 1,Jump), 0.15f, true);
 
 	setCurrentData(m_playerData[MALE], Hit, movableAnimationSet
-	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.06f, true);
+	({ 100, 105 }, { 133, 8 },20, 2, Hit), 0.04f, true);
 
 	setCurrentData(m_playerData[MALE], Hurt, movableAnimationSet
 	({ 112, 110 }, { 736, 5 }, 0, 2, Hurt), 0.03f, true);
@@ -395,13 +397,13 @@ void FileManager::createPlayerAnimeData()
 	({ 95, 110 }, { 734, 127 }, 0, 1, Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[FEMALE], Walk, movableAnimationSet
-	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.02f, false);
+	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.01f, false);
 
 	setCurrentData(m_playerData[FEMALE], Jump, movableAnimationSet
 	({ 110, 108 }, { 384, 130 }, 0, 1, Jump), 0.15f, true);
 
 	setCurrentData(m_playerData[FEMALE], Hit, movableAnimationSet
-	({ 90, 105 }, { 136, 127 }, 25, 2, Hit), 0.06f, true);
+	({ 90, 105 }, { 136, 127 }, 25, 2, Hit), 0.04f, true);
 
 	setCurrentData(m_playerData[FEMALE], Hurt, movableAnimationSet
 	({ 95, 105 }, { 734, 127 }, 0, 2, Hurt), 0.03f, true);
@@ -410,7 +412,7 @@ void FileManager::createPlayerAnimeData()
 	({ 110, 105 }, { 18, 126 }, 0, 1, Climbe), 0.05f, false);
 	 
 }
-//--------------------------- monstersAnime ----------------------------
+//---------------------------------------------------
 //Set the monsters animations.
 
 void FileManager::createForestMonstersAnimeData()
@@ -537,7 +539,6 @@ void FileManager::createDesertMonstersAnimeData()
 
 	setCurrentData(m_monsterData[DESERT][MONSTER3], Dead, movableAnimationSet
 	({ 60, 66 }, { 7, 290 }, 0, 5, Dead), 0.005f, true);
-
 }
 
 

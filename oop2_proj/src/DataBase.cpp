@@ -14,6 +14,7 @@ DataBase::DataBase()
 {
 }
 //---------------------------------------------------
+//set level size
 
 void DataBase::setLevelSize(const int x, const int y)
 {
@@ -37,23 +38,27 @@ void DataBase::createMovingObj(const char c, const sf::Vector2f& pos)
 	switch (c)
 	{
 	case PLAYER_C:
-		m_player = std::make_unique<Player>(pos+sf::Vector2f(7,20),m_gender, m_stageType);
+		m_player = std::make_unique<Player>(pos+sf::Vector2f(7,20)
+			,m_gender, m_stageType);
 		break;
 	case  MONSTER1_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos,MONSTER1, 
-			sf::Vector2f(BLOCK_SIZE / 1.2, BLOCK_SIZE / 1.2), MON1_FORCE, m_stageType));
+			sf::Vector2f(BLOCK_SIZE / 1.2, BLOCK_SIZE / 1.2),
+			MON1_FORCE, m_stageType));
 		break;
 	case  MONSTER2_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos,MONSTER2,
-			sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE, m_stageType));
+			sf::Vector2f(BLOCK_SIZE , BLOCK_SIZE), MON2_FORCE,
+			m_stageType));
 		break;
 	case  MONSTER3_C:
 		m_monsters.push_back(std::make_unique<Monster>(pos ,MONSTER3, 
-			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE, m_stageType));
+			sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), MON3_FORCE,
+			m_stageType));
 		break;
 	}
 }
-//-----------------------------------------------
+//---------------------------------------------------
 //create all the static object in the level
 
 bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
@@ -101,7 +106,7 @@ bool DataBase::createStaticObj(const char c, const sf::Vector2f &pos)
 		return false;
 	}
 }
-//-----------------------------------------------
+//---------------------------------------------------
 //draw all the object in the level on the window
 
 void DataBase::draw(sf::RenderWindow& window)
@@ -109,7 +114,7 @@ void DataBase::draw(sf::RenderWindow& window)
 	drawStaticObj(window);
 	drawMovingObj(window);
 }
-//-----------------------------------------------
+//---------------------------------------------------
 //draw all the static object in the level on the window
 
 void DataBase::drawStaticObj(sf::RenderWindow& window)
@@ -159,7 +164,7 @@ void DataBase::drawMovingObj(sf::RenderWindow& window)
 		}
 	}
 }
-//--------------------------------------------------------------
+//---------------------------------------------------
 //find the partner of the teleports
 
 void DataBase::FindTeleportPartner() const
@@ -172,7 +177,7 @@ void DataBase::FindTeleportPartner() const
 			m_teleport[index]->setPartnerPos(m_teleport[index - 1]->getPos());
 	}
 }
-//--------------------------------------------------
+//---------------------------------------------------
 //handle the moving in this moment
 
 void DataBase::move(const sf::Time deltaTime)
@@ -189,9 +194,8 @@ void DataBase::move(const sf::Time deltaTime)
 
 	handelCollisions();
 	handelPlayerStuff(deltaTime);
-
 }
-//-------------------------------------------------
+//---------------------------------------------------
 //handle the collisions in this moment
 
 void DataBase::handelCollisions()
@@ -200,7 +204,7 @@ void DataBase::handelCollisions()
 	handelTeleportCollisions();	
 	deleteRelevantObj();
 }
-//----------------------------------------------------
+//---------------------------------------------------
 //handle the current player collisions in this moment
 
 void DataBase::handelMovingCollisions()
@@ -228,7 +232,7 @@ void DataBase::handelMovingCollisions()
 			processCollision(*m_player, *m);
 	}
 }
-//----------------------------------------------------
+//---------------------------------------------------
 //handle the teleports collisions in this moment
 
 void DataBase::handelTeleportCollisions()
@@ -248,7 +252,7 @@ void DataBase::handelTeleportCollisions()
 		}
 	}
 }
-//----------------------------------------------------
+//---------------------------------------------------
 
 void DataBase::handelPlayerStuff(const sf::Time deltaTime)
 {
@@ -261,27 +265,29 @@ void DataBase::handelPlayerStuff(const sf::Time deltaTime)
 		m_player->hit();
 
 }
-//-----------------------------------------------------
+//---------------------------------------------------
 //check if its allowed to enter the teleport
 
 void DataBase::AllowedToEnterTeleport(const int place, const int move)
 {
-	if (m_teleport[place + move]->isOpen() && sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (m_teleport[place + move]->isOpen() && 
+		sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		m_teleport[place + move]->toClose();
 		m_currTeleport = place + move;
 		processCollision(*m_player, *m_teleport[place]);
 	}
 }
-//-----------------------------------------------------
+//---------------------------------------------------
 //delete the relevant Objects from the level
 
 void DataBase::deleteRelevantObj()
 {
 	replaceMonsterWithPotion();
-	std::erase_if(m_staticsObj, [](const auto& object) {return object->getToDelete(); });
+	std::erase_if(m_staticsObj, [](const auto& object) 
+		{return object->getToDelete(); });
 }
-//-----------------------------------------------------
+//---------------------------------------------------
 //replace the orks that killed with key sprite
 
 void DataBase::replaceMonsterWithPotion()
@@ -295,7 +301,7 @@ void DataBase::replaceMonsterWithPotion()
 		}
 	}
 }
-//-------------------------------------------------------------
+//---------------------------------------------------
 //gril curent poision  
 
 void  DataBase::randPotion(const sf::Vector2f pos)
@@ -313,9 +319,9 @@ void  DataBase::randPotion(const sf::Vector2f pos)
 		break;//pos);
 	}
 }
-//---------------------------------------------
+//---------------------------------------------------
 //check if the player win the level means the 
-//king reached the throne
+//player reached the gate
 
 bool DataBase::winLevel()const
 {
@@ -324,7 +330,7 @@ bool DataBase::winLevel()const
 			return true; 
 	return false;
 }
-//-----------------------------------------------
+//---------------------------------------------------
 //erase all the object from the vectors
 
 void DataBase::eraseObj()
@@ -346,7 +352,9 @@ void DataBase::eraseObj()
 	}
 	eraseAllMonsters();
 }
-//----------------------------------------------
+//---------------------------------------------------
+//erase all the monsters
+
 void DataBase::eraseAllMonsters()
 {
 	while (!m_monsters.empty())

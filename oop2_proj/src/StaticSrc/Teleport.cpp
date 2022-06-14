@@ -5,19 +5,22 @@ Teleport::Teleport(sf::Vector2f pos)
 	{
 	m_shape.setTexture(FileManager::instance().getSharedStaticTexture(TELEPORT));
 	}
-//--------------------------------------------------
+//------------------------------------------
+//set the partner position
 
 void Teleport::setPartnerPos(sf::Vector2f pos)
 {
     m_Partner = pos;
 }
-//--------------------------------------------------
+//------------------------------------------
+//close the teleport
 
 void Teleport::toClose()
 {
 	m_isOpen = false;
 }
-//--------------------------------------------------
+//------------------------------------------
+//return if the teleport is open
 
 bool Teleport::isOpen()const
 {

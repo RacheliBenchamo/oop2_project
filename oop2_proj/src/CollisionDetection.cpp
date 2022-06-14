@@ -1,15 +1,12 @@
 //--------------------------- Include section  ---------------------------
 #include "CollisionDetection.h"
-
 // Moveable Objects
 #include "MovingInclude/Player.h"
 #include "MovingInclude/Monster.h"
-
 // Static Objects.
 #include "StaticInclude/Floor.h"
 #include "StaticInclude/Teleport.h"
 #include "StaticInclude/Diamond.h"
-
 
 namespace // anonymous namespace — the standard way to make function "static"
 {
@@ -18,21 +15,20 @@ namespace // anonymous namespace — the standard way to make function "static"
     using HitMap = std::map<MapKey, HitFunctionPtr>;
 
 
-    void startSound(sf::SoundBuffer* sound, const int volum)
+void startSound(sf::SoundBuffer* sound, const int volum)
+{
+    static sf::Sound effect;
+    if (FileManager::instance().getToPlayAudio())
     {
-        static sf::Sound effect;
-        if (FileManager::instance().getToPlayAudio())
-        {
-            effect.setBuffer(*sound);
-                effect.setVolume(volum);
-                effect.play();
-        }
+        effect.setBuffer(*sound);
+        effect.setVolume(volum);
+        effect.play();
     }
+}
+//------------------------------------------
+// Handle the event that the player collides with the floor.
+// Push the player back to his previous position before the collision.
 
-////----------------------------- PlayerFloor ------------------------------
-//// Handle the event that the player collides with the floor.
-//// Push the player back to his previous position before the collision.
-////------------------------------------------------------------------------
 void PlayerFloor(GameObjBase& p, GameObjBase& f)
 {
     if (!static_cast<Player&>(p).getClimbing())
@@ -45,10 +41,12 @@ void PlayerFloor(GameObjBase& p, GameObjBase& f)
             static_cast<Player&>(p).handleCollisionFloor(f);
     }
 }
-//------------------------------------------------------------------
+//------------------------------------------
+// Handle the event that the player collides with the gate.
+
 void playerGate(GameObjBase& p, GameObjBase& f)
 {
-    //so we can se the player enter the gate
+    //so we can see the player enter the gate
     static int gateCounter = 0;
 
     if (static_cast<Gate&>(f).getIsOpen())
@@ -68,55 +66,63 @@ void playerGate(GameObjBase& p, GameObjBase& f)
         }
     }
 }
-//------------------------------------------------------------------
+//------------------------------------------
+// Handle the event that the player collides with the teleport.
+
 void PlayerTeleport(GameObjBase& p, GameObjBase& f)
 {
     static_cast<Player&>(p).setPos(static_cast<Teleport&>(f).getPertnetPos());
     startSound(FileManager::instance().getShareSaund(S_IN_TELEPORT),
         VOLUME_COLLISION);
 }
-//------------------------------------------------------------------
+//------------------------------------------
+// Handle the event that the player collides with monster.
 
 void playerMonster(GameObjBase& p, GameObjBase& f)
 {
     if (static_cast<Player&>(p).getHitingStatus())
     {
         startSound(FileManager::instance().getMonsterSound(HURT,
-            static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()),
+            static_cast<Monster&>(f).getCurrLevel(), 
+            static_cast<Monster&>(f).getMonNumber()),
             VOLUME_COLLISION);
-        static_cast<Monster&>(f).handleHit(static_cast<Player&>(p).getDamage());
+        static_cast<Monster&>(f).handleHit
+        (static_cast<Player&>(p).getDamage());
     } 
     else
     {
         startSound(FileManager::instance().getMonsterSound(HIT,
-            static_cast<Monster&>(f).getCurrLevel(), static_cast<Monster&>(f).getMonNumber()),
+            static_cast<Monster&>(f).getCurrLevel(),
+            static_cast<Monster&>(f).getMonNumber()),
             VOLUME_COLLISION);
-        static_cast<Player&>(p).handleHit(static_cast<Monster&>(f).getDamage());
+        static_cast<Player&>(p).handleHit
+        (static_cast<Monster&>(f).getDamage());
     }
 }
-//---------------------------- playerGold --------------------------------
-// Handle the event that the player collides with gold.
-// 1. Update the amount of gold the player has accumulated so far.
-// 2. Update that the object of gold no longer exists.
-//------------------------------------------------------------------------
+//------------------------------------------
+//Handle the event that the player collides with diamond.
+// 1. Update the amount of diamond the player has accumulated so far.
+// 2. Update that the object of diamond no longer exists.
+
 void playerDiamond(GameObjBase& p, GameObjBase& g)
 {
-    startSound(FileManager::instance().getShareSaund(S_TAKE_DIAMOND), VOLUME_COLLISION);
+    startSound(FileManager::instance().getShareSaund
+    (S_TAKE_DIAMOND), VOLUME_COLLISION);
     static_cast<Player&>(p).addDiamond();
     static_cast<Diamond&>(g).setToDelete();
 }
-//------------------------------------------------
+//------------------------------------------
+//Handle the event that the player collides with rope.
 
 void playerRope(GameObjBase& p, GameObjBase& g)
 {
-       //Resources::instance().playSound(COLLECT_DIAMOND_SOUND);
         static_cast<Player&>(p).setClimbing(true);
-
         static_cast<Player&>(p).setPos({ static_cast<Rope&>(g).getPos().x+
             (9* static_cast<Player&>(p).getScale().x)
            ,static_cast<Player&>(p).getPos().y });
 }
-//------------------------------------------------
+//------------------------------------------
+//Handle the event that the player collides with life potion.
 
 void playerLifePotion(GameObjBase& p, GameObjBase& g)
 {
@@ -126,7 +132,8 @@ void playerLifePotion(GameObjBase& p, GameObjBase& g)
         static_cast<LifePotion&>(g).setToDelete();
     }
 }
-//------------------------------------------------
+//------------------------------------------
+//Handle the event that the player collides with power potion.
 
 void playerPowerPotion(GameObjBase& p, GameObjBase& g)
 {
@@ -136,18 +143,15 @@ void playerPowerPotion(GameObjBase& p, GameObjBase& g)
         static_cast<PowerPotion&>(g).setToDelete();
     }
 }
-////--------------------------- enemyFloor ---------------------------------
-//// Handle the event that the enemy collides with the floor.
-//// Push the enemy back to his previous position before the collision.
-////------------------------------------------------------------------------
+//------------------------------------------
+// Handle the event that the monster collides with the floor.
 
 void monsterFloor(GameObjBase& e, GameObjBase& f)
 {
    static_cast<Monster&>(e).handleCollisionFloor(f);
 }
-//---------------------- setPlayerCollisionHandling ----------------------
-// Insert all the players collision functions into the map Data Structure.
-//------------------------------------------------------------------------
+//------------------------------------------
+// Insert all the player's collision functions into the map Data Structure.
 
 void setPlayerCollisionHandling(HitMap& phm)
 {
@@ -171,33 +175,30 @@ void setPlayerCollisionHandling(HitMap& phm)
     phm[MapKey(typeid(Player), typeid(PowerPotion))] = &playerPowerPotion;
 }
 
-//---------------------- setEnemyCollisionHandling -----------------------
-// Insert all the enemy's collision functions into the map Data Structure.
-//------------------------------------------------------------------------
+//------------------------------------------
+// Insert all the monster's collision functions into the map Data Structure.
+
 void setMonsterCollisionHandling(HitMap& phm)
 {
     phm[MapKey(typeid(Monster), typeid(Floor))] = &monsterFloor;
 }
-//------------------------ initializeCollisionMap ------------------------
+//------------------------------------------
 // Intialize the collision handling map.
 // Calls to auxiliary functions that insert the keys of the objects that
 // collide and the corresponding function for that collision.
-//------------------------------------------------------------------------
 
 HitMap initializeCollisionMap()
 {
     HitMap phm;
 
     setPlayerCollisionHandling(phm);
-
     setMonsterCollisionHandling(phm);
 
     return phm;
 }
-//------------------------------ lookup ----------------------------------
+//------------------------------------------
 // Look up and find out if there is a suitable collision between the
 // 2 objects that committed a collision.
-//------------------------------------------------------------------------
 
 HitFunctionPtr lookup(const std::type_index& class1,
     const std::type_index& class2)
@@ -212,12 +213,11 @@ HitFunctionPtr lookup(const std::type_index& class1,
     return mapEntry->second;
 }
 } // end namespace
-//------------------------- processCollision -----------------------------
-// Process the collision.
+//------------------------------------------
+/// Process the collision.
 // Calls the function lookup that searches if there is a suitable function
 // for the current collision. If a suitable function is found, it 
 // activates it.
-//------------------------------------------------------------------------
 
 void processCollision(GameObjBase& object1, GameObjBase& object2)
 {

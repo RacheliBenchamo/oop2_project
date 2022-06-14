@@ -6,7 +6,7 @@
 using std::this_thread::sleep_for;
 using std::cout;
 
-//--------------------------------------------------
+//------------------------------------------
 //constructor
 
 Controller::Controller()
@@ -15,7 +15,8 @@ Controller::Controller()
 	m_window.setFramerateLimit(60);
 	setScreens();
 }
-//-----------------------------------------------------------
+//------------------------------------------
+//run the game
 
 void Controller::run() try
 {
@@ -26,7 +27,8 @@ void Controller::run() try
  {
 	std::cout << e.what();
 }
-//-----------------------------------------------------------
+ //------------------------------------------
+ //set all the screen in the game
 
 void Controller::setScreens()
 {
@@ -36,9 +38,9 @@ void Controller::setScreens()
 	m_screens.push_back(std::make_unique<LoseScreen>());
 	m_screens.push_back(std::make_unique<WinGameScreen>());
 	m_screens.push_back(std::make_unique<WinLevelScreen>());
-
 }
-//-----------------------------------------------------------
+//------------------------------------------
+//handle the screens situations 
 
 void Controller::handleScreens(screensOption currScreen)
 {
@@ -59,11 +61,9 @@ void Controller::handleScreens(screensOption currScreen)
 		}
 	}
 }
-//-----------------------------------------------------
+//------------------------------------------
 
 gender Controller::getGenderFromMenu()const
 {
 	return static_cast<MenuScreen&>(*m_screens[MENU]).getSelectedPlayer();
 }
-
-

@@ -14,7 +14,6 @@
                                               "StaticSrc/Teleport.cpp"
                                               "StaticSrc/Diamond.cpp"
                                                "StaticSrc/Rope.cpp"
-                                               "StaticSrc/StaticObj.cpp"
                                                 "StaticSrc/StageDec.cpp"
                                                 "ScreenSrc/WinGameScreen.cpp"
                                                 "ScreenSrc/WinLevelScreen.cpp"
