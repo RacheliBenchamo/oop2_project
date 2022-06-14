@@ -198,8 +198,8 @@ void StatusBar::setLevelText()
 {
 	m_levelText.setFont(*FileManager::instance().getFont());
 	m_levelText.setCharacterSize(STATUS_BAR_CHAR_SIZE);
-	m_levelText.setColor(sf::Color::White);
-	m_levelText.setOutlineColor(sf::Color::White);
+	m_levelText.setColor(BASE_COLOR);
+	m_levelText.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_levelText.setOutlineThickness(0.5);
 }
 //--------------------------------------------------

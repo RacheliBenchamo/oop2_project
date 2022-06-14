@@ -14,7 +14,7 @@ NUM_OF_BACKGROUNDS = 7,
 NUM_OF_DIRECTION = 4;
 
 const unsigned int
-HITTING_POWER = 1,
+HITTING_POWER = 1.5,
 LESS_LIFE = 1;
 
 const unsigned int
@@ -25,17 +25,18 @@ ADD_POWER = 200;
 
 //monster force
 const  int
-MON1_FORCE = 30,
-MON2_FORCE = 45,
-MON3_FORCE = 65,
+MON1_FORCE = 45,
+MON2_FORCE = 65,
+MON3_FORCE = 85,
 PAYER_FORCE = 150,
 PLAYER_DAMAGE = 5;
 
-// sizes data
-const int BLOCK_SIZE = 40;
-const int X_SPACE = 40;
-const int Y_SPACE = 17.7;
-const int START_SPACE = 40;
+//sizes data
+const int 
+BLOCK_SIZE = 40,
+X_SPACE = 40,
+Y_SPACE = 17.7,
+START_SPACE = 40;
 
 const sf::Vector2f
 SMALL_MONSTER_SIZE = sf::Vector2f(BLOCK_SIZE * 0.8, BLOCK_SIZE * 0.8),

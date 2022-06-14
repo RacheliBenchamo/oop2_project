@@ -397,7 +397,7 @@ void FileManager::createPlayerAnimeData()
 	({ 95, 110 }, { 734, 127 }, 0, 1, Stay), 0.2f, false);
 
 	setCurrentData(m_playerData[FEMALE], Walk, movableAnimationSet
-	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.01f, false);
+	({ 103, 108 }, { 490, 128 }, 25, 2, Walk), 0.02f, false);
 
 	setCurrentData(m_playerData[FEMALE], Jump, movableAnimationSet
 	({ 110, 108 }, { 384, 130 }, 0, 1, Jump), 0.15f, true);
