@@ -22,7 +22,6 @@ public:
 	void setToReplace();
 
 protected:
-
 	sf::RectangleShape m_shape;
 
 private:
