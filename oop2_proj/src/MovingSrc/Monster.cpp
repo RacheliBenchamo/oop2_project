@@ -1,6 +1,5 @@
 #include "MovingInclude\Monster.h"
 
-//------------------------------- C-tor ----------------------------------
 
 Monster::Monster(const sf::Vector2f& pos, objects icon,
 	sf::Vector2f size, int force,int level)
@@ -15,7 +14,7 @@ Monster::Monster(const sf::Vector2f& pos, objects icon,
 	m_shape.setSize({ m_shape.getSize() - sf::Vector2f{10, 10} });
 	randDir();
 }
-//------------------------------------------------------------------------
+//------------------------------------------
 //rand starting direction for each monster
 
 void Monster::randDir()
@@ -34,10 +33,11 @@ void Monster::randDir()
 		break;
 	}
 }
-//------------------------------------------------------------------------
+//------------------------------------------
 // Moves the monster
 
-void Monster::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
+void Monster::move(const sf::Time& deltaTime,
+	const sf::Vector2f levelSize)
 {
 	auto movement = getMove();
 	m_shape.move(movement);
@@ -50,20 +50,22 @@ void Monster::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 	}
 	m_onFloor = false;
 }
-//------------------------------------------------------------------------
+//------------------------------------------
 // Returns if the player is close.
 //base for smart monsters
 
 bool Monster::isPlayerClose()
 {
-	return (std::abs(m_shape.getPosition().x -	m_playerPos.x) < m_shape.getSize().x * 5);
+	return (std::abs(m_shape.getPosition().x -	
+		m_playerPos.x) < m_shape.getSize().x * 5);
 }
-//------------------------------------------------
+//------------------------------------------
 // Performs a hit operation.
-// We will reach this function only if the player the monster have collided.
-// The function recives the monster with which the collision was and
-// activates polymorphic functions that are unique to the specific type
-// of monster.
+// We will reach this function only if the
+// player the monster have collided.The function
+// recives the monster with which the collision 
+// was and activates polymorphic functions that
+// are unique to the specific type of monster.
 
 void Monster::hit()
 {
@@ -79,10 +81,11 @@ void Monster::hit()
 	}
 }
 
-//-----------------------------------------------------------
+//------------------------------------------
 // Handles the player hit.
 // Absorbs the blow of the player.
-// Uses polymorphic functions activates the appropriate animations.
+// Uses polymorphic functions activates 
+//the appropriate animations.
 
 void Monster::handleHit(const float_t damage)
 {
@@ -113,10 +116,11 @@ void Monster::handleHit(const float_t damage)
 			}
 		}
 }
-//--------------------------------------------------
+//------------------------------------------
 // Return the next move of the monster.
 // The next move is selected by the time passed. 
-// The Constant Enemy changes it's scale every X seconds.
+// The Constant Enemy changes it's scale every 
+//X seconds.
 
 sf::Vector2f Monster::getMove()
 {
@@ -152,7 +156,7 @@ sf::Vector2f Monster::getMove()
 	movementClock.restart();
 	return m_lastDir;
 }
-//------------------------------------------------------
+//------------------------------------------
 // Handles collision with the floor.
 
 void Monster::handleCollisionFloor(const GameObjBase& floor)
@@ -160,7 +164,7 @@ void Monster::handleCollisionFloor(const GameObjBase& floor)
 	if (CollisionFromAboveFloor(floor))
 			m_onFloor = true;
 }
-//------------------------------------------------------
+//------------------------------------------
 //change direction according to player position
 
 void Monster::goAccordingToPlayerPos()
@@ -176,8 +180,9 @@ void Monster::goAccordingToPlayerPos()
 		m_shape.setScale(SCALE_LEFT);
 	}
 }
-//-----------------------------------
-//when the player hit the monster she pushed from him
+//------------------------------------------
+//when the player hit the monster she pushed 
+//from him
 
 void Monster::pushFrom()
 {
