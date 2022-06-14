@@ -6,14 +6,12 @@
 using std::this_thread::sleep_for;
 using std::cout;
 
-//--------------------------------------------------
-//constructor
-
 GameScreen::GameScreen(sf::RenderWindow& window,Controller* controller)
 	:m_playButton(true), m_levelNum(1), m_controller(controller), m_window(&window)
 {
 }
-//--------------------------------------------------
+//------------------------------------------
+//Activate the game screen
 
 screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 {
@@ -51,8 +49,9 @@ catch (const std::exception& e)
 {
 	std::cout << e.what();
 }
-//----------------------------------------------
-//set the menu, background and more for starting the game
+//------------------------------------------
+//Sets the menu, background and more for
+//starting the game
 
 void GameScreen::setNewGame()
 {
@@ -67,8 +66,8 @@ void GameScreen::setNewGame()
 	m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	setBackground();
 }
-//----------------------------------------------
-//handle the event that occurred in the curent
+//------------------------------------------
+//Handle the event that occurred in the curent
 //round of the running
 
 void GameScreen::handelEvents()
@@ -86,8 +85,9 @@ void GameScreen::handelEvents()
 		playBackgroundSound();
 	}
 }
-//----------------------------------------------
-//handle the event that occurred when the MouseButtonReleased
+//------------------------------------------
+//Handle the event that occurred when the
+//MouseButtonReleased
 
 void GameScreen::handelMouseButtonReleased(const sf::Vector2f pos )
 {
@@ -103,8 +103,8 @@ void GameScreen::handelMouseButtonReleased(const sf::Vector2f pos )
 	if (m_statusBar.containsStopAndPlayIcon(pos))
 		handelStopPlayButtonReleased();
 }
-//----------------------------------------------
-//stopping or playing background music
+//------------------------------------------
+//Stopping or playing background music
 
 void GameScreen::handelMusicButtonReleased()
 {
@@ -112,7 +112,7 @@ void GameScreen::handelMusicButtonReleased()
 	playBackgroundSound();
 	m_statusBar.changeMusicIcon();
 }
-//----------------------------------------------
+//------------------------------------------
 //pouse or keep going the level
 
 void GameScreen::handelStopPlayButtonReleased()
@@ -120,18 +120,19 @@ void GameScreen::handelStopPlayButtonReleased()
 	m_playButton ? m_playButton = false : m_playButton = true;
 	m_statusBar.changePlayIcon();
 }
-//----------------------------------------------
+//------------------------------------------
+//Stopping or playing background sounds
+
 void GameScreen::handelSoundButtonReleased()
 {
 	FileManager::instance().setAudiodMusic();
 	m_statusBar.changeSoundIcon();
 }
-//----------------------------------------------
-//starting new level
+//------------------------------------------
+//Starting new level
 
 void GameScreen::startNewLevel()
 {
-
 	m_dataBase.eraseObj();
 
 	//if there is no more levels
@@ -155,8 +156,8 @@ void GameScreen::startNewLevel()
 		m_statusBar.setMaxDiamonds(m_dataBase.getLevelMaxDiamonds());
 	}
 }
-//----------------------------------------------
-//starting the current level again 
+//------------------------------------------
+//Starting the current level again 
 
 void GameScreen::resetLevel()
 {
@@ -167,7 +168,8 @@ void GameScreen::resetLevel()
 	m_board.readLevel(m_dataBase);
 	this->m_statusBar.updateLevel(false);
 }
-//------------------------------------
+//------------------------------------------
+//Starting new game
 
 void GameScreen::startnewGame()
 {
@@ -179,8 +181,8 @@ void GameScreen::startnewGame()
 	m_levelNum = 0;
 	m_controller-> handleScreens(WIN_GAME);
 }
-
-//-----------------------------------------------------------
+//------------------------------------------
+//Sets the window to be in full view 
 
 void GameScreen::setBigView()
 {
@@ -188,36 +190,43 @@ void GameScreen::setBigView()
 	m_view.setCenter(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 	m_window->setView(m_view);
 }
-//-----------------------------------------------------------
+//------------------------------------------
+//Plays the background sound of the game
 
 void GameScreen::playBackgroundSound()
 {
 	FileManager::instance().startBackgraundSound(FileManager::instance().
 		getBackgraundSaund(m_dataBase.getStageType()), VOLUME_BG);
-	//FileManager::instance().setIsMenuAudioPlaying(false);
 }
-//---------------------------------------------------------
+//------------------------------------------
+//Sets the background picture of the game
 
 void GameScreen::setBackground()
 {
-	m_currLevelBackground = sf::RectangleShape(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
-	m_currLevelBackground.setOrigin(m_currLevelBackground.getSize() / 2.f);
+	m_currLevelBackground = sf::RectangleShape
+	(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
+	m_currLevelBackground.setOrigin
+	(m_currLevelBackground.getSize() / 2.f);
 	switch (m_dataBase.getStageType())
 	{
 	case FOREST:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(FOREST_BACKGROUND));
+		m_currLevelBackground.setTexture
+		(FileManager::instance().getBackGround(FOREST_BACKGROUND));
 		break;
 	case SNOW:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(SNOW_BACKGROUND));
+		m_currLevelBackground.setTexture
+		(FileManager::instance().getBackGround(SNOW_BACKGROUND));
 		break;
 	case DESERT:
-		m_currLevelBackground.setTexture(FileManager::instance().getBackGround(DESERT_BACKGROUND));
+		m_currLevelBackground.setTexture
+		(FileManager::instance().getBackGround(DESERT_BACKGROUND));
 		break;
 	default:
 		break;
 	}
 }
-//-----------------------------------------------------------
+//------------------------------------------
+//Sets the view to be on the player all the time
 
 void GameScreen::setView()
 {
@@ -227,9 +236,9 @@ void GameScreen::setView()
 	m_currLevelBackground.setPosition(m_view.getCenter());
 	m_statusBar.updatePos(m_view.getCenter());
 }
-//-----------------------------------------------------------
-// 
-//set view center by player pos and level size.
+//------------------------------------------
+//Sets view center by player pos and level size.
+
 void GameScreen::setViewToCenter()
 {
 	sf::Vector2f pos, playerPos = m_dataBase.getPlayerPos();
@@ -246,15 +255,18 @@ void GameScreen::setViewToCenter()
 	{
 		if ((playerPos.x >= m_dataBase.getLevelSize().y * Y_SPACE
 			+ START_SPACE * 3.3 - CAMERA_WIDTH / 2))
-			pos.x = playerPos.x - (playerPos.x - (m_dataBase.getLevelSize().y * Y_SPACE
+			pos.x = playerPos.x - (playerPos.x -
+				(m_dataBase.getLevelSize().y * Y_SPACE
 				+ START_SPACE * 3.3 - CAMERA_WIDTH / 2));
 
 		else if (playerPos.x < START_SPACE * 1.6 + CAMERA_WIDTH / 2)
-			pos.x = playerPos.x + (START_SPACE * 1.6 + CAMERA_WIDTH / 2 - playerPos.x);
+			pos.x = playerPos.x + (START_SPACE * 1.6 + CAMERA_WIDTH / 2 
+				- playerPos.x);
 
 		if (playerPos.y > m_dataBase.getLevelSize().x * X_SPACE
 			+ START_SPACE / 2 - CAMERA_HEIGHT / 2)
-			pos.y = playerPos.y - (playerPos.y - (m_dataBase.getLevelSize().x * X_SPACE
+			pos.y = playerPos.y - (playerPos.y - 
+				(m_dataBase.getLevelSize().x * X_SPACE
 				+ START_SPACE / 2 - CAMERA_HEIGHT / 2));
 
 		m_view.setCenter(pos);
