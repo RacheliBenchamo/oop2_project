@@ -101,9 +101,9 @@ void StatusBar::resetNumOfLevel()
 }
 //------------------------------------------
 
-bool StatusBar::containsStopAndPlayIcon(const sf::Event& event) const
+bool StatusBar::containsStopAndPlayIcon(const sf::Vector2f pos) const
 {
-	if (this->m_stopAndPlayIcon.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
 		return true;
 	return false;
 }
@@ -122,21 +122,35 @@ bool StatusBar::containsMusicIcon(const sf::Vector2f pos) const
 	return false;
 }
 //------------------------------------------
-
 void StatusBar::setMusicIcon(const bool isSoundOn)
 {
 	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
 }
-//------------------------------------------
-
-bool StatusBar::containsRestartIcon(const sf::Event& event) const
+//-----------------------------------------
+bool StatusBar::containsRestartIcon(const sf::Vector2f pos) const
 {
-	if (this->m_resetIcon.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y))
+	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
 		return true;
 	return false;
 }
 //--------------------------------------------
-
+void StatusBar::setRestartIcon(const bool isSoundOn)
+{
+	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
+}
+//-----------------------------------------
+bool StatusBar::containsSoundIcon(const sf::Vector2f pos) const
+{
+	if (this->m_musicIcon.getGlobalBounds().contains(pos.x - 10, pos.y))
+		return true;
+	return false;
+}
+//------------------------------------------
+void StatusBar::setSoundIcon(const bool isSoundOn)
+{
+	this->m_musicIcon.setTexture(*FileManager::instance().getMusicIcon(isSoundOn));
+}
+//-----------------------------------------
 void StatusBar::setLevelText()
 {
 	this->m_levelText.setFont(*FileManager::instance().getFont());

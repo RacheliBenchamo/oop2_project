@@ -18,9 +18,12 @@ public:
 	void resetNumOfLevel();
 	bool containsMusicIcon(const sf::Vector2f ) const;
 	void setMusicIcon(const bool);
-	bool containsStopAndPlayIcon(const sf::Event&) const;
+	bool containsStopAndPlayIcon(const sf::Vector2f ) const;
 	void setStopAndPlayIcon(const bool);
-	bool containsRestartIcon(const sf::Event&) const;
+	bool containsRestartIcon(const sf::Vector2f) const;
+	void setRestartIcon(const bool);
+	bool containsSoundIcon(const sf::Vector2f) const;
+	void setSoundIcon(const bool);
 	void updatePos(const sf::Vector2f);
 
 private:

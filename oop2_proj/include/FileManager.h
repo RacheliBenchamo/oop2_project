@@ -25,7 +25,7 @@ public:
 	sf::SoundBuffer* getMonsterSound(const monsterSounds, const  levels, const icons);
 	sf::SoundBuffer* getBackgraundSaund(const levels);
 	sf::SoundBuffer* getShareSaund(const sounds);
-	const sf::Texture* getMusicIcon(const bool)const;
+	const sf::Texture* getIcon(const bool)const;
 	const sf::Texture* getRestartIcon()const;
 	const sf::Texture* getBackGround(const backgroundsType)const;
 	const sf::Texture* getBIcons(const bIcons)const;

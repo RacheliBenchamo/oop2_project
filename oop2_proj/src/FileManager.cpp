@@ -248,7 +248,7 @@ sf::SoundBuffer* FileManager::getShareSaund(const sounds sound)
 }
 //--------------------------------------------------
 
-const sf::Texture* FileManager::getMusicIcon(const bool musicOn)const
+const sf::Texture* FileManager::getIcon(const bool musicOn)const
 {
 	if (musicOn)
 		return &this->m_musicTexture[0];
