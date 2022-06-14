@@ -1,9 +1,7 @@
 #include "MovingInclude\Monster.h"
 
 //------------------------------- C-tor ----------------------------------
-// Sets features using the base class constructor.
-// Also, sets it's unique size and events clock.
-//------------------------------------------------------------------------
+
 Monster::Monster(const sf::Vector2f& pos, objects icon,
 	sf::Vector2f size, int force,int level)
 	:MovingObj(size, pos + sf::Vector2f(0, 22), level),
@@ -18,6 +16,7 @@ Monster::Monster(const sf::Vector2f& pos, objects icon,
 	randDir();
 }
 //------------------------------------------------------------------------
+//rand starting direction for each monster
 
 void Monster::randDir()
 {
@@ -35,16 +34,12 @@ void Monster::randDir()
 		break;
 	}
 }
-//-------------------------------- move ----------------------------------
-// Moves the enemy.
-// The function works as follows:
-// 1. checks if the movement is legal.
-// 2. if the movement was legal, 
 //------------------------------------------------------------------------
+// Moves the monster
+
 void Monster::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 {
 	auto movement = getMove();
-
 	m_shape.move(movement);
 
 	if (outWindow(m_shape.getPosition(), levelSize)||!m_onFloor)
@@ -55,25 +50,26 @@ void Monster::move(const sf::Time& deltaTime, const sf::Vector2f levelSize)
 	}
 	m_onFloor = false;
 }
-//---------------------------- isPlayerClose -----------------------------
-// Returns if the player is close.
 //------------------------------------------------------------------------
+// Returns if the player is close.
+//base for smart monsters
+
 bool Monster::isPlayerClose()
 {
 	return (std::abs(m_shape.getPosition().x -	m_playerPos.x) < m_shape.getSize().x * 5);
 }
-//--------------------------------- hit ----------------------------------
+//------------------------------------------------
 // Performs a hit operation.
-// We will reach this function only if the player the enemy have collided.
-// The function recives the enemy with which the collision was and
+// We will reach this function only if the player the monster have collided.
+// The function recives the monster with which the collision was and
 // activates polymorphic functions that are unique to the specific type
-// of enemy.
-//------------------------------------------------------------------------
+// of monster.
+
 void Monster::hit()
 {
 	if (isAlive())
 	{
-		if (m_animation.getOperation() != Operation::Hurt)
+		if (m_animation.getOperation() != Hurt)
 		{
 			m_hitingStatus = true;
 			goAccordingToPlayerPos();
@@ -83,12 +79,11 @@ void Monster::hit()
 	}
 }
 
-//------------------------------ handleHit -------------------------------
+//-----------------------------------------------------------
 // Handles the player hit.
 // Absorbs the blow of the player.
-// Uses polymorphic functions activates the appropriate animations and
-// sounds.
-//------------------------------------------------------------------------
+// Uses polymorphic functions activates the appropriate animations.
+
 void Monster::handleHit(const float_t damage)
 {
 	static bool dead = false;
@@ -118,11 +113,11 @@ void Monster::handleHit(const float_t damage)
 			}
 		}
 }
-//------------------------------- getMove --------------------------------
-// Return the next move of the Bear.
+//--------------------------------------------------
+// Return the next move of the monster.
 // The next move is selected by the time passed. 
 // The Constant Enemy changes it's scale every X seconds.
-//------------------------------------------------------------------------
+
 sf::Vector2f Monster::getMove()
 {
 	// static timer to have the movement every X time
@@ -154,24 +149,20 @@ sf::Vector2f Monster::getMove()
 		m_animation.operation(Operation::Stay);
 		return STAY_IN_PLACE;
 	}
-
 	movementClock.restart();
 	return m_lastDir;
 }
-//-------------------------- handleCollision -----------------------------
+//------------------------------------------------------
 // Handles collision with the floor.
-// Pushes the moving object off the floor depending on the location of the
-// collision.
-//------------------------------------------------------------------------
+
 void Monster::handleCollisionFloor(const GameObjBase& floor)
 {
 	if (CollisionFromAboveFloor(floor))
-	{
-		m_falling = false;
-		m_onFloor = true;
-	}
+			m_onFloor = true;
 }
-//------------------------------------------------------------------------
+//------------------------------------------------------
+//change direction according to player position
+
 void Monster::goAccordingToPlayerPos()
 {
 	if (m_shape.getPosition().x < m_playerPos.x)
@@ -185,8 +176,8 @@ void Monster::goAccordingToPlayerPos()
 		m_shape.setScale(SCALE_LEFT);
 	}
 }
-
 //-----------------------------------
+//when the player hit the monster she pushed from him
 
 void Monster::pushFrom()
 {
