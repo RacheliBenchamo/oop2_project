@@ -133,6 +133,7 @@ void FileManager::loadStaticdAudio()
 	m_audio[S_FIGHT].loadFromFile("fight.wav");
 }
 //---------------------------------------------------
+
 void FileManager::loadBackgroundAudio()
 {
 	m_backGroundAudio[FOREST].loadFromFile("Level1backgraund.wav");
@@ -140,6 +141,7 @@ void FileManager::loadBackgroundAudio()
 	m_backGroundAudio[DESERT].loadFromFile("Level3backgraund.wav");
 }
 //---------------------------------------------------
+
 void FileManager::loadforestAudio()
 {
 	m_monstersAudio[FOREST][HIT][M_FIRST].loadFromFile("MushriHit.wav");
@@ -150,6 +152,7 @@ void FileManager::loadforestAudio()
 	m_monstersAudio[FOREST][HURT][M_THIRD].loadFromFile("GreemonHurt.wav");
 }
 //---------------------------------------------------
+
 void FileManager::loadSnowdAudio()
 {
 	m_monstersAudio[SNOW][HIT][M_FIRST].loadFromFile("PenguwulungHit.wav");
@@ -160,6 +163,7 @@ void FileManager::loadSnowdAudio()
 	m_monstersAudio[SNOW][HURT][M_THIRD].loadFromFile("YetteyeyHurt.wav");
 }
 //---------------------------------------------------
+
 void FileManager::loadDesertdAudio()
 {
 
@@ -170,6 +174,7 @@ void FileManager::loadDesertdAudio()
 	m_monstersAudio[DESERT][HIT][M_THIRD].loadFromFile("FroggoHit.wav");
 	m_monstersAudio[DESERT][HURT][M_THIRD].loadFromFile("FroggoHurt.wav");
 }
+//---------------------------------------------------
 
 void FileManager::loadPlayerAudio()
 {
