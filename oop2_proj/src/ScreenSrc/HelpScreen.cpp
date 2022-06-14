@@ -4,11 +4,13 @@ HelpScreen::HelpScreen()
 {
 	this->m_font = (*(FileManager::instance().getFont()));
 	setMenu();
-
-	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_background.setTexture(FileManager::instance().getBackGround(HELP_BACKGROUND));
+	this->m_background.setSize
+	({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
+	this->m_background.setTexture
+	(FileManager::instance().getBackGround(HELP_BACKGROUND));
 }
-//--------------------------------------------------
+//------------------------------------------
+//Draw the help screen
 
 void HelpScreen::draw(sf::RenderWindow& window)
 {
@@ -17,24 +19,26 @@ void HelpScreen::draw(sf::RenderWindow& window)
 	window.draw(this->m_menu);
 	window.display();
 }
-//--------------------------------------------------
-//handle click on the menu buttons
+//------------------------------------------
+//handle click on the screen buttons
 
-screensOption HelpScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption HelpScreen::handleClick(const sf::Vector2f& Location,
+	sf::RenderWindow& window)
 {
-	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed start
+	// pressed menu
+	if (this->m_menu.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		return MENU;
 	}
 	return NONE;
 }
-//--------------------------------------------------
-//handle moving on the menu buttons
+//------------------------------------------
+//handle moving on the screen buttons
 
 void HelpScreen::handleMove(const sf::Vector2f& Location)
 {
-	// mark/unmark start button
+	// mark/unmark menu button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
@@ -46,13 +50,14 @@ void HelpScreen::handleMove(const sf::Vector2f& Location)
 		this->m_menu.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_menu.setOutlineThickness(OUTLINE_THICKNESS);
 	}
-
 }
-//--------------------------------------------------
+//------------------------------------------
+//Sets the menu button
 
 void HelpScreen::setMenu()
 {
 	setBasicButton(&m_menu);
-	m_menu.setPosition({ SCREEN_CENTER.x - 600 , SCREEN_CENTER.y + 350 });
+	m_menu.setPosition({ SCREEN_CENTER.x - 600 
+		, SCREEN_CENTER.y + 350 });
 	m_menu.setString("Menu");
 }

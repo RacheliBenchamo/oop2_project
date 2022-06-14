@@ -3,18 +3,18 @@
 LoseScreen::LoseScreen()
 {
 	this->m_font = (*(FileManager::instance().getFont()));
+	this->m_background.setSize
+	({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
+	this->m_background.setTexture
+	(FileManager::instance().getBackGround(LOSE_LEVEL_BACKGROUND));
 
 	setHeader();
 	setExit();
 	setMenu();
 	setRestart();
-
-	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_background.setTexture(FileManager::instance().getBackGround(LOSE_LEVEL_BACKGROUND));
 }
-
-//--------------------------------------------------
-//handle click on the menu buttons
+//------------------------------------------
+//Draw the screen buttons
 
 void LoseScreen::draw(sf::RenderWindow& window)
 {
@@ -26,29 +26,34 @@ void LoseScreen::draw(sf::RenderWindow& window)
 	window.draw(this->m_restart);
 	window.display();
 }
+//------------------------------------------
+//Handle click on the screen buttons
 
-screensOption LoseScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption LoseScreen::handleClick(const sf::Vector2f& Location,
+	sf::RenderWindow& window)
 {
-	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed menu
+	// pressed menu
+	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
 		playSelectSound();
 		return MENU;
 	}
-	if (this->m_restart.getGlobalBounds().contains(Location)) // pressed restart
+	// pressed restart
+	if (this->m_restart.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		return RESTART;
 	}
-
-	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
+	// pressed exit
+	if (this->m_exit.getGlobalBounds().contains(Location))
 	{
 		playSelectSound();
 		window.close();
 	}
 	return NONE;
 }
-//--------------------------------------------------
-//handle moving on the menu buttons
+//------------------------------------------
+//Handle moving on the screen buttons
 
 void LoseScreen::handleMove(const sf::Vector2f& Location)
 {
@@ -90,12 +95,17 @@ void LoseScreen::handleMove(const sf::Vector2f& Location)
 	}
 
 }
+//------------------------------------------
+//Sets the header button
+
 void LoseScreen::setHeader()
 {
 	setBasicHeader(&m_header);
 	m_header.setPosition({ WINDOW_WIDTH / 2 - 290, 30 });
 	m_header.setString("YOU DIED...");
 }
+//------------------------------------------
+//Sets the menu button
 
 void LoseScreen::setMenu()
 {
@@ -103,6 +113,8 @@ void LoseScreen::setMenu()
 	m_menu.setPosition({ SCREEN_CENTER.x - 145 , SCREEN_CENTER.y - 60 });
 	m_menu.setString("Menu");
 }
+//------------------------------------------
+//Sets the exit button
 
 void LoseScreen::setExit()
 {
@@ -110,17 +122,21 @@ void LoseScreen::setExit()
 	m_exit.setPosition({ SCREEN_CENTER.x - 115 , SCREEN_CENTER.y + 60 });
 	m_exit.setString("Exit");
 }
+//------------------------------------------
+//Sets the restart button
+
 void LoseScreen::setRestart()
 {
 	setBasicButton(&m_restart);
 	m_restart.setPosition({ SCREEN_CENTER.x - 160 , SCREEN_CENTER.y + 180 });
 	m_restart.setString("Rastart");
 }
+//------------------------------------------
+//Play the Background Sound
 
 void LoseScreen::playBackgroundSound()
 {
 	FileManager::instance().startSound(FileManager::instance().
 		getShareSaund(S_LOSE_LEVEL), VOLUME_COLLISION);
 	std::this_thread::sleep_for(std::chrono::milliseconds(600));
-
 }
