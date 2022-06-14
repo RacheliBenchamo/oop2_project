@@ -5,9 +5,12 @@
 Screen::Screen()
 {
 	this->m_font = (*(FileManager::instance().getFont()));
-	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
+	this->m_background.setSize
+	({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 }
-//----------------------------------------------------------------
+//------------------------------------------
+//Activate the screen
+
 screensOption Screen::activateScreen(sf::RenderWindow& window)
 {
 	playBackgroundSound();
@@ -33,26 +36,30 @@ screensOption Screen::activateScreen(sf::RenderWindow& window)
 				if (s != NONE)
 					return s;
 				break;
-		
 			}
 		}
 	}
 	return CLOSE;
 }
-//----------------------------------------------------------------
+//------------------------------------------
+//Play move on button sound
+
 void Screen::playMoveSound()
 {
 	FileManager::instance().startSound(FileManager::instance().
 		getShareSaund(S_ABOVE), BUTTON_VOLUME);
 }
-//----------------------------------------------------------------
+//------------------------------------------
+//Play selected button sound
+
 void Screen::playSelectSound()
 {
 	FileManager::instance().startSound(FileManager::instance().
 		getShareSaund(S_CLICKED), BUTTON_VOLUME);
 
 }
-//----------------------------------------------------------------
+//------------------------------------------
+//Set basic button
 
 void Screen::setBasicButton(sf::Text* button)
 {
@@ -62,7 +69,8 @@ void Screen::setBasicButton(sf::Text* button)
 	button->setOutlineColor(OUTLINE_BASE_COLOR);
 	button->setOutlineThickness(OUTLINE_THICKNESS);
 }
-//----------------------------------------------------------------
+//------------------------------------------
+//Set basic header
 
 void Screen::setBasicHeader(sf::Text* header)
 {

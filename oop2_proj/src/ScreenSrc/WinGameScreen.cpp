@@ -2,17 +2,15 @@
 
 WinGameScreen::WinGameScreen()
 {
-	this->m_font = (*(FileManager::instance().getFont()));
+	this->m_background.setTexture(FileManager::instance()
+		.getBackGround(WIN_GAME_BACKGROUND));
 
 	setHeader();
 	setExit();
 	setMenu();
-
-	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_background.setTexture(FileManager::instance().getBackGround(WIN_GAME_BACKGROUND));
 }
-//--------------------------------------------------
-//handle click on the menu buttons
+//------------------------------------------
+//draw
 
 void WinGameScreen::draw(sf::RenderWindow& window)
 {
@@ -23,16 +21,20 @@ void WinGameScreen::draw(sf::RenderWindow& window)
 	window.draw(this->m_menu);
 	window.display();
 }
+//------------------------------------------
+//handle click on the screen buttons
 
-screensOption WinGameScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption WinGameScreen::handleClick(const sf::Vector2f& Location,
+	sf::RenderWindow& window)
 {
-	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed start
+	// pressed menu
+	if (this->m_menu.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		return MENU;
 	}
-
-	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
+	// pressed exit
+	if (this->m_exit.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		window.close();
@@ -40,12 +42,12 @@ screensOption WinGameScreen::handleClick(const sf::Vector2f& Location, sf::Rende
 
 	return NONE;
 }
-//--------------------------------------------------
-//handle moving on the menu buttons
+//------------------------------------------
+//handle moving on the screen buttons
 
 void WinGameScreen::handleMove(const sf::Vector2f& Location)
 {
-	// mark/unmark start button
+	// mark/unmark menu button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
@@ -70,6 +72,8 @@ void WinGameScreen::handleMove(const sf::Vector2f& Location)
 		this->m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 	}
 }
+//------------------------------------------
+//Sets the header
 
 void WinGameScreen::setHeader()
 {
@@ -77,6 +81,8 @@ void WinGameScreen::setHeader()
 	m_header.setPosition({ WINDOW_WIDTH / 2 - 270, 30 });
 	m_header.setString("YOU WON!!!");
 }
+//------------------------------------------
+//Sets the menu button
 
 void WinGameScreen::setMenu()
 {
@@ -84,7 +90,8 @@ void WinGameScreen::setMenu()
 	m_menu.setPosition({ SCREEN_CENTER.x - 120 , SCREEN_CENTER.y - 70 });
 	m_menu.setString("Menu");
 }
-
+//------------------------------------------
+//Sets the exit button
 
 void WinGameScreen::setExit()
 {
@@ -92,6 +99,8 @@ void WinGameScreen::setExit()
 	m_exit.setPosition({ SCREEN_CENTER.x - 90 , SCREEN_CENTER.y + 60 });
 	m_exit.setString("Exit");
 }
+//------------------------------------------
+//Play the Background Sound
 
 void WinGameScreen::playBackgroundSound()
 {

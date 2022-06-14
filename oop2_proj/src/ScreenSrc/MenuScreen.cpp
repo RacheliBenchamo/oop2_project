@@ -1,11 +1,10 @@
 #include "ScreensInclude\MenuScreen.h"
 
-//--------------------------------------------------
-//constructor
 
 MenuScreen::MenuScreen()
 {
-	this->m_font=(*(FileManager::instance().getFont()));
+	this->m_background.setTexture
+	(FileManager::instance().getBackGround(MENU_BACKGROUND));
 
 	setHeader();
 	setStart();
@@ -13,23 +12,9 @@ MenuScreen::MenuScreen()
 	setHelp();
 	setPick();
 	setPlayer();
-
-	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_background.setTexture(FileManager::instance().getBackGround(MENU_BACKGROUND));
 }
-//--------------------------------------------------
-
-void MenuScreen::playBackgroundSound()
-{
-	if (!FileManager::instance().getIsMenuAudioPlaying())
-	{
-		FileManager::instance().startBackgraundSound(FileManager::instance().
-			getShareSaund(S_MENU), VOLUME_BG);
-		FileManager::instance().setIsMenuAudioPlaying(true);
-	}
-}
-//------------------------------------------------
-//draw all the buttons on the window
+//------------------------------------------
+//Draw all the buttons on the window
 
 void MenuScreen::draw(sf::RenderWindow& window)
 {
@@ -45,12 +30,14 @@ void MenuScreen::draw(sf::RenderWindow& window)
 
 	window.display();
 }
-//--------------------------------------------------
-//handle click on the menu buttons
+//------------------------------------------
+//Handle click on the menu buttons
 
-screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption MenuScreen::handleClick(const sf::Vector2f& Location,
+	sf::RenderWindow& window)
 {
-	if (this->m_start.getGlobalBounds().contains(Location)) // pressed start
+	// pressed start
+	if (this->m_start.getGlobalBounds().contains(Location)) 
 	{
 		if (m_selectedPlayer != WAIT)
 		{
@@ -60,13 +47,14 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 		this->m_pick.setOutlineColor(sf::Color::Red);
 		this->m_pick.setOutlineThickness(BOLD_OUTLINE);
 	}
-
-	if (this->m_help.getGlobalBounds().contains(Location)) // pressed help
+	// pressed help
+	if (this->m_help.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		return HELP;
 	}
-	if (this->m_girlplayer.getGlobalBounds().contains(Location)) // pressed help
+	// pressed players
+	if (this->m_girlplayer.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		m_selectedPlayer = FEMALE;
@@ -76,7 +64,7 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 		this->m_boyplayer.setOutlineThickness(OUTLINE_THICKNESS);
 
 	}
-	if (this->m_boyplayer.getGlobalBounds().contains(Location)) // pressed help
+	if (this->m_boyplayer.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		m_selectedPlayer = MALE;
@@ -86,15 +74,16 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location, sf::RenderWi
 		this->m_girlplayer.setOutlineThickness(OUTLINE_THICKNESS);
 
 	}
-	if (this->m_exit.getGlobalBounds().contains(Location))	// pressed exit
+	// pressed exit
+	if (this->m_exit.getGlobalBounds().contains(Location))	
 	{
 		playSelectSound();
 		window.close();
 	}
 	return NONE;
 }
-//--------------------------------------------------
-//handle moving on the menu buttons
+//------------------------------------------
+//Handle moving on the menu buttons
 
 void MenuScreen::handleMove(const sf::Vector2f& Location)
 {
@@ -134,10 +123,9 @@ void MenuScreen::handleMove(const sf::Vector2f& Location)
 		this->m_help.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_help.setOutlineThickness(OUTLINE_THICKNESS);
 	}
-
+	// mark/unmark players button
 	if (this->m_boyplayer.getOutlineColor() != OUTLINE_SELECTED_COLOR)
 	{
-		// mark/unmark help button
 		if (this->m_boyplayer.getGlobalBounds().contains(Location))
 		{
 			playMoveSound();
@@ -152,7 +140,6 @@ void MenuScreen::handleMove(const sf::Vector2f& Location)
 	}
 	if (this->m_girlplayer.getOutlineColor() != OUTLINE_SELECTED_COLOR)
 	{
-		// mark/unmark help button
 		if (this->m_girlplayer.getGlobalBounds().contains(Location))
 		{
 			playMoveSound();
@@ -168,7 +155,7 @@ void MenuScreen::handleMove(const sf::Vector2f& Location)
 	this->m_pick.setOutlineColor(OUTLINE_BASE_COLOR);
 	this->m_pick.setOutlineThickness(OUTLINE_THICKNESS);
 }
-//--------------------------------------------------
+//------------------------------------------
 //set the header details
 
 void MenuScreen::setHeader()
@@ -177,7 +164,7 @@ void MenuScreen::setHeader()
 	m_header.setPosition({ WINDOW_WIDTH / 2 - 370, 30 });
 	m_header.setString("The Diamonds Fighter");
 }
-//--------------------------------------------------
+//------------------------------------------
 //set the start details
 
 void MenuScreen::setStart()
@@ -187,7 +174,7 @@ void MenuScreen::setStart()
 	m_start.setString("Start");
 
 }
-//--------------------------------------------------
+//------------------------------------------
 //set the help details
 
 void MenuScreen::setHelp()
@@ -196,7 +183,7 @@ void MenuScreen::setHelp()
 	m_help.setPosition({ SCREEN_CENTER.x - 40, SCREEN_CENTER.y + 190 });
 	m_help.setString("Help");
 }
-//--------------------------------------------------
+//------------------------------------------
 //set the exit details
 
 void MenuScreen::setExit()
@@ -205,7 +192,8 @@ void MenuScreen::setExit()
 	m_exit.setPosition({ SCREEN_CENTER.x - 40 , SCREEN_CENTER.y + 60 });
 	m_exit.setString("Exit");
 }
-//---------------------------------
+//------------------------------------------
+//set the pick text details
 
 void MenuScreen::setPick()
 {
@@ -213,7 +201,7 @@ void MenuScreen::setPick()
 	m_pick.setPosition({ SCREEN_CENTER.x - 720 , SCREEN_CENTER.y - 200 });
 	m_pick.setString("Pick a Character:");	
 }
-//--------------------------------------------------
+//------------------------------------------
 //set the Players details
 
 void MenuScreen::setPlayer()
@@ -234,5 +222,15 @@ void MenuScreen::setPlayer()
 	m_girlplayer.setPosition({ SCREEN_CENTER.x - 700 , SCREEN_CENTER.y - 60 });
 	m_girlplayer.setSize({ BLOCK_SIZE*4, BLOCK_SIZE*4 });
 }
+//------------------------------------------
+//Play the Background Sound
 
-
+void MenuScreen::playBackgroundSound()
+{
+	if (!FileManager::instance().getIsMenuAudioPlaying())
+	{
+		FileManager::instance().startBackgraundSound(FileManager::instance().
+			getShareSaund(S_MENU), VOLUME_BG);
+		FileManager::instance().setIsMenuAudioPlaying(true);
+	}
+}

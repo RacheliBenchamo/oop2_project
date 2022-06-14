@@ -2,18 +2,16 @@
 
 WinLevelScreen::WinLevelScreen()
 {
-	this->m_font = (*(FileManager::instance().getFont()));
+	this->m_background.setTexture
+	(FileManager::instance().getBackGround(WIN_GAME_BACKGROUND));
 
 	setHeader();
 	setNextLev();
 	setExit();
 	setMenu();
-
-	this->m_background.setSize({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
-	this->m_background.setTexture(FileManager::instance().getBackGround(WIN_GAME_BACKGROUND));
 }
-//--------------------------------------------------
-//handle click on the menu buttons
+//------------------------------------------
+//draw
 
 void WinLevelScreen::draw(sf::RenderWindow& window)
 {
@@ -25,22 +23,26 @@ void WinLevelScreen::draw(sf::RenderWindow& window)
 	window.draw(this->m_nextLev);
 	window.display();
 }
-//--------------------------------------------------
+//------------------------------------------
+//handle click on the screen buttons
 
-screensOption WinLevelScreen::handleClick(const sf::Vector2f& Location, sf::RenderWindow& window)
+screensOption WinLevelScreen::handleClick(const sf::Vector2f& Location,
+	sf::RenderWindow& window)
 {
-
-	if (this->m_nextLev.getGlobalBounds().contains(Location)) // pressed start
+	// pressed next level
+	if (this->m_nextLev.getGlobalBounds().contains(Location))
 	{
 		playSelectSound();
 		return START;
 	}
-	if (this->m_menu.getGlobalBounds().contains(Location)) // pressed start
+	// pressed menu
+	if (this->m_menu.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		return MENU;
 	}
-	if (this->m_exit.getGlobalBounds().contains(Location)) // pressed exit
+	// pressed exit
+	if (this->m_exit.getGlobalBounds().contains(Location)) 
 	{
 		playSelectSound();
 		window.close();
@@ -48,12 +50,12 @@ screensOption WinLevelScreen::handleClick(const sf::Vector2f& Location, sf::Rend
 
 	return NONE;
 }
-//--------------------------------------------------
-//handle moving on the menu buttons
+//------------------------------------------
+//handle moving on the screen buttons
 
 void WinLevelScreen::handleMove(const sf::Vector2f& Location)
 {
-	// mark/unmark start button
+	// mark/unmark next level button
 	if (this->m_nextLev.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
@@ -65,7 +67,7 @@ void WinLevelScreen::handleMove(const sf::Vector2f& Location)
 		this->m_nextLev.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_nextLev.setOutlineThickness(OUTLINE_THICKNESS);
 	}
-	// mark/unmark start button
+	// mark/unmark menu button
 	if (this->m_menu.getGlobalBounds().contains(Location))
 	{
 		playMoveSound();
@@ -89,8 +91,9 @@ void WinLevelScreen::handleMove(const sf::Vector2f& Location)
 		this->m_exit.setOutlineColor(OUTLINE_BASE_COLOR);
 		this->m_exit.setOutlineThickness(OUTLINE_THICKNESS);
 	}
-
 }
+//------------------------------------------
+//Sets the header
 
 void WinLevelScreen::setHeader()
 {
@@ -98,6 +101,8 @@ void WinLevelScreen::setHeader()
 	m_header.setPosition({ WINDOW_WIDTH / 2 - 450, 30 });
 	m_header.setString("YOU FINISH THE LEVEL!");
 }
+//------------------------------------------
+//Sets the next level button
 
 void WinLevelScreen::setNextLev()
 {
@@ -105,6 +110,8 @@ void WinLevelScreen::setNextLev()
 	m_nextLev.setPosition({ SCREEN_CENTER.x - 150 , SCREEN_CENTER.y - 60 });
 	m_nextLev.setString("Next Level");
 }
+//------------------------------------------
+//Sets the menu button
 
 void WinLevelScreen::setMenu()
 {
@@ -112,7 +119,8 @@ void WinLevelScreen::setMenu()
 	m_menu.setPosition({ SCREEN_CENTER.x - 110 , SCREEN_CENTER.y + 60 });
 	m_menu.setString("Menu");
 }
-
+//------------------------------------------
+//Sets the exit button
 
 void WinLevelScreen::setExit()
 {
@@ -120,6 +128,8 @@ void WinLevelScreen::setExit()
 	m_exit.setPosition({ SCREEN_CENTER.x - 90 , SCREEN_CENTER.y + 180 });
 	m_exit.setString("Exit");
 }
+//------------------------------------------
+//Play the Background Sound
 
 void WinLevelScreen::playBackgroundSound()
 {

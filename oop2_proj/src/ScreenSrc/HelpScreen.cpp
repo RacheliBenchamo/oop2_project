@@ -2,10 +2,7 @@
 
 HelpScreen::HelpScreen()
 {
-	this->m_font = (*(FileManager::instance().getFont()));
 	setMenu();
-	this->m_background.setSize
-	({ WINDOW_WIDTH, WINDOW_HEIGHT + STATUS_BAR_HEIGHT });
 	this->m_background.setTexture
 	(FileManager::instance().getBackGround(HELP_BACKGROUND));
 }
