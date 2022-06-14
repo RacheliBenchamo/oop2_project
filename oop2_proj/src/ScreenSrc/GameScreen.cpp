@@ -96,6 +96,15 @@ void GameScreen::handelMouseButtonReleased(const sf::Vector2f pos )
 {
 	if (m_statusBar.containsMusicIcon(pos))
 		handelMusicButtonReleased();
+
+	if (m_statusBar.containsMusicIcon(pos))
+		handelMusicButtonReleased();
+
+	if (m_statusBar.containsMusicIcon(pos))
+		handelMusicButtonReleased();
+
+	if (m_statusBar.containsMusicIcon(pos))
+		handelMusicButtonReleased();
 }
 //----------------------------------------------
 //stopping or playing background music
