@@ -58,7 +58,7 @@ bool MovingObj::outWindow(const sf::Vector2f pos,
 	const sf::Vector2f levelSize) const
 {
 	if (pos.x <= START_SPACE*2 || pos.y <= -10||
-		pos.x >= (levelSize.y * Y_SPACE) + START_SPACE*2)
+		pos.x >= (levelSize.y * Y_SPACE) + START_SPACE * 1.2)
 			return true;
 	    return false;
 }
