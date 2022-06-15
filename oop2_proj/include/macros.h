@@ -27,8 +27,8 @@ ADD_POWER = 200;
 //monster force
 const  int
 MON1_FORCE = 45,
-MON2_FORCE = 60,
-MON3_FORCE = 75,
+MON2_FORCE = 55,
+MON3_FORCE = 65,
 PAYER_FORCE = 150,
 PLAYER_DAMAGE = 5;
 
@@ -81,10 +81,12 @@ const sf::Vector2f MUSIC_ICON_SCALE = { 0.01f,0.01f };
 //color consts
 const sf::Color
 BASE_COLOR = sf::Color(153, 153, 255, 255),
-OUTLINE_BASE_COLOR = sf::Color(0,0,0,255) ,
+OUTLINE_BASE_COLOR = sf::Color(0, 0, 0, 255),
 OUTLINE_MOVED_COLOR = sf::Color(230, 230, 255, 255),
 OUTLINE_SELECTED_COLOR = sf::Color(0, 0, 77, 255),
-HEADER_COLOR = sf::Color(204, 204, 255, 255);
+HEADER_COLOR = sf::Color(204, 204, 255, 255),
+POWER_COLOR = sf::Color(255, 255, 102, 255),
+LIFE_COLOR = sf::Color(255, 102, 102, 255);
 
 
 // movement consts

@@ -105,7 +105,8 @@ void StatusBar::drawIcons(sf::RenderWindow& window)
 
 void StatusBar::updateDiamondText(const int currDiamonds)
 {
-	this->m_diamondText.setString(std::to_string(currDiamonds)+ " / " + std::to_string(m_maxDiamonds));
+	this->m_diamondText.setString(std::to_string(currDiamonds)+ " / " 
+		+ std::to_string(m_maxDiamonds));
 }
 //--------------------------------------------------
 //set icons
@@ -179,11 +180,11 @@ void StatusBar::setDiamondCounter()
 void StatusBar::setCurrLifeRect()
 {
 	m_lifeFrame.setFillColor(sf::Color::Transparent);
-	m_lifeFrame.setOutlineColor(sf::Color::Black);
+	m_lifeFrame.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_lifeFrame.setSize(sf::Vector2f(50.f, 8.f));
 	m_lifeFrame.setOutlineThickness(1.5);
 
-	m_currLife.setFillColor(sf::Color::Red);
+	m_currLife.setFillColor(LIFE_COLOR);
 	m_currLife.setSize(sf::Vector2f(50.f, 8.f));
 
 	m_lifeIcon.setTexture(*FileManager::instance().getBIcons(B_LIFE));
@@ -195,13 +196,13 @@ void StatusBar::setCurrLifeRect()
 void StatusBar::setCurrPowerRect()
 {
 	m_powerFrame.setFillColor(sf::Color::Transparent);
-	m_powerFrame.setOutlineColor(sf::Color::Black);
+	m_powerFrame.setOutlineColor(OUTLINE_BASE_COLOR);
 	m_powerFrame.setOutlineThickness(1.5);
 	m_powerFrame.setSize(sf::Vector2f(50.f, 8.f));
 
 	m_powerIcon.setTexture(*FileManager::instance().getBIcons(B_POWER));
 	m_powerIcon.scale(MUSIC_ICON_SCALE*1.5f);
 
-	m_currPower.setFillColor(sf::Color::Yellow);
+	m_currPower.setFillColor(POWER_COLOR);
 	m_currPower.setSize(sf::Vector2f(50.f, 8.f));
 }
