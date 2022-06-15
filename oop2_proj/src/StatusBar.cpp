@@ -26,10 +26,10 @@ void StatusBar::updatePos(const sf::Vector2f center)
 
 	m_powerFrame.setPosition(center.x + 125, center.y - 100);
 	m_currPower.setPosition(center.x + 125, center.y - 100);
-	m_powerIcon.setPosition(center.x + 112, center.y - 101);
+	m_powerIcon.setPosition(center.x + 112, center.y - 100);
 
 	m_diamondText.setPosition(center.x + 125, center.y - 88);
-	m_diamondIcon.setPosition(center.x + 110, center.y - 85);
+	m_diamondIcon.setPosition(center.x + 110, center.y - 83);
 
 	m_musicIcon.setPosition(center.x - 175, center.y - 115);
 	m_soundIcon.setPosition(center.x - 160, center.y - 115);

@@ -21,7 +21,7 @@ screensOption GameScreen::activateScreen(sf::RenderWindow& window) try
 	while (window.isOpen())
 	{
 		window.clear();
-		window.draw(m_currLevelBackground);
+		window.draw(m_background);
 		m_dataBase.draw(window, m_playButton);
 		m_statusBar.draw(window, m_dataBase.getPlayerPower(),
 			m_dataBase.getPlayerLife(), m_dataBase.getPlayerDiamonds());
@@ -199,22 +199,22 @@ void GameScreen::playBackgroundSound()
 
 void GameScreen::setBackground()
 {
-	m_currLevelBackground = sf::RectangleShape
+	m_background = sf::RectangleShape
 	(sf::Vector2f({ CAMERA_WIDTH,CAMERA_HEIGHT }));
-	m_currLevelBackground.setOrigin
-	(m_currLevelBackground.getSize() / 2.f);
+	m_background.setOrigin
+	(m_background.getSize() / 2.f);
 	switch (m_dataBase.getStageType())
 	{
 	case FOREST:
-		m_currLevelBackground.setTexture
+		m_background.setTexture
 		(FileManager::instance().getBackGround(FOREST_BACKGROUND));
 		break;
 	case SNOW:
-		m_currLevelBackground.setTexture
+		m_background.setTexture
 		(FileManager::instance().getBackGround(SNOW_BACKGROUND));
 		break;
 	case DESERT:
-		m_currLevelBackground.setTexture
+		m_background.setTexture
 		(FileManager::instance().getBackGround(DESERT_BACKGROUND));
 		break;
 	default:
@@ -229,7 +229,7 @@ void GameScreen::setView()
 	setViewToCenter();
 	m_view.setSize(CAMERA_WIDTH, CAMERA_HEIGHT);
 	m_window->setView(m_view);
-	m_currLevelBackground.setPosition(m_view.getCenter());
+	m_background.setPosition(m_view.getCenter());
 	m_statusBar.updatePos(m_view.getCenter());
 }
 //------------------------------------------

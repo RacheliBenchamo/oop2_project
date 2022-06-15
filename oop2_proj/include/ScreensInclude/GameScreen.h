@@ -45,7 +45,6 @@ private:
     DataBase  m_dataBase;
     sf::Clock m_gameClock;
     int m_levelNum;
-    sf::RectangleShape m_currLevelBackground;
     sf::View m_view;
     bool m_playButton;
     gender m_playerGender = MALE;
