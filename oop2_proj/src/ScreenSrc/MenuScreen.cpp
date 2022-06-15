@@ -44,6 +44,8 @@ screensOption MenuScreen::handleClick(const sf::Vector2f& Location,
 			playSelectSound();
 			return START;
 		}
+		FileManager::instance().startSound(FileManager::instance().getShareSaund(S_NO_PLAYER_SELECTED),
+			VOLUME_COLLISION);
 		this->m_pick.setOutlineColor(sf::Color::Red);
 		this->m_pick.setOutlineThickness(BOLD_OUTLINE);
 	}

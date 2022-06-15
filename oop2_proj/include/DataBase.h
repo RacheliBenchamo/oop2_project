@@ -43,6 +43,7 @@ public:
     void setGender(const gender g) { m_gender = g; };
     void resetLevel() { m_currLevel = 1; };
     void setCurrLevel(const int currLevel) { m_currLevel = currLevel; };
+    void setCurrTeleport() { m_currTeleport = 0; }
     void printDamage();
     void setStageType(const levels lev) { m_stageType = lev; }
     levels getStageType() const{ return m_stageType; }

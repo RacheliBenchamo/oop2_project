@@ -49,6 +49,7 @@ configure_file ("sounds/jump_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/button_clicked_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/button_hover_sound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/LevelendAmazing1.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("sounds/Oops.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("sounds/forest/GrassWalking.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("sounds/forest/GreemonHurt.wav" ${CMAKE_BINARY_DIR} COPYONLY)

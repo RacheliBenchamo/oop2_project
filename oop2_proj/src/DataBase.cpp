@@ -256,11 +256,12 @@ void DataBase::handelTeleportCollisions()
 			&& m_teleport[index]->isOpen())
 		{
 			if (index % 2 == 0)
-				AllowedToEnterTeleport(index , 1);
+				AllowedToEnterTeleport(index, 1);
 			else
-				AllowedToEnterTeleport(index , -1);
+				AllowedToEnterTeleport(index, -1);
 		}
 	}
+
 }
 //---------------------------------------------------
 
@@ -316,10 +317,11 @@ void DataBase::replaceMonsterWithPotion()
 
 void  DataBase::randPotion(const sf::Vector2f pos)
 {
-	int type = rand() %4;
+	int type = rand() %5;
 	switch ((posion)type)
 	{
 	case posion::POWERPOSION:
+	case 3:
 		m_staticsObj.push_back(std::make_unique<PowerPotion>(pos));
 		break;
 	case posion::LIFE_POSION:

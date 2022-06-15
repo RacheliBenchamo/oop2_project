@@ -126,7 +126,7 @@ void LoseScreen::setRestart()
 {
 	setBasicButton(&m_restart);
 	m_restart.setPosition({ SCREEN_CENTER.x - 160 , SCREEN_CENTER.y + 180 });
-	m_restart.setString("Rastart");
+	m_restart.setString("Restart");
 }
 //------------------------------------------
 //Play the Background Sound

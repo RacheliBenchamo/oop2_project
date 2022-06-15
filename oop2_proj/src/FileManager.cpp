@@ -132,6 +132,7 @@ void FileManager::loadStaticdAudio()
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 	m_audio[S_FIGHT].loadFromFile("fight.wav");
 	m_audio[S_REACHED_ALL_DIAMONDS].loadFromFile("LevelendAmazing1.wav");
+	m_audio[S_NO_PLAYER_SELECTED].loadFromFile("Oops.wav");
 }
 //---------------------------------------------------
 

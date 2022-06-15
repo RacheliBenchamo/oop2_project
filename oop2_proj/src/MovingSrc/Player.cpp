@@ -146,8 +146,8 @@ const sf::Vector2f Player::getMovement(const sf::Time& deltaTime)
 	}
 	else if (m_inHnaldeJump)
 	{
-		FileManager::instance().startSound(FileManager::instance()
-			.getPlayerSound(JUMP,getCurrLevel()), VOLUME_BG);
+	/*	FileManager::instance().startSound(FileManager::instance()
+			.getPlayerSound(JUMP,getCurrLevel()), VOLUME_BG);*/
 		return ((getDirection() + UP_MOVEMENT) * 
 			deltaTime.asSeconds() * HANDLE_JUMP_SPEED);
 	}

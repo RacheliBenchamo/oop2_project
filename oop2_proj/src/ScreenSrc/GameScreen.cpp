@@ -148,6 +148,7 @@ void GameScreen::startNewLevel()
 		m_playerGender = m_controller->getGenderFromMenu();
 		m_dataBase.setGender(m_playerGender);
 		m_dataBase.setLevelMaxDiamonds(0);
+		m_dataBase.setCurrTeleport();
 		m_dataBase.setCurrLevel(m_levelNum);
 		setBackground();
 		m_board.readLevel(m_dataBase);
