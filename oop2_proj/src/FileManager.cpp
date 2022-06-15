@@ -220,10 +220,10 @@ void FileManager::startBackgraundSound(sf::SoundBuffer* sound,
 void FileManager::loadBackgrounds()
 {
 	m_backgrounds[MENU_BACKGROUND].loadFromFile("menuBackground.png");
+	m_backgrounds[HELP_BACKGROUND].loadFromFile("HelpBackground.png");
 	m_backgrounds[FOREST_BACKGROUND].loadFromFile("forestBackground.png");
 	m_backgrounds[SNOW_BACKGROUND].loadFromFile("snowBackground.png");
 	m_backgrounds[DESERT_BACKGROUND].loadFromFile("desertBackground.png");
-	m_backgrounds[HELP_BACKGROUND].loadFromFile("helpBackground.png");
 	m_backgrounds[LOSE_LEVEL_BACKGROUND].loadFromFile("LoseGameBackground.png");
 	m_backgrounds[WIN_GAME_BACKGROUND].loadFromFile("winGameBackground.png");
 }

@@ -76,7 +76,7 @@ private:
 	sf::Texture m_sharedStaticIcon[NUM_OF_DEC];
 	sf::Texture m_dec[2];
 	sf::IntRect m_decRect[NUM_OF_LEVELS][NUM_OF_DEC];
-	sf::IntRect m_PlayerRect[2];
+	sf::IntRect m_PlayerRect[NUM_OF_PLAYERS];
 	sf::Texture m_backgrounds[NUM_OF_BACKGROUNDS];
 	sf::Texture m_backgroundIcons[NUM_OF_BACKGROUNDSICONS];
 	sf::Texture m_icons;
@@ -87,7 +87,7 @@ private:
 
 	sf::Font m_font;
 	AnimationData m_staticData[NUM_OF_DEC];
-	AnimationData m_playerData[2];
+	AnimationData m_playerData[NUM_OF_PLAYERS];
 	AnimationData m_monsterData[NUM_OF_LEVELS][NUM_OF_MONSTERS];
 	bool m_isMenuAudioPlaying
 		, m_playBackground, m_playAudio;

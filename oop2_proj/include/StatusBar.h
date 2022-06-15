@@ -25,6 +25,7 @@ public:
 	void changeMusicIcon();
 	void changePlayIcon();
 	void changeSoundIcon();
+
 private:
 	void setDiamondCounter();
 	void updateDiamondText(const int);

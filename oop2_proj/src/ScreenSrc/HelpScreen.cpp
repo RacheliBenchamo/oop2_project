@@ -2,9 +2,8 @@
 
 HelpScreen::HelpScreen()
 {
+	this->m_background.setTexture(FileManager::instance().getBackGround(HELP_BACKGROUND));
 	setMenu();
-	this->m_background.setTexture
-	(FileManager::instance().getBackGround(HELP_BACKGROUND));
 }
 //------------------------------------------
 //Draw the help screen
@@ -12,9 +11,8 @@ HelpScreen::HelpScreen()
 void HelpScreen::draw(sf::RenderWindow& window)
 {
 	window.clear(sf::Color::White);
-	window.draw(this->m_menu);
 	window.draw(this->m_background);
-	
+	window.draw(this->m_menu);
 	window.display();
 }
 //------------------------------------------

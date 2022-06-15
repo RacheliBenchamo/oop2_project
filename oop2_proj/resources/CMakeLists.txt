@@ -28,7 +28,7 @@ configure_file ("backgrounds/desertBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/menuBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/winGameBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("backgrounds/LoseGameBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("backgrounds/helpBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("backgrounds/HelpBackground.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("Levels.txt" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Tinos-BoldItalic.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
