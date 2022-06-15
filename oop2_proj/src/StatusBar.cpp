@@ -31,10 +31,10 @@ void StatusBar::updatePos(const sf::Vector2f center)
 	m_diamondText.setPosition(center.x + 125, center.y - 88);
 	m_diamondIcon.setPosition(center.x + 110, center.y - 85);
 
-	m_musicIcon.setPosition(center.x - 170, center.y - 117);
-	m_stopAndPlayIcon.setPosition(center.x -160, center.y - 117);
-	m_resetIcon.setPosition(center.x -150, center.y - 117);
-	m_soundIcon.setPosition(center.x - 140, center.y - 117);
+	m_musicIcon.setPosition(center.x - 175, center.y - 115);
+	m_stopAndPlayIcon.setPosition(center.x -160, center.y - 115);
+	m_resetIcon.setPosition(center.x -145, center.y - 115);
+	m_soundIcon.setPosition(center.x - 130, center.y - 115);
 }
 //--------------------------------------------------
 //change music icon
@@ -123,10 +123,10 @@ void StatusBar::setIcons()
 	m_stopAndPlayIcon.setTextureRect(P_STOP_ICON);
 	m_soundIcon.setTextureRect(P_SOUND_ON);
 
-	m_musicIcon.scale(MUSIC_ICON_SCALE * 10.f);
-	m_resetIcon.scale(MUSIC_ICON_SCALE * 10.f);
-	m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE * 10.f);
-	m_soundIcon.scale(MUSIC_ICON_SCALE * 10.f);
+	m_musicIcon.scale(MUSIC_ICON_SCALE * 15.f);
+	m_resetIcon.scale(MUSIC_ICON_SCALE * 15.f);
+	m_stopAndPlayIcon.scale(MUSIC_ICON_SCALE * 15.f);
+	m_soundIcon.scale(MUSIC_ICON_SCALE * 15.f);
 }
 //--------------------------------------------------
 
