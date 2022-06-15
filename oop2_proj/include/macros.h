@@ -26,8 +26,8 @@ ADD_POWER = 200;
 
 //monster force
 const  int
-MON1_FORCE = 65,
-MON2_FORCE = 50,
+MON1_FORCE = 60,
+MON2_FORCE = 75,
 MON3_FORCE = 95,
 PAYER_FORCE = 150,
 PLAYER_DAMAGE = 5;
