@@ -29,7 +29,8 @@ public:
 
     void setLevelSize(const int,const int);
     sf::Vector2f getLevelSize()const { return m_levelSize; }
-    void setLevelMaxDiamonds(const int max) { m_currLevelMaxDiamonds= max; }
+    void setLevelMaxDiamonds(const int );
+    void setPlayerMaxDiamonds(const int);
     int getLevelMaxDiamonds()const { return m_currLevelMaxDiamonds; }
     void setData(const char, const int, const int);
     void FindTeleportPartner() const;

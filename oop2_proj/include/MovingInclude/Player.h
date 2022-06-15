@@ -5,7 +5,7 @@
 class Player :public MovingObj
 {
 public:
-	Player( const sf::Vector2f&,gender, int);
+	Player( const sf::Vector2f&,gender,const int);
 
 	virtual void move(const sf::Time& , const sf::Vector2f)override;
 	void update(const sf::Time& delta) override { m_animation.update(delta); };
@@ -21,7 +21,7 @@ public:
 	void hit();
 
 	void setHittingStatus(const bool status);
-	void addDiamond() { m_diamondsCount++; };
+	void addDiamond();
 	int getDiamondsCount() const { return m_diamondsCount; }
 	int getPower()const { return m_power; }
 	void addLife() { m_life + ADD_LIFE > MAX_LIFE ? m_life = MAX_LIFE : m_life += ADD_LIFE;};
@@ -31,6 +31,7 @@ public:
 	bool getClimbing()const { return m_climbing; }
 	void setGotToNextLev() { m_gotToNextLev = true; };
 	bool getGotToNextLev()const { return m_gotToNextLev; };
+	void setMaxDiamonds(const int num) { m_maxDiamond = num; }
 
 private:
 	void setMovementStatus(const sf::Vector2f& movement);
@@ -39,7 +40,7 @@ private:
 	void stayInPlaceAnimation(const sf::Vector2f& movement);
 
 	bool m_climbing = false;
-	int m_diamondsCount = 0;
+	int m_diamondsCount ,m_maxDiamond;
 	int m_power= MAX_POWER;
 	Animation m_animation;
 	bool m_gotToNextLev = false;

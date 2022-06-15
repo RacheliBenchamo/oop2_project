@@ -131,6 +131,7 @@ void FileManager::loadStaticdAudio()
 	m_audio[S_ABOVE].loadFromFile("button_hover_sound.wav");
 	m_audio[S_CLICKED].loadFromFile("button_clicked_sound.wav");
 	m_audio[S_FIGHT].loadFromFile("fight.wav");
+	m_audio[S_REACHED_ALL_DIAMONDS].loadFromFile("LevelendAmazing1.wav");
 }
 //---------------------------------------------------
 
@@ -189,7 +190,7 @@ void FileManager::startSound(sf::SoundBuffer* sound,
 	const int volum)const
 {
 	static sf::Sound effect;
-
+	
 	if (m_playAudio)
 	{
 		effect.setBuffer(*sound);
@@ -197,6 +198,7 @@ void FileManager::startSound(sf::SoundBuffer* sound,
 		effect.play();
 	}
 }
+
 //---------------------------------------------------
 //start the wanted background sound
 

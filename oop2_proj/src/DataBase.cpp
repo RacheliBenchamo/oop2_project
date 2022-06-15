@@ -21,6 +21,14 @@ void DataBase::setLevelSize(const int x, const int y)
 	m_levelSize.x = x;
 	m_levelSize.y = y;
 }
+void DataBase::setLevelMaxDiamonds(const int max)
+{
+	m_currLevelMaxDiamonds = max;
+}
+void DataBase::setPlayerMaxDiamonds(const int max)
+{
+	m_player->setMaxDiamonds(max);
+}
 //---------------------------------------------------
 //create all the object in the level
 

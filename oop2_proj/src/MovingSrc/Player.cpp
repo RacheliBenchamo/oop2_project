@@ -1,11 +1,12 @@
 #include "MovingInclude\Player.h"
 
 
-Player::Player( const sf::Vector2f& pos, gender gen,int level)
+Player::Player( const sf::Vector2f& pos, gender gen,const int level)
 	: MovingObj(sf::Vector2f(BLOCK_SIZE, BLOCK_SIZE), pos,level),
 	    m_animation(FileManager::instance().getPlayerData(gen),
 		Operation::Stay, m_shape,
-		FileManager::instance().getPlayerTexture())
+		FileManager::instance().getPlayerTexture()),
+		m_diamondsCount(0)
 {
 	m_force = PAYER_FORCE;
 	m_life = MAX_LIFE;
@@ -232,6 +233,21 @@ void Player::handleJump(const sf::Time& deltaTime, const bool jump,
 void Player::setHittingStatus(const bool status)
 {
 	m_hitingStatus = status;
+}
+void Player::addDiamond()
+{
+	m_diamondsCount++; 
+
+	if (m_diamondsCount == m_maxDiamond)
+	{
+		static sf::Sound effect;
+		if (FileManager::instance().getToPlayAudio())
+		{
+			effect.setBuffer(*FileManager::instance().getShareSaund(S_REACHED_ALL_DIAMONDS));
+			effect.setVolume(VOLUME_COLLISION);
+			effect.play();
+		}
+	 }
 }
 //------------------------------------------
 // handles the hiting by monsters event.

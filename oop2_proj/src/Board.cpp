@@ -65,6 +65,7 @@ void Board::readLevel(DataBase& dataBase)
 			space_y = START_SPACE;
 		}
 	}
+	dataBase.setPlayerMaxDiamonds(dataBase.getLevelMaxDiamonds());
 	dataBase.FindTeleportPartner();
 }
 //------------------------------------------
