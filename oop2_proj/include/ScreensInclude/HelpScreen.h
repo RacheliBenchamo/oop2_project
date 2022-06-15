@@ -16,6 +16,5 @@ private:
 
 	sf::Font m_font;
 	sf::Text m_menu;
-	sf::RectangleShape m_background;
 	bool m_pressMenu;
 };
