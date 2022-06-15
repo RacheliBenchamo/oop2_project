@@ -15,7 +15,7 @@ NUM_OF_PLAYERS = 2,
 NUM_OF_DIRECTION = 4;
 
 const unsigned int
-HITTING_POWER = 1,
+HITTING_POWER = 1.2,
 LESS_LIFE = 1;
 
 const unsigned int
@@ -26,9 +26,9 @@ ADD_POWER = 200;
 
 //monster force
 const  int
-MON1_FORCE = 45,
-MON2_FORCE = 55,
-MON3_FORCE = 65,
+MON1_FORCE = 50,
+MON2_FORCE = 65,
+MON3_FORCE = 85,
 PAYER_FORCE = 150,
 PLAYER_DAMAGE = 5;
 
@@ -105,7 +105,7 @@ MOVE_DOUBLE{ 2,0 };
 //action counters:
 const int
 JUMP_COUNTER = 22,
-HIT_COUNTER = 60;
+HIT_COUNTER = 100;
 
 // scale consts
 const sf::Vector2f 

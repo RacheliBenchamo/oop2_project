@@ -160,6 +160,7 @@ void GameScreen::startNewLevel()
 void GameScreen::resetLevel()
 {
 	m_dataBase.eraseObj();
+	m_dataBase.setLevelMaxDiamonds(0);
 	m_board.TakeBackInputStreamToBegLevel();
 	m_board.readLevelData(m_dataBase, m_playerGender);
 	//read all the char from the text:

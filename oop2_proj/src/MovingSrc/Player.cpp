@@ -234,6 +234,9 @@ void Player::setHittingStatus(const bool status)
 {
 	m_hitingStatus = status;
 }
+//------------------------------------------
+//add diamond
+
 void Player::addDiamond()
 {
 	m_diamondsCount++; 
@@ -247,7 +250,7 @@ void Player::addDiamond()
 			effect.setVolume(VOLUME_COLLISION);
 			effect.play();
 		}
-	 }
+	}
 }
 //------------------------------------------
 // handles the hiting by monsters event.
