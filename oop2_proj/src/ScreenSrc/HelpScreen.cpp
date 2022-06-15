@@ -12,8 +12,9 @@ HelpScreen::HelpScreen()
 void HelpScreen::draw(sf::RenderWindow& window)
 {
 	window.clear(sf::Color::White);
-	window.draw(this->m_background);
 	window.draw(this->m_menu);
+	window.draw(this->m_background);
+	
 	window.display();
 }
 //------------------------------------------
