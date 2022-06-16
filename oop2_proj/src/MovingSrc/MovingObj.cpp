@@ -18,7 +18,7 @@ void MovingObj::setDamage()
 {
 	this->m_damage.setFont(*FileManager::instance().getFont());
 	this->m_damage.setCharacterSize(STATUS_BAR_CHAR_SIZE - 1);
-	this->m_damage.setFillColor(sf::Color::Red);
+	this->m_damage.setFillColor(LIFE_COLOR);
 	this->m_damage.setOutlineThickness(0.5);
 	this->m_damage.setOutlineColor(sf::Color::Red);
 }
