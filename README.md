@@ -23,6 +23,7 @@ LoseLevelScreen, Board, StatusBar, DataBase, GameObjBase, MovingObj, StaticObj, 
 Monster, Gate, Diamond, Rope, Teleport, Potion, and StageDec.
 
 There is a more detailed README within the project itself.
+
 Enjoy!
 
 ----------------------------------------------------------------------------------------
