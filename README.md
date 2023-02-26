@@ -1,4 +1,6 @@
-Ahutors : Racheli Benchamo & Yarden Cohen
+# The Diamonds Fighter
+
+## Ahutors : Racheli Benchamo & Yarden Cohen
 
 The Diamonds Fighter is a 2D platform game with an emphasis on exploration and collecting
 diamonds to open the gate to the next stage. The player controls male or female character,
@@ -22,3 +24,8 @@ Monster, Gate, Diamond, Rope, Teleport, Potion, and StageDec.
 
 There is a more detailed README within the project itself.
 Enjoy!
+
+----------------------------------------------------------------------------------------
+
+The Game is a final project at OOP-2 (Object Oriented Programing) course.
+Language ---> C++ Graphics ---> SFML Methods used : Singleton, Double Dispatch, Inheritance, Polymorphisim.
